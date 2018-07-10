@@ -99,6 +99,11 @@ $default: auto;
 ////////////////////////////////////////////////////////////////////////////////
 // TYPOGRAPHY
 ////////////////////////////////////////////////////////////////////////////////
+@font-face {
+  font-family: 'IRANSans';
+  src : url("/fonts/IRANSansFaNum/eot/IRANSansWeb(FaNum).eot"), url('/fonts/IRANSansFaNum/woff/IRANSansWeb(FaNum).woff') format('woff'), url('/fonts/IRANSansFaNum/ttf/IRANSansWeb(FaNum).ttf') format('truetype'), url("/fonts/IRANSansFaNum/woff2/IRANSansWeb(FaNum).woff2") format('woff2');
+}
+
 h1,
 h2,
 h3,
@@ -106,15 +111,28 @@ h4,
 h5,
 h6,
 p,
-aside {
-    text-align: right;
+aside,
+td,
+th,
+li,
+a,
+table {
     direction: rtl;
+    font-family: IRANSans, serif !important;
 }
 
 .toc-wrapper {
     text-align: right;
     direction: rtl;
     font-weight: 100 !important;
+}
+
+td, th, .content table th, .content table td, li {
+  text-align: right !important;
+}
+
+code {
+  direction: ltr;
 }
 
 
