@@ -71,6 +71,196 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 
 # اطلاعات بازار (عمومی)
 
+
+##لیست معاملات
+
+```shell
+curl 'https://api.nobitex.ir/market/trades/list/' \
+  -X POST \
+  --data $'{"srcCurrency":"btc","dstCurrency":"rls"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/trades/list/ \
+  srcCurrency=btc dstCurrency=rls
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "trades": [
+        {
+            "market": "Bitcoin-﷼",
+            "total": "99949293.63720000000000000000",
+            "price": "750032220.0000000000",
+            "amount": "0.1332600000",
+            "type": "buy",
+            "timestamp": "2018-11-18T11:56:07.798845+00:00"
+        },
+        ...
+    ],
+    "status": "ok"
+}
+```
+
+برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
+
+- آدرس : `/POST /market/trades/list`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
+----------- | ----   | ------   | ---------  | -----
+srcCurrency | string |   الزامی | ارز مبدا   |`btc`
+dstCurrency | string |   الزامی | ارز مقصد   | `rls`
+
+
+## لیست سفارشات
+
+```shell
+curl 'https://api.nobitex.ir/market/orders/list/' \
+  -X POST \
+  --data $'{"order":"-price","type":"sell","dstCurrency":"usdt"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/orders/list/ \
+  order=-price type=sell dstCurrency=usdt
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "orders": [
+        {
+            "unmatchedAmount": "0.1416000000",
+            "amount": "0.1416000000",
+            "srcCurrency": "Bitcoin",
+            "dstCurrency": "Tether(omni)",
+            "matchedAmount": "0E-10",
+            "isMyOrder": false,
+            "price": "5787.0000000000",
+            "type": "sell",
+            "totalPrice": "819.43920000000000000000"
+        },
+        ...
+ 
+    ]
+}
+```
+
+برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
+
+- آدرس : `/POST /market/trades/list`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
+----------- | ----   | ------   | ---------  | -----
+order       | string | `price`  |   ترتیب    | `price` یا `price-` 
+type        | string |  اختیاری | نوع سفارش  | `buy` یا `sell`
+srcCurrency | string |   اختیاری | ارز مبدا   | `btc`
+dstCurrency | string |   اختیاری | ارز مقصد   | `rls`
+
+<aside class="notice">
+ترتیب ‍‍'price' از قیمت کم به زیاد و ترتیب 'price-' بالعکس می باشد .
+</aside>
+
+
+##آمار بازار نوبیتکس 
+
+```shell
+curl 'https://api.nobitex.ir/market/stats/' \
+  -X POST \
+  --data $'{"srcCurrency":"btc","dstCurrency":"rls"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/stats/ \
+  srcCurrency=btc dstCurrency=rls
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "stats": {
+        "btc-rls": {
+            "bestSell": "749976360.0000000000",
+            "isClosed": false,
+            "dayOpen": "686021860.0000000000",
+            "dayHigh": "750350000.0000000000",
+            "bestBuy": "733059600.0000000000",
+            "volumeSrc": "0.2929480000",
+            "dayLow": "686021860.0000000000",
+            "latest": "750350000.0000000000",
+            "volumeDst": "212724856.0678640000",
+            "dayChange": "9.38",
+            "dayClose": "750350000.0000000000"
+        },
+    },
+    "status": "ok"
+}
+```
+
+برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:
+
+- آدرس : `/POST /market/stats`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
+----------- | ----   | ------   | ---------  | -----
+srcCurrency | string |   الزامی | ارزها مبدا | `btc,usdt`
+dstCurrency | string |   الزامی | ارز مقصد   | `rls`
+
+
+
+
+## آمار بازار جهانی
+
+```shell
+curl 'https://api.nobitex.ir/market/global-stats/' \
+  -X POST
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/global-stats/
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "ltc": {
+        "kraken": {
+            "price": "41.69"
+        }
+    },
+    "btc": {
+        "kraken": {
+            "price": "5517.2"
+        }
+    },
+    ...
+   
+    "status": "ok"
+}
+```
+
+برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:
+
+- آدرس : `/POST /market/global-stats`
+     
+<aside class="notice">
+این آمارها مربوط به بازارهای Kraken و Binance می باشد
+</aside>
+
+
+
 # اطلاعات کاربر
 ## پروفایل کاربر
 برای مشاهده‌ی اطلاعات فعلی ذخیره شده در پروفایل کاربر، از `/users/profile` استفاده نمایید.
