@@ -79,7 +79,8 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 ```shell
 curl 'https://api.nobitex.ir/market/trades/list' \
   -X POST \
-  --data $'{"srcCurrency":"btc","dstCurrency":"rls"}'
+  -H "content-type: application/json" \
+  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
 ```
 
 ```plaintext
@@ -108,7 +109,7 @@ http POST https://api.nobitex.ir/market/trades/list \
 
 برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/trades/list`
+- آدرس : `POST /market/orders/list`
 
 - پارامترها :
 
@@ -122,7 +123,8 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 ```shell
 curl 'https://api.nobitex.ir/market/orders/list' \
   -X POST \
-  --data $'{"order":"-price","type":"sell","dstCurrency":"usdt"}'
+  -H "content-type: application/json" \
+  --data '{"order":"-price","type":"sell","dstCurrency":"usdt"}'
 ```
 
 ```plaintext
@@ -169,13 +171,17 @@ dstCurrency | string |   اختیاری | ارز مقصد   | `rls`
 <aside class="notice">
 ترتیب ‍‍'price' از قیمت کم به زیاد و ترتیب 'price-' بالعکس می باشد .
 </aside>
+<aside class="notice">
+محدودیت فراخوانی : 15 درخواست در دقیقه
+</aside>
 
 ##آمار بازار نوبیتکس 
 
 ```shell
 curl 'https://api.nobitex.ir/market/stats' \
   -X POST \
-  --data $'{"srcCurrency":"btc","dstCurrency":"rls"}'
+  -H "content-type: application/json" \
+  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
 ```
 
 ```plaintext
@@ -217,11 +223,17 @@ http POST https://api.nobitex.ir/market/stats \
 srcCurrency | string |   الزامی | ارزها مبدا | `btc,usdt`
 dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
+
 ## آمار بازار جهانی
 
 ```shell
 curl 'https://api.nobitex.ir/market/global-stats' \
   -X POST
+  
 ```
 
 ```plaintext
@@ -255,12 +267,189 @@ http POST https://api.nobitex.ir/market/global-stats
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
 </aside>
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
 
 # اطلاعات کاربر
-## پروفایل کاربر
-برای مشاهده‌ی اطلاعات فعلی ذخیره شده در پروفایل کاربر، از `users/profile/` استفاده نمایید.
+
+##  پروفایل
+
+```shell
+curl 'https://api.nobitex.ir/users/profile' \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/profile \
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{   
+    "status": "ok",
+    "profile": {
+        "firstName": "مهدی",
+        "lastName": "رضایی",
+        "nationalCode": "011122333",
+        "email": "name@example.com",
+        "username": "name@example.com",
+        "phone": "02142719000-9012",  
+        "mobile": "09151111111",
+        "city": "مشهد",
+        ...
+    }
+}
+```
+
+برای دریافت پروفایل کاربر از این نوع درخواست استفاده نمایید:
+
+- آدرس : `GET /users/profile`
+
+
+##  سابقه ورود 
+
+```shell
+curl 'https://api.nobitex.ir/users/login-attempts' \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/login-attempts \
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{   
+    "status": "ok",
+    "attempts": [
+        {
+            "ip": "46.209.130.106",
+            "username": "name@example.com",
+            "status": "Successful",
+            "createdAt": "2018-11-28T14:16:08.264308+00:00"
+        },
+        ...
+    ]
+}
+```
+
+برای دریافت سابقه ورود از این نوع درخواست استفاده نمایید:
+
+- آدرس : `GET /users/login-attempts`
+
+
+##  کد معرف 
+
+```shell
+curl 'https://api.nobitex.ir/users/get-referral-code' \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/get-referral-code \
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "referredUsersCount": 0,
+    "referralCode": "84440",
+    "referralFeeTotalCount": 0,
+    "referralFeeTotal": 0
+}
+```
+
+برای دریافت کد معرف از این نوع درخواست استفاده نمایید:
+
+- آدرس : `GET /users/get-referral-code`
+
+
+## افزودن کارت بانکی 
+
+```shell
+curl 'https://api.nobitex.ir/users/cards-add' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"number":"5041721011111111","bank":"رسالت"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/cards-add \
+  number=5041721011111111 bank=رسالت
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok"
+}
+```
+
+برای افزودن کارت بانکی جدید از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /users/cards-add`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+number      | string |  الزامی  |    شماره کارت | `5041721011111111`
+bank        | string |  الزامی  |    نام بانک   | `رسالت`
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در ساعت
+</aside>
+
+
+## افزودن حساب بانکی 
+
+```shell
+curl 'https://api.nobitex.ir/users/accounts-add' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"number":"5041721011111111","shaba":"IR111111111111111111111111","bank":"رسالت"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/accounts-add \
+  number=5041721011111111 shaba=IR111111111111111111111111 bank=رسالت
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok"
+}
+```
+
+برای افزودن حساب بانکی جدید از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /users/accounts-add`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+number      | string |  الزامی  |    شماره کارت | `5041721011111111`
+shaba       | string |  الزامی  |   شماره شبا   | `IR111111111111111111111111`
+bank        | string |  الزامی  |    نام بانک   | `رسالت`
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در ساعت
+</aside>
+
 
 #کیف پول‌های کاربر
+
 ## لیست کیف پول ها
 
 ```shell
@@ -283,7 +472,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
         {
             "activeBalance": "10.2649975000",
             "blockedBalance": "0",
-            "user": "mmmce1994@gmail.com",
+            "user": "name@example.com",
             "currency": "ltc",
             "id": 4159,
             "balance": "10.2649975000",
@@ -306,7 +495,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
 curl 'https://api.nobitex.ir/users/wallets/balance' \
   -X POST \
   --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
-  --data $'{"currency":"ltc"}'
+  --data '{"currency":"ltc"}'
 ```
 
 ```plaintext
@@ -340,7 +529,7 @@ curl 'https://api.nobitex.ir/users/wallets/transactions/list' \
   -X POST \
   -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
   -H "content-type: application/json" \
-  --data $'{"wallet":"4159"}'
+  --data '{"wallet":"4159"}'
 ```
 
 ```plaintext
@@ -392,7 +581,7 @@ curl 'https://api.nobitex.ir/users/wallets/deposits/list' \
   -X POST \
   -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
   -H "content-type: application/json" \
-  --data $'{"wallet":"4159"}'
+  --data '{"wallet":"4159"}'
 ```
 
 ```plaintext
@@ -458,7 +647,7 @@ curl 'https://api.nobitex.ir/users/wallets/generate-address' \
   -X POST \
   -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
   -H "content-type: application/json" \
-  --data $'{"wallet":"4159"}'
+  --data '{"wallet":"4159"}'
 ```
 
 ```plaintext
@@ -488,6 +677,165 @@ wallet      | string |  الزامی  | شناسه کیف پول(id) | `4159`
 <aside class="notice">
 محدودیت فراخوانی : 6 درخواست در ساعت
 </aside>
+
+
+#بازار 
+
+## سفارش جدید
+
+```shell
+curl 'https://api.nobitex.ir/market/orders/add' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/orders/add \
+  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok", 
+    "order": {
+        "type": "sell", 
+        "srcCurrency": "Bitcoin", 
+        "dstCurrency": "ریال", 
+        "price": "520000000", 
+        "amount": "0.6", 
+        "totalPrice": "312000000.0", 
+        "matchedAmount": 0, 
+        "unmatchedAmount": "0.6", 
+        "isMyOrder": false, 
+        "id": 25, 
+        "status": "Active", 
+        "partial": false, 
+        "fee": 0, 
+        "user": "name@example.com", 
+        "created_at": "2018-11-28T11:36:13.592827+00:00"
+    }
+}
+```
+
+برای سفارش گذاری از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /market/orders/add`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+type        | string |  الزامی  |     نوع سفارش | `buy` یا `sell`
+srcCurrency | string |  الزامی  |    ارز مبدا   | `btc`
+dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
+amount      | string |  الزامی  |       مقدار   | `0.6`
+price       | int    |  الزامی  |   قیمت واحد   | `520000000`
+
+
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
+
+## وضعیت سفارش 
+
+```shell
+curl 'https://api.nobitex.ir/market/orders/status' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"id":5684}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/orders/status \
+  id=5684
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "order": {
+        "unmatchedAmount": "3.0000000000", 
+        "fee": "0E-10", 
+        "matchedAmount": "0E-10", 
+        "partial": false, 
+        "price": "8500000.0000000000", 
+        "created_at": "2018-11-28T12:25:22.696029+00:00", 
+        "user": "name@example.com", 
+        "id": 5684, 
+        "srcCurrency": "Litecoin", 
+        "totalPrice": "25500000.00000000000000000000", 
+        "type": "sell", 
+        "dstCurrency": "\ufdfc", 
+        "isMyOrder": false, 
+        "status": "Active", 
+        "amount": "3.0000000000"
+    }
+}
+```
+
+برای دریافت وضعیت سفارش از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /market/orders/add`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+id          | int    |  الزامی  |     شناسه سفارش | ‍‍`5684`
+
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در 1 دقیقه
+</aside>
+
+
+##لغو سفارش 
+
+```shell
+curl 'https://api.nobitex.ir/market/orders/update-status' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"order":5684,"status":"canceled"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/orders/update-status \
+  order=5684 status=canceled
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "updatedStatus": "Canceled"
+}
+```
+
+برای سفارش گذاری از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /market/orders/update-status`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+order       | int    |  الزامی  |     شناسه سفارش | `‍5684‍‍`
+status      | string |  الزامی  |    وضعیت جدید   | `canceled`
+
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
 
 # ملاحظات
 ## راهنمای اشکال‌یابی
