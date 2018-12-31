@@ -74,51 +74,7 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 </aside>
 
 # اطلاعات بازار (عمومی)
-##لیست معاملات
-
-```shell
-curl 'https://api.nobitex.ir/market/trades/list' \
-  -X POST \
-  -H "content-type: application/json" \
-  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
-```
-
-```plaintext
-http POST https://api.nobitex.ir/market/trades/list \
-  srcCurrency=btc dstCurrency=rls
-```
-
-> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
-
-```json
-{
-    "trades": [
-        {
-            "market": "Bitcoin-﷼",
-            "total": "99949293.63720000000000000000",
-            "price": "750032220.0000000000",
-            "amount": "0.1332600000",
-            "type": "buy",
-            "timestamp": "2018-11-18T11:56:07.798845+00:00"
-        },
-        ...
-    ],
-    "status": "ok"
-}
-```
-
-برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
-
-- آدرس : `POST /market/orders/list`
-
-- پارامترها :
-
-پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
------------ | ----   | ------   | ---------  | -----
-srcCurrency | string |   الزامی | ارز مبدا   |`btc`
-dstCurrency | string |   الزامی | ارز مقصد   | `rls`
-
-## لیست سفارشات
+##لیست سفارشات
 
 ```shell
 curl 'https://api.nobitex.ir/market/orders/list' \
@@ -157,7 +113,7 @@ http POST https://api.nobitex.ir/market/orders/list \
 
 برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/trades/list`
+- آدرس : `POST /market/orders/list`
 
 - پارامترها :
 
@@ -171,6 +127,52 @@ dstCurrency | string |   اختیاری | ارز مقصد   | `rls`
 <aside class="notice">
 ترتیب ‍‍'price' از قیمت کم به زیاد و ترتیب 'price-' بالعکس می باشد .
 </aside>
+
+## لیست معاملات
+
+```shell
+curl 'https://api.nobitex.ir/market/trades/list' \
+  -X POST \
+  -H "content-type: application/json" \
+  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/trades/list \
+  srcCurrency=btc dstCurrency=rls
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "trades": [
+        {
+            "market": "Bitcoin-﷼",
+            "total": "99949293.63720000000000000000",
+            "price": "750032220.0000000000",
+            "amount": "0.1332600000",
+            "type": "buy",
+            "timestamp": "2018-11-18T11:56:07.798845+00:00"
+        },
+        ...
+    ],
+    "status": "ok"
+}
+```
+
+برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /market/trades/list`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
+----------- | ----   | ------   | ---------  | -----
+srcCurrency | string |   الزامی | ارز مبدا   |`btc`
+dstCurrency | string |   الزامی | ارز مقصد   | `rls`
+
+
 <aside class="notice">
 محدودیت فراخوانی : 15 درخواست در دقیقه
 </aside>
