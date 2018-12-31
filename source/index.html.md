@@ -732,11 +732,15 @@ http POST https://api.nobitex.ir/market/orders/add \
 پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
 ----------- | ----   | ------   |   ---------   | -----
 type        | string |  الزامی  |     نوع سفارش | `buy` یا `sell`
+execution   | string | `market` |   نحوه سفارش  | ‍‍‍`market` یا `limit`
 srcCurrency | string |  الزامی  |    ارز مبدا   | `btc`
 dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
 amount      | string |  الزامی  |       مقدار   | `0.6`
 price       | int    |  الزامی  |   قیمت واحد   | `520000000`
 
+<aside class="notice">
+برای ثبت سفارش سریع(مارکت)، مقدار پارامتر 'execution' باید برابر '‍market' باشد.
+</aside>
 
 <aside class="notice">
 محدودیت فراخوانی : 100 درخواست در 10 دقیقه
