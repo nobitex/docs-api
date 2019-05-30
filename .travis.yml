@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.6
 before_install:
-  - gem install -v 2.0.1 bundler --no-rdoc --no-ri
+  - gem install -v 2.0.1 --no-document bundler
 scripts:
   - make build
 deploy:
