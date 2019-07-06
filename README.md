@@ -5,7 +5,7 @@ This repository contains documentation for connecting to the Nobitex cryptocurre
 official APIs. Feel free to create new issues for reporting documentation ambiguities and suggesting
 improvements to documentation or the underlying API.
 
-Built API documentation is available on [https://apidocs.nobitex.net](https://apidocs.nobitex.net).
+Built API documentation is available on [http://apidocs.nobitex.market](https://apidocs.nobitex.net).
 The documentation is generated using [Slate](https://github.com/lord/slate).
 
 ## Development
