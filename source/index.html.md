@@ -450,6 +450,60 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 </aside>
 
 
+##محدودیت های کاربر 
+
+```shell
+curl 'https://api.nobitex.ir/users/limitations' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+```
+
+```plaintext
+http POST https://api.nobitex.ir/users/limitations
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "ok",
+  "limitations": {
+    "userLevel": "level2",
+    "features": {
+      "crypto_trade": false,
+      "rial_trade": false,
+      "coin_deposit": false,
+      "rial_deposit": false,
+      "coin_withdrawal": false,
+      "rial_withdrawal": false
+    },
+    "limits": {
+      "withdrawRialDaily": {
+        "used": "0",
+        "limit": "900000000"
+      },
+      "withdrawCoinDaily": {
+        "used": "0",
+        "limit": "2000000000"
+      },
+      "withdrawTotalDaily": {
+        "used": "0",
+        "limit": "2000000000"
+      },
+      "withdrawTotalMonthly": {
+        "used": "0",
+        "limit": "30000000000"
+      }
+    }
+  }
+}
+```
+برای دریافت محدودیت های کاربر از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /users/limitations`
+
+
 #کیف پول‌های کاربر
 
 ## لیست کیف پول ها
