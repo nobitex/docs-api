@@ -289,25 +289,78 @@ http POST https://api.nobitex.ir/users/profile \
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
 
 ```json
-{   
-    "status": "ok",
-    "profile": {
-        "firstName": "مهدی",
-        "lastName": "رضایی",
-        "nationalCode": "011122333",
-        "email": "name@example.com",
-        "username": "name@example.com",
-        "phone": "02142719000-9012",  
-        "mobile": "09151111111",
-        "city": "مشهد",
-        ...
-    }
+{
+  "status": "ok",
+  "profile": {
+    "firstName": "مهدی",
+    "lastName": "رضایی",
+    "nationalCode": "011122333",
+    "email": "name@example.com",
+    "username": "name@example.com",
+    "phone": "02142719000-9012",
+    "mobile": "09151111111",
+    "city": "مشهد",
+    "bankCards": [
+      {
+        "number": "6037-9900-0000-0000",
+        "bank": "ملی",
+        "owner": "مهدی رضایی",
+        "confirmed": true,
+        "status": "confirmed"
+      }
+    ],
+    "bankAccounts": [
+      {
+        "id": 1999,
+        "number": "0346666666666",
+        "shaba": "IR460170000000346666666666",
+        "bank": "ملی",
+        "owner": "مهدی رضایی",
+        "confirmed": true,
+        "status": "confirmed"
+      }
+    ],
+    "verifications": {
+      "email": true,
+      "phone": true,
+      "mobile": true,
+      "identity": true,
+      "selfie": false,
+      "bankAccount": true,
+      "bankCard": true,
+      "address": true,
+      "city": true
+    },
+    "pendingVerifications": {
+      "email": false,
+      "phone": false,
+      "mobile": false,
+      "identity": false,
+      "selfie": false,
+      "bankAccount": false,
+      "bankCard": false
+    },
+    "options": {
+      "fee": "0.35",
+      "feeUsdt": "0.2",
+      "isManualFee": false,
+      "tfa": false,
+      "socialLoginEnabled": false
+    },
+    "withdrawEligible": true
+  },
+  "tradeStats": {
+    "monthTradesTotal": "10867181.5365000000",
+    "monthTradesCount": 3
+  }
 }
 ```
+این api، اطلاعات پروفایل شما، کارت بانکی، حساب بانکی، موارد تایید شده(ایمیل، شماره تلفن، موبایل ...)، تنظمیات مربوط به پروفایل(فی تراکنش، فی مبادلات usdt و ...) و خلاصه آمار مبادلات شما را برمیگرداند.
 
 برای دریافت پروفایل کاربر از این نوع درخواست استفاده نمایید:
 
 - آدرس : `GET /users/profile`
+
 
 
 ##  سابقه ورود 
