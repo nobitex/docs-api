@@ -40,6 +40,7 @@ toc_footers:
 ```shell
 curl 'https://api.nobitex.ir/auth/login/' \
   -X POST \
+  -H "Content-Type: application/json" \
   --data $'{"username":"name@example.com","password":"secret-password-1234"}'
 ```
 
@@ -71,6 +72,14 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 <aside class="notice">
 توکن‌های دریافت شده از این روش، بعد از اتمام زمان اعتبار (چهار ساعت یا سی روز) منقضی می‌شوند. در صورت نیاز به توکن‌های با تاریخ انقضای
 طولانی‌تر و آگاهی از ملاحظات امنیتی لازم، با پشتیبانی نوبیتکس تماس بگیرید.
+</aside>
+
+<aside class="notice">
+انتهای آدرس ارسال، حتما "/" باید گذاشته شود.
+</aside>
+
+<aside class="notice">
+برای لاگین حتما باید از ip ایران درخواست ارسال شود. در غیر این صورت، خطای 429 برگردانده می شود. بدیهی است که استفاده از هر vpn، منجر به این خطا می شود.
 </aside>
 
 # اطلاعات بازار (عمومی)
