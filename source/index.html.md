@@ -180,10 +180,14 @@ http POST https://api.nobitex.ir/market/trades/list \
 ----------- | ----   | ------   | ---------  | -----
 srcCurrency | string |   الزامی | ارز مبدا   |`btc`
 dstCurrency | string |   الزامی | ارز مقصد   | `rls`
-
+myTradesOnly| boolean|  اختیاری| نمایش لیست معاملات شخصی|`yes`
 
 <aside class="notice">
 محدودیت فراخوانی : 15 درخواست در دقیقه
+</aside>
+
+<aside class="notice">
+برای نمایش لیست معاملات شخصی مقدار myTradesOnly:yes ارسال شود. این مقدار به صورت پیشفرض `no` میباشد.
 </aside>
 
 ##آمار بازار نوبیتکس 
