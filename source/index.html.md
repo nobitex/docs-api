@@ -959,7 +959,7 @@ id          | int    |  الزامی  |     شناسه سفارش | ‍‍`5684`
 </aside>
 
 
-##لغو سفارش 
+##به روز رسانی سفارش 
 
 ```shell
 curl 'https://api.nobitex.ir/market/orders/update-status' \
@@ -996,6 +996,59 @@ status      | string |  الزامی  |    وضعیت جدید   | `canceled`
 
 <aside class="notice">
 محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
+<aside class="notice">
+مقدار status میتواند از 'new' به 'active' و یا از 'active' به 'cancel' تغییر کند.
+در غیر اینصورت، درخواست رد میشود.
+</aside>
+
+##لغو سفارش 
+
+```shell
+curl 'https://api.nobitex.ir/market/orders/cancel-old' \
+  -X POST \
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "content-type: application/json" \
+  --data '{"execution":"limit","srcCurrency":"btc","dstCurrency":"rls","hours":2.4}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/market/orders/cancel-old \
+  execution=limit srcCurrency=btc dstCurrency=rls hours=2.4
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+}
+```
+
+برای سفارش گذاری از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /market/orders/cancel-old`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
+----------- | ----   | ------   |   ---------   | -----
+hours        | float |  اختیاری  |    زمان سفارش | 4.2
+execution   | string | `market` |   نحوه سفارش  | ‍‍‍`market` یا `limit`
+srcCurrency | string |  الزامی  |    ارز مبدا   | `btc`
+dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
+
+- خطاها :
+
+در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.
+
+<aside class="notice">
+مقدار hours در واقع مقدار ساعت قبل از زمان ارسال درخواست میباشد. برای مثال اگر مقدار ساعت '2' ارسال شود، سفارش های 2 ساعت قبل لغو خواهند شد.
+</aside>
+
+<aside class="notice">
+در صورتی که مقدار hours ارسال نشود، تمامی سفارشات مربوط لغو خواهد شد.
 </aside>
 
 
