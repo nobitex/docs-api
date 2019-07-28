@@ -7,9 +7,10 @@ before_install:
 script:
   - make build
 deploy:
-  local_dir: build
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  local_dir: build
+  fqdn: apidocs.nobitex.market
   on:
     branch: master
