@@ -28,22 +28,22 @@ toc_footers:
 از مسیر "افزونه ها - افزودن - بارگذاری افزونه" فایل زیپ شده پلاگین را آپلود کنید.
 <br>
 <br>
-<img src="images/plugin-upload.jpg"></img>
+<img src="../images/plugin-upload.jpg"></img>
 ##فعال سازی افزونه
 از مسیر "افزونه ها - افزونه های نصب شده" nobitex را فعال کنید.
 <br>
 <br>
-<img src="images/active-plugin.jpg"></img>
+<img src="../images/active-plugin.jpg"></img>
 ##فعال سازی درگاه
 از مسیر "ووکامرس - پیکر بندی - پرداخت ها" درگاه نوبیتکس را فعال کنید.
 <br>
 <br>
-<img src="images/active-gateway.jpg"></img>
+<img src="../images/active-gateway.jpg"></img>
 ##مدیریت درگاه نوبیتکس
 از مسیر مدیریت (سمت چپ درگاه نوبیتکس در مسیر "پیکربندی - پرداخت ها") میتواننید تنظیمات مربوط به درگاه را انجام دهید.
 <br>
 <br>
-<img src="images/gateway-setting.jpg"></img>
+<img src="../images/gateway-setting.jpg"></img>
 # اتصال به درگاه
 برای متصل شدن به درگاه، شما باید در قسمت مدیریت درگاه نوبیتکس، مقدار api و api-secret دریافتی از پنل خود در وبسایت نوبیتکس را وارد کنید.
 همچنین در این بخش شما میتوانید پیغام های مربوط به پرداخت موفق، پرداخت غیر موفق و معرفی درگاه را تغییر دهید.
