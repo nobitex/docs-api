@@ -33,7 +33,7 @@ toc_footers:
   `api-secret`
    دارید.این دو مقدار داخل پنل نوبیتکس شما قرار داشته و بعد از تایید درخواست شما برای دریافت درگاه پرداخت در اختیار شما قرار خواهد گرفت. در واقع با این دو مقدار نوبیتکس متوجه میشود که درخواست از سمت شما بوده است یا نه. این دو مقدار، بسیار حساس بوده و باید در حفظ و نگه داری آن ها بکوشید.
     زمان ارسال درخواست، مقدار `api` باید در body درخواست موجود باشد. 
-      در هیچ درخواستی ارسال نمی‌شود و برای احراز اصالت جواب مورد استفاده قرار می‌گیرد. در واقع برای اینکه شما متوجه شوید که جواب نهایی از سمت نوبیتکس بوده یا نه. این مورد در بخش دیگر به صورت کامل توضیح داده خواهد شد.
+      `api-secret` در هیچ درخواستی ارسال نمی‌شود و برای احراز اصالت جواب مورد استفاده قرار می‌گیرد. در واقع برای اینکه شما متوجه شوید که جواب نهایی از سمت نوبیتکس بوده یا نه. این مورد در بخش دیگر به صورت کامل توضیح داده خواهد شد.
 <aside class="warning">
 این دو پارامتر نشان‌گر هویت شما در درگاه پرداخت هستند. به هیچ‌عنوان این دو متغییر را برای کسی نفرستید حتی اگر خودش را از طرف نوبیتکس معرفی کرد. نوبیتکس هیچ زمان از شما این مقادیر را نمیخواهد.
 </aside>
@@ -48,7 +48,7 @@ toc_footers:
 curl 'https://api.nobitex.ir/pg/send/' \
   -X POST \
   -H "content-type: application/json" \
-  --data '{"api":"DemoApiKey","amount":1000000,"redirect":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}'
+  --data '{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}'
 ```
 
 ```python
@@ -56,7 +56,7 @@ import requests
 
 url = "https://api.nobitex.ir/pg/send/"
 
-payload = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"redirect\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+payload = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 headers = {
     'content-type': "application/json",
     'cache-control': "no-cache",
@@ -77,7 +77,7 @@ var settings = {
     "content-type": "application/json",
     "cache-control": "no-cache",
   },
-  "data": "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"redirect\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+  "data": "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 }
 
 $.ajax(settings).done(function (response) {
@@ -90,7 +90,7 @@ var client = new RestClient("https://api.nobitex.ir/pg/send/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"redirect\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 ```php
@@ -105,7 +105,7 @@ $request->setHeaders(array(
   'content-type' => 'application/json'
 ));
 
-$request->setBody('{"api":"DemoApiKey","amount":1000000,"redirect":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}');
+$request->setBody('{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}');
 
 try {
   $response = $request->send();
@@ -127,7 +127,7 @@ http = Net::HTTP.new(url.host, url.port)
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["cache-control"] = 'no-cache'
-request.body = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"redirect\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+request.body = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 
 response = http.request(request)
 puts response.read_body
@@ -138,7 +138,7 @@ POST /pg/send/ HTTP/1.1
 Host: api.nobitex.ir
 Content-Type: application/json
 cache-control: no-cache
-{"api":"DemoApiKey","amount":1000000,"redirect":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}
+{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
