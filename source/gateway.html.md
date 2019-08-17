@@ -144,7 +144,7 @@ cache-control: no-cache
 
 ```json
 {
-    "status": 1,
+    "status": "success",
     "token": "e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
 }
 ```
@@ -152,9 +152,9 @@ cache-control: no-cache
 
 ```json
 {
-    "status": 0,
-    "errorCode": ERROR_CODE,
-    "errorMessage": ERROR_MESSAGE
+    "status": "failed",
+    "code": ERROR_CODE,
+    "message": ERROR_MESSAGE
 }
 ```
 > برای اطلاعات بیش‌تر به بخش خطاها مراجعه کنید.
@@ -309,7 +309,7 @@ cache-control: no-cache
 ```json
 {
     {
-        'status': 1 [integer],
+        'status': "success" [string],
         'amount': Amount in rial [integer],
         'cryptoAmount': Exchanged amount in crypto [float],
         'txHash': Hash of (token, amount, api-secret) [string],
@@ -323,9 +323,9 @@ cache-control: no-cache
 
 ```json
 {
-    "status": 0,
-    "errorCode": ERROR_CODE,
-    "errorMessage": ERROR_MESSAGE
+    "status": "failed",
+    "code": ERROR_CODE,
+    "message": ERROR_MESSAGE
 }
 ```
 
