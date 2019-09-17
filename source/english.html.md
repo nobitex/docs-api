@@ -1,5 +1,6 @@
 ---
 title: مستندات API نوبیتکس
+lang: en
 
 # see: https://github.com/lord/slate/wiki/Custom-Slate-Themes
 # see: https://developer.tradegecko.com/
@@ -15,20 +16,20 @@ toc_footers:
 
 #Nobitex
 Your security is our utmost priority. We apply latest security protocols and routinely perform penetration tests to ensure highest security level for your trades. We also facilitate “cold storage” of your cryptocurrencies for the enhanced security of your wallets.
-In Nobitex , we assign you a secure digital wallet (unique personal block-chain address) to safely manage your cryptocurrencies. The private keys are stored in an offline system which will make it safe again hacking attacks. 
-In Nobitex, you can trade popular cryptocurrencies (Bitcoin, Ethereum and Ripple) with IRR. We also provide you a competitive service to trade your cryptocurrencies paired with USD Tether cryptocurrency at lower fees. 
+In Nobitex , we assign you a secure digital wallet (unique personal block-chain address) to safely manage your cryptocurrencies. The private keys are stored in an offline system which will make it safe again hacking attacks.
+In Nobitex, you can trade popular cryptocurrencies (Bitcoin, Ethereum and Ripple) with IRR. We also provide you a competitive service to trade your cryptocurrencies paired with USD Tether cryptocurrency at lower fees.
 Create an Account-> Open account
 
 [Read More](https://nobitex.market/about/)
 
-Nobitex is coined by combination of three words “No (Persian expression for new), bitcoin and exchange. Nobitex is the first exchange platform in Iran for trading common cryptocurrencies i.e. Bitcoin, Ethereum, Ripple, Litecoin and USD Tether with IRR. 
+Nobitex is coined by combination of three words “No (Persian expression for new), bitcoin and exchange. Nobitex is the first exchange platform in Iran for trading common cryptocurrencies i.e. Bitcoin, Ethereum, Ripple, Litecoin and USD Tether with IRR.
 Nobitex was born in 2017 to answer the needs of Iranian users to trade cryptocurrencies. Since then, we have extended our team by joining experts from different areas and with their hard work we continuously improve our product.
 
 
 ##Our Goals and Values
 Our Goals:
 -	Development of nobitex exchange platform for a maximum coverage of authenticated cryptocurrencies
--	Collaboration with startups and other companies for establishing cryptocurrency-based payment portals for international transactions 
+-	Collaboration with startups and other companies for establishing cryptocurrency-based payment portals for international transactions
 -	Collaboration with Iranian ICOs and to secure funding
 -	Expanding to Middle East countries
 
@@ -44,7 +45,7 @@ For a quick access to your desired API, you can search its title or its url or s
 Please send your suggestions or report any unambiguous API glitches by creating a new issue on our Nobitex API github or directly contact our team to remediate your concerns ASAP.
 
 #Authentication
-There is no need to provide a password or a token to access public APIs, but you should request for a token to access private APIs and authenticate your self with that token for you’re the following requests. 
+There is no need to provide a password or a token to access public APIs, but you should request for a token to access private APIs and authenticate your self with that token for you’re the following requests.
 
 ##Login
 > Request:
@@ -68,7 +69,7 @@ http POST https://api.nobitex.ir/auth/login/ \
     "key": "e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
 }
 ```
-Token can be obtained automatically by sending a request to auth/login/  . For your own security, tokens will be expired after 4 hours and you should acquire a new one by sending login request. If you need long-term tokens you can set a “r” parameter in remember=yes to receive a token with 30-days active token. 
+Token can be obtained automatically by sending a request to auth/login/  . For your own security, tokens will be expired after 4 hours and you should acquire a new one by sending login request. If you need long-term tokens you can set a “r” parameter in remember=yes to receive a token with 30-days active token.
 
 Parameter|	Type|	Mandatory (Y/N)|	Description	Example
 ---------|------|------------------|------------------------
@@ -115,7 +116,7 @@ http POST https://api.nobitex.ir/market/orders/list \
             "totalPrice": "819.43920000000000000000"
         },
         ...
- 
+
     ]
 }
 ```
@@ -247,7 +248,7 @@ Rate Limit: No more than 1000 requests in 10 minutes
 ```shell
 curl 'https://api.nobitex.ir/market/global-stats' \
   -X POST
-  
+
 ```
 
 ```plaintext
@@ -270,7 +271,7 @@ http POST https://api.nobitex.ir/market/global-stats
         }
     },
     ...
-   
+
     "status": "ok"
 }
 ```
@@ -364,7 +365,7 @@ http POST https://api.nobitex.ir/users/profile \
   }
 }
 ```
-To receive your profile information: 
+To receive your profile information:
 
 Address: GET/users/login-attempts
 
@@ -382,7 +383,7 @@ http POST https://api.nobitex.ir/users/login-attempts \
 > Response:
 
 ```json
-{   
+{
     "status": "ok",
     "attempts": [
         {
@@ -423,7 +424,7 @@ http POST https://api.nobitex.ir/users/get-referral-code \
 ```
 
 
-To receive your referral code: 
+To receive your referral code:
 
 Address: GET/users/get-referral-code
 
@@ -483,7 +484,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
             "rialBalanceSell": 52507310,
             "depositAddress": null
         },
-        ...  
+        ...
     ]
 }
 ```
@@ -515,7 +516,7 @@ http POST https://api.nobitex.ir/users/wallets/balance \
 
 To retrieve your current balance:
 
-Address: POST /users/wallets/balance 
+Address: POST /users/wallets/balance
 
 Parameters:
 
@@ -527,7 +528,7 @@ currency|string|Mandatory|Your wallet type|`ltc`
 ##Troubleshooting Guide
 -	Pay attention to the type of your requests, sometimes your request belongs to HTTP POST but you used GET commands instead.
 -	Please carefully review the API address and check if  “/” is included in the address or not.
-##Two-factor Authentication 
+##Two-factor Authentication
 If you activate two-factor Authentication for your account, to use some APIs , especially to collect login token, you should provide your single-use password in the header of your request.
 
 ##Limitations on API recalling
