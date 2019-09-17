@@ -52,6 +52,20 @@ under the License.
     </a>
     <div class="toc-wrapper">
       <%= image_tag "logo.png", class: 'logo' %>
+      <% if current_page.data.lang == "fa" %>
+        <a style="color: gray;
+                  position: relative;
+                  bottom: 14px;
+                  right: 15px;
+                  text-decoration: none !important;" class='lang-change' href="en/">English</a>
+      <% else %>
+         <a style ="color: gray;
+                    position: relative;
+                    bottom: 14px;
+                    left: 15px;
+                    text-decoration: none !important;" class='lang-change' href="https://apidocs.nobitex.market/">فارسی</a>
+      <% end %>
+      <html lang="<%= current_page.data.lang || "fa" %>">
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>

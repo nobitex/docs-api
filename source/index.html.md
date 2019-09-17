@@ -1,5 +1,7 @@
 ---
 title: مستندات API نوبیتکس
+lang: fa
+
 
 # see: https://github.com/lord/slate/wiki/Custom-Slate-Themes
 # see: https://developer.tradegecko.com/
