@@ -11,6 +11,6 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: build
-  fqdn: apidocs.nobitex.market
+  fqdn: apidocs.nobitex.ir
   on:
     branch: master
