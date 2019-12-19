@@ -1,9 +1,10 @@
 language: ruby
 rvm:
   - 2.6
-cache: bundler
 before_install:
-  - gem install -v 2.0.1 --no-document bundler
+  - gem update --system
+  - gem install bundler
+cache: bundler
 script:
   - make build
 deploy:
