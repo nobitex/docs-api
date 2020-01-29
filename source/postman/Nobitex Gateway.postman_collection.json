@@ -19,10 +19,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.market\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
+					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.ir\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
 				},
 				"url": {
-					"raw": "https://api.nobitex.market/pg/send/",
+					"raw": "https://api.nobitex.ir/pg/send/",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -51,10 +51,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.market\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
+							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.ir\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
 						},
 						"url": {
-							"raw": "https://api.nobitex.market/pg/send/",
+							"raw": "https://api.nobitex.ir/pg/send/",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -143,7 +143,7 @@
 					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
 				},
 				"url": {
-					"raw": "https://api.nobitex.market/pg/verify/",
+					"raw": "https://api.nobitex.ir/pg/verify/",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -175,7 +175,7 @@
 							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
 						},
 						"url": {
-							"raw": "https://api.nobitex.market/pg/verify/",
+							"raw": "https://api.nobitex.ir/pg/verify/",
 							"protocol": "https",
 							"host": [
 								"api",

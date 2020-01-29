@@ -5,7 +5,7 @@ title: مستندات پلاگین مبدل قیمت ریال به رمز ارز
 # see: https://developer.tradegecko.com/
   
 toc_footers:
-  - <a href='https://nobitex.market/'>سایت نوبیتکس</a>
+  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 
 ---
 #معرفی پلاگین مبدل نوبیتکس

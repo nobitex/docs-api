@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "1c466724-e931-459b-b644-39d2e2b0addf",
 		"name": "Nobitex Gateway Testnet",
-		"description": "https://apidocs.nobitex.market/gateway",
+		"description": "https://apidocs.nobitex.ir/gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -23,7 +23,7 @@
 					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"http://localhost\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Test Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
 				},
 				"url": {
-					"raw": "https://testnetapi.nobitex.market/pg/send/",
+					"raw": "https://testnetapi.nobitex.ir/pg/send/",
 					"protocol": "https",
 					"host": [
 						"testnetapi",
@@ -55,7 +55,7 @@
 							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"http://localhost\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Test Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
 						},
 						"url": {
-							"raw": "https://testnetapi.nobitex.market/pg/send/",
+							"raw": "https://testnetapi.nobitex.ir/pg/send/",
 							"protocol": "https",
 							"host": [
 								"testnetapi",
@@ -144,7 +144,7 @@
 					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
 				},
 				"url": {
-					"raw": "https://testnetapi.nobitex.market/pg/verify/",
+					"raw": "https://testnetapi.nobitex.ir/pg/verify/",
 					"protocol": "https",
 					"host": [
 						"testnetapi",
@@ -176,7 +176,7 @@
 							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
 						},
 						"url": {
-							"raw": "https://testnetapi.nobitex.market/pg/verify/",
+							"raw": "https://testnetapi.nobitex.ir/pg/verify/",
 							"protocol": "https",
 							"host": [
 								"testnetapi",

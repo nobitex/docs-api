@@ -15,7 +15,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 
 toc_footers:
-  - <a href='https://nobitex.market/'>سایت نوبیتکس</a>
+  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 
 ---
 
@@ -47,7 +47,7 @@ toc_footers:
 curl 'https://api.nobitex.ir/pg/send/' \
   -X POST \
   -H "content-type: application/json" \
-  --data '{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}'
+  --data '{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}'
 ```
 
 ```python
@@ -55,7 +55,7 @@ import requests
 
 url = "https://api.nobitex.ir/pg/send/"
 
-payload = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+payload = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.ir/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 headers = {
     'content-type': "application/json",
     'cache-control': "no-cache",
@@ -76,7 +76,7 @@ var settings = {
     "content-type": "application/json",
     "cache-control": "no-cache",
   },
-  "data": "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+  "data": "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.ir/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 }
 
 $.ajax(settings).done(function (response) {
@@ -89,7 +89,7 @@ var client = new RestClient("https://api.nobitex.ir/pg/send/");
 var request = new RestRequest(Method.POST);
 request.AddHeader("cache-control", "no-cache");
 request.AddHeader("content-type", "application/json");
-request.AddParameter("application/json", "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.ir/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 ```php
@@ -104,7 +104,7 @@ $request->setHeaders(array(
   'content-type' => 'application/json'
 ));
 
-$request->setBody('{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}');
+$request->setBody('{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}');
 
 try {
   $response = $request->send();
@@ -126,7 +126,7 @@ http = Net::HTTP.new(url.host, url.port)
 request = Net::HTTP::Post.new(url)
 request["content-type"] = 'application/json'
 request["cache-control"] = 'no-cache'
-request.body = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.market/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
+request.body = "{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.ir/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"
 
 response = http.request(request)
 puts response.read_body
@@ -137,7 +137,7 @@ POST /pg/send/ HTTP/1.1
 Host: api.nobitex.ir
 Content-Type: application/json
 cache-control: no-cache
-{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.market/app/callback-gateway/", "currencies": "btc,ltc"}
+{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -184,7 +184,7 @@ currencies | string | `btc,ltc` | لیست رمز‌ارزهای مورد قبو
  برای این کار توکن دریافت شده `{{ token }}` را همانند زیر در انتهای URL قرار داده و کاربر را به این آدرس ریدایرکت فرمایید.
 
 ### آدرس
-`GET https://nobitex.market/app/paygate/{{ token }}`
+`GET https://nobitex.ir/app/paygate/{{ token }}`
 
 ## ۳- بازگشت از درگاه
  کاربر در زمان بازگشت از درگاه، به پارامتر callbackURL
@@ -388,10 +388,10 @@ token | string |   الزامی | Token   | `e9282e56c83f93eb077043e5ad8b6cf5b3f
 ###آدرس‌ها در شبکه اصلی
 <code>API_URL = https://api.nobitex.ir</code>
 
-<code>SITE_URL = https://nobitex.market</code>
+<code>SITE_URL = https://nobitex.ir</code>
 
 <aside class="warning">
-شما برای استفاده از شبکه تست نت، به جای استفاده از<code>API_URL = https://api.nobitex.ir</code> باید از<code>API_URL = https://testnetapi.nobitex.net</code> و بجای استفاده از <code>SITE_URL = https://nobitex.market</code> باید از <code>SITE_URL = https://nobitex.market</code> استفاده کنید.   
+شما برای استفاده از شبکه تست نت، به جای استفاده از<code>API_URL = https://api.nobitex.ir</code> باید از<code>API_URL = https://testnetapi.nobitex.net</code> و بجای استفاده از <code>SITE_URL = https://nobitex.ir</code> باید از <code>SITE_URL = https://nobitex.ir</code> استفاده کنید.   
 </aside>
 
 
@@ -423,8 +423,8 @@ token | string |   الزامی | Token   | `e9282e56c83f93eb077043e5ad8b6cf5b3f
 ##وردپرس
 ###ووکامرس
 مستندات درگاه نوبیتکس برای فروشگاه ساز ووکامرس و همچنین لینک دانلود پلاگین از طریق لینک زیر قابل دسترسی می‌باشد.
-<a href="https://apidocs.nobitex.market/gateway/wordpress">مستندات ووکامرس</a>
+<a href="https://apidocs.nobitex.ir/gateway/wordpress">مستندات ووکامرس</a>
 
 ###مبدل قیمت
 مبدل قیمت نوبیتکس، یک پلاگین مختص فروشگاه ساز ووکامرس بوده که می‌توانید با استفاده از آن قیمت تمام محصولات خود را به ارزهای دیجیتال تبدیل کنید. 
-<a href="https://apidocs.nobitex.market/gateway/price-convertor">مستندات پلاگین مبدل قیمت</a>
+<a href="https://apidocs.nobitex.ir/gateway/price-convertor">مستندات پلاگین مبدل قیمت</a>

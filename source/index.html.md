@@ -11,7 +11,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - plaintext
 
 toc_footers:
-  - <a href='https://nobitex.market/'>سایت نوبیتکس</a>
+  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 
 ---
 
@@ -247,11 +247,11 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 ## آمار OHLC بازار نوبیتکس 
 
 ```shell
-curl 'https://api.nobitex.market/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967' 
+curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967' 
 ```
 
 ```plaintext
-http GET https://api.nobitex.market/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967
+http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

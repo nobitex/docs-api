@@ -10,7 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - plaintext
 
 toc_footers:
-  - <a href='https://nobitex.market/'>سایت نوبیتکس</a>
+  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 
 ---
 
@@ -20,7 +20,7 @@ In Nobitex , we assign you a secure digital wallet (unique personal block-chain 
 In Nobitex, you can trade popular cryptocurrencies (Bitcoin, Ethereum and Ripple) with IRR. We also provide you a competitive service to trade your cryptocurrencies paired with USD Tether cryptocurrency at lower fees.
 Create an Account-> Open account
 
-[Read More](https://nobitex.market/about/)
+[Read More](https://nobitex.ir/about/)
 
 Nobitex is coined by combination of three words “No (Persian expression for new), bitcoin and exchange. Nobitex is the first exchange platform in Iran for trading common cryptocurrencies i.e. Bitcoin, Ethereum, Ripple, Litecoin and USD Tether with IRR.
 Nobitex was born in 2017 to answer the needs of Iranian users to trade cryptocurrencies. Since then, we have extended our team by joining experts from different areas and with their hard work we continuously improve our product.
@@ -544,7 +544,7 @@ HTTP Errors|Description
 500|Internal server error- temporary error in Nobitex server (Don’t worry!)
 
 ##Fees
-[Read More](https://nobitex.market/pricing/)
+[Read More](https://nobitex.ir/pricing/)
 
 Our goal is to provide a transparent platform for your transactions. To do so it is our responsibility to clearly present our rate policies for our respected costumers. Registration and using Nobitex is completely free of charge and based on disruption provided here, we apply small amount of service fees for transactions.
 
@@ -587,7 +587,7 @@ Tether|1-3 USDT*
 -	Withdrawal requests of the users who bought cryptocurrencies for the first time will be processed after 24 hours of their payment to their Rials account. Obviously for future requests, it will be approved normally and in a short time.
 
 ##Contact us
-[Read More](https://nobitex.market/contact-us/)
+[Read More](https://nobitex.ir/contact-us/)
 
 
 We are very happy to help you thorough our communication channels if you encounter any issue, glitches and required any assistance. Users can also contact our first-line support team directly online through the violet circle at the bottom of the page. Users can also consult our FAQ section if they acquire more information.
