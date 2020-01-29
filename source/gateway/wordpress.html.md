@@ -22,7 +22,7 @@ toc_footers:
 ابتدا از طریق لینک زیر، پلاگین درگاه نوبیتکس را دانلود کنید.
   <br>
   <br>
-  - <a href='https://github.com/nobitex/novypay-wordpress/releases/download/0.1/nobitex-woocommerce-gateway.zip'>دانلود  پلاگین درگاه نوبیتکس</a>
+  - <a href='https://github.com/nobitex/novypay-wordpress/releases/latest/download/nobitex-woocommerce-gateway.zip'>دانلود  پلاگین درگاه نوبیتکس</a>
 
 ##آپلود پلاگین
 از مسیر "افزونه ها - افزودن - بارگذاری افزونه" فایل زیپ شده پلاگین را آپلود کنید.

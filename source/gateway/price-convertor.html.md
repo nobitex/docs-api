@@ -27,7 +27,7 @@ toc_footers:
 ابتدا از طریق لینک زیر، پلاگین مبدل قیمت ریال به رمز ارز نوبیتکس را دانلود کنید.
   <br>
   <br>
-  - <a href='https://github.com/nobitex/novypay-wordpress-price/releases/download/0.1/convert-woocommerce-price-to-nobitex-price.zip'>دانلود   پلاگین مبدل قیمت ریال به رمز ارز نوبیتکس</a>
+  - <a href='https://github.com/nobitex/novypay-wordpress-price/releases/latest/download/convert-woocommerce-price-to-nobitex-price.zip'>دانلود   پلاگین مبدل قیمت ریال به رمز ارز نوبیتکس</a>
 
 ##آپلود پلاگین
 از مسیر "افزونه ها - افزودن - بارگذاری افزونه" فایل زیپ شده پلاگین را آپلود کنید.
