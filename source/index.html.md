@@ -88,15 +88,14 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 ##لیست سفارشات
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/list' \
-  -X POST \
-  -H "content-type: application/json" \
-  --data '{"order":"-price","type":"sell","dstCurrency":"usdt"}'
+curl 'https://api.nobitex.ir/v2/orderbook'
+     -X POST -H "content-type: application/json"
+     --data '{"symbol": "USDTIRT"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/list \
-  order=-price type=sell dstCurrency=usdt
+http POST https://api.nobitex.ir/v2/orderbook \
+  symbol=USDTIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -104,93 +103,104 @@ http POST https://api.nobitex.ir/market/orders/list \
 ```json
 {
     "status": "ok",
-    "orders": [
-        {
-            "unmatchedAmount": "0.1416000000",
-            "amount": "0.1416000000",
-            "srcCurrency": "Bitcoin",
-            "dstCurrency": "Tether(omni)",
-            "matchedAmount": "0E-10",
-            "isMyOrder": false,
-            "price": "5787.0000000000",
-            "type": "sell",
-            "totalPrice": "819.43920000000000000000"
-        },
-        ...
- 
+    "bids": [
+        [
+            "1476091000",
+            "1.016"
+        ],
+        [
+            "1479700000",
+            "0.2561"
+        ]
+    ],
+    "asks": [
+        [
+            "1470001120",
+            "0.126571"
+        ],
+        [
+            "1470000000",
+            "0.818994"
+        ]
     ]
 }
 ```
 
 برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/orders/list`
+- آدرس : `POST /v2/orderbook`
 
 - پارامترها :
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
-order       | string | `price`  |   ترتیب    | `price` یا `price-` 
-type        | string |  اختیاری | نوع سفارش  | `buy` یا `sell`
-srcCurrency | string |   اختیاری | ارز مبدا   | `btc`
-dstCurrency | string |   اختیاری | ارز مقصد   | `rls`
+symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT` 
 
 <aside class="notice">
-ترتیب ‍‍'price' از قیمت کم به زیاد و ترتیب 'price-' بالعکس می باشد .
+خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
+</aside>
+<aside class="notice">
+در این api نیاز به توکن وجود ندازد.
+</aside>
+<aside class="notice">
+لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
 </aside>
 
 ## لیست معاملات
 
 ```shell
-curl 'https://api.nobitex.ir/market/trades/list' \
-  -X POST \
-  -H "content-type: application/json" \
-  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
+curl 'https://api.nobitex.ir/v2/trades'
+     -X POST -H "content-type: application/json"
+     --data '{"symbol": "USDTIRT"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/trades/list \
-  srcCurrency=btc dstCurrency=rls
+http POST https://api.nobitex.ir/v2/trades \
+  symbol=USDTIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
 
 ```json
 {
+    "status": "ok",
     "trades": [
         {
-            "market": "Bitcoin-﷼",
-            "total": "99949293.63720000000000000000",
-            "price": "750032220.0000000000",
-            "amount": "0.1332600000",
-            "type": "buy",
-            "timestamp": "2018-11-18T11:56:07.798845+00:00"
+            "time": 1588689375067,
+            "price": "1470000110",
+            "volume": "0",
+            "type": "sell"
         },
-        ...
-    ],
-    "status": "ok"
+        {
+            "time": 1588689360464,
+            "price": "1470000110",
+            "volume": "0.002",
+            "type": "buy"
+        }
+    ]
 }
 ```
 
 برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/trades/list`
+- آدرس : `POST /v2/trades `
 
 - پارامترها :
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
-srcCurrency | string |   الزامی | ارز مبدا   |`btc`
-dstCurrency | string |   الزامی | ارز مقصد   | `rls`
-myTradesOnly| boolean|  اختیاری| نمایش لیست معاملات شخصی|`yes`
+symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT` 
 
 <aside class="notice">
 محدودیت فراخوانی : 15 درخواست در دقیقه
 </aside>
-
 <aside class="notice">
-برای نمایش لیست معاملات شخصی مقدار myTradesOnly:yes ارسال شود. این مقدار به صورت پیشفرض `no` میباشد.
+در این api نیاز به توکن وجود ندازد.
 </aside>
+<aside class="notice">
+لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+</aside>
+
 
 ##آمار بازار نوبیتکس 
 
