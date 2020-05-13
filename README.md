@@ -8,4 +8,4 @@ improvements to documentation or the underlying API.
 
 Built API documentation is available on [https://apidocs.nobitex.ir/](https://apidocs.nobitex.ir).
 The documentation is generated using [Slate](https://github.com/lord/slate).
-If you want to contribute to the documentation itself, see [Contributing](https://github.com/firstcontributions/first-contributions/blob/master/CONTRIBUTING.md).
+If you want to contribute to the documentation itself, see [Contributing](https://github.com/nobitex/docs-api/blob/master/CONTRIBUTING.md).
