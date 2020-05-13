@@ -28,7 +28,7 @@ toc_footers:
 مورد (issue) جدیدی را ایجاد نمایید یا مستقیما روی [این لینک](https://github.com/nobitex/docs-api/issues/new) کلیک کنید و مشکل مد نظرتان را با ما در میان بگذارید.
 
 <aside class="warning">
-مستندات API در حال توسعه می باشد و ممکن است فرمت درخواست‌ها و پاسخ‌ها دچار تغییر شوند .لطفا در موارد حساس ملاحظات لازم را در نظر بگیرید. 
+مستندات API در حال توسعه می باشد و ممکن است فرمت درخواست‌ها و پاسخ‌ها دچار تغییر شوند .لطفا در موارد حساس ملاحظات لازم را در نظر بگیرید.
 </aside>
 
 # احراز هویت
@@ -134,7 +134,7 @@ http POST https://api.nobitex.ir/v2/orderbook \
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
-symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT` 
+symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT`
 
 <aside class="notice">
 خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
@@ -189,7 +189,7 @@ http POST https://api.nobitex.ir/v2/trades \
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
-symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT` 
+symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT`
 
 <aside class="notice">
 محدودیت فراخوانی : 15 درخواست در دقیقه
@@ -202,7 +202,7 @@ symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` ی�
 </aside>
 
 
-##آمار بازار نوبیتکس 
+##آمار بازار نوبیتکس
 
 ```shell
 curl 'https://api.nobitex.ir/market/stats' \
@@ -254,10 +254,10 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 محدودیت فراخوانی : 100 درخواست در 10 دقیقه
 </aside>
 
-## آمار OHLC بازار نوبیتکس 
+## آمار OHLC بازار نوبیتکس
 
 ```shell
-curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967' 
+curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967'
 ```
 
 ```plaintext
@@ -368,7 +368,7 @@ resolution: 60
 ```shell
 curl 'https://api.nobitex.ir/market/global-stats' \
   -X POST
-  
+
 ```
 
 ```plaintext
@@ -390,7 +390,7 @@ http POST https://api.nobitex.ir/market/global-stats
         }
     },
     ...
-   
+
     "status": "ok"
 }
 ```
@@ -398,7 +398,7 @@ http POST https://api.nobitex.ir/market/global-stats
 برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:
 
 - آدرس : `POST /market/global-stats`
-     
+
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
 </aside>
@@ -496,7 +496,7 @@ http POST https://api.nobitex.ir/users/profile \
 
 
 
-##  سابقه ورود 
+##  سابقه ورود
 
 ```shell
 curl 'https://api.nobitex.ir/users/login-attempts' \
@@ -510,7 +510,7 @@ http POST https://api.nobitex.ir/users/login-attempts \
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
 
 ```json
-{   
+{
     "status": "ok",
     "attempts": [
         {
@@ -529,7 +529,7 @@ http POST https://api.nobitex.ir/users/login-attempts \
 - آدرس : `GET /users/login-attempts`
 
 
-##  کد معرف 
+##  کد معرف
 
 ```shell
 curl 'https://api.nobitex.ir/users/get-referral-code' \
@@ -557,7 +557,7 @@ http POST https://api.nobitex.ir/users/get-referral-code \
 - آدرس : `GET /users/get-referral-code`
 
 
-## افزودن کارت بانکی 
+## افزودن کارت بانکی
 
 ```shell
 curl 'https://api.nobitex.ir/users/cards-add' \
@@ -596,7 +596,7 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 </aside>
 
 
-## افزودن حساب بانکی 
+## افزودن حساب بانکی
 
 ```shell
 curl 'https://api.nobitex.ir/users/accounts-add' \
@@ -636,7 +636,7 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 </aside>
 
 
-##محدودیت های کاربر 
+##محدودیت های کاربر
 
 ```shell
 curl 'https://api.nobitex.ir/users/limitations' \
@@ -707,10 +707,10 @@ http POST https://api.nobitex.ir/users/limitations
 
 ### limits: محدودیت های حساب کاربری
 #### تمامی واحد ها به ریال هستند
-- withdrawRialDaily: مقدار مجاز برای برداشت روزانه ریال 
-- withdrawRialDaily: مقدار مجاز برای برداشت روزانه رمز ارز 
-- withdrawTotalDaily: مقدار مجاز برای برداشت روزانه مجموع رمز ارز و ریال 
-- withdrawTotalMonthly: مقدار مجاز برای برداشت ماهیانه مجموع رمز ارز و ریال 
+- withdrawRialDaily: مقدار مجاز برای برداشت روزانه ریال
+- withdrawRialDaily: مقدار مجاز برای برداشت روزانه رمز ارز
+- withdrawTotalDaily: مقدار مجاز برای برداشت روزانه مجموع رمز ارز و ریال
+- withdrawTotalMonthly: مقدار مجاز برای برداشت ماهیانه مجموع رمز ارز و ریال
 
 برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به [سطوح حساب کاربری در نوبیتکس](https://nobitex.net/policies/user-levels/) مراجعه کنید.
 #کیف پول‌های کاربر
@@ -745,7 +745,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
             "rialBalanceSell": 52507310,
             "depositAddress": null
         },
-        ...  
+        ...
     ]
 }
 ```
@@ -754,7 +754,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
 
 - آدرس : `POST /users/wallets/list`
 
-##موجودی 
+##موجودی
 
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/balance' \
@@ -793,7 +793,7 @@ currency    | string |   الزامی | نوع کیف پول(ارز) | `ltc`
 </aside>
 
 <aside class="notice">
-اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید. 
+اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.
 </aside>
 
 
@@ -916,7 +916,7 @@ http POST https://api.nobitex.ir/users/wallets/deposits/list \
 ----------- | ----   | ------   |   ---------       | -----
 wallet      | string |   all    | شناسه کیف پول(id) | `4159`
 
-## تولید آدرس بلاکچین 
+## تولید آدرس بلاکچین
 
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/generate-address' \
@@ -955,7 +955,7 @@ wallet      | string |  الزامی  | شناسه کیف پول(id) | `4159`
 </aside>
 
 
-#بازار 
+#بازار
 
 ## سفارش جدید
 
@@ -976,22 +976,22 @@ http POST https://api.nobitex.ir/market/orders/add \
 
 ```json
 {
-    "status": "ok", 
+    "status": "ok",
     "order": {
-        "type": "sell", 
-        "srcCurrency": "Bitcoin", 
-        "dstCurrency": "ریال", 
-        "price": "520000000", 
-        "amount": "0.6", 
-        "totalPrice": "312000000.0", 
-        "matchedAmount": 0, 
-        "unmatchedAmount": "0.6", 
-        "isMyOrder": false, 
-        "id": 25, 
-        "status": "Active", 
-        "partial": false, 
-        "fee": 0, 
-        "user": "name@example.com", 
+        "type": "sell",
+        "srcCurrency": "Bitcoin",
+        "dstCurrency": "ریال",
+        "price": "520000000",
+        "amount": "0.6",
+        "totalPrice": "312000000.0",
+        "matchedAmount": 0,
+        "unmatchedAmount": "0.6",
+        "isMyOrder": false,
+        "id": 25,
+        "status": "Active",
+        "partial": false,
+        "fee": 0,
+        "user": "name@example.com",
         "created_at": "2018-11-28T11:36:13.592827+00:00"
     }
 }
@@ -1016,8 +1016,8 @@ price       | int    |  الزامی  |   قیمت واحد   | `520000000`
 
 در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.
 
-خطا         | توضیحات 
------------ | ------------------   
+خطا         | توضیحات
+----------- | ------------------
 OverValueOrder|این خطا زمانی رخ میدهد که میزان سفارش(مقدار فیلد amount) از موجودی شما در کیف پول نوبیتکس کمتر باشد
 InvalidMarketPair|این خطا زمانی برگردانده میشود که ارز مبدا یا ارز مقصد اشتباه وارد شده باشد
 TradingUnavailable |این خطا زمانی برگردانده میشود که کاربر به دلیلی محدود شده باشد
@@ -1034,7 +1034,7 @@ SmallOrder      |این خطا زمانی رخ می دهد که ارزش کل م
 </aside>
 
 
-## وضعیت سفارش 
+## وضعیت سفارش
 
 ```shell
 curl 'https://api.nobitex.ir/market/orders/status' \
@@ -1055,20 +1055,20 @@ http POST https://api.nobitex.ir/market/orders/status \
 {
     "status": "ok",
     "order": {
-        "unmatchedAmount": "3.0000000000", 
-        "fee": "0E-10", 
-        "matchedAmount": "0E-10", 
-        "partial": false, 
-        "price": "8500000.0000000000", 
-        "created_at": "2018-11-28T12:25:22.696029+00:00", 
-        "user": "name@example.com", 
-        "id": 5684, 
-        "srcCurrency": "Litecoin", 
-        "totalPrice": "25500000.00000000000000000000", 
-        "type": "sell", 
-        "dstCurrency": "\ufdfc", 
-        "isMyOrder": false, 
-        "status": "Active", 
+        "unmatchedAmount": "3.0000000000",
+        "fee": "0E-10",
+        "matchedAmount": "0E-10",
+        "partial": false,
+        "price": "8500000.0000000000",
+        "created_at": "2018-11-28T12:25:22.696029+00:00",
+        "user": "name@example.com",
+        "id": 5684,
+        "srcCurrency": "Litecoin",
+        "totalPrice": "25500000.00000000000000000000",
+        "type": "sell",
+        "dstCurrency": "\ufdfc",
+        "isMyOrder": false,
+        "status": "Active",
         "amount": "3.0000000000"
     }
 }
@@ -1090,7 +1090,7 @@ id          | int    |  الزامی  |     شناسه سفارش | ‍‍`5684`
 </aside>
 
 
-##به روز رسانی سفارش 
+##به روز رسانی سفارش
 
 ```shell
 curl 'https://api.nobitex.ir/market/orders/update-status' \
@@ -1134,7 +1134,7 @@ status      | string |  الزامی  |    وضعیت جدید   | `canceled`
 در غیر اینصورت، درخواست رد میشود.
 </aside>
 
-##لغو سفارش 
+##لغو سفارش
 
 ```shell
 curl 'https://api.nobitex.ir/market/orders/cancel-old' \

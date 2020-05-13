@@ -22,4 +22,7 @@ build/
 _yardoc
 doc/
 .idea/
-.vscode/tags
+.vscode
+
+# Vagrant artifacts
+ubuntu-*-console.log
