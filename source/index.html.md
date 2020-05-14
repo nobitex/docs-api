@@ -65,6 +65,10 @@ http POST https://api.nobitex.ir/auth/login/ \
 در صورتی که نیاز به ایجاد توکن‌های بلند مدت دارید، از پارامتر `remember=yes` استفاده کنید تا توکن ایجاد شده به مدت سی
 روز معتبر بماند.
 
+- آدرس : `/POST /auth/login `
+
+- پارامترها :
+
 پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
 ------- | ---- | --------- | --------- | -----
 username | string | الزامی | ایمیل کاربر | `name@example.com`
@@ -252,6 +256,10 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 
 <aside class="notice">
 محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+<aside class="notice">
+انواع ارز:
+usd, rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, doge, xlm, trx, ada, xmr, xem, iota, etc, dash, zec, neo, qtum, xtz
 </aside>
 
 ## آمار OHLC بازار نوبیتکس
@@ -494,6 +502,9 @@ http POST https://api.nobitex.ir/users/profile \
 
 - آدرس : `GET /users/profile`
 
+<aside class="notice">
+برای این درخواست فقط کافیست توکن را ارسال فرمایید.
+</aside>
 
 
 ##  سابقه ورود
@@ -1234,3 +1245,10 @@ dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
 403 | Forbidden -- انجام این عملیات مجاز نمی‌باشد
 404 | Not Found -- آدرس یا شی مد نظر وجود ندارد
 500 | Internal Server Error -- مشکلی به صورت موقت در سرور نوبیتکس رخ داده است
+
+# دریافت api‌ها با استفاده از postman
+
+برای سهولت تست و استفاده از api‌ها میتوانید از لینک زیر وارد سایت postman شوید و api‌ها را یکجا دریافت و تست فرمایید.
+
+ [لینک apiها](https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest)
+
