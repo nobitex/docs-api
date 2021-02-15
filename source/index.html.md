@@ -99,14 +99,12 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 ##لیست سفارشات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/orderbook'
-     -X POST -H "content-type: application/json"
-     --data '{"symbol": "USDTIRT"}'
+curl 'https://api.nobitex.ir/v2/orderbook/SYMBOL'
+     -X GET
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/orderbook \
-  symbol=USDTIRT
+http GET https://api.nobitex.ir/v2/orderbook/SYMBOL
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -139,35 +137,29 @@ http POST https://api.nobitex.ir/v2/orderbook \
 
 برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /v2/orderbook`
+- آدرس : `GET /v2/orderbook/SYMBOL`
 
-- پارامترها :
-
-پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
------------ | ----   | ------   | ---------  | -----
-symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT`
 
 <aside class="notice">
 خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
 </aside>
 <aside class="notice">
-در این api نیاز به توکن وجود ندازد.
+در این api نیاز به توکن وجود ندارد.
 </aside>
 <aside class="notice">
 لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+که می بایست یکی از این نمادها را به جای واژه SYMBOL در آدرس api جایگزین و استفاده نمائید
 </aside>
 
 ## لیست معاملات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/trades'
-     -X POST -H "content-type: application/json"
-     --data '{"symbol": "USDTIRT"}'
+curl 'https://api.nobitex.ir/v2/trades/SYMBOL'
+     -X GET
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/trades \
-  symbol=USDTIRT
+http GET https://api.nobitex.ir/v2/trades/SYMBOL
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -194,13 +186,8 @@ http POST https://api.nobitex.ir/v2/trades \
 
 برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /v2/trades `
+- آدرس : `GET /v2/trades/SYMBOL `
 
-- پارامترها :
-
-پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
------------ | ----   | ------   | ---------  | -----
-symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` یا `USDTIRT`
 
 <aside class="notice">
 محدودیت فراخوانی : 15 درخواست در دقیقه
@@ -210,6 +197,7 @@ symbol       | string |  الزامی  |   نماد بازار    | `BTCIRT` ی�
 </aside>
 <aside class="notice">
 لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+که می بایست یکی از این نمادها را به جای واژه SYMBOL در آدرس api جایگزین و استفاده نمائید
 </aside>
 
 
@@ -244,7 +232,7 @@ http POST https://api.nobitex.ir/market/stats \
             "volumeDst": "212724856.0678640000",
             "dayChange": "9.38",
             "dayClose": "750350000.0000000000"
-        },
+        }
     },
     "status": "ok"
 }
