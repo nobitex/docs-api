@@ -69,8 +69,14 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 // FONTS
 ////////////////////
+$vazir-font-path:"../fonts/Vazir";
+@font-face {
+  font-family: 'Vazir';
+  src : url("#{$vazir-font-path}/Vazir-Light-FD.eot"), url('#{$vazir-font-path}/Vazir-Light-FD.woff') format('woff'), url('#{$vazir-font-path}/Vazir-Light-FD.ttf') format('truetype'), url("#{$vazir-font-path}/Vazir-Light-FD.woff2") format('woff2');
+}
+
 %default-font {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Vazir",-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
 }
 
