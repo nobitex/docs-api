@@ -29,3 +29,90 @@ http POST https://api.nobitex.ir/users/get-referral-code \
 برای دریافت کد دعوت پیش‌فرض از این نوع درخواست استفاده نمایید:
 
 - آدرس : `GET /users/get-referral-code`
+
+
+
+##  لیست سفارشات
+
+```shell
+curl 'https://api.nobitex.ir/v2/orderbook'
+     -X POST -H "content-type: application/json"
+     --data '{"symbol": "USDTIRT"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/v2/orderbook \
+  symbol=USDTIRT
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "bids": [
+        [
+            "1476091000",
+            "1.016"
+        ],
+        [
+            "1479700000",
+            "0.2561"
+        ]
+    ],
+    "asks": [
+        [
+            "1470001120",
+            "0.126571"
+        ],
+        [
+            "1470000000",
+            "0.818994"
+        ]
+    ]
+}
+```
+
+برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /v2/orderbook`
+
+
+##لیست معاملات
+
+```shell
+curl 'https://api.nobitex.ir/v2/trades'
+     -X POST -H "content-type: application/json"
+     --data '{"symbol": "USDTIRT"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/v2/trades \
+  symbol=USDTIRT
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "trades": [
+        {
+            "time": 1588689375067,
+            "price": "1470000110",
+            "volume": "0",
+            "type": "sell"
+        },
+        {
+            "time": 1588689360464,
+            "price": "1470000110",
+            "volume": "0.002",
+            "type": "buy"
+        }
+    ]
+}
+```
+
+برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /v2/trades `
