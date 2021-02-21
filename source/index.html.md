@@ -38,7 +38,7 @@ toc_footers:
 
 
 
-##با ما در تماس باشید
+##تماس با ما
 در صورت ناقص یا مبهم بودن توضیحات APIها یا هرگونه پیشنهاد دیگر در این خصوص، می‌توانید در <a href="https://github.com/nobitex/docs-api" target="_blank">مخزن گیت‌هاب مستندات نوبیتکس API</a>
 مورد (issue) جدیدی را ایجاد نمایید یا مستقیما روی <a href="https://github.com/nobitex/docs-api/issues/new" target="_blank">این لینک</a> کلیک کنید و مشکل مد نظرتان را با ما در میان بگذارید.
 
@@ -216,7 +216,9 @@ http GET https://api.nobitex.ir/v2/trades/SYMBOL
 لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
 که می بایست یکی از این نمادها را به جای واژه SYMBOL در آدرس api جایگزین و استفاده نمائید
 </aside>
-
+<aside class="notice">
+پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود
+</aside>
 
 ##آمار بازار نوبیتکس
 
