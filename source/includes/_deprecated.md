@@ -32,7 +32,7 @@ http POST https://api.nobitex.ir/users/get-referral-code \
 
 
 
-##  لیست سفارشات
+##  لیست سفارشـات
 
 ```shell
 curl 'https://api.nobitex.ir/v2/orderbook'
@@ -78,7 +78,7 @@ http POST https://api.nobitex.ir/v2/orderbook \
 - آدرس : `POST /v2/orderbook`
 
 
-##لیست معاملات
+##لیست معامـلات
 
 ```shell
 curl 'https://api.nobitex.ir/v2/trades'
