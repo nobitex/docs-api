@@ -714,7 +714,7 @@ http GET https://api.nobitex.ir/users/limitations
 - withdrawTotalMonthly: مقدار مجاز برای برداشت ماهیانه مجموع رمز ارز و ریال
 
 برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به [سطوح حساب کاربری در نوبیتکس](https://nobitex.net/policies/user-levels/) مراجعه کنید.
-#کیف پول‌های کاربر
+#اطلاعات مالی کاربر
 
 ## لیست کیف پول ها
 
@@ -754,6 +754,56 @@ http POST https://api.nobitex.ir/users/wallets/list \
 برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:
 
 - آدرس : `POST /users/wallets/list`
+
+<aside class="notice">
+    در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
+</aside>
+
+##لیست کیف پول ها (انتخابی)
+
+```shell
+curl 'https://api.nobitex.ir/v2/wallets' \
+  -X POST \
+  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  --data '{"currencies":"rls,btc"}'
+```
+
+```plaintext
+http POST https://api.nobitex.ir/v2/wallets \
+  Authorization=Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568
+  currencies=rls,btc
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "wallets": {
+        "RLS": {
+            "id": 133777,
+            "balance": "0E-10",
+            "blocked": "0"
+        },
+        "BTC": {
+            "id": 133778,
+            "balance": "0E-10",
+            "blocked": "0"
+        }
+    }
+}
+```
+
+برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:
+
+- آدرس : `POST /v2/wallets`
+
+- پارامترها :
+
+پارامتر     | نوع    | پیش‌فرض   |      توضیحات     | نمونه
+----------- | ----   | ------   |   ---------      | -----
+currencies  | string |   اختیاری | نوع کیف پول(ارز)، به صورت رشته ای از ارزهای جداشده با کاما | `rls,btc`
+
 
 ##موجودی
 
