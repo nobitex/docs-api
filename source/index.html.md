@@ -36,7 +36,15 @@ toc_footers:
 </aside>
 
 
+##بسته آماده Postman
+برای استفاده آسان و راحت تر از apiها کالکشن Postman تهیه شده است.
 
+
+می‌توانید از
+ <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a>
+ این بسته را دریافت و شروع به کار کنید
+
+این راه بهترین روش برای شروع به کار سریع با apiها برای کاربران جدید است.
 
 ##تماس با ما
 در صورت ناقص یا مبهم بودن توضیحات APIها یا هرگونه پیشنهاد دیگر در این خصوص، می‌توانید در <a href="https://github.com/nobitex/docs-api" target="_blank">مخزن گیت‌هاب مستندات نوبیتکس API</a>
@@ -46,11 +54,6 @@ toc_footers:
 مستندات API در حال توسعه می باشد و ممکن است فرمت درخواست‌ها و پاسخ‌ها دچار تغییر شوند .لطفا در موارد حساس ملاحظات لازم را در نظر بگیرید
 </aside>
 
-<aside class="notice">
-می‌توانید از
- <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a>
- برخی از APIهای پرکاربرد نوبیتکس را در قالب Postman دریافت نمایید.
-</aside>
 
 
 در ادامه اجزای اصلی API نوبیتکس توضیح داده شده‌اند.
