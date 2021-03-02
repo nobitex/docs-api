@@ -78,7 +78,9 @@ http POST https://api.nobitex.ir/auth/login/ \
 
 ```json
 {
-    "key": "e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+    "status": "success",
+    "key": "db2055f743c1ac8c30d23278a496283b1e2dd46f",
+    "device": "AlRyansW"
 }
 ```
 
