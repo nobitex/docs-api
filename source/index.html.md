@@ -304,7 +304,7 @@ curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967
+http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1560120967&to=1562230967
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -338,7 +338,7 @@ http POST https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&f
 برای توضیحات بیشتر در مورد  OHLC به [این لینک](https://en.wikipedia.org/wiki/Open-high-low-close_chart) مراجعه کنید.<br><br>
 برای دریافت  آمار OHLC نوبیتکس از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/udf/history`
+- آدرس : `GET /market/udf/history`
 
 - پارامترها :
 
