@@ -185,12 +185,11 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 ## لیست معاملات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/trades'
-     -X POST
+curl 'https://api.nobitex.ir/v2/trades/BCHIRT'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/trades
+http GET https://api.nobitex.ir/v2/trades/BCHIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -217,7 +216,7 @@ http POST https://api.nobitex.ir/v2/trades
 
 برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /v2/trades `
+- آدرس : `GET v2/trades/SYMBOL `
 
 - پارامترها :
 
