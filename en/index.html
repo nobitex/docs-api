@@ -1,0 +1,991 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>مستندات API نوبیتکس</title>
+    <link href="../images/favicon.ico" rel="icon" type="image/ico" />
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="../stylesheets/screen-c8f1e506.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print-51f5d7ff.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all_nosearch-c275c2f6.js"></script>
+  </head>
+
+  <body class="en en_index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="../images/logo-900dbdd3.png" class="logo" alt="Logo" />
+         <a style ="color: gray;
+                    position: relative;
+                    bottom: 14px;
+                    left: 15px;
+                    text-decoration: none !important;" class='lang-change' href="https://apidocs.nobitex.ir/">فارسی</a>
+      <html lang="en">
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="plaintext">plaintext</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#nobitex" class="toc-h1 toc-link" data-title="Nobitex">Nobitex</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#our-goals-and-values" class="toc-h2 toc-link" data-title="Our Goals and Values">Our Goals and Values</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api" class="toc-h1 toc-link" data-title="API">API</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#market-information-public" class="toc-h1 toc-link" data-title="Market information (Public)">Market information (Public)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#orderbook" class="toc-h2 toc-link" data-title="orderbook">orderbook</a>
+                  </li>
+                  <li>
+                    <a href="#trades-list" class="toc-h2 toc-link" data-title="Trades List">Trades List</a>
+                  </li>
+                  <li>
+                    <a href="#nobitex-public-market-data" class="toc-h2 toc-link" data-title="Nobitex Public Market Data">Nobitex Public Market Data</a>
+                  </li>
+                  <li>
+                    <a href="#global-market-statistics" class="toc-h2 toc-link" data-title="Global Market Statistics">Global Market Statistics</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#user-information" class="toc-h1 toc-link" data-title="User information">User information</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#profile" class="toc-h2 toc-link" data-title="Profile">Profile</a>
+                  </li>
+                  <li>
+                    <a href="#login-attempts" class="toc-h2 toc-link" data-title="Login Attempts">Login Attempts</a>
+                  </li>
+                  <li>
+                    <a href="#referral-code" class="toc-h2 toc-link" data-title="Referral Code">Referral Code</a>
+                  </li>
+                  <li>
+                    <a href="#adding-a-debit-card" class="toc-h2 toc-link" data-title="Adding a Debit Card">Adding a Debit Card</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users-wallet" class="toc-h1 toc-link" data-title="Users Wallet">Users Wallet</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#users-wallets-list" class="toc-h2 toc-link" data-title="Users Wallets List">Users Wallets List</a>
+                  </li>
+                  <li>
+                    <a href="#balance" class="toc-h2 toc-link" data-title="Balance">Balance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#important-notices" class="toc-h1 toc-link" data-title="Important Notices">Important Notices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#troubleshooting-guide" class="toc-h2 toc-link" data-title="Troubleshooting Guide">Troubleshooting Guide</a>
+                  </li>
+                  <li>
+                    <a href="#limitations-on-api-recalling" class="toc-h2 toc-link" data-title="Limitations on API recalling">Limitations on API recalling</a>
+                  </li>
+                  <li>
+                    <a href="#error-descriptions" class="toc-h2 toc-link" data-title="Error Descriptions">Error Descriptions</a>
+                  </li>
+                  <li>
+                    <a href="#fees" class="toc-h2 toc-link" data-title="Fees">Fees</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-fees" class="toc-h2 toc-link" data-title="Transaction Fees">Transaction Fees</a>
+                  </li>
+                  <li>
+                    <a href="#service-fees-for-deposit-and-withdrawal" class="toc-h2 toc-link" data-title="Service Fees for deposit and withdrawal">Service Fees for deposit and withdrawal</a>
+                  </li>
+                  <li>
+                    <a href="#contact-us" class="toc-h2 toc-link" data-title="Contact us">Contact us</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='nobitex'>Nobitex</h1>
+<p>Your security is our utmost priority. We apply latest security protocols and routinely perform penetration tests to ensure highest security level for your trades. We also facilitate “cold storage” of your cryptocurrencies for the enhanced security of your wallets.
+In Nobitex , we assign you a secure digital wallet (unique personal block-chain address) to safely manage your cryptocurrencies. The private keys are stored in an offline system which will make it safe again hacking attacks.
+In Nobitex, you can trade popular cryptocurrencies (Bitcoin, Ethereum and Ripple) with IRR. We also provide you a competitive service to trade your cryptocurrencies paired with USD Tether cryptocurrency at lower fees.
+Create an Account-&gt; Open account</p>
+
+<p><a href="https://nobitex.ir/about/">Read More</a></p>
+
+<p>Nobitex is coined by combination of three words “No (Persian expression for new), bitcoin and exchange. Nobitex is the first exchange platform in Iran for trading common cryptocurrencies i.e. Bitcoin, Ethereum, Ripple, Litecoin and USD Tether with IRR.
+Nobitex was born in 2017 to answer the needs of Iranian users to trade cryptocurrencies. Since then, we have extended our team by joining experts from different areas and with their hard work we continuously improve our product.</p>
+<h2 id='our-goals-and-values'>Our Goals and Values</h2>
+<p>Our Goals:
+-   Development of nobitex exchange platform for a maximum coverage of authenticated cryptocurrencies
+-   Collaboration with startups and other companies for establishing cryptocurrency-based payment portals for international transactions
+-   Collaboration with Iranian ICOs and to secure funding
+-   Expanding to Middle East countries</p>
+
+<p>Our Values
+-   Freedom in Trade is a right for everyone
+-   We respect and protect with our soul the trust of our customers
+-   Continuous Improvement of ourselves and our products</p>
+<h1 id='api'>API</h1>
+<p>Nobitex is developed based on API and our valued customers have this option to manage all their actions in Nobitex automatically by developing their own codes. Here we describe main features of API in Nobitex.
+For a quick access to your desired API, you can search its title or its url or simply browse to the menu on the left side of page. For most of API commands, you can view the sample code in the grey area of the right side of the page. You can also pick your coding program from top left of screen to view API codes in that format.
+Please send your suggestions or report any unambiguous API glitches by creating a new issue on our Nobitex API github or directly contact our team to remediate your concerns ASAP.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>There is no need to provide a password or a token to access public APIs, but you should request for a token to access private APIs and authenticate your self with that token for you’re the following requests.</p>
+<h2 id='login'>Login</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/auth/login/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/auth/login/ \
+  username=name@example.com password=secret-password-1234
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Token can be obtained automatically by sending a request to auth/login/  . For your own security, tokens will be expired after 4 hours and you should acquire a new one by sending login request. If you need long-term tokens you can set a “r” parameter in remember=yes to receive a token with 30-days active token.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Mandatory (Y/N)</th>
+<th>Description Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>Y</td>
+<td>User email</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Y</td>
+<td>User password</td>
+</tr>
+<tr>
+<td>remember</td>
+<td>string</td>
+<td>N</td>
+<td>30-day Token issuance</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Tokens generated from this method last 4h or 30 days. If you need tokens with a longer active spans and keeping in mind its security considerations, please contact Nobitex Support team.
+</aside>
+<h1 id='market-information-public'>Market information (Public)</h1><h2 id='orderbook'>orderbook</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"order":"-price","type":"sell","dstCurrency":"usdt"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/list \
+  order=-price type=sell dstCurrency=usdt
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1416000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1416000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether(omni)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isMyOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5787.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"819.43920000000000000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive the list of orders (orderbook):</p>
+
+<p>Address: POST /market/orders/list</p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>price</td>
+<td>Order</td>
+<td><code>price or price</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Optional</td>
+<td>Transaction type</td>
+<td><code>Sell or buy</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>Optional</td>
+<td>Source Currency</td>
+<td><code>btc</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>Optional</td>
+<td>Destination Currency</td>
+<td><code>rls</code></td>
+</tr>
+</tbody></table>
+
+<aside ckass = "notice">
+Price displays ascending and -price descending price lists.
+</aside>
+<h2 id='trades-list'>Trades List</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"rls"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/trades/list \
+  srcCurrency=btc dstCurrency=rls
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin-﷼"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99949293.63720000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750032220.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1332600000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-18T11:56:07.798845+00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive the list of recent trades:</p>
+
+<p>Address: POST /market/trades/list</p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>Mandatory</td>
+<td>Source Currency</td>
+<td><code>btc</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>Mandatory</td>
+<td>Destination Currency</td>
+<td><code>rls</code></td>
+</tr>
+</tbody></table>
+
+<aside ckass = "notice">
+Applied limitation: No more than 15 requests per minute
+</aside>
+<h2 id='nobitex-public-market-data'>Nobitex Public Market Data</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/stats'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"rls"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/stats \
+  srcCurrency=btc dstCurrency=rls
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"btc-rls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"bestSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"749976360.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isClosed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayOpen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"686021860.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayHigh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bestBuy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"733059600.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volumeSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2929480000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayLow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"686021860.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"latest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volumeDst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"212724856.0678640000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.38"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayClose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive the latest Nobitex market statistics:</p>
+
+<p>Address: POST /market/stats</p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>Mandatory</td>
+<td>Source Currency</td>
+<td><code>btc, usdt</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>Mandatory</td>
+<td>Destination Currency</td>
+<td><code>rls</code></td>
+</tr>
+</tbody></table>
+
+<aside ckass = "notice">
+Rate Limit: No more than 1000 requests in 10 minutes
+</aside>
+<h2 id='global-market-statistics'>Global Market Statistics</h2>
+<blockquote>
+<p>Request:
+```shell
+curl &#39;https://api.nobitex.ir/market/global-stats&#39; \
+  -X POST</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>
+```plaintext
+http POST https://api.nobitex.ir/market/global-stats
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"ltc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.69"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"btc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5517.2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To get the latest global market statistics:</p>
+
+<p>Address: POST /market/global-stats</p>
+
+<aside ckass = "notice">
+Rate Limit: No more than 1000 requests in 10 minutes. Stats are extracted from Kraken and Binance.
+</aside>
+<h1 id='user-information'>User information</h1><h2 id='profile'>Profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/profile \
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"رضایی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nationalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"011122333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02142719000-9012"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09151111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشهد"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankCards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037-9900-0000-0000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ملی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی رضایی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bankAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1999</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0346666666666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shaba"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IR460170000000346666666666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ملی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی رضایی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"verifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfie"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"pendingVerifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfie"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.35"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeUsdt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isManualFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialLoginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"withdrawEligible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tradeStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"monthTradesTotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10867181.5365000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"monthTradesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive your profile information:</p>
+
+<p>Address: GET/users/login-attempts</p>
+<h2 id='login-attempts'>Login Attempts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/login-attempts'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/login-attempts \
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.209.130.106"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T14:16:08.264308+00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive your login attempts:</p>
+
+<p>Address: GET/users/login-attempts</p>
+<h2 id='referral-code'>Referral Code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/get-referral-code'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/get-referral-code \
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referredUsersCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84440"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralFeeTotalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralFeeTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive your referral code:</p>
+
+<p>Address: GET/users/get-referral-code</p>
+<h2 id='adding-a-debit-card'>Adding a Debit Card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/cards-add'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"number":"5041721011111111","bank":"رسالت"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/cards-add \
+  number=5041721011111111 bank=رسالت
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To add your debit card information:</p>
+
+<p>Address: POST/users/cards-add</p>
+<h1 id='users-wallet'>Users Wallet</h1><h2 id='users-wallets-list'>Users Wallets List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/list \
+  Authorization=Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4159</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">51322935</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="mi">52507310</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To receive a list of your active wallets:</p>
+
+<p>Address: POST /users/wallets/list</p>
+<h2 id='balance'>Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/balance'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"currency":"ltc"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/balance \
+  currency=ltc
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To retrieve your current balance:</p>
+
+<p>Address: POST /users/wallets/balance</p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Mandatory</td>
+<td>Your wallet type</td>
+<td><code>ltc</code></td>
+</tr>
+</tbody></table>
+<h1 id='important-notices'>Important Notices</h1><h2 id='troubleshooting-guide'>Troubleshooting Guide</h2>
+<ul>
+<li>  Pay attention to the type of your requests, sometimes your request belongs to HTTP POST but you used GET commands instead.</li>
+<li>  Please carefully review the API address and check if  “/” is included in the address or not.
+##Two-factor Authentication
+If you activate two-factor Authentication for your account, to use some APIs , especially to collect login token, you should provide your single-use password in the header of your request.</li>
+</ul>
+<h2 id='limitations-on-api-recalling'>Limitations on API recalling</h2>
+<p>Some of Nobitex API have predefined quota in number of calling for a definite time span. General users shouldn’t worry to reach these limits. These limitations are evaluated case by case based on the content of APIs. Typically, limitations are applied based on the IP of the requester or a token. If you reach the limit to using APIs in a certain time, you will receive 403 error from API with its detailed information about this limitation.
+If you face any problem or glitches when you are executing your code, you can wait (between 1 hour to 24 hours) to remediate the problem and your access to your API will be restored. If you face a recurring limitation in an API and you think it is better to reconsider the limitation rules for that API, please consult us by opening a new thread in github.</p>
+<h2 id='error-descriptions'>Error Descriptions</h2>
+<table><thead>
+<tr>
+<th>HTTP Errors</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request- Your request parameters are invalid/insufficient</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden- Performing such an action is prohibited.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found- url address or object doesn’t exist</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal server error- temporary error in Nobitex server (Don’t worry!)</td>
+</tr>
+</tbody></table>
+<h2 id='fees'>Fees</h2>
+<p><a href="https://nobitex.ir/pricing/">Read More</a></p>
+
+<p>Our goal is to provide a transparent platform for your transactions. To do so it is our responsibility to clearly present our rate policies for our respected costumers. Registration and using Nobitex is completely free of charge and based on disruption provided here, we apply small amount of service fees for transactions.</p>
+<h2 id='transaction-fees'>Transaction Fees</h2>
+<p>Transaction fees are calculated based on percentage of the total transaction value which will be presented here. Applying transaction fees prevents fallacious and repeated transactions and provide more convenient conditions for all the users.
+-   Transaction fees are charged on both sides of transaction.
+-   Rates are applied based on your trading volume. For instance, as a seller if you want to exchange bitcoin with Rials, fees are applied in Rials and as a buyer, if you want to buy bitcoin with Rials , fees are applied in bitcoins.
+-   Upon submission of your transaction in Nobitex system, the exact service rate will be displayed for you.
+-   Based on the trading volumes, transaction fees are applied as follows:</p>
+
+<table><thead>
+<tr>
+<th>Trading Volumes in 30 days</th>
+<th>Transaction Fees</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>کمتر از 10 میلیون تومان%</td>
+<td>0.35</td>
+</tr>
+<tr>
+<td>بین 10 تا 50 میلیون تومان%</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>بین 50 تا 100 میلیون تومان%</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>بیشتر از 100 میلیون تومان%</td>
+<td>0.2</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Transactions in designated Nobitex markets (Exchange into tether like bitcoin to tether) are independent of trading volume with special rate of 0.2%.
+</aside>
+<h2 id='service-fees-for-deposit-and-withdrawal'>Service Fees for deposit and withdrawal</h2>
+<ul>
+<li>  Service fee for deposit is zero. Service fee for withdrawal are applied because of banking and portal fees and it is calculated based on 1% percent of your withdrawal (Maximum fee of 4000 IRR). For instance, for a withdrawal of 100000IRR , 10000IRR will be deduced and 99000IRR will be deposited in your bank account. For transactions higher than 400000IRR , same transaction fee of 4000IRR will be applied.</li>
+<li>  Service fee or deposition of cryptocurrencies in Nobitex is free.</li>
+<li>  Withdrawal fees of cryptocurrencies from your account are calculated based on the type of cryptocurrency as follows:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Trading Volumes in 30 days</th>
+<th>Transaction Fees</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bitcoin</td>
+<td>0.00025 BTC</td>
+</tr>
+<tr>
+<td>Etherium</td>
+<td>0.002 ETH</td>
+</tr>
+<tr>
+<td>Lightcoin</td>
+<td>0.001 LTC</td>
+</tr>
+<tr>
+<td>Ripel</td>
+<td>0.02 XRP</td>
+</tr>
+<tr>
+<td>Tether</td>
+<td>1-3 USDT*</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>This is an estimated value and depends on the bitcoin price</p></li>
+<li><p>Rial withdrawal …..</p></li>
+<li><p>Withdrawal requests of the users who bought cryptocurrencies for the first time will be processed after 24 hours of their payment to their Rials account. Obviously for future requests, it will be approved normally and in a short time.</p></li>
+</ul>
+<h2 id='contact-us'>Contact us</h2>
+<p><a href="https://nobitex.ir/contact-us/">Read More</a></p>
+
+<p>We are very happy to help you thorough our communication channels if you encounter any issue, glitches and required any assistance. Users can also contact our first-line support team directly online through the violet circle at the bottom of the page. Users can also consult our FAQ section if they acquire more information.
+Address: Second Floor, No.7 Balavar Street, Enghelab Square, Tehran, Iran
+Phone: +98 (021) 66966013
+Email: support@nobitex.ir</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="plaintext">plaintext</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

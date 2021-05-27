@@ -1,0 +1,797 @@
+
+<!doctype html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>مستندات API درگاه پرداخت نوبیتکس</title>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-c8f1e506.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-51f5d7ff.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-c275c2f6.js"></script>
+  </head>
+
+  <body class="gateway" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;php&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;plaintext&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-900dbdd3.png" class="logo" alt="Logo" />
+         <a style ="color: gray;
+                    position: relative;
+                    bottom: 14px;
+                    left: 15px;
+                    text-decoration: none !important;" class='lang-change' href="https://apidocs.nobitex.ir/">فارسی</a>
+      <html lang="fa">
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="csharp">csharp</a>
+              <a href="#" data-language-name="plaintext">plaintext</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#api" class="toc-h1 toc-link" data-title="مستندات API درگاه پرداخت نوبیتکس">مستندات API درگاه پرداخت نوبیتکس</a>
+          </li>
+          <li>
+            <a href="#cee8b80267" class="toc-h1 toc-link" data-title="احراز هویت">احراز هویت</a>
+          </li>
+          <li>
+            <a href="#8e7fb80c72" class="toc-h1 toc-link" data-title="مراحل اتصال به درگاه">مراحل اتصال به درگاه</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#773bd37d09" class="toc-h2 toc-link" data-title="۱- ارسال درخواست ساخت صورت‌حساب">۱- ارسال درخواست ساخت صورت‌حساب</a>
+                  </li>
+                  <li>
+                    <a href="#7f7b37a9f4" class="toc-h2 toc-link" data-title="۲- انتقال به درگاه">۲- انتقال به درگاه</a>
+                  </li>
+                  <li>
+                    <a href="#3d489246d9" class="toc-h2 toc-link" data-title="۳- بازگشت از درگاه">۳- بازگشت از درگاه</a>
+                  </li>
+                  <li>
+                    <a href="#73365939c1" class="toc-h2 toc-link" data-title="۴- تایید پرداخت">۴- تایید پرداخت</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#7cb4a935a2" class="toc-h1 toc-link" data-title="تایید صحت پاسخ نوبیتکس">تایید صحت پاسخ نوبیتکس</a>
+          </li>
+          <li>
+            <a href="#97be6d8642" class="toc-h1 toc-link" data-title="شبکه اصلی و تست‌نت">شبکه اصلی و تست‌نت</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#a955e4dd12" class="toc-h2 toc-link" data-title="آدرس‌ها در شبکه تست‌نت">آدرس‌ها در شبکه تست‌نت</a>
+                  </li>
+                  <li>
+                    <a href="#7c6fa015a4" class="toc-h2 toc-link" data-title="آدرس‌ها در شبکه اصلی">آدرس‌ها در شبکه اصلی</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#bcd67512a7" class="toc-h1 toc-link" data-title="توضیح پیام‌های خطا">توضیح پیام‌های خطا</a>
+          </li>
+          <li>
+            <a href="#7ccf01970d" class="toc-h1 toc-link" data-title="پلاگین‌ها">پلاگین‌ها</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#8c31726167" class="toc-h2 toc-link" data-title="وردپرس">وردپرس</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='api'>مستندات API درگاه پرداخت نوبیتکس</h1>
+<p>درگاه پرداخت نوبیتکس یک درگاه پرداخت رمز ارزی است. به اینصورت که کاربران شما می‌توانند توسط ارزهای رمز پایه مثل بیتکوین،  ریپل،لایت کوین و ... پول خود را پرداخت کنند.
+برای کار با این درگاه و اتصال آن به وبسایت و یا اپلیکیشن خود، می‌توانید از این داکیومنت استفاده کنید. داکیومنت پیش رو، تمامی مراحل اتصال، پرداخت و تایید را قدم به قدم به شما توضیح خواهد داد.</p>
+
+<p>در صورت ناقص یا مبهم بودن توضیحات APIها یا هرگونه پیشنهاد دیگر در این خصوص، می‌توانید در <a href="https://github.com/nobitex/docs-api">مخزن گیت‌هاب مستندات نوبیتکس API</a>
+مورد (issue) جدیدی را ایجاد نمایید یا مستقیما روی <a href="https://github.com/nobitex/docs-api/issues/new">این لینک</a> کلیک کنید و مشکل مد نظرتان را با ما در میان بگذارید.</p>
+<h1 id='cee8b80267'>احراز هویت</h1>
+<p>برای استفاده از API‌های درگاه شما نیاز به دو متغیر
+<code>api</code>
+ و
+  <code>api-secret</code>
+   دارید.این دو مقدار داخل پنل نوبیتکس شما قرار داشته و بعد از تایید درخواست شما برای دریافت درگاه پرداخت در اختیار شما قرار خواهد گرفت. در واقع با این دو مقدار نوبیتکس متوجه میشود که درخواست از سمت شما بوده است یا نه. این دو مقدار، بسیار حساس بوده و باید در حفظ و نگه داری آن ها بکوشید.
+    زمان ارسال درخواست، مقدار <code>api</code> باید در body درخواست موجود باشد. 
+      <code>api-secret</code> در هیچ درخواستی ارسال نمی‌شود و برای احراز اصالت جواب مورد استفاده قرار می‌گیرد. در واقع برای اینکه شما متوجه شوید که جواب نهایی از سمت نوبیتکس بوده یا نه. این مورد در <a href="#7cb4a935a2">بخش دیگر</a> به صورت کامل توضیح داده خواهد شد.
+<aside class="warning">
+این دو پارامتر نشان‌گر هویت شما در درگاه پرداخت هستند. به هیچ‌عنوان این دو متغییر را برای کسی نفرستید حتی اگر خودش را از طرف نوبیتکس معرفی کرد. نوبیتکس هیچ زمان از شما این مقادیر را نمی‌خواهد.
+</aside></p>
+<h1 id='8e7fb80c72'>مراحل اتصال به درگاه</h1>
+<p>برای اتصال وب‌سایت خود به درگاه رمزارز نوبیتکس، شما بایستی چهار مرحله‌ی زیر را انجام دهید.</p>
+<h2 id='773bd37d09'>۱- ارسال درخواست ساخت صورت‌حساب</h2>
+<p>برای ایجاد صورت‌حساب و توکن پرداخت برای کاربر خود به این صورت پارامتر‌های مربوطه را با متد <code>POST</code> ارسال فرمایید:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/pg/send/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.nobitex.ir/pg/send/"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">api</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">DemoApiKey</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">amount</span><span class="se">\"</span><span class="s">:1000000,</span><span class="se">\"</span><span class="s">callbackURL</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">https://www.nobitex.ir/app/callback-gateway/</span><span class="se">\"</span><span class="s">, </span><span class="se">\"</span><span class="s">currencies</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">btc,ltc</span><span class="se">\"</span><span class="s">}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">async</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">crossDomain</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.nobitex.ir/pg/send/</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">cache-control</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">no-cache</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">api</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">DemoApiKey</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">:1000000,</span><span class="se">\"</span><span class="s2">callbackURL</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://www.nobitex.ir/app/callback-gateway/</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">currencies</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">btc,ltc</span><span class="se">\"</span><span class="s2">}</span><span class="dl">"</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://api.nobitex.ir/pg/send/"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\"api\":\"DemoApiKey\",\"amount\":1000000,\"callbackURL\":\"https://www.nobitex.ir/app/callback-gateway/\", \"currencies\": \"btc,ltc\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/send/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.nobitex.ir/pg/send/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"content-type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"cache-control"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'no-cache'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">api</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">DemoApiKey</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">:1000000,</span><span class="se">\"</span><span class="s2">callbackURL</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://www.nobitex.ir/app/callback-gateway/</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">currencies</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">btc,ltc</span><span class="se">\"</span><span class="s2">}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /pg/send/ HTTP/1.1
+Host: api.nobitex.ir
+Content-Type: application/json
+cache-control: no-cache
+{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت رخ‌داد هر گونه خطا، پاسخ به این صورت فرستاده می‌شود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="err">ERROR_CODE</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="err">ERROR_MESSAGE</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>برای اطلاعات بیش‌تر به بخش خطاها مراجعه کنید.</p>
+</blockquote>
+<h3 id='10fa5ce97b'>آدرس</h3>
+<p><code>POST API_URL/pg/send</code></p>
+<h3 id='bdbf992205'>پارامتر‌ها</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api</td>
+<td>string</td>
+<td>الزامی</td>
+<td>API key</td>
+<td><code>DemoApiKey</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>مقدار ریالی صورت‌حساب حداقل ۱۰۰۰۰ ریال</td>
+<td><code>1000000</code></td>
+</tr>
+<tr>
+<td>callbackURL</td>
+<td>string</td>
+<td>الزامی</td>
+<td>لینک برگشت بعد از پرداخت(حتما schema url  آورده شود)  باید با آدرس تایید شده بر روی یک دامنه باشد.</td>
+<td><code>https://Your_Callback_URL</code></td>
+</tr>
+<tr>
+<td>factorNumber</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شماره فاکتور برای نشان‌دادن به مشتری</td>
+<td><code>Nobitex1234</code></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شماره‌ی همراه مشتری</td>
+<td><code>09123456789</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>توضیحات(حداکثر ۲۵۵ کاراکتر)</td>
+<td>اختیاری</td>
+<td><code>Test Payment with Nobitex</code></td>
+</tr>
+<tr>
+<td>currencies</td>
+<td>string</td>
+<td><code>btc,ltc</code></td>
+<td>لیست رمز‌ارزهای مورد قبول برای پرداخت. آپشن‌های مورد قبول: <code>btc</code> و <code>ltc</code>. برای انتخاب چند روش پرداخت انتخاب‌ها را با ویرگول جدا نمایید.</td>
+<td><code>btc</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+توکن‌های دریافت شده از این روش، بعد از اتمام زمان اعتبار (چهار ساعت یا سی روز) منقضی می‌شوند. در صورت نیاز به توکن‌های با تاریخ انقضای
+طولانی‌تر و آگاهی از ملاحظات امنیتی لازم، با پشتیبانی نوبیتکس تماس بگیرید.
+</aside>
+<h2 id='7f7b37a9f4'>۲- انتقال به درگاه</h2>
+<p>در صورت موفقیت‌آمیز بودن مرحله‌ی قبل، به شما یک <code>{{ token }}</code> داده می‌شود و شما بایستی کاربر را به درگاه ریدایرکت کنید.
+ برای این کار توکن دریافت شده <code>{{ token }}</code> را همانند زیر در انتهای URL قرار داده و کاربر را به این آدرس ریدایرکت فرمایید.</p>
+<h3 id='10fa5ce97b-2'>آدرس</h3>
+<p><code>GET https://nobitex.ir/app/paygate/{{ token }}</code></p>
+<h2 id='3d489246d9'>۳- بازگشت از درگاه</h2>
+<p>کاربر در زمان بازگشت از درگاه، به پارامتر callbackURL
+ در مرحله‌ی اول به‌صورت زیر ریدارکت می‌شود. اگر مقدار status برابر با 1 بود، تراکنش موفقیت‌آمیز بوده است.</p>
+<h3 id='10fa5ce97b-3'>آدرس</h3>
+<p><code>GET https://Your-Callback_URL?status={transaction_status}&amp;token={token}</code></p>
+
+<aside class="warning">
+ارسال این درخواست به هیچ عنوان آخرین مرحله احراز نیست و ممکن است که هر کسی این درخواست را برای شما ارسال کند. بنابراین حتما مرحله‌ی ۴ را انجام دهید.
+</aside>
+
+<aside class="notice">
+تایید پرداخت برای بعضی از تراکنش‌ها ممکن است حتی تا 1 ساعت به طول بیانجامد. بنابراین تا تایید نهایی، کاربر به آدرس وارد شده در callbackURL برگردانده نمی‌شود.
+</aside>
+
+<aside class="notice">
+به‌طور معمول این درخواست توسط کاربر ارسال خواهد شد. اما ممکن است به خاطر بسته شدن صفحه‌ی درگاه این درخواست برای شما ارسال نشود. در صورت عدم تایید توکن مورد نظر بعد از ۱۵ دقیقه، در صورت پرداخت موفق از طرف نوبیتکس این درخواست به صورت خودکار ارسال خواهد شد.
+</aside>
+<h2 id='73365939c1'>۴- تایید پرداخت</h2>
+<p>در صورت بازگشت کاربر با status
+مساوی <code>۱‍</code> بایستی احراز اصالت این پرداخت صورت بگیرد. برای تایید پرداخت کاربر، شما بایستی درخواست خود را با آدرس و پارامتر‌های زیر ارسال فرمایید:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/pg/verify/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"api":"DemoApiKey","token":"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://api.nobitex.ir/pg/verify/"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">api</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">DemoApiKey</span><span class="se">\"</span><span class="s">,</span><span class="se">\"</span><span class="s">token</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">e9282e56c83f93eb077043e5ad8b6cf5b3ff7568</span><span class="se">\"</span><span class="s">}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+    <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">async</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">crossDomain</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.nobitex.ir/pg/verify/</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">cache-control</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">no-cache</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">api</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">DemoApiKey</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">token</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">e9282e56c83f93eb077043e5ad8b6cf5b3ff7568</span><span class="se">\"</span><span class="s2">}</span><span class="dl">"</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="nx">settings</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"https://api.nobitex.ir/pg/verify/"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"cache-control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">,</span> <span class="s">"{\"api\":\"DemoApiKey\",\"token\":\"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568\"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/verify/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","token":"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"}'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.nobitex.ir/pg/verify/"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"content-type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'application/json'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"cache-control"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'no-cache'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">api</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">DemoApiKey</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">token</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">e9282e56c83f93eb077043e5ad8b6cf5b3ff7568</span><span class="se">\"</span><span class="s2">}"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /pg/verify/ HTTP/1.1
+Host: api.nobitex.ir
+content-type: application/json
+cache-control: no-cache
+{"api":"DemoApiKey","token":"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="err">'status':</span><span class="w"> </span><span class="s2">"success"</span><span class="w"> </span><span class="p">[</span><span class="err">string</span><span class="p">],</span><span class="w">
+        </span><span class="err">'amount':</span><span class="w"> </span><span class="err">Amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">rial</span><span class="w"> </span><span class="p">[</span><span class="err">integer</span><span class="p">],</span><span class="w">
+        </span><span class="err">'cryptoAmount':</span><span class="w"> </span><span class="err">Exchanged</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">crypto</span><span class="w"> </span><span class="p">[</span><span class="err">float</span><span class="p">],</span><span class="w">
+        </span><span class="err">'txHash':</span><span class="w"> </span><span class="err">Hash</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">(token</span><span class="p">,</span><span class="w"> </span><span class="err">amount</span><span class="p">,</span><span class="w"> </span><span class="err">api-secret)</span><span class="w"> </span><span class="p">[</span><span class="err">string</span><span class="p">],</span><span class="w">
+        </span><span class="err">'factorNumber':</span><span class="w"> </span><span class="err">Factor</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">(optional)</span><span class="w"> </span><span class="p">[</span><span class="err">string</span><span class="p">],</span><span class="w">
+        </span><span class="err">'mobile':</span><span class="w"> </span><span class="err">Mobile</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">(optional)</span><span class="w"> </span><span class="p">[</span><span class="err">string</span><span class="p">],</span><span class="w">
+        </span><span class="err">'description':</span><span class="w"> </span><span class="err">Description</span><span class="w"> </span><span class="err">(optional)</span><span class="w"> </span><span class="p">[</span><span class="err">string</span><span class="p">],</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت رخ‌داد هر گونه خطا، پاسخ به این صورت فرستاده می‌شود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="err">ERROR_CODE</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="err">ERROR_MESSAGE</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>برای اطلاعات بیش‌تر به بخش خطاها مراجعه کنید.</p>
+</blockquote>
+<h3 id='10fa5ce97b-4'>آدرس</h3>
+<p><code>POST API_URL/pg/verify/</code></p>
+<h3 id='1f0e7030ab'>پارامترها</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api</td>
+<td>string</td>
+<td>الزامی</td>
+<td>API key</td>
+<td><code>DemoApiKey</code></td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>الزامی</td>
+<td>Token</td>
+<td><code>e9282e56c83f93eb077043e5ad8b6cf5b3ff7568</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+مقدار token نمی‌تواند تکراری باشد. مقدار token را ذخیره نموده و در صورت تکرار آن در تایید‌های آتی آن را قبول نکنید.
+</aside>
+<h1 id='7cb4a935a2'>تایید صحت پاسخ نوبیتکس</h1>
+<p>پس از تایید پرداخت در مرحله 4 بخش قبل، جواب درخواست باید از سمت نوبیتکس باشد. حملاتی تحت عنوان &quot;مرد میانی&quot; یا به اختصار &quot;MIMT&quot; وجود دارد که ممکن است جواب در خواست از سمت دیگری غیر از نوبیتکس برای شما ارسال شود.
+ برای جلوگیری از این حملات، و تشخیص تمامی درخواست‌های غیر معتبر دیگر، شما باید مقدار txHash موجود در پاسخ سرور را به این صورت مقایسه کنید:
+ <br> 
+ <br> 
+ مقدار txHash برابر است با (md5(token + str(amount) + api-secret)
+ <br>
+ <br>
+ توجه شود که ترتیب قرارگیری مقادیر مهم می‌باشد.
+ <aside class="warning">
+ تایید صحت پاسخ، اجباری نمی‌باشد. استفاده از ssl و همچنین گام verify در مرحله قبل، تا بخش زیادی این حملات را خنثی می‌کند. این گام یک مرحله پیشنهادی برای جلوگیری 100 درصدی از حملات مرد میانی است. 
+ </aside></p>
+
+<aside class="warning">
+ در صورت عدم تطابق، این پاسخ از سمت نوبیتکس نبوده و نباید مورد قبول واقع شود.
+</aside>
+
+<aside class="notice">
+مقدار txHash نمی‌تواند تکراری باشد. مقدار txHash را ذخیره نموده و در صورت تکرار آن در تایید‌های آتی آن را قبول نکنید.
+</aside>
+<h1 id='97be6d8642'>شبکه اصلی و تست‌نت</h1>
+<p>به‌منظور فراهم کردن بستر تست برای توسعه‌دهندگان، شبکه تست‌نت درگاه نوبیتکس در کنار شبکه‌ی اصلی طراحی شده‌است که به شبکه‌های تست‌نت رمزارزها متصل است.
+اگر می‌خواهید بدون نیاز به انتقال رمزارز یا پول واقعی کد درگاه پرداخت را تست کنید، از شبکه تست‌نت درگاه پرداخت نوبیتکس استفاده کنید.
+در واقع شما با استفاده از شبکه تست نت نوبیتکس میتوانید(مثلا اگر درگاه شما بیتکوین میپذیرد) از شبکه تست نت بیتکوین، پرداخت کنید. شبکه تست نت بیتکوین کوین هایی را در اختیار شما قرار میدهد که ارزش پولی نداشته و برای تست به وجود آمده اند.
+بدیهی است که درگاه تست نوبیتکس با شبکه های واقعی کار نکرده و فقط با شبکه های تست نت کوین مورد نظر کار خواهد کرد.</p>
+<h3 id='a955e4dd12'>آدرس‌ها در شبکه تست‌نت</h3>
+<p><code>API_URL = https://testnetapi.nobitex.net</code></p>
+
+<p><code>SITE_URL = https://testnet.nobitex.net</code></p>
+<h3 id='7c6fa015a4'>آدرس‌ها در شبکه اصلی</h3>
+<p><code>API_URL = https://api.nobitex.ir</code></p>
+
+<p><code>SITE_URL = https://nobitex.ir</code></p>
+
+<aside class="warning">
+شما برای استفاده از شبکه تست نت، به جای استفاده از<code>API_URL = https://api.nobitex.ir</code> باید از<code>API_URL = https://testnetapi.nobitex.net</code> و بجای استفاده از <code>SITE_URL = https://nobitex.ir</code> باید از <code>SITE_URL = https://nobitex.ir</code> استفاده کنید.   
+</aside>
+<h1 id='bcd67512a7'>توضیح پیام‌های خطا</h1>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>متن خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>1-</code></td>
+<td>API parameter is required</td>
+<td>پارامتر api ارسال نشده است</td>
+</tr>
+<tr>
+<td><code>2-</code></td>
+<td>API not found</td>
+<td>کاربری با مشخصات شما یافت نشده است.</td>
+</tr>
+<tr>
+<td><code>3-</code></td>
+<td>API is restricted</td>
+<td>شما در سیستم محدود شده‌اید.</td>
+</tr>
+<tr>
+<td><code>4-</code></td>
+<td>API is invalid</td>
+<td>پارامتر API با فرمت نادرستی ارسال شده‌است.</td>
+</tr>
+<tr>
+<td><code>5-</code></td>
+<td>Amount parameter is required</td>
+<td>پارامتر amount ارسال نشده است</td>
+</tr>
+<tr>
+<td><code>6-</code></td>
+<td>Amount must be integer</td>
+<td>پارامتر amount باید int باشد</td>
+</tr>
+<tr>
+<td><code>7-</code></td>
+<td>Amount min value is 10000 rls</td>
+<td>پارامتر amount باید از ۱۰۰۰۰ بیش‌تر باشد</td>
+</tr>
+<tr>
+<td><code>8-</code></td>
+<td>callbackURL parameter is required</td>
+<td>پارامتر callbackURL ارسال نشده است</td>
+</tr>
+<tr>
+<td><code>9-</code></td>
+<td>callbackURL CORPS error</td>
+<td>پارامتر callbackURL با دامنه ثبت شده برای شما مطابقت ندارد.</td>
+</tr>
+<tr>
+<td><code>10-</code></td>
+<td>callbackURL format is invalid. Please use this format: https://domain.com/path/to/redirect</td>
+<td>پارامتر callbackURL با فرمت درستی ارسال نشده‌است</td>
+</tr>
+<tr>
+<td><code>11-</code></td>
+<td>Description must be less than 255 character</td>
+<td>پارامتر description بایستی کم‌تر از ۲۵۵ کاراکتر باشد</td>
+</tr>
+<tr>
+<td><code>21-</code></td>
+<td>Invalid token</td>
+<td>توکن فرستاده شده، اشتباه است</td>
+</tr>
+<tr>
+<td><code>22-</code></td>
+<td>Token not found</td>
+<td>توکن فرستاده شده یافت نمی‌شود</td>
+</tr>
+<tr>
+<td><code>23-</code></td>
+<td>Token is required</td>
+<td>پارامتر token نیاز است.</td>
+</tr>
+<tr>
+<td><code>31-</code></td>
+<td>Unverified</td>
+<td>پرداخت معتبر نیست</td>
+</tr>
+<tr>
+<td><code>32-</code></td>
+<td>Verified before</td>
+<td>پرداخت قبلا تایید شده‌است</td>
+</tr>
+<tr>
+<td><code>41-</code></td>
+<td>Invalid currency</td>
+<td>رمزارز فرستاده‌شده معتبر نیست</td>
+</tr>
+</tbody></table>
+<h1 id='7ccf01970d'>پلاگین‌ها</h1>
+<p>در این بخش می‌توانید لیست پلاگین‌های نوشته شده درگاه نوبیتکس را مشاهده و مستندات آن را مطالعه بفرمایید.</p>
+<h2 id='8c31726167'>وردپرس</h2><h3 id='af389fa5cf'>ووکامرس</h3>
+<p>مستندات درگاه نوبیتکس برای فروشگاه ساز ووکامرس و همچنین لینک دانلود پلاگین از طریق لینک زیر قابل دسترسی می‌باشد.
+<a href="https://apidocs.nobitex.ir/gateway/wordpress">مستندات ووکامرس</a></p>
+<h3 id='484241333f'>مبدل قیمت</h3>
+<p>مبدل قیمت نوبیتکس، یک پلاگین مختص فروشگاه ساز ووکامرس بوده که می‌توانید با استفاده از آن قیمت تمام محصولات خود را به ارزهای دیجیتال تبدیل کنید. 
+<a href="https://apidocs.nobitex.ir/gateway/price-convertor">مستندات پلاگین مبدل قیمت</a></p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="csharp">csharp</a>
+                <a href="#" data-language-name="plaintext">plaintext</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
