@@ -125,12 +125,11 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 ##لیست سفارشات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/orderbook'
-     -X POST
+curl 'https://api.nobitex.ir/v2/orderbook/BTCIRT'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/orderbook
+http GET https://api.nobitex.ir/v2/orderbook/BTCIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -163,7 +162,7 @@ http POST https://api.nobitex.ir/v2/orderbook
 
 برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /v2/orderbook`
+- آدرس : `GET /v2/orderbook/SYMBOL`
 
 - پارامترها :
 
