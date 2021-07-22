@@ -36,7 +36,8 @@ toc_footers:
 
 <aside class="warning">
 <b>به هیچ عنوان توکن احراز هویت خود را در اختیار دیگران قرار ندهید.</b>
-
+<br>
+اگر این توکن به صورت تصادفی در اختیار دیگران قرار گرفت سریعا logout کرده و اقدام به دریافت توکن جدید کنید.
 </aside>
 
 برای استفاده آسان و راحت تر از apiها کالکشن Postman تهیه شده است.
@@ -71,6 +72,7 @@ toc_footers:
 
 
 # احراز هویت
+##  ورود (دریافت توکن)
 > برای دریافت توکن، از این کد استفاده کنید:
 
 ```shell
@@ -130,6 +132,31 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 <aside class="notice">
 در صورت مشکل در دریافت توکن، میتونید از توکن‌‌های ماهانه موجود در تنظیمات پروفایل خود استفاده کنید.
 </aside>
+
+## خروج (سوزاندن توکن)
+> برای خروج یا سوزاندن توکن، از این کد استفاده کنید:
+
+```shell
+curl --location --request POST 'https://api.nobitex.ir/auth/logout/' \
+--header 'Authorization: Token 4928f78a7c00b3jebc1efaa8d2a2fc7atf905cc69'
+```
+
+```plaintext
+POST /auth/logout/ HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token 4928f78a7d00b3sc1efaa8d2a2fc7a9tf905cc69
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "detail": "خروج با موفقیت انجام شد.",
+    "message": "خروج با موفقیت انجام شد."
+}
+```
+
+- آدرس : `/POST /auth/logout `
 
 
 # اطلاعات بازار (عمومی)
