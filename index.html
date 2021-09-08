@@ -1,0 +1,2628 @@
+
+<!doctype html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>مستندات API نوبیتکس</title>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nn {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nl {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ni {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .bp {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vg {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .vi {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .w {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+  background-color: #272822;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-1407e25d.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-51f5d7ff.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-c275c2f6.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;plaintext&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-900dbdd3.png" class="logo" alt="Logo" />
+        <a style="color: gray;
+                  position: relative;
+                  bottom: 14px;
+                  right: 15px;
+                  text-decoration: none !important;" class='lang-change' href="en/">English</a>
+      <html lang="fa">
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="plaintext">plaintext</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#api" class="toc-h1 toc-link" data-title="مستندات API نوبیتکس">مستندات API نوبیتکس</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-2" class="toc-h2 toc-link" data-title="ساختار API">ساختار API</a>
+                  </li>
+                  <li>
+                    <a href="#5edee21991" class="toc-h2 toc-link" data-title="محدودیت ها">محدودیت ها</a>
+                  </li>
+                  <li>
+                    <a href="#b84c85f744" class="toc-h2 toc-link" data-title="راهنمای حل مشکلات">راهنمای حل مشکلات</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cee8b80267" class="toc-h1 toc-link" data-title="احراز هویت">احراز هویت</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#892283139f" class="toc-h2 toc-link" data-title="ورود (دریافت توکن)">ورود (دریافت توکن)</a>
+                  </li>
+                  <li>
+                    <a href="#9bf73579b0" class="toc-h2 toc-link" data-title="خروج (سوزاندن توکن)">خروج (سوزاندن توکن)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#6528ce0c42" class="toc-h1 toc-link" data-title="اطلاعات بازار (عمومی)">اطلاعات بازار (عمومی)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#a283f9354b" class="toc-h2 toc-link" data-title="لیست سفارشات">لیست سفارشات</a>
+                  </li>
+                  <li>
+                    <a href="#3fe8d57657" class="toc-h2 toc-link" data-title="لیست معاملات">لیست معاملات</a>
+                  </li>
+                  <li>
+                    <a href="#6ae2dae4a2" class="toc-h2 toc-link" data-title="آمار بازار نوبیتکس">آمار بازار نوبیتکس</a>
+                  </li>
+                  <li>
+                    <a href="#ohlc" class="toc-h2 toc-link" data-title="آمار OHLC بازار نوبیتکس">آمار OHLC بازار نوبیتکس</a>
+                  </li>
+                  <li>
+                    <a href="#cdf265d0e6" class="toc-h2 toc-link" data-title="آمار بازار جهانی">آمار بازار جهانی</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#0d2655f072" class="toc-h1 toc-link" data-title="اطلاعات کاربر">اطلاعات کاربر</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#88cb25e727" class="toc-h2 toc-link" data-title="پروفایل">پروفایل</a>
+                  </li>
+                  <li>
+                    <a href="#e0478463ad" class="toc-h2 toc-link" data-title="سابقه ورود">سابقه ورود</a>
+                  </li>
+                  <li>
+                    <a href="#f9fd4e8e3a" class="toc-h2 toc-link" data-title="افزودن کارت بانکی">افزودن کارت بانکی</a>
+                  </li>
+                  <li>
+                    <a href="#0f4b9b52e8" class="toc-h2 toc-link" data-title="افزودن حساب بانکی">افزودن حساب بانکی</a>
+                  </li>
+                  <li>
+                    <a href="#e2ecdd60d4" class="toc-h2 toc-link" data-title="محدودیت های کاربر">محدودیت های کاربر</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#d6a07813e2" class="toc-h1 toc-link" data-title="اطلاعات مالی کاربر">اطلاعات مالی کاربر</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1100025d2c" class="toc-h2 toc-link" data-title="لیست کیف پول ها">لیست کیف پول ها</a>
+                  </li>
+                  <li>
+                    <a href="#1ff004071d" class="toc-h2 toc-link" data-title="لیست کیف پول ها (انتخابی)">لیست کیف پول ها (انتخابی)</a>
+                  </li>
+                  <li>
+                    <a href="#55645b2c6d" class="toc-h2 toc-link" data-title="موجودی">موجودی</a>
+                  </li>
+                  <li>
+                    <a href="#ae038c6100" class="toc-h2 toc-link" data-title="لیست تراکنش‌ها">لیست تراکنش‌ها</a>
+                  </li>
+                  <li>
+                    <a href="#839c14d5aa" class="toc-h2 toc-link" data-title="لیست واریزها و برداشت‌ها">لیست واریزها و برداشت‌ها</a>
+                  </li>
+                  <li>
+                    <a href="#87af031464" class="toc-h2 toc-link" data-title="تولید آدرس بلاکچین">تولید آدرس بلاکچین</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#05299979b0" class="toc-h1 toc-link" data-title="بازار">بازار</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#e12b63a512" class="toc-h2 toc-link" data-title="ثبت سفارش جدید">ثبت سفارش جدید</a>
+                  </li>
+                  <li>
+                    <a href="#8c18d795de" class="toc-h2 toc-link" data-title="وضعیت سفارش">وضعیت سفارش</a>
+                  </li>
+                  <li>
+                    <a href="#a2ce8ff7e3" class="toc-h2 toc-link" data-title="فهرست سفارش‌های کاربر">فهرست سفارش‌های کاربر</a>
+                  </li>
+                  <li>
+                    <a href="#cdbcd8fa96" class="toc-h2 toc-link" data-title="به روز رسانی سفارش">به روز رسانی سفارش</a>
+                  </li>
+                  <li>
+                    <a href="#27f17a67f7" class="toc-h2 toc-link" data-title="لغو سفارش">لغو سفارش</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#57bcd8d937" class="toc-h1 toc-link" data-title="طرح معرفی دوستان">طرح معرفی دوستان</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#35df8fda78" class="toc-h2 toc-link" data-title="فهرست کدهای دعوت">فهرست کدهای دعوت</a>
+                  </li>
+                  <li>
+                    <a href="#0b7578b7fd" class="toc-h2 toc-link" data-title="ایجاد کد دعوت">ایجاد کد دعوت</a>
+                  </li>
+                  <li>
+                    <a href="#383aaeedc8" class="toc-h2 toc-link" data-title="وضعیت دعوت کاربر">وضعیت دعوت کاربر</a>
+                  </li>
+                  <li>
+                    <a href="#b71dfde1d6" class="toc-h2 toc-link" data-title="ثبت معرف کاربر">ثبت معرف کاربر</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#d9a7503222" class="toc-h1 toc-link" data-title="ملاحظات عمومی">ملاحظات عمومی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#00aedb9cdc" class="toc-h2 toc-link" data-title="راهنمای اشکال‌یابی">راهنمای اشکال‌یابی</a>
+                  </li>
+                  <li>
+                    <a href="#566f5db2bb" class="toc-h2 toc-link" data-title="پاسخ‌های موفق">پاسخ‌های موفق</a>
+                  </li>
+                  <li>
+                    <a href="#82d68ae596" class="toc-h2 toc-link" data-title="پاسخ‌های ناموفق">پاسخ‌های ناموفق</a>
+                  </li>
+                  <li>
+                    <a href="#monetary" class="toc-h2 toc-link" data-title="مقادیر پولی (monetary)">مقادیر پولی (monetary)</a>
+                  </li>
+                  <li>
+                    <a href="#dbf936619c" class="toc-h2 toc-link" data-title="اعتبارسنجی دو عاملی">اعتبارسنجی دو عاملی</a>
+                  </li>
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="محدودیت‌های فراخوانی API">محدودیت‌های فراخوانی API</a>
+                  </li>
+                  <li>
+                    <a href="#pro" class="toc-h2 toc-link" data-title="حالت متداول و Pro">حالت متداول و Pro</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#3175c5a263" class="toc-h1 toc-link" data-title="سوالات متداول">سوالات متداول</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#754f6fe266" class="toc-h2 toc-link" data-title="آیا نوبیتکس توکن بلند مدت هم ارائه میدهد؟">آیا نوبیتکس توکن بلند مدت هم ارائه میدهد؟</a>
+                  </li>
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="من با استفاده از گوگل در نوبیتکس ثبت نام کرده ام. چگونه میتوانم با api کار کنم؟">من با استفاده از گوگل در نوبیتکس ثبت نام کرده ام. چگونه میتوانم با api کار کنم؟</a>
+                  </li>
+                  <li>
+                    <a href="#missing-captcha" class="toc-h2 toc-link" data-title="در هنگام لاگین با خطای missing captcha روبرو شده ام. مشکل چیست؟">در هنگام لاگین با خطای missing captcha روبرو شده ام. مشکل چیست؟</a>
+                  </li>
+                  <li>
+                    <a href="#missing-otp" class="toc-h2 toc-link" data-title="در هنگام لاگین با خطای missing otp روبرو شده ام. چگونه این مشکل حل میشود؟">در هنگام لاگین با خطای missing otp روبرو شده ام. چگونه این مشکل حل میشود؟</a>
+                  </li>
+                  <li>
+                    <a href="#test" class="toc-h2 toc-link" data-title="آیا نوبیتکس محیط آزمایشی (Test) دارد؟">آیا نوبیتکس محیط آزمایشی (Test) دارد؟</a>
+                  </li>
+                  <li>
+                    <a href="#api-2" class="toc-h2 toc-link" data-title="آیا برای استفاده از apiها محدودیتی وجود دارد؟">آیا برای استفاده از apiها محدودیتی وجود دارد؟</a>
+                  </li>
+                  <li>
+                    <a href="#api-3" class="toc-h2 toc-link" data-title="آیا با استفاده از api میتوان درخواست برداشت ارسال کرد؟">آیا با استفاده از api میتوان درخواست برداشت ارسال کرد؟</a>
+                  </li>
+                  <li>
+                    <a href="#a640db90fe" class="toc-h2 toc-link" data-title="فرمت استفاده شده برای تاریخ چیست؟">فرمت استفاده شده برای تاریخ چیست؟</a>
+                  </li>
+                  <li>
+                    <a href="#api-4" class="toc-h2 toc-link" data-title="آیا برای apiها کدهای نمونه تهیه شده است؟">آیا برای apiها کدهای نمونه تهیه شده است؟</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#96f59ad9c2" class="toc-h1 toc-link" data-title="موارد قدیمی">موارد قدیمی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#40dbf5eeb5" class="toc-h2 toc-link" data-title="کد دعوت پیش‌فرض">کد دعوت پیش‌فرض</a>
+                  </li>
+                  <li>
+                    <a href="#76f8b4c4a0" class="toc-h2 toc-link" data-title="لیست سفارشـات">لیست سفارشـات</a>
+                  </li>
+                  <li>
+                    <a href="#4874d0c1a2" class="toc-h2 toc-link" data-title="لیست معامـلات">لیست معامـلات</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/nobitex/docs-api'>مخزن گیت هاب</a></li>
+            <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
+            <li><a href='https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest'>کالکشن Postman</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='api'>مستندات API نوبیتکس</h1><h2 id='api-2'>ساختار API</h2>
+<p>به نوبیتکس و مستندات توسعه دهندگان خوش آمدید.</p>
+
+<p>این مستندات و توضیحات، نحوه عملکرد APIهای تهیه شده برای اطلاعات بازار، اطلاعات مالی و دیگر عملکردهای موجود در نوبیتکس که برای توسعه دهندگان آماده شده است را بیان میکند.</p>
+
+<p>توجه داشته باشید بعضی از APIها نیاز به احراز هویت و دریافت توکن دارد که میتوانید از بخش لاگین نحوه عملکرد آن را مطالعه کنید.</p>
+
+<p>پس از احراز هویت و دریافت توکن، شما می توانید از همه APIها استفاده نمائید.
+<aside class="info">
+برای دریافت توکن میتوانید به دو روش عمل کنید:</p>
+
+<ul>
+<li>دریافت توکن از طریق متد <a href="#login">Login</a></li>
+<li>دریافت توکن از طریق منوی تنظیمات در پنل کاربری
+</aside></li>
+</ul>
+
+<aside class="warning">
+<b>به هیچ عنوان توکن احراز هویت خود را در اختیار دیگران قرار ندهید.</b>
+<br>
+اگر این توکن به صورت تصادفی در اختیار دیگران قرار گرفت سریعا logout کرده و اقدام به دریافت توکن جدید کنید.
+</aside>
+
+<p>برای استفاده آسان و راحت تر از apiها کالکشن Postman تهیه شده است.</p>
+
+<p>می‌توانید از
+ <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a>
+ این بسته را دریافت و شروع به کار کنید</p>
+
+<p>این راه بهترین روش برای شروع به کار سریع با apiها برای کاربران جدید است.</p>
+<h2 id='5edee21991'>محدودیت ها</h2>
+<p>توجه داشته باشید، برای استفاده برخی از APIها محدودیت هایی وجود دارد که در قسمت توضیحات هر کدام از APIها این موارد ذکر شده است.</p>
+<h2 id='b84c85f744'>راهنمای حل مشکلات</h2>
+<p>در صورت وجود ابهام یا مشکلی در استفاده از APIها ابتدا ملاحظات عمومی و سوالات متداول را بررسی و در صورتی که مشکل شما برطرف نگردید میتوانید در
+<a href="https://github.com/nobitex/docs-api" target="_blank">مخزن گیت‌هاب مستندات نوبیتکس API</a>
+مورد (issue) جدیدی را ایجاد نمایید یا مستقیما روی <a href="https://github.com/nobitex/docs-api/issues/new" target="_blank">این لینک</a> کلیک کنید و مشکل مد نظرتان را با ما در میان بگذارید.</p>
+
+<aside class="warning">
+مستندات API در حال توسعه می باشد و ممکن است فرمت درخواست‌ها و پاسخ‌ها دچار تغییر شوند .لطفا در موارد حساس ملاحظات لازم را در نظر بگیرید
+</aside>
+
+<p>در ادامه اجزای اصلی API نوبیتکس توضیح داده شده‌اند.</p>
+
+<p><a id="login"></a></p>
+<h1 id='cee8b80267'>احراز هویت</h1><h2 id='892283139f'>ورود (دریافت توکن)</h2>
+<blockquote>
+<p>برای دریافت توکن، از این کد استفاده کنید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/auth/login/'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/auth/login/ \
+  username=name@example.com password=secret-password-1234
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"db2055f743c1ac8c30d23278a496283b1e2dd46f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlRyansW"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>دریافت توکن به صورت خودکار و با ارسال درخواست به <code>/auth/login/</code> صورت می‌گیرد. این تنها APIی است که نیاز دارید
+به آن نام کاربری و رمز عبور خود را ارسال کنید. تمامی دیگر APIها از توکن به جای رمز عبور برای احراز هویت استفاده می‌کنند.
+توکن‌های صادر شده بعد از چهار ساعت منقضی می‌شوند و باید مجددا با ارسال درخواست لاگین، توکن جدیدی دریافت کنید.
+در صورتی که نیاز به ایجاد توکن‌های بلند مدت دارید، از پارامتر <code>remember=yes</code> استفاده کنید تا توکن ایجاد شده به مدت سی
+روز معتبر بماند.
+توجه داشته باشید، در صورتی که احراز هویت دو مرحله ای را فعال کرده باشید، می بایست رمز یکبارمصرف را نیز ارسال نمائید. توضیحات دقیق تر را <a href="#dbf936619c">از اینجا</a> مطالعه فرمائید.</p>
+
+<ul>
+<li><p>آدرس : <code>/POST /auth/login</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ایمیل کاربر</td>
+<td><code>name@example.com</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمز عبور کاربر</td>
+<td><code>secret-password-1234</code></td>
+</tr>
+<tr>
+<td>remember</td>
+<td>string</td>
+<td>no</td>
+<td>آیا توکن بلند مدت صادر شود؟</td>
+<td><code>yes</code> یا <code>no</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+توکن‌های دریافت شده از این روش، بعد از اتمام زمان اعتبار (چهار ساعت یا سی روز) منقضی می‌شوند. در صورت نیاز به توکن‌های با تاریخ انقضای
+طولانی‌تر و آگاهی از ملاحظات امنیتی لازم، با پشتیبانی نوبیتکس تماس بگیرید.
+</aside>
+
+<aside class="notice">
+انتهای آدرس ارسال، حتما "/" باید گذاشته شود.
+</aside>
+
+<aside class="notice">
+برای لاگین حتما باید از ip ایران درخواست ارسال شود. در غیر این صورت، خطای 429 برگردانده می شود. بدیهی است که استفاده از هر vpn، منجر به این خطا می شود.
+</aside>
+
+<aside class="notice">
+در صورت مشکل در دریافت توکن، میتونید از توکن‌‌های ماهانه موجود در تنظیمات پروفایل خود استفاده کنید.
+</aside>
+<h2 id='9bf73579b0'>خروج (سوزاندن توکن)</h2>
+<blockquote>
+<p>برای خروج یا سوزاندن توکن، از این کد استفاده کنید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/auth/logout/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /auth/logout/ HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خروج با موفقیت انجام شد."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خروج با موفقیت انجام شد."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li>آدرس : <code>/POST /auth/logout</code></li>
+</ul>
+<h1 id='6528ce0c42'>اطلاعات بازار (عمومی)</h1><h2 id='a283f9354b'>لیست سفارشات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/orderbook/BTCIRT'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/orderbook/BTCIRT
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"1.016"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.2561"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.126571"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.818994"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>GET /v2/orderbook/SYMBOL</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد</td>
+<td><code>BTCIRT</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
+</aside>
+
+<aside class="notice">
+در این api نیاز به توکن وجود ندارد.
+</aside>
+
+<aside class="notice">
+لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
+</aside>
+<h2 id='3fe8d57657'>لیست معاملات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades/BCHIRT'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/trades/BCHIRT
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689375067</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689360464</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>GET v2/trades/SYMBOL</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد</td>
+<td><code>BTCIRT</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 15 درخواست در دقیقه
+</aside>
+
+<aside class="notice">
+در این api نیاز به توکن وجود ندازد.
+</aside>
+
+<aside class="notice">
+لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
+</aside>
+
+<aside class="notice">
+پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود
+</aside>
+<h2 id='6ae2dae4a2'>آمار بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/stats'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"rls"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/stats \
+  srcCurrency=btc dstCurrency=rls
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"btc-rls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"bestSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"749976360.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isClosed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayOpen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"686021860.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayHigh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bestBuy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"733059600.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volumeSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2929480000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayLow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"686021860.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"latest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volumeDst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"212724856.0678640000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.38"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dayClose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750350000.0000000000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /market/stats</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارزها مبدا</td>
+<td><code>btc,usdt</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز مقصد</td>
+<td><code>rls</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
+<aside class="notice">
+انواع ارز:
+usd, rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, doge, xlm, trx, ada, xmr, xem, iota, etc, dash, zec, neo, qtum, xtz
+</aside>
+<h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1560120967&amp;to=1562230967'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1560120967&amp;to=1562230967
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1562182200</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"157000000.0000000000"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"150551000.0000000000"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"161869500.0000000000"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"150551000.0000000000"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"9.8592626506"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای توضیحات بیشتر در مورد  OHLC به <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">این لینک</a> مراجعه کنید.<br><br>
+برای دریافت  آمار OHLC نوبیتکس از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>GET /market/udf/history</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>الزامی</td>
+<td>جفت ارز</td>
+<td><code>BTCIR</code></td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>string</td>
+<td>الزامی</td>
+<td>بازه زمانی هر خروجی</td>
+<td><code>D</code></td>
+</tr>
+<tr>
+<td>from</td>
+<td>int</td>
+<td>الزامی</td>
+<td>زمان ابتدای بازه</td>
+<td><code>1562120967</code></td>
+</tr>
+<tr>
+<td>to</td>
+<td>int</td>
+<td>الزامی</td>
+<td>زمان پایان بازه</td>
+<td><code>1562230967</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامتر Resolution  بازه زمانی  کندل‌های خروجی می‌باشد و مقدار آن می‌تواند یکی از مقادیر زیر باشد:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>توضیح</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>یک ساعت</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td>سه ساعت</td>
+<td><code>180</code></td>
+</tr>
+<tr>
+<td>شش ساعت</td>
+<td><code>360</code></td>
+</tr>
+<tr>
+<td>دوازده ساعت</td>
+<td><code>720</code></td>
+</tr>
+<tr>
+<td>یک روز</td>
+<td><code>D</code></td>
+</tr>
+<tr>
+<td>دو روز</td>
+<td><code>2D</code></td>
+</tr>
+<tr>
+<td>سه روز</td>
+<td><code>3D</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+مقادیر from و to زمان شروع و پایان جست‌وجو را مشخص میکند. برای مثال اگر شما میخواهید بازه 4 ساعته از تاریخ 2019/2/9 11:39:41 را به خروجی های 1 ساعته دریافت کنید،مقادیر شما باید به این صورت باشد:
+from: 1567424381
+to: 1567395581
+resolution: 60
+</aside>
+
+<aside class="notice">
+در صورت ورودی اشتباه برای resolution پاسخ به این صورت خواهد بود:
+`{
+   "s": "error",
+   "errmsg": "Invalid resolution!"
+ }
+ `
+</aside>
+
+<ul>
+<li>پاسخ سرور
+در هر بازه زمانی، بسته به resolution انتخابی، تعداد مقادیر برگشتی متفاوت میباشد. برای مثال اگر شما اختلاف بازه زمانی خود را 7 روز و resolution را مقدار D یعنی 1 روز انتخاب کنید، 7 پاسخ به شما برگشت داده می‌شود.
+هر کدام از این پاسخ‌ها در واقع یک candle هستند.
+هر candle، مقادیر زیر را دارد:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>توضیح</th>
+<th>نوع</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>s</code></td>
+<td>وضعیت پاسخ</td>
+<td>string</td>
+<td><code>ok</code></td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>زمان</td>
+<td>float</td>
+<td><code>1562182200</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>مقدار انتهای بازه</td>
+<td>string</td>
+<td><code>157000000.0000000000</code></td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>مقدار ابندای بازه</td>
+<td>string</td>
+<td><code>150551000.0000000000</code></td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>بالاترین مقدار بازه</td>
+<td>string</td>
+<td><code>161869500.0000000000</code></td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>پایین ترین مقدار بازه</td>
+<td>string</td>
+<td><code>150551000.0000000000</code></td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>حجم بازه</td>
+<td>array</td>
+<td><code>[&quot;9.8592626506&quot;]</code></td>
+</tr>
+</tbody></table>
+
+<p>پارامتر o (open) مقدار شروع بازه (در مثال ما بازه 1 روزه) را نشان می‌دهد. یعنی این بازه با مقدار 150551000.0000000000 شروع شده است.</p>
+
+<p>پارامتر c  (close) مقدار پایان بازه را نشان می‌دهد. یعنی این بازه با مقدار 157000000.0000000000 به پایان رسیده‌است.</p>
+
+<p>پارامتر h(high) است. بالاترین مقدار بازه را نشان می‌دهد. یعنی بالاترین مقدار این بازه  &quot;150551000.0000000000&quot;</p>
+
+<p>پارامتر l  (low) پایین‌ ترین مقدار بازه را نشان می‌دهد. پایین ترین مقدار این بازه 150551000.000000 می‌باشد.</p>
+
+<p>پارامتر v  (volume) حجم بازه بازه را نشان می‌دهد. حجم این بازه 9.8592626506 می‌باشد.</p>
+<h2 id='cdf265d0e6'>آمار بازار جهانی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/global-stats'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/global-stats
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"ltc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.69"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"btc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5517.2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>POST /market/global-stats</code></li>
+</ul>
+
+<aside class="notice">
+این آمارها مربوط به بازارهای Kraken و Binance می باشد
+</aside>
+
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+<h1 id='0d2655f072'>اطلاعات کاربر</h1><h2 id='88cb25e727'>پروفایل</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/profile \
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"رضایی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nationalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"011122333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02142719000-9012"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09151111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشهد"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankCards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6037-9900-0000-0000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ملی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی رضایی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bankAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1999</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0346666666666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shaba"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IR460170000000346666666666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ملی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مهدی رضایی"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"verifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfie"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"pendingVerifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identity"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfie"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.35"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"feeUsdt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isManualFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialLoginEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"withdrawEligible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tradeStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"monthTradesTotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10867181.5365000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"monthTradesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>این api، اطلاعات پروفایل شما، کارت بانکی، حساب بانکی، موارد تایید شده(ایمیل، شماره تلفن، موبایل ...)، تنظمیات مربوط به پروفایل(فی تراکنش، فی مبادلات usdt و ...) و خلاصه آمار مبادلات شما را برمیگرداند.</p>
+
+<p>برای دریافت پروفایل کاربر از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>GET /users/profile</code></li>
+</ul>
+
+<aside class="notice">
+برای این درخواست فقط کافیست توکن را ارسال فرمایید.
+</aside>
+<h2 id='e0478463ad'>سابقه ورود</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/login-attempts'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/login-attempts \
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attempts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46.209.130.106"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T14:16:08.264308+00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت سابقه ورود از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>GET /users/login-attempts</code></li>
+</ul>
+<h2 id='f9fd4e8e3a'>افزودن کارت بانکی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/cards-add'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"number":"5041721011111111","bank":"رسالت"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/cards-add \
+  number=5041721011111111 bank=رسالت
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای افزودن کارت بانکی جدید از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/cards-add</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شماره کارت</td>
+<td><code>5041721011111111</code></td>
+</tr>
+<tr>
+<td>bank</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نام بانک</td>
+<td><code>رسالت</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در ساعت
+</aside>
+<h2 id='0f4b9b52e8'>افزودن حساب بانکی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/accounts-add'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"number":"5041721011111111","shaba":"IR111111111111111111111111","bank":"رسالت"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/accounts-add \
+  number=5041721011111111 shaba=IR111111111111111111111111 bank=رسالت
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای افزودن حساب بانکی جدید از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/accounts-add</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شماره حساب</td>
+<td><code>5041721011111111</code></td>
+</tr>
+<tr>
+<td>shaba</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شماره شبا</td>
+<td><code>IR111111111111111111111111</code></td>
+</tr>
+<tr>
+<td>bank</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نام بانک</td>
+<td><code>رسالت</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در ساعت
+</aside>
+<h2 id='e2ecdd60d4'>محدودیت های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/limitations'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/limitations
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limitations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"userLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"crypto_trade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rial_trade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coin_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rial_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coin_withdrawal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rial_withdrawal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"limits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"withdrawRialDaily"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"withdrawCoinDaily"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"withdrawTotalDaily"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"withdrawTotalMonthly"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"used"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30000000000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='55bbd4b9a8'>توضیحات</h3>
+<ul>
+<li><p>کاربران در نوبیتکس بر اساس سطح کاربری خود، محدودیت هایی در برداشت، واریز و مبادلات خود دارند. هر کاربر نسبت به نیاز خود و میزان مبادلاتی که دارد میتواند با ارائه مدارک مورد نیاز ، سطح کاربری خود را پس از احراز هویت و تایید مدراک، ارتقا دهد. اطلاعات نمایش داده شده در خروجی api شامل همین محدودیت ها میباشد:
+برای دریافت محدودیت های کاربر از این نوع درخواست استفاده نمایید:</p></li>
+<li><p>آدرس : <code>POST /users/limitations</code></p></li>
+</ul>
+<h3 id='86bc97da3f'>شرح ورودی</h3>
+<ul>
+<li>در این بخش به ورودی نیاز نیست.</li>
+<li>توکن دریافتی از بخش لاگین باید در هدر ارسال شود.</li>
+</ul>
+<h3 id='8ce96f6bb4'>شرح خروجی</h3><h3 id='features'>features: شرایط حساب کاربری</h3>
+<ul>
+<li>crypto_trade: امکان مبادله رمز ارزها</li>
+<li>rial_trade: امکان مبادله با ریال</li>
+<li>coin_deposit: امکان واریز رمز ارز به کیف پول نوبیتکس</li>
+<li>rial_deposit: امکان واریز ریال به کیف پول نوبیتکس</li>
+<li>coin_withdrawal: امکان برداشت رمز ارز از کیف پول نوبیتکس به کیف پول دیگر</li>
+<li>rial_withdrawal: امکان برداشت ریال از کیف پول نوبیتکس به حساب بانکی</li>
+</ul>
+<h3 id='limits'>limits: محدودیت های حساب کاربری</h3><h4 id='c4753222c0'>تمامی واحد ها به ریال هستند</h4>
+<ul>
+<li>withdrawRialDaily: مقدار مجاز برای برداشت روزانه ریال</li>
+<li>withdrawRialDaily: مقدار مجاز برای برداشت روزانه رمز ارز</li>
+<li>withdrawTotalDaily: مقدار مجاز برای برداشت روزانه مجموع رمز ارز و ریال</li>
+<li>withdrawTotalMonthly: مقدار مجاز برای برداشت ماهیانه مجموع رمز ارز و ریال</li>
+</ul>
+
+<p>برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به <a href="https://nobitex.net/policies/user-levels/">سطوح حساب کاربری در نوبیتکس</a> مراجعه کنید.</p>
+<h1 id='d6a07813e2'>اطلاعات مالی کاربر</h1><h2 id='1100025d2c'>لیست کیف پول ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/list \
+  Authorization=Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4159</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">51322935</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="mi">52507310</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>POST /users/wallets/list</code></li>
+</ul>
+
+<aside class="notice">
+    در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
+</aside>
+<h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+  <span class="nt">--data</span> <span class="s1">'{"currencies":"rls,btc"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/wallets \
+  Authorization=Token yourTOKENhereHEX0000000000
+  currencies=rls,btc
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"RLS"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">133777</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">133778</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /v2/wallets</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currencies</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>نوع کیف پول(ارز)، به صورت رشته ای از ارزهای جداشده با کاما</td>
+<td><code>rls,btc</code></td>
+</tr>
+</tbody></table>
+<h2 id='55645b2c6d'>موجودی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/balance'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"currency":"ltc"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/balance \
+  currency=ltc
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت موجودی کیف پول های خود در نوبیتکس (شامل کیف پول ریالی و کیف پول های رمز ارزی) از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/wallets/balance</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع کیف پول(ارز)</td>
+<td><code>ltc</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+مقدار بازگشتی برای موجودی، یک عدد است که به صورت string برگردانده میشود. این مقدار می‌تواند اعداد اعشاری زیادی داشته باشد.
+</aside>
+
+<aside class="notice">
+اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.
+</aside>
+<h2 id='ae038c6100'>لیست تراکنش‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/transactions/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/transactions/list \
+  wallet=4159
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-17T09:41:08.519151+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99050</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.3802000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خرید 4.400 LTC به قیمت واحد ﷼7450000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T13:05:01.384902+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">96541</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Withdraw to </span><span class="se">\"</span><span class="s2">Lgn1zc77mEjk72KvXPqyXq8K1mAfcDE6YR</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/wallets/transactions/list</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه کیف پول(id)</td>
+<td><code>4159</code></td>
+</tr>
+</tbody></table>
+<h2 id='839c14d5aa'>لیست واریزها و برداشت‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/deposits/list \
+  wallet=4159
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deposits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5d84268a0bf02307b5a0460a68b61987a9b3009d3a82a817e41558e619ec1d2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32KfyTNh162UoKithfDrWHZPYq5uePGmf7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deposit - address:36n452uGq1x4mK7bfyZR8wgE47AnBb2pzi, tx:c5d84268a0bf02307b5a0460a68b61987a9b3009d3a82a817e41558e619ec1d2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-06T03:56:18+00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blockchainUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/c5d84268a0bf02307b5a0460a68b61987a9b3009d3a82a817e41558e619ec1d2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"requiredConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"withdraws"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2398</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf81e99e79fb06294a70af39443e2639e22c69bc30d6ecda67/"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T12:59:38.196935+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4159</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lgn1zc77mEjk72KvXPqyXq8K1mAfcDE6YR"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست واریزها و برداشت‌ها از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/wallets/deposits/list</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>all</td>
+<td>شناسه کیف پول(id)</td>
+<td><code>4159</code></td>
+</tr>
+</tbody></table>
+<h2 id='87af031464'>تولید آدرس بلاکچین</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/generate-address'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/generate-address \
+  wallet=4159
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LRf3vuTMy4UwD5b72G84hmkfGBQYJeTwUs"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای تولید آدرس بلاکچین از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /users/wallets/generate-address</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شناسه کیف پول(id)</td>
+<td><code>4159</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 6 درخواست در ساعت
+</aside>
+<h1 id='05299979b0'>بازار</h1><h2 id='e12b63a512'>ثبت سفارش جدید</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
+  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ریال"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"520000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"312000000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>POST /market/orders/add</code></p>
+
+<p>برای ثبت سفارش معامله در بازار نوبیتکس از این درخواست استفاده نمایید.</p>
+
+<p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
+
+<p>سفارش‌ها پس از ثبت، پیش از ورود به دفتر معاملاتی و انجام معامله، مجدداً از نظر اعتبار مورد بررسی قرار گرفته و در صورت نامعتبر بودن، به وضعیت «رد شده» برده خواهند شد. به همین علت در صورتی که سفارش‌های شما ثبت می‌شود ولی بلافاصله به وضعیت «رد شده» تغییر حالت پیدا می‌کنند، پارامترهای ارسالی خود به ویژه مقدار و قیمت سفارش و موجودی حساب خود را دقیق‌تر بررسی نمایید.</p>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع سفارش</td>
+<td><code>buy</code> یا <code>sell</code></td>
+</tr>
+<tr>
+<td>execution</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نحوه‌ی اجرای سفارش</td>
+<td>‍‍‍<code>market</code> یا <code>limit</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مبدا</td>
+<td><code>btc</code> یا <code>eth</code> یا <code>xrp</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مقصد</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار رمزارز (حجم)</td>
+<td><code>0.0623</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت واحد</td>
+<td><code>1210000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<p>در صورتی که درخواست ثبت سفارش معتبر نباشد، ممکن است یکی از این خطاها برگردانده شود. در صورت دریافت هر یک از این خطاها، آن سفارش شما ثبت نشده است و در صورت تمایل باید درخواست ثبت آن سفارش را دوباره ارسال کنید.</p>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidOrderPrice</td>
+<td>قیمت سفارش (price) تعیین نشده یا اشتباه است</td>
+</tr>
+<tr>
+<td>BadPrice</td>
+<td>قیمت تعیین شده برای سفارش نسبت به قیمت فعلی بازار تفاوت زیادی دارد. قیمت سفارش خود را در بازه‌ی ۳۰٪ قیمت کنونی بازار تعیین کنید.</td>
+</tr>
+<tr>
+<td>InvalidExecutionType</td>
+<td>نوع:مارکت/لیمیت اجرای سفارش (execution) تعیین نشده یا اشتباه است.</td>
+</tr>
+<tr>
+<td>InvalidOrderType</td>
+<td>نوع:خرید/فروش سفارش (type) تعیین نشده یا اشتباه است.</td>
+</tr>
+<tr>
+<td>OverValueOrder</td>
+<td>مقدار سفارش فروش (amount) یا ارزش کل سفارش خرید (amount*price) از موجودی کیف پول نوبیتکس شما کمتر است.</td>
+</tr>
+<tr>
+<td>SmallOrder</td>
+<td>حداقل ارزش معامله رعایت نشده است. حداقل ارزش معامله برای بازارهای ریالی، یک میلیون ریال و برای بازارهای تتری، ۱۱ تتر است و مبلغ کل سفارش (amount*price) باید بیشتر از این حداقل باشد.</td>
+</tr>
+<tr>
+<td>DuplicateOrder</td>
+<td>سفارشی با همین مشخصات توسط کاربر شما در بازه زمانی ده ثانیه اخیر ارسال شده است.</td>
+</tr>
+<tr>
+<td>InvalidMarketPair</td>
+<td>رمزارز مبدا (srcCurrency) یا رمزارز مقصد (dstCurrency) به درستی مقداردهی نشده است یا چنین بازاری در نوبیتکس وجود ندارد.</td>
+</tr>
+<tr>
+<td>MarketClosed</td>
+<td>بازار مد نظر در حال حاضر به صورت موقت بسته است.</td>
+</tr>
+<tr>
+<td>TradingUnavailable</td>
+<td>کاربر اجازه‌ی معامله ندارد، فرآیند احراز هویت خود را تکمیل نمایید.</td>
+</tr>
+<tr>
+<td>TradeLimitation</td>
+<td>سقف معاملات کاربر به اتمام رسیده است، فرآیند احراز هویت خود را تکمیل نمایید.</td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در هر ۱۰ دقیقه</li>
+<li><strong>واحدها:</strong> واحد قیمت در بازارهای ریالی به ریال (و نه تومان) می‌باشد. واحد قیمت در بازارهای تتری نیز تتر می‌باشد. واحد پارامتر مقدار (amount) بر حسب رمزارز مبدا (srcCurrency) است.</li>
+<li><strong>سفارش مارکت:</strong> برای ثبت سفارش سریع (سفارش مارکت، سفارش به قیمت بازار)، مقدار پارامتر <code>execution</code> را برابر <code>market</code> ارسال نمایید. منظور از سفارش مارکت سفارشی است که کاربر درخواست دارد تا به بهترین قیمت موجود بازار مورد انجام قرار گیرد. <a href="https://www.binance.vision/tutorials/what-is-a-market-order">ℹB</a> - <a href="https://www.investopedia.com/terms/m/marketorder.asp">ℹI</a></li>
+<li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر price را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر price را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار، به هر میزان که باشد، انجام خواهد شد.</li>
+<li><strong>سفارش تکراری:</strong> برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای <code>DuplicateOrder</code> دریافت می‌کنند. (غیرفعال در حالت Pro)</li>
+</ol>
+<h2 id='8c18d795de'>وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"id":5684}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/status \
+  id=5684
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8500000.0000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T12:25:22.696029+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5684</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Litecoin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25500000.00000000000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">fdfc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isMyOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت وضعیت سفارش از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /market/orders/status</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه سفارش</td>
+<td>‍‍<code>5684</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در 1 دقیقه
+</aside>
+<h2 id='a2ce8ff7e3'>فهرست سفارش‌های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/list'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"usdt","details":2}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/list \
+  srcCurrency=btc dstCurrency=usdt details=2
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">173546223</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9750.01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>POST /market/orders/list</code></p>
+
+<p>برای دریافت فهرست سفارش‌های خود، از این درخواست استفاده نمایید.</p>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td><code>open</code></td>
+<td>وضعیت سفارش</td>
+<td><code>all</code> یا <code>open</code> یا <code>done</code> یا <code>close</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>تمام انواع سفارش</td>
+<td>نوع سفارش‌های مد نظر، خرید یا فروش</td>
+<td><code>sell</code> یا <code>buy</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>تمام رمزارزها</td>
+<td>رمزارز مبدا</td>
+<td><code>btc</code> یا <code>eth</code> یا <code>xrp</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>تمام رمزارزها</td>
+<td>رمزارز مقصد</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>details</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>میزان جزئیات پاسخ، اعداد بزرگ‌تر تعداد فیلدهای بیشتری را از وضعیت هر سفارش بازمی‌گرداند</td>
+<td><code>1</code> یا <code>2</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orders</td>
+<td>list of Order</td>
+<td>فهرست سفارش‌های کاربر</td>
+<td><code>[{...Order...}, ...]</code></td>
+</tr>
+</tbody></table>
+<h3 id='order'>شی Order</h3>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>نو ع خرید یا فروش سفارش</td>
+<td><code>buy</code> یا <code>sell</code></td>
+</tr>
+<tr>
+<td>execution</td>
+<td>string</td>
+<td>نوع اجرای سفارش</td>
+<td><code>Limit</code> یا <code>Market</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>رمزارز مبدا سفارش</td>
+<td><code>Bitcoin</code> یا <code>Ethereum</code> یا <code>TRON</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>رمزارز مقصد سفارش</td>
+<td><code>﷼</code> یا <code>Tether</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>قیمت ثبت شده برای سفارش</td>
+<td><code>2900000000</code> یا <code>market</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار ثبت شده برای سفارش</td>
+<td><code>0.023324</code></td>
+</tr>
+<tr>
+<td>matchedAmount</td>
+<td>monetary</td>
+<td>مقدار پر شده از سفارش</td>
+<td><code>0.012001</code></td>
+</tr>
+</tbody></table>
+
+<p>همچنین در صورتی که پارامتر <code>details=2</code> باشد این فیلدها نیز برای هر سفارش بازگردانده می‌شود:</p>
+
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه سفارش</td>
+<td><code>180258791</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت فعلی سفارش</td>
+<td><code>New</code> یا <code>Active</code> یا <code>Done</code> یا <code>Canceled</code></td>
+</tr>
+<tr>
+<td>fee</td>
+<td>monetary</td>
+<td>کارمزد سفارش تاکنون</td>
+<td><code>0.00001</code></td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>تاریخ ایجاد سفارش</td>
+<td><code>2020-07-15T11:32:38.326809+00:00</code></td>
+</tr>
+<tr>
+<td>averagePrice</td>
+<td>monetary</td>
+<td>میانگین قیمت اجرا شده از سفارش</td>
+<td><code>2899500000</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<ol>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در هر دقیقه</li>
+<li>در پاسخ حداکثر اطلاعات هزار سفارش بازگردانده می‌شود. با استفاده از پارامترهای ورودی می‌توانید تعداد محدودتری از سفارش‌های خود را دریافت کنید. همچنین پیشنهاد می‌شود که در صورتی که تعداد زیادی سفارش باز دارید، شناسه آن‌ها را در زمان ثبت سفارش دریافت و ذخیره نمایید و به صورت مستقل با استفاده از درخواست «وضعیت سفارش» اطلاعات هر یک را بنا به نیاز به‌روز کنید. همچنین برای اطلاع از معاملات انجام شده خود می‌توانید از درخواست «market/trades/list» استفاده نمایید.</li>
+<li>منظور از وضعیت Done سفارشی است که به صورت صد در صد اجرا شده باشد. ممکن است سفارش شما به تدریج اجرا شود، و در این حالت وضعیت آن کماکان Active می‌ماند. از فیلد matchedAmount برای تشخیص وضعیت اجرا و پر شدن سفارش استفاده کنید. همچنین ممکن است سفارش شما قبل از اجرای کامل، به دلیل درخواست «لغو سفارش» یا کمبود موجودی یا تغییر شدید قیمت بازار (در سفارش‌های مارکت) لغو شود که در این حالت وضعیت آن Canceled خواهد بود، به این معنی که به صورت صد در صد اجرا نشده است ولی می‌تواند مقدار matchedAmount آن بزرگ‌تر از صفر باشد.</li>
+</ol>
+<h2 id='cdbcd8fa96'>به روز رسانی سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/update-status'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"order":5684,"status":"canceled"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/update-status \
+  order=5684 status=canceled
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای سفارش گذاری از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /market/orders/update-status</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه سفارش</td>
+<td><code>‍5684‍‍</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>الزامی</td>
+<td>وضعیت جدید</td>
+<td><code>canceled</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 100 درخواست در 10 دقیقه
+</aside>
+
+<aside class="notice">
+مقدار status میتواند از 'new' به 'active' و یا از 'active' به 'cancel' تغییر کند.
+در غیر اینصورت، درخواست رد میشود.
+</aside>
+<h2 id='27f17a67f7'>لغو سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"execution":"limit","srcCurrency":"btc","dstCurrency":"rls","hours":2.4}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/cancel-old \
+  execution=limit srcCurrency=btc dstCurrency=rls hours=2.4
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای سفارش گذاری از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس : <code>POST /market/orders/cancel-old</code></p></li>
+<li><p>پارامترها :</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hours</td>
+<td>float</td>
+<td>اختیاری</td>
+<td>زمان سفارش</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>execution</td>
+<td>string</td>
+<td><code>market</code></td>
+<td>نحوه سفارش</td>
+<td>‍‍‍<code>market</code> یا <code>limit</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز مبدا</td>
+<td><code>btc</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز مقصد</td>
+<td><code>rls</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>خطاها :</li>
+</ul>
+
+<p>در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.</p>
+
+<aside class="notice">
+مقدار hours در واقع مقدار ساعت قبل از زمان ارسال درخواست میباشد. برای مثال اگر مقدار ساعت '2' ارسال شود، سفارش های 2 ساعت قبل لغو خواهند شد.
+</aside>
+
+<aside class="notice">
+در صورتی که مقدار hours ارسال نشود، تمامی سفارشات مربوط لغو خواهد شد.
+</aside>
+<h1 id='57bcd8d937'>طرح معرفی دوستان</h1>
+<p>نوبیتکس طرحی به نام معرفی دوستان در نظر گرفته است که از طریق آن هم به گسترش نوبیتکس کمک می‌کنید و هم از مزایای آن بهره‌مند می‌شوید. براساس این طرح شما می‌توانید دوستان خود را با لینک اختصاصی خود به نوبیتکس دعوت کنید و درصدی از کارمزد معاملات آن‌ها را به عنوان پاداش دریافت نمایید. برای اطلاعات بیشتر به <a href="https://nobitex.ir/policies/referral/">صفحه قوانین طرح معرفی دوستان</a> مراجعه کنید.</p>
+
+<p>معرفی دوستان با استفاده از ایجاد «کد دعوت» انجام می‌شود. هر کاربر نوبیتکس می‌تواند برای خود یک یا چند کد دعوت بسازد. کدهای دعوت معمولاً شامل شش رقم هستند ولی می‌توانند طول متفاوتی داشته باشند یا حتی رشته‌های دلخواه باشند. در زمان ساخت هر کد دعوت می‌توان سهم کاربر معرف و کاربر دعوت شده از کارمزد اهدایی را مشخص نمود.</p>
+
+<p>با استفاده از «فهرست کدهای دعوت» می‌توانید فهرستی از کدهای دعوت فعلی خود را دریافت نمایید. به همراه این فهرست، میزان سود شما و برخی دیگر از آمار مربوط به کاربران ثبت‌نامی با آن کد دعوت ارسال می‌شود. اگر هنوز کد دعوتی ندارید، برای شروع استفاده از طرح معرفی دوستان می‌توانید با استفاده از «ایجاد کد دعوت»، یک کد دعوت بسازید.</p>
+
+<aside class="notice">
+برای ساخت پیوند از روی کد دعوت، آن را در این آدرس قرار دهید: <code>https://nobitex.ir/signup/?refcode=CODE</code>
+</aside>
+<h2 id='35df8fda78'>فهرست کدهای دعوت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://api.nobitex.ir/users/referral/links-list'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/links-list \
+ Authorization:'Token yourTOKENhereHEX0000000000'
+</code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/referral/links-list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵۰ درخواست در هر ۱۰ دقیقه</li>
+</ul>
+<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>links</td>
+<td>list of ReferralLink</td>
+<td>فهرست کدهای دعوت این کاربر</td>
+<td><code>[{...ReferralLink...}, ...]</code></td>
+</tr>
+</tbody></table>
+<h3 id='referrallink'>شی ReferralLink</h3>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه یکتای لینک</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td>referralCode</td>
+<td>string</td>
+<td>کد دعوت</td>
+<td><code>40404</code></td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>datetime</td>
+<td>تاریخ ایجاد کد</td>
+<td><code>2020-07-15T11:32:38.326809+00:00</code></td>
+</tr>
+<tr>
+<td>userShare</td>
+<td>int</td>
+<td>سهم کاربر معرف از کارمزد معاملات کاربر دعوت شده</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td>friendShare</td>
+<td>int</td>
+<td>سهم کاربر دعوت شده از کارمزد معاملات خود</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>توضیحات اختیاری کاربر برای این کد</td>
+<td><code>Shared on Instagram page X</code></td>
+</tr>
+<tr>
+<td>statsRegisters</td>
+<td>int</td>
+<td>آمار: کاربران ثبت‌نام کرده با این کد</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td>statsTrades</td>
+<td>int</td>
+<td>آمار: مجموع تعداد معاملات کاربران ثبت‌نام کرده با این کد</td>
+<td><code>240</code></td>
+</tr>
+<tr>
+<td>statsProfit</td>
+<td>monetary: IRR</td>
+<td>آمار: مجموع ریالی درآمد کاربر از این کد دعوت</td>
+<td><code>3200000</code></td>
+</tr>
+</tbody></table>
+<h2 id='0b7578b7fd'>ایجاد کد دعوت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://api.nobitex.ir/users/get-referral-code'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http --follow --timeout 3600 GET https://api.nobitex.ir/users/get-referral-code \
+ Authorization:'Token yourTOKENhereHEX0000000000'
+</code></pre></div>
+<p>برای ایجاد یک کد دعوت جدید برای کاربر، از «ایجاد کد دعوت» استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/referral/links-add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>friendShare</td>
+<td>int</td>
+<td><code>0</code></td>
+<td>سهم کارمزد اهدایی به دوست دعوت شده با این کد</td>
+<td><code>10</code></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidGivebackShare</td>
+<td>سهم کارمزد دوست قابل قبول نیست. پارامتر friendShare را بررسی کنید.</td>
+</tr>
+<tr>
+<td>TooManyReferralLinks</td>
+<td>سهمیه ۳۰ تایی کدهای دعوت قابل ساخت برای هر کاربر به پایان رسیده است.</td>
+</tr>
+<tr>
+<td>ReferralCodeUnavailable</td>
+<td>امکان ایجاد کد دعوت در حال حاضر وجود ندارد.</td>
+</tr>
+<tr>
+<td>ReferralCodeExists</td>
+<td>خطایی در ثبت کد دعوت رخ داده است.</td>
+</tr>
+</tbody></table>
+<h2 id='383aaeedc8'>وضعیت دعوت کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://api.nobitex.ir/users/referral/referral-status'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/referral-status \
+ Authorization:'Token yourTOKENhereHEX0000000000'
+</code></pre></div>
+<p>برای اطلاع از این که کاربر فعلی توسط کاربر دیگری به نوبیتکس دعوت شده است یا خیر، از «وضعیت دعوت کاربر» استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/referral/referral-status</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵۰ درخواست در هر ۱۰ دقیقه</li>
+</ul>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hasReferrer</td>
+<td>boolean</td>
+<td>آیا کاربر توسط کاربر دیگری دعوت شده است؟</td>
+<td><code>true</code></td>
+</tr>
+</tbody></table>
+<h2 id='b71dfde1d6'>ثبت معرف کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://api.nobitex.ir/users/referral/set-referrer'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/set-referrer \
+ Authorization:'Token yourTOKENhereHEX0000000000'
+</code></pre></div>
+<p>کد دعوت باید در زمان ثبت‌نام توسط کاربر وارد شده یا با استفاده از پیوند دعوت به صورت خودکار پر شود. با این حال تا ۲۴ ساعت
+پس از ثبت‌نام نیز امکان ثبت معرف توسط کاربر با استفاده از این API وجود دارد. منظور از کاربر معرف، کاربری است که کاربر فعلی
+را دعوت نموده است.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/referral/set-referrer</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵۰ درخواست در هر ۱۰ دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referrerCode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد دعوت کاربر دعوت کننده</td>
+<td><code>40404</code></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ReferrerChangeUnavailable</td>
+<td>بیش از ۲۴ ساعت از ثبت‌نام کاربر گذشته است و تعریف معرف دیگر ممکن نیست.</td>
+</tr>
+</tbody></table>
+<h1 id='d9a7503222'>ملاحظات عمومی</h1><h2 id='00aedb9cdc'>راهنمای اشکال‌یابی</h2>
+<ul>
+<li>به نوع درخواست دقت کنید، احتمال دارد درخواست از نوع <code>HTTP POST</code> باشد و شما از <code>GET</code> استفاده کرده باشید.</li>
+<li>آدرس API را مجددا بررسی نمایید. همچنین به وجود یا عدم وجود <code>/</code> در انتهای آدرس دقت کنید.</li>
+</ul>
+<h2 id='566f5db2bb'>پاسخ‌های موفق</h2>
+<blockquote>
+<p>نمونه پاسخ موفق:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"otherFields"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>در تمامی API ها در صورتی که عملیات مد نظر به درستی انجام شده باشد، پاسخ به صورت یک شی در قالب JSON
+بازگردانده می‌شود و با وضعیت <code>HTTP 200</code> است. این پاسخ در حالت موفق یک کلید <code>status</code> با مقدار <code>ok</code> دارد.
+بنا به API مورد استفاده ممکن است یک یا چند کلید دیگر نیز در این پاسخ بازگردانده شود.</p>
+<h2 id='82d68ae596'>پاسخ‌های ناموفق</h2>
+<blockquote>
+<p>نمونه پاسخ ناموفق:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human-readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>در تمامی APIها در صورتی که به هر دلیل امکان پردازش و انجام آن درخواست وجود نداشته باشد، یک پاسخ ناموفق
+بازگردانده می‌شود. پاسخ‌های ناموفق به دو صورت هستند، یا با کد خطای HTTP مشخص می‌شوند که مطابق با معانی
+وضعیت در پروتکل HTTP قابل تفسیر هستند.</p>
+
+<p>در صورتی که پارامترهای ورودی قابل تفسیر باشند، ولی عملیات مد نظر قابل انجام نباشد، پاسخ با وضعیت <code>HTTP 200</code> بازگردانده
+می‌شود، و توضیحات تکمیلی به صورت یک شی در قالب JSON خواهد بود که مقدار کلید <code>status</code> آن برابر <code>failed</code> است.
+کلید <code>code</code> در این شرایط، خطای دقیق رخ داده شده را مشخص می‌کند که در بخش «حالت‌های خطا» در توضیحات هر API
+فهرستی از کدهای خطای ممکن و توضیحات آن ارائه شده است. معمولاً در یک کلید <code>message</code> توضیح بیشتری در مورد آن
+خطا نیز ارائه می‌شود که جهت رفع عیب یا نمایش مستقیم به کاربر نهایی می‌تواند مفید باشد.</p>
+
+<aside class="notice">
+  پیشنهاد می‌شود برای نمایش پیام خطا از مقدار code استفاده شود و طبق زبان کاربر نهایی، پیام مناسبی به وی نمایش داده شود.
+  مقدار message تنها برای کمک به اشکال‌یابی ارائه می‌شود و برای نمایش به کاربر بهینه نیست.
+</aside>
+<h3 id='4a4a09d91d'>برخی وضعیت‌های پرکاربرد</h3>
+<table><thead>
+<tr>
+<th>کد HTTP</th>
+<th>عنوان</th>
+<th>توضیحات</th>
+<th>‌</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>درخواست دریافت و پاسخ داده شده، وضعیت اصلی درخواست در فیلد status پاسخ مشخص می‌شود.</td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>پارامترهای درخواست نادرست یا ناکافی است به طوری که امکان بررسی بیشتر و پاسخ بهتر به آن وجود ندارد.</td>
+<td></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>انجام این عملیات مجاز نمی‌باشد</td>
+<td></td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>آدرس یا شی مد نظر وجود ندارد</td>
+<td><a target="_blank" rel="nofollow" href="https://http.cat/404">🐱</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>مشکلی به صورت موقت در سرور نوبیتکس رخ داده است</td>
+<td><a target="_blank" rel="nofollow" href="https://http.cat/500">🐱</a></td>
+</tr>
+</tbody></table>
+<h2 id='monetary'>مقادیر پولی (monetary)</h2>
+<p>در موارد متعددی پارامترهای ورودی درخواست‌ها از نوع مقدار پولی یا monetary مشخص شده است. برای داشتن بالاترین دقت، پیشنهاد می‌شود که این مقادیر را به صورت رشته‌ای ارسال نمایید، چرا که استفاده از انواع داده‌ای مانند <code>float</code> در کاربردهای دقیق مالی توصیه نمی‌شود.</p>
+<h2 id='dbf936619c'>اعتبارسنجی دو عاملی</h2>
+<p>در صورتی که اعتبارسنجی دو عاملی (2 Factor Authentication) را برای حساب خود فعال کرده باشید، باید در هنگام استفاده از برخی APIها،
+به خصوص در هنگام دریافت توکن از API لاگین، علاوه بر سایر پارامترها، رمز یک‌بار مصرف خود را نیز در هدرهای درخواست به این صورت ارسال نمایید:
+<code>X-TOTP: 123456</code>.</p>
+<h2 id='api'>محدودیت‌های فراخوانی API</h2>
+<p>برخی از APIهای نوبیتکس دارای محدودیت تعداد فراخوانی در هر بازه‌ی زمانی هستند. با این حال اگر شما به صورت معمولی و مشابه
+استفاده‌ی متداول کاربران از API استفاده کنید، با این محدودیت‌ها مواجه نخواهید شد. محدودیت‌ها به ازای هر API مستقلا محاسبه
+و اعمال می‌شوند. محدودیت‌ها معمولا بر اساس آدرس IP درخواست دهنده و در موارد هم بر اساس کاربر (توکن) درخواست دهنده می‌باشند.
+در حالتی که به حد مجاز تعداد فراخوانی یک API رسیده باشید، پاسخ آن API به شما یک پیام خطا با کد 403 و دارای توضیحات مشخص
+در خصوص آن محدودیت خواهد بود.</p>
+
+<p>در صورتی که به صورت موردی یا در حین تست کد خود به محدودیتی برخورد کردید، می‌توانید با
+منتظر ماندن (بین یک ساعت تا یک روز) آن محدودیت را برطرف کنید و دوباره امکان استفاده از API مد نظرتان را داشته باشید. اگر به
+صورت مداوم به محدودیتی برای یک API برخورد می‌کنید و فکر می‌کنید که بهتر است تعداد فراخوانی مجاز آن API افزایش یابد، حتما با
+ایجاد یک مورد در گیت‌هاب (<a href="https://github.com/nobitex/docs-api/issues/new">لینک ایجاد مورد</a>) مسئله را با ما مطرح نمایید.</p>
+<h2 id='pro'>حالت متداول و Pro</h2>
+<p>در برخی از درخواست‌ها جهت حفاظت بهتر از کاربران، برخی محدودیت‌ها اعمال می‌شود. در چنین مواردی در بخش ملاحظات این محدودیت‌ها توضیح داده شده و در انتهای آن عبارت «غیرفعال در حالت Pro» ذکر شده است. با ارائه پارامتر <code>pro</code> به مقدار <code>yes</code> به عنوان ورودی، این محدودیت برای آن درخواست غیرفعال می‌شود. با این حال دقت کنید که محدودیت‌های حالت متداول برای جلوگیری از حالت‌های خاص و اشتباهات رایج تعبیه شده است و تنها در صورت نیاز و آگاهی از تبعات احتمالی آن، اقدام به فعال‌سازی حالت Pro نمایید.</p>
+<h1 id='3175c5a263'>سوالات متداول</h1><h2 id='754f6fe266'>آیا نوبیتکس توکن بلند مدت هم ارائه میدهد؟</h2>
+<p>بله، برای بدست آوردن توکن با انقضاء طولانی مدت میتوان به دو روش عمل کرد :</p>
+
+<ol>
+<li>دریافت توکن ۴ روزه از طریق پنل کاربری در سایت نوبیتکس</li>
+<li>دریافت توکن ۳۰ روزه با استفاده از api با ارسال پارامتری با نام remember و مقدار yes</li>
+</ol>
+<h2 id='api'>من با استفاده از گوگل در نوبیتکس ثبت نام کرده ام. چگونه میتوانم با api کار کنم؟</h2>
+<p>کاربرانی که با گوگل ثبت نام کرده‌اند و قصد استفاده از api را دارند برای بدست آوردن نام کاربری و رمز عبور خود می‌توانند از امکان فراموشی رمز عبور استفاده کرده و رمز جدید برای حساب خود تعیین و پس از آن اقدام به استفاده از api نمایند.</p>
+<h2 id='missing-captcha'>در هنگام لاگین با خطای missing captcha روبرو شده ام. مشکل چیست؟</h2>
+<p>برای دریافت توکن به پنل کاربری خود در سایت، بخش «پروفایل: تنظیمات» مراجعه نمایید.</p>
+<h2 id='missing-otp'>در هنگام لاگین با خطای missing otp روبرو شده ام. چگونه این مشکل حل میشود؟</h2>
+<p>در هنگامی که لاگین دو مرحله‌ای حساب شما فعال باشد، در هنگام استفاده از api نیز می بایست این حالت حفظ شده و رمز یکبار مصرف ارسال گردد. این کار از طریق ارسال این رمز با استفاده از پارامتر X-TOTP امکان‌پذیر خواهد بود.</p>
+<h2 id='test'>آیا نوبیتکس محیط آزمایشی (Test) دارد؟</h2>
+<p>بله، شما میتوانید برای استفاده از کلیه امکانات بازار نوبیتکس و همچنین api ها از محیط آزمایشی نوبیتکس به آدرس‌های ذیل استفاده نمائید:</p>
+
+<p>آدرس نوبیتکس آزمایشی : https://testnet.nobitex.ir</p>
+
+<p>آدرس api آزمایشی : https://testnetapi.nobitex.ir</p>
+<h2 id='api-2'>آیا برای استفاده از apiها محدودیتی وجود دارد؟</h2>
+<p>بله، برای مثال شما حتماً باید از IPهای ایران درخواست خود را ارسال نمائید، و یا محدودیت‌های مخصوص به هر api که در توضیحات هر کدام از endpointها آورده شده است.</p>
+<h2 id='api-3'>آیا با استفاده از api میتوان درخواست برداشت ارسال کرد؟</h2>
+<p>خیر، اینکار به دلیل مسائل امنیتی امکان‌پذیر نمی باشد.</p>
+<h2 id='a640db90fe'>فرمت استفاده شده برای تاریخ چیست؟</h2>
+<p>ساعت یونیکس Unix Time
+یکی از مقیاس اندازه‌گیری زمان آنی است. این عدد که تعداد ثانیه‌ها از ساعت ۰۰:۰۰:۰۰ ساعت هماهنگ جهانی اول ژانویه ۱۹۷۰ است، شامل ثانیه‌های کبیسه نمی‌شود. برای زمان‌های قبل از اول ژانویه از اعداد منفی استفاده می‌شود.</p>
+
+<p>به عنوان مثال [۰۱/۰۱/۱۹۷۰ ۰۰:۰۰:۰۰] برابر با صفر (۰) و [۰۱/۰۱/۱۹۷۰ ۰۰:۰۱:۰۰] برابر با شصت(۶۰) است.</p>
+
+<p>فرمول اصلی آن به این صورت می‌باشد:</p>
+
+<p>تعداد (روزهای گذشته از اول ژانویه ۱۹۷۰) × ۸۶۴۰۰(تعداد ثانیه‌های هر روز)</p>
+
+<p>به منظور مطالعه بیشتر به آدرس زیر مراجعه نمائید
+https://en.wikipedia.org/wiki/Unix_time</p>
+<h2 id='api-4'>آیا برای apiها کدهای نمونه تهیه شده است؟</h2>
+<p>بله، collection کلیه api ها برای استفاده در برنامه postman تهیه و از <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a> میتوانید به آن دسترسی داشته باشید. در این collection شما میتوانید نمونه فراخوانی هر کدام از این apiها را به زبان‌های مختلف برنامه نویسی نظیر پی اچ پی، پایتون، سی شارپ  و … در این مجموعه مشاهده کرده و آن را در سیستم خود اجرا نمائید.</p>
+<h1 id='96f59ad9c2'>موارد قدیمی</h1>
+<p>برخی از APIها به دلیل تغییرات ساختاری یا کارکردی، قدیمی و deprecated محسوب می‌شوند و نباید دیگر از آن‌ها استفاده شود.
+این موارد صرفاً جهت ثبت در ادامه خواهند آمد، ولی ممکن است در هر یک از نسخه‌های آتی نوبیتکس این APIها غیرفعال شوند
+یا دیگر پاسخگو نباشند.</p>
+<h2 id='40dbf5eeb5'>کد دعوت پیش‌فرض</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/get-referral-code'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/get-referral-code \
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referredUsersCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84440"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralFeeTotalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"referralFeeTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت کد دعوت پیش‌فرض از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>GET /users/get-referral-code</code></li>
+</ul>
+<h2 id='76f8b4c4a0'>لیست سفارشـات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/orderbook'</span>
+     <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
+     <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/orderbook \
+  symbol=USDTIRT
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"1.016"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.2561"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.126571"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.818994"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>POST /v2/orderbook</code></li>
+</ul>
+<h2 id='4874d0c1a2'>لیست معامـلات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades'</span>
+     <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
+     <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/trades \
+  symbol=USDTIRT
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689375067</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689360464</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس : <code>POST /v2/trades</code></li>
+</ul>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="plaintext">plaintext</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "0c525a53-2c6a-48f5-8111-5ae3657f28aa",
+		"name": "Nobitex Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.ir\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
+				},
+				"url": {
+					"raw": "https://api.nobitex.ir/pg/send/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nobitex",
+						"market"
+					],
+					"path": [
+						"pg",
+						"send",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"amount\":1000000,\n\t\"callbackURL\":\"https://nobitex.ir\",\n\t\"factorNumber\":\"10\",\n\t\"mobile\":\"09123456789\",\n\t\"description\":\"Payment with Nobitex\",\n\t\"currencies\":\"btc\"\n}"
+						},
+						"url": {
+							"raw": "https://api.nobitex.ir/pg/send/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nobitex",
+								"market"
+							],
+							"path": [
+								"pg",
+								"send",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.14.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 14 Sep 2019 11:00:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubdomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"token\": \"f6838d15fb024b0eb6d83e4c2a2028d3\"\n}"
+				}
+			]
+		},
+		{
+			"name": "verify payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
+				},
+				"url": {
+					"raw": "https://api.nobitex.ir/pg/verify/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nobitex",
+						"market"
+					],
+					"path": [
+						"pg",
+						"verify",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "verify payment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"api\":\"DemoApiKey\",\n\t\"token\":\"f50116d31d4a4d1ab93d1f2759f198bb\"\n}"
+						},
+						"url": {
+							"raw": "https://api.nobitex.ir/pg/verify/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nobitex",
+								"market"
+							],
+							"path": [
+								"pg",
+								"verify",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.14.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 14 Sep 2019 11:35:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "200"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubdomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"amount\": 1000000,\n    \"cryptoAmount\": 85516,\n    \"txHash\": \"825d6613a6eef4566abf4ba7bae83618\",\n    \"factorNumber\": \"10\",\n    \"mobile\": \"09123456789\",\n    \"description\": \"Test Payment with Nobitex\"\n}"
+				}
+			]
+		}
+	]
+}
