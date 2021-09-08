@@ -1,5 +1,4 @@
 # Nobitex API Documentation
-[![Build Status](https://travis-ci.com/nobitex/docs-api.svg?branch=master)](https://travis-ci.com/nobitex/docs-api)
 [![Visit Documentation Website](https://img.shields.io/badge/visit-Documentation_Website-blueviolet)](https://apidocs.nobitex.ir)
 
 This repository contains documentation for connecting to the Nobitex cryptocurrency exchange market and using the

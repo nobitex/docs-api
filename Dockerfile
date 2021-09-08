@@ -1,21 +1,29 @@
-FROM ruby:2.5-alpine
-
-RUN apk --no-cache add \
-        g++ \
-        gcc \
-        libc-dev \
-        make \
-        nodejs \
-    && gem install bundler
+FROM ruby:2.6-slim
 
 WORKDIR /srv/slate
 
-COPY . /srv/slate
-
-RUN bundle install
-
+VOLUME /srv/slate/build
 VOLUME /srv/slate/source
 
 EXPOSE 4567
 
-CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling"]
+COPY Gemfile .
+COPY Gemfile.lock .
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        git \
+        nodejs \
+    && gem install bundler \
+    && bundle install \
+    && apt-get remove -y build-essential git \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY . /srv/slate
+
+RUN chmod +x /srv/slate/slate.sh
+
+ENTRYPOINT ["/srv/slate/slate.sh"]
+CMD ["build"]
