@@ -6,8 +6,8 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>مستندات API درگاه پرداخت نوبیتکس</title>
-    <link href="images/favicon.ico" rel="icon" type="image/ico" />
-    <style>
+
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -146,47 +146,36 @@
 }
 .highlight .vc {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
-  background-color: #272822;
-}
-.highlight .nl {
-  color: #ffffff;
-  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .nv, .highlight .vm {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
-  background-color: #272822;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -207,25 +196,107 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-1407e25d.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-51f5d7ff.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch-c275c2f6.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-f47d16a4.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-5c68d5d9.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
+
   </head>
 
   <body class="gateway" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;php&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;plaintext&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-900dbdd3.png" class="logo" alt="Logo" />
-         <a style ="color: gray;
-                    position: relative;
-                    bottom: 14px;
-                    left: 15px;
-                    text-decoration: none !important;" class='lang-change' href="https://apidocs.nobitex.ir/">فارسی</a>
+      <img src="images/logo-900dbdd3.png" class="logo" alt="" />
       <html lang="fa">
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
@@ -328,9 +399,9 @@
     <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
     <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">async</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">crossDomain</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -354,22 +425,22 @@
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/send/'</span><span class="p">);</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/send/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="no">HTTP_METH_POST</span><span class="p">);</span>
 
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
   <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">));</span>
 
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","amount":1000000,"callbackURL":"https://www.nobitex.ir/app/callback-gateway/", "currencies": "btc,ltc"}'</span><span class="p">);</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
 
-  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nc">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
@@ -518,9 +589,9 @@ cache-control: no-cache
     <span class="s">'cache-control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
     <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">async</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">crossDomain</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -544,22 +615,22 @@ cache-control: no-cache
 <span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/verify/'</span><span class="p">);</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://api.nobitex.ir/pg/verify/'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="no">HTTP_METH_POST</span><span class="p">);</span>
 
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
   <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
 <span class="p">));</span>
 
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","token":"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{"api":"DemoApiKey","token":"e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"}'</span><span class="p">);</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
 
-  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nc">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
