@@ -14,14 +14,13 @@
 ## فهرست کدهای دعوت
 
 ```shell
-curl --location --request GET 'https://api.nobitex.ir/users/referral/links-list' \
---header 'Authorization: Token db2055f743c1ac8c30d23278a496283b1e2dd46f' \
---header 'Cookie: __cfduid=d727d4fbddc828884f2a793143332d5aa1613231485; csrftoken=6iEk9yjmgJFbNCXSELduTVeTTEJZBSNu7H0QbN7ZrRbqRLQS8s1oz3nTOIDj1EBH' 
+curl -X GET 'https://api.nobitex.ir/users/referral/links-list' \
+  --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/links-list \
- Authorization:'Token db2055f743c1ac8c30d23278a496283b1e2dd46f' 
+ Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 
 * **درخواست:** `POST /users/referral/links-list`
@@ -49,13 +48,13 @@ statsProfit | monetary: IRR | آمار: مجموع ریالی درآمد کار�
 ## ایجاد کد دعوت
 
 ```shell
-curl --location --request GET '{{base_url}}/users/get-referral-code' \
---header 'Authorization: Token db2055f743c1ac8c30d23278a496283b1e2dd46f'
+curl -X GET 'https://api.nobitex.ir/users/get-referral-code' \
+--header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 http --follow --timeout 3600 GET https://api.nobitex.ir/users/get-referral-code \
- Authorization:'Token db2055f743c1ac8c30d23278a496283b1e2dd46f'
+ Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 برای ایجاد یک کد دعوت جدید برای کاربر، از «ایجاد کد دعوت» استفاده نمایید.
 
@@ -80,13 +79,13 @@ ReferralCodeExists | خطایی در ثبت کد دعوت رخ داده است.
 
 
 ```shell
-curl --location --request GET '{{base_url}}/users/referral/referral-status' \
---header 'Authorization: Token db2055f743c1ac8c30d23278a496283b1e2dd46f' 
+curl -X GET 'https://api.nobitex.ir/users/referral/referral-status' \
+--header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/referral-status \
- Authorization:'Token db2055f743c1ac8c30d23278a496283b1e2dd46f' 
+ Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 
 برای اطلاع از این که کاربر فعلی توسط کاربر دیگری به نوبیتکس دعوت شده است یا خیر، از «وضعیت دعوت کاربر» استفاده نمایید.
@@ -103,14 +102,13 @@ hasReferrer | boolean | آیا کاربر توسط کاربر دیگری دعو�
 ## ثبت معرف کاربر
 
 ```shell
-curl --location --request GET '{{base_url}}/users/referral/set-referrer' \
---header 'Authorization: Token db2055f743c1ac8c30d23278a496283b1e2dd46f' \
---header 'Cookie: __cfduid=d727d4fbddc828884f2a793143332d5aa1613231485; csrftoken=4wCCaTABWk23vtkQv1kYaPcsBMBYgElSD5QkuEJFhTSArMrZHTATBaTolypzYxxN; sessionid=q6f500n86vr5527lixs8zeep7816meao'
+curl -X GET 'https://api.nobitex.ir/users/referral/set-referrer' \
+  --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/set-referrer \
- Authorization:'Token db2055f743c1ac8c30d23278a496283b1e2dd46f' 
+ Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 
 کد دعوت باید در زمان ثبت‌نام توسط کاربر وارد شده یا با استفاده از پیوند دعوت به صورت خودکار پر شود. با این حال تا ۲۴ ساعت

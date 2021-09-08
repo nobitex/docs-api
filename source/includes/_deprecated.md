@@ -7,7 +7,7 @@
 
 ```shell
 curl 'https://api.nobitex.ir/users/get-referral-code' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext

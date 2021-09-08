@@ -66,7 +66,7 @@ http POST https://api.nobitex.ir/auth/login/ \
 
 ```json
 {
-    "key": "e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+    "key": "yourTOKENhereHEX0000000000"
 }
 ```
 Token can be obtained automatically by sending a request to auth/login/  . For your own security, tokens will be expired after 4 hours and you should acquire a new one by sending login request. If you need long-term tokens you can set a “r” parameter in remember=yes to receive a token with 30-days active token.
@@ -289,7 +289,7 @@ Rate Limit: No more than 1000 requests in 10 minutes. Stats are extracted from K
 
 ```shell
 curl 'https://api.nobitex.ir/users/profile' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -373,7 +373,7 @@ Address: GET/users/login-attempts
 
 ```shell
 curl 'https://api.nobitex.ir/users/login-attempts' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -404,7 +404,7 @@ Address: GET/users/login-attempts
 
 ```shell
 curl 'https://api.nobitex.ir/users/get-referral-code' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -433,7 +433,7 @@ Address: GET/users/get-referral-code
 ```shell
 curl 'https://api.nobitex.ir/users/cards-add' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"number":"5041721011111111","bank":"رسالت"}'
 ```
@@ -459,12 +459,12 @@ Address: POST/users/cards-add
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/list' \
   -X POST \
-  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  --header "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/users/wallets/list \
-  Authorization=Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568
+  Authorization=Token yourTOKENhereHEX0000000000
 ```
 
 > Response:
@@ -496,7 +496,7 @@ Address: POST /users/wallets/list
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/balance' \
   -X POST \
-  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  --header "Authorization: Token yourTOKENhereHEX0000000000" \
   --data '{"currency":"ltc"}'
 ```
 

@@ -50,12 +50,12 @@ toc_footers:
 این راه بهترین روش برای شروع به کار سریع با apiها برای کاربران جدید است.
 
 
-## محدودیت ها 
+## محدودیت ها
 توجه داشته باشید، برای استفاده برخی از APIها محدودیت هایی وجود دارد که در قسمت توضیحات هر کدام از APIها این موارد ذکر شده است.
 
 
 ##راهنمای حل مشکلات
-در صورت وجود ابهام یا مشکلی در استفاده از APIها ابتدا ملاحظات عمومی و سوالات متداول را بررسی و در صورتی که مشکل شما برطرف نگردید میتوانید در 
+در صورت وجود ابهام یا مشکلی در استفاده از APIها ابتدا ملاحظات عمومی و سوالات متداول را بررسی و در صورتی که مشکل شما برطرف نگردید میتوانید در
 <a href="https://github.com/nobitex/docs-api" target="_blank">مخزن گیت‌هاب مستندات نوبیتکس API</a>
 مورد (issue) جدیدی را ایجاد نمایید یا مستقیما روی <a href="https://github.com/nobitex/docs-api/issues/new" target="_blank">این لینک</a> کلیک کنید و مشکل مد نظرتان را با ما در میان بگذارید.
 
@@ -137,14 +137,14 @@ remember | string | no | آیا توکن بلند مدت صادر شود؟ | `ye
 > برای خروج یا سوزاندن توکن، از این کد استفاده کنید:
 
 ```shell
-curl --location --request POST 'https://api.nobitex.ir/auth/logout/' \
---header 'Authorization: Token 4928f78a7c00b3jebc1efaa8d2a2fc7atf905cc69'
+curl -X POST 'https://api.nobitex.ir/auth/logout/' \
+--header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 POST /auth/logout/ HTTP/1.1
 Host: api.nobitex.ir
-Authorization: Token 4928f78a7d00b3sc1efaa8d2a2fc7a9tf905cc69
+Authorization: Token yourTOKENhereHEX0000000000
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -491,7 +491,7 @@ http POST https://api.nobitex.ir/market/global-stats
 
 ```shell
 curl 'https://api.nobitex.ir/users/profile' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -582,7 +582,7 @@ http POST https://api.nobitex.ir/users/profile \
 
 ```shell
 curl 'https://api.nobitex.ir/users/login-attempts' \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -616,7 +616,7 @@ http POST https://api.nobitex.ir/users/login-attempts \
 ```shell
 curl 'https://api.nobitex.ir/users/cards-add' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"number":"5041721011111111","bank":"رسالت"}'
 ```
@@ -655,7 +655,7 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 ```shell
 curl 'https://api.nobitex.ir/users/accounts-add' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"number":"5041721011111111","shaba":"IR111111111111111111111111","bank":"رسالت"}'
 ```
@@ -695,7 +695,7 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 ```shell
 curl 'https://api.nobitex.ir/users/limitations' \
   -X GET \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
 ```
 
@@ -774,12 +774,12 @@ http GET https://api.nobitex.ir/users/limitations
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/list' \
   -X POST \
-  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  --header "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/users/wallets/list \
-  Authorization=Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568
+  Authorization=Token yourTOKENhereHEX0000000000
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -817,13 +817,13 @@ http POST https://api.nobitex.ir/users/wallets/list \
 ```shell
 curl 'https://api.nobitex.ir/v2/wallets' \
   -X POST \
-  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  --header "Authorization: Token yourTOKENhereHEX0000000000"
   --data '{"currencies":"rls,btc"}'
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/v2/wallets \
-  Authorization=Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568
+  Authorization=Token yourTOKENhereHEX0000000000
   currencies=rls,btc
 ```
 
@@ -863,7 +863,7 @@ currencies  | string |   اختیاری | نوع کیف پول(ارز)، به ص
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/balance' \
   -X POST \
-  --header "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  --header "Authorization: Token yourTOKENhereHEX0000000000" \
   --data '{"currency":"ltc"}'
 ```
 
@@ -907,7 +907,7 @@ currency    | string |   الزامی | نوع کیف پول(ارز) | `ltc`
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/transactions/list' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"wallet":"4159"}'
 ```
@@ -959,7 +959,7 @@ wallet      | int    |   الزامی | شناسه کیف پول(id) | `4159`
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/deposits/list' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"wallet":"4159"}'
 ```
@@ -1025,7 +1025,7 @@ wallet      | string |   all    | شناسه کیف پول(id) | `4159`
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/generate-address' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"wallet":"4159"}'
 ```
@@ -1066,7 +1066,7 @@ wallet      | string |  الزامی  | شناسه کیف پول(id) | `4159`
 ```shell
 curl 'https://api.nobitex.ir/market/orders/add' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000}'
 ```
@@ -1159,7 +1159,7 @@ TradeLimitation | سقف معاملات کاربر به اتمام رسیده ا
 ```shell
 curl 'https://api.nobitex.ir/market/orders/status' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"id":5684}'
 ```
@@ -1298,7 +1298,7 @@ averagePrice | monetary | میانگین قیمت اجرا شده از سفار�
 ```shell
 curl 'https://api.nobitex.ir/market/orders/update-status' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"order":5684,"status":"canceled"}'
 ```
@@ -1342,7 +1342,7 @@ status      | string |  الزامی  |    وضعیت جدید   | `canceled`
 ```shell
 curl 'https://api.nobitex.ir/market/orders/cancel-old' \
   -X POST \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" \
+  -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"execution":"limit","srcCurrency":"btc","dstCurrency":"rls","hours":2.4}'
 ```
@@ -1384,5 +1384,3 @@ dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
 <aside class="notice">
 در صورتی که مقدار hours ارسال نشود، تمامی سفارشات مربوط لغو خواهد شد.
 </aside>
-
-
