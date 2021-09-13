@@ -412,6 +412,14 @@
               </ul>
           </li>
           <li>
+            <a href="#a5b0c55df6" class="toc-h1 toc-link" data-title="امنیت">امنیت</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#01ab60950a" class="toc-h2 toc-link" data-title="فعالسازی لغو اضطراری">فعالسازی لغو اضطراری</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#57bcd8d937" class="toc-h1 toc-link" data-title="طرح معرفی دوستان">طرح معرفی دوستان</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2174,7 +2182,7 @@ resolution: 60
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای سفارش گذاری از این نوع درخواست استفاده نمایید:</p>
+<p>برای لغو سفارشات از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><p>آدرس : <code>POST /market/orders/cancel-old</code></p></li>
@@ -2233,6 +2241,33 @@ resolution: 60
 <aside class="notice">
 در صورتی که مقدار hours ارسال نشود، تمامی سفارشات مربوط لغو خواهد شد.
 </aside>
+<h1 id='a5b0c55df6'>امنیت</h1><h2 id='01ab60950a'>فعالسازی لغو اضطراری</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/security/emergency-cancel/activate'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span> 
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/security/emergency-cancel/activate \
+  Authorization: Token 4928f7a7d00b3sc1efaa8dda2fc7a9tf905cc69
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cancelCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"seJlef35L3"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>جهت فعالسازی امکان لغو اضطراریِ درخواست های برداشت از این درخواست استفاده نمائید.
+پس از فعالسازی این امکان، پیامک و ایمیل ارسالی پس از ثبت درخواست برداشت، 
+حاوی لینکی خواهد بود که شما میتوانید با استفاده از آن در صورتی که درخواست برداشت توسط شما ثبت نشده است، در کمترین زمان ممکن و بدون نیاز به لاگین، درخواست های برداشت خود را لغو نمایید.</p>
+
+<ul>
+<li>آدرس : <code>GET /security/emergency-cancel/activate</code></li>
+</ul>
+
+<aside class="notice">
+توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
+</aside>
 <h1 id='57bcd8d937'>طرح معرفی دوستان</h1>
 <p>نوبیتکس طرحی به نام معرفی دوستان در نظر گرفته است که از طریق آن هم به گسترش نوبیتکس کمک می‌کنید و هم از مزایای آن بهره‌مند می‌شوید. براساس این طرح شما می‌توانید دوستان خود را با لینک اختصاصی خود به نوبیتکس دعوت کنید و درصدی از کارمزد معاملات آن‌ها را به عنوان پاداش دریافت نمایید. برای اطلاعات بیشتر به <a href="https://nobitex.ir/policies/referral/">صفحه قوانین طرح معرفی دوستان</a> مراجعه کنید.</p>
 
@@ -2241,7 +2276,8 @@ resolution: 60
 <p>با استفاده از «فهرست کدهای دعوت» می‌توانید فهرستی از کدهای دعوت فعلی خود را دریافت نمایید. به همراه این فهرست، میزان سود شما و برخی دیگر از آمار مربوط به کاربران ثبت‌نامی با آن کد دعوت ارسال می‌شود. اگر هنوز کد دعوتی ندارید، برای شروع استفاده از طرح معرفی دوستان می‌توانید با استفاده از «ایجاد کد دعوت»، یک کد دعوت بسازید.</p>
 
 <aside class="notice">
-برای ساخت پیوند از روی کد دعوت، آن را در این آدرس قرار دهید: <code>https://nobitex.ir/signup/?refcode=CODE</code>
+برای ساخت پیوند از روی کد دعوت، آن را در این آدرس قرار دهید:
+<br><code>https://nobitex.ir/signup/?refcode=CODE</code>
 </aside>
 <h2 id='35df8fda78'>فهرست کدهای دعوت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://api.nobitex.ir/users/referral/links-list'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
