@@ -7,6 +7,8 @@ language_tabs:
   - java
   - swift
   - plaintext
+includes:
+  - internal/notifications
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
