@@ -24,6 +24,7 @@ api.get('/notifications/list', {
 
 ```java
 public interface APIService {
+  @Headers({"Authorization: Token yourTOKENhereHEX0000000000"})
   @GET("/notifications/list")
   Call<JsonObject> listNotifications();
 }
