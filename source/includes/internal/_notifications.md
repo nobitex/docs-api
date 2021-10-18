@@ -11,12 +11,12 @@
 
 ```shell
 curl 'https://api.nobitex.ir/notifications/list' \
-  -H "Authorization: Token yourTOKENhereHEX0000000000"
+  -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```javascript
 api.get('/notifications/list', {
-  headers: {Authorization: "Token yourTOKENhereHEX0000000000"},
+  headers: {Authorization: 'Token yourTOKENhereHEX0000000000'},
 }).then((response) => {
   console.log(response);
 });
