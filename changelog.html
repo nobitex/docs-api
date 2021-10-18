@@ -284,7 +284,7 @@
     </style>
     <link href="stylesheets/screen-f47d16a4.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-5c68d5d9.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/custom-08755365.css" rel="stylesheet" />
+    <link href="stylesheets/custom-80a17624.css" rel="stylesheet" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
   </head>
@@ -303,6 +303,22 @@
           <li>
             <a href="#api" class="toc-h1 toc-link" data-title="مستندات تغییرات API نوبیتکس">مستندات تغییرات API نوبیتکس</a>
           </li>
+          <li>
+            <a href="#60464192a2" class="toc-h1 toc-link" data-title="مستندات جدید">مستندات جدید</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1400-07" class="toc-h2 toc-link" data-title="1400/07">1400/07</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-2" class="toc-h1 toc-link" data-title="تغییرات API">تغییرات API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1400-07-2" class="toc-h2 toc-link" data-title="1400/07">1400/07</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -313,6 +329,87 @@
       <div class="content">
         <h1 id='api'>مستندات تغییرات API نوبیتکس</h1>
 <p>در این مستند تغییرات هر نسخه از API ها به صورت فهرست‌وار ثبت می‌شود. برای اطلاع از مشروح تغییرات به مستندات متناظر مراجعه نمایید.</p>
+<h1 id='60464192a2'>مستندات جدید</h1><h2 id='1400-07'>1400/07</h2>
+<ul>
+<li>ایجاد صورت‌حساب واریز (/users/wallets/invoice/generate)</li>
+<li>لیست نوتیفیکیشن‌ها (/notifications/list)</li>
+</ul>
+<h1 id='api-2'>تغییرات API</h1><h2 id='1400-07-2'>1400/07</h2>
+<ul>
+<li>افزودن کد خطا به endpoint های زیر:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>message</th>
+<th>code <th>endpoint</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>msgUnfilledForm</td>
+<td>ValidationError <td rowspan=3>/users/wallets/deposit/bank</td>
+</tr>
+<tr>
+<td>msgBankAmountLow</td>
+<td>AmountTooLow</td>
+</tr>
+<tr>
+<td>msgBankAmountHigh</td>
+<td>AmountTooHigh</td>
+</tr>
+<tr>
+<td>CoinDepositLimitation</td>
+<td>CoinDepositLimitation <td rowspan=1>/users/wallets/generate-address</td>
+</tr>
+<tr>
+<td>ExchangeRequiredTag</td>
+<td>ExchangeRequiredTag <td rowspan=7>/users/wallets/withdraw</td>
+</tr>
+<tr>
+<td>msgInvalid2FA</td>
+<td>Invalid2FA</td>
+</tr>
+<tr>
+<td>WithdrawAmountLimitation</td>
+<td>WithdrawAmountLimitation</td>
+</tr>
+<tr>
+<td>Insufficient Balance</td>
+<td>InsufficientBalance</td>
+</tr>
+<tr>
+<td>msgWithdrawLimitReached</td>
+<td>WithdrawLimitReached</td>
+</tr>
+<tr>
+<td>msgAmountTooLow</td>
+<td>AmountTooLow</td>
+</tr>
+<tr>
+<td>msgAmountTooHigh</td>
+<td>AmountTooHigh</td>
+</tr>
+<tr>
+<td>WithdrawAmountLimitation</td>
+<td>WithdrawAmountLimitation <td rowspan=2>/users/wallets/withdraw-confirm</td>
+</tr>
+<tr>
+<td>Insufficient Balance</td>
+<td>InsufficientBalance</td>
+</tr>
+<tr>
+<td>Withdraw is not cancelable</td>
+<td>NotCancelable <td rowspan=1>/users/wallets/withdraw-cancel</td>
+</tr>
+<tr>
+<td>CoinDepositLimitation</td>
+<td>CoinDepositLimitation <td rowspan=2>/users/wallets/invoice/generate</td>
+</tr>
+<tr>
+<td>CoinDepositDisabled</td>
+<td>CoinDepositDisabled</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">

@@ -284,7 +284,7 @@
     </style>
     <link href="stylesheets/screen-f47d16a4.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-5c68d5d9.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/custom-08755365.css" rel="stylesheet" />
+    <link href="stylesheets/custom-80a17624.css" rel="stylesheet" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
   </head>
@@ -318,6 +318,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#44f2212779" class="toc-h1 toc-link" data-title="صورت‌حساب کیف پول">صورت‌حساب کیف پول</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#358c896780" class="toc-h2 toc-link" data-title="ایجاد صورت‌حساب واریز">ایجاد صورت‌حساب واریز</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -339,6 +347,8 @@
 <span class="kn">import</span> <span class="nn">retrofit2.http.GET</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">retrofit2.http.POST</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">retrofit2.http.Headers</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">retrofit2.http.Field</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">retrofit2.http.FormUrlEncoded</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">retrofit2.converter.gson.GsonConverterFactory</span><span class="o">;</span>
 
 <span class="nc">Retrofit</span> <span class="n">retrofit</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Retrofit</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
@@ -361,9 +371,9 @@
 <p>نمونه درخواست: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/notifications/list'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/notifications/list</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
@@ -458,6 +468,347 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>boolean</td>
 <td>خوانده شده</td>
 <td>false</td>
+</tr>
+</tbody></table>
+<h1 id='44f2212779'>صورت‌حساب کیف پول</h1>
+<p>صورت‌حساب یا فاکتور (invoice) برای دریافت رمزارز در برخی شبکه‌های انتقال استفاده می‌شود.
+برای آشنایی با مفاهیم مرتبط با انتقال صورت‌حسابی
+<a href="https://blog.nobitex.ir/لایتنینگ-چیست-و-چطور-از-آن-استفاده-کنیم/" title="لایتنینگ چیست و چطور از آن استفاده کنیم؟">مطلب آموزشی بلاگ</a>
+را مطالعه نمایید.</p>
+
+<aside class="notice">
+در حال حاضر تنها برای کیف پول بیت‌کوین از طریق شبکه لایتنینگ انتقال صورت‌حسابی امکان‌پذیر است.
+</aside>
+
+<aside class="notice">
+احراز هویت در API های این مجموعه الزامی است.
+</aside>
+<h2 id='358c896780'>ایجاد صورت‌حساب واریز</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/invoice/generate'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"wallet": 1, "amount": 100}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/wallets/invoice/generate</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">wallet</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">amount</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@FormUrlEncoded</span>
+  <span class="nd">@POST</span><span class="o">(</span><span class="s">"/users/wallets/invoice/generate"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">generateWalletInvoice</span><span class="o">(</span><span class="nd">@Field</span><span class="o">(</span><span class="s">"wallet"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">walletId</span><span class="o">,</span> <span class="nd">@Field</span><span class="o">(</span><span class="s">"amount"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">amount</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">generateWalletInvoice</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/wallets/invoice/generate HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{"wallet": 1, "amount": 100}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deposit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000010000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-17T18:52:31.679312+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"depositType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coinDeposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000010000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deposit - address:tbtctest2o21q2ufulqrp85wt6qnxzxgmkd72hgc2du, tx:0001020304050607080900010203040506070809000102030405060708090102"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-17T18:52:31.679312+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001020304050607080900010203040506070809000102030405060708090102"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchainUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash: 0001020304050607080900010203040506070809000102030405060708090102"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requiredConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isConfirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>برای ایجاد صورت‌حساب واریز از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/wallets/invoice/generate</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه کیف‌پول کاربر برای رمزارز واریز شده</td>
+<td>1</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>مقدار رمزارز واریز شده</td>
+<td>100</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+واحد amount برای رمزارز بیت‌کوین در این درخواست معادل
+<a href="https://blog.nobitex.ir/glossary/satoshi/">ساتوشی</a>
+می‌باشد.
+</aside>
+
+<aside class="notice">
+در حال حاضر، حداقل واریز 100 ساتوشی و حداکثر واریز 100000 ساتوشی در نظر گرفته شده است.
+</aside>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>deposit</td>
+<td>CoinDeposit</td>
+<td>اطلاعات واریز</td>
+<td>{&quot;id&quot;: 1, ...}</td>
+</tr>
+</tbody></table>
+<h3 id='deposit'>شی Deposit</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>شناسه واریز</td>
+<td>1</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار واریز شده</td>
+<td>&quot;0.0000010000&quot;</td>
+</tr>
+<tr>
+<td>date</td>
+<td>iso-string</td>
+<td>زمان واریز</td>
+<td>&quot;2021-10-17T18:52:31.679312+00:00&quot;</td>
+</tr>
+<tr>
+<td>depositType</td>
+<td>string</td>
+<td>شناسه واریز</td>
+<td>1</td>
+</tr>
+<tr>
+<td>confirmed</td>
+<td>boolean</td>
+<td>تایید شده در نوبیتکس</td>
+<td>true</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>Transaction</td>
+<td>اطلاعات تراکنش واریز به کیف پول</td>
+<td>{&quot;id&quot;: 5, ...}</td>
+</tr>
+</tbody></table>
+<h3 id='coindeposit-deposit-deposittype-quot-coindeposit-quot'>شی CoinDeposit (نوع Deposit با depositType = <bdi>&quot;coinDeposit&quot;</bdi>)</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>txHash</td>
+<td>string</td>
+<td>هش واریز</td>
+<td><span class="long">&quot;0001020304050607080900010203040506070809000102030405060708090102&quot;</span></td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>آدرس یا تگ واریز</td>
+<td>123456789</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>رمزارز واریزی</td>
+<td>&quot;Bitcoin&quot;</td>
+</tr>
+<tr>
+<td>blockchainUrl</td>
+<td>integer</td>
+<td>شناسه واریز</td>
+<td><span class="long">&quot;hash: 0001020304050607080900010203040506070809000102030405060708090102&quot;</span></td>
+</tr>
+<tr>
+<td>requiredConfirmations</td>
+<td>integer</td>
+<td>تعداد تاییدهای مورد نیاز</td>
+<td>3</td>
+</tr>
+<tr>
+<td>confirmations</td>
+<td>integer</td>
+<td>تعداد تاییدهای دریافت شده</td>
+<td>2</td>
+</tr>
+<tr>
+<td>isConfirmed</td>
+<td>boolean</td>
+<td>تایید شده در شبکه رمزارزی</td>
+<td>false</td>
+</tr>
+<tr>
+<td>invoice</td>
+<td>string</td>
+<td>صورت‌حساب واریز</td>
+<td><span class="long">&quot;lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru&quot;</span></td>
+</tr>
+<tr>
+<td>expired</td>
+<td>boolean</td>
+<td>منقضی شده</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h3 id='transaction'>شی Transaction</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>شناسه تراکنش</td>
+<td>5</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار تراکنش</td>
+<td>&quot;0.0000010000&quot;</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>رمزارز تراکنش</td>
+<td>&quot;btc&quot;</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>توضیح تراکنش</td>
+<td>&quot;Deposit - address:tbtctest2o21q2ufulqrp85wt6qnxzxgmkd72hgc2du, tx:0001020304050607080900010203040506070809000102030405060708090102&quot;</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>iso-string</td>
+<td>زمان تراکنش</td>
+<td>&quot;2021-10-17T18:52:31.679312+00:00&quot;</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>integer</td>
+<td>موجودی نهایی کیف پول</td>
+<td>null</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در 3 دقیقه
+</aside>
+
+<aside class="warning">
+کاربر درخواست دهنده در این API بایستی حداقل سطح مجاز برای واریز رمزارز (سطح یک) را داشته باشد.
+</aside>
+
+<ul>
+<li>حالت‌های خطا</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CoinDepositLimitation</td>
+<td>کاربر اجازه واریز رمزارز در نوبیتکس را ندارد.</td>
+</tr>
+<tr>
+<td>InvalidAmount</td>
+<td>مقدار تراکنش در بازه مجاز نیست.</td>
+</tr>
+<tr>
+<td>InvalidCurrency</td>
+<td>رمزارز کیف‌پول درخواست از انتقال صورت‌حسابی پشتیبانی نمی‌کند.</td>
+</tr>
+<tr>
+<td>CoinDepositDisabled</td>
+<td>امکان واریز رمزارز در این شبکه به طور مقطعی توسط مدیر سیستم غیر فعال شده است.</td>
+</tr>
+<tr>
+<td>NotAvailable</td>
+<td>دسترسی به شبکه برای ساخت صورت‌حساب به دلیل اختلالات در اتصال به صورت موقت وجود ندارد.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است.</td>
 </tr>
 </tbody></table>
 
