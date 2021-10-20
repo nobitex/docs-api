@@ -163,9 +163,111 @@ balance | integer | موجودی نهایی کیف پول | null
 
 کد خطا | توضیحات
 ---- | ----
-CoinDepositLimitation | کاربر اجازه واریز رمزارز در نوبیتکس را ندارد. 
+CoinDepositLimitation | کاربر اجازه واریز رمزارز در نوبیتکس را ندارد.
 InvalidAmount | مقدار تراکنش در بازه مجاز نیست.
-InvalidCurrency | رمزارز کیف‌پول درخواست از انتقال صورت‌حسابی پشتیبانی نمی‌کند. 
+InvalidCurrency | رمزارز کیف‌پول درخواست از انتقال صورت‌حسابی پشتیبانی نمی‌کند.
 CoinDepositDisabled | امکان واریز رمزارز در این شبکه به طور مقطعی توسط مدیر سیستم غیر فعال شده است.
 NotAvailable | دسترسی به شبکه برای ساخت صورت‌حساب به دلیل اختلالات در اتصال به صورت موقت وجود ندارد.
 ParseError |نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است.
+
+
+##تفسیر صورت‌حساب
+
+>نمونه درخواست:
+
+```shell
+curl -X POST 'https://api.nobitex.ir/users/wallets/invoice/decode' \
+  -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  --data '{"wallet": 1,"invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}'
+```
+
+```javascript
+api.post('/users/wallets/invoice/decode', {
+    wallet: 1,
+    invoice: 'lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru'
+}, {
+  headers: {Authorization: 'Token yourTOKENhereHEX0000000000'},
+}).then((response) => {
+  console.log(response);
+});
+```
+
+```java
+public interface APIService {
+  @Headers({"Authorization: Token yourTOKENhereHEX0000000000"})
+  @FormUrlEncoded
+  @POST("/users/wallets/invoice/decode")
+  Call<JsonObject> decodeWalletInvoice(@Field("wallet") int walletId, @Field("invoice") String invoice);
+}
+
+APIService api = retrofit.create(APIService.class);
+
+String invoice = "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru";
+Call<JsonObject> call = api.decodeWalletInvoice(1, invoice);
+```
+
+```swift
+// Contact us
+```
+
+```plaintext
+POST /users/wallets/invoice/decode HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{"wallet": 1,""invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "ok",
+  "amount": "0.000001",
+  "address": "03e7156ae33b0a208d0744199163177e909e80176e55d97a2f221ede0f934dd9ad",
+  "date": 1634496751,
+  "fee": "0.00000010"
+}
+```
+
+برای استخراج مقادیر موجود در صورت‌حساب رمزگذاری شده از این نوع درخواست استفاده نمایید:
+
+* آدرس: `POST /users/wallets/invoice/decode`
+
+* پارامترهای ورودی:
+
+پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
+------- | ---- | ---- | --------- | ---------
+wallet | integer | الزامی | شناسه کیف‌پول کاربر که صورت‌حساب برای آن صادر شده | 1
+invoice | string | الزامی | صورت‌حساب کد شده | <span class="long">"lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"</span>
+
+> نمونه صورت‌حساب آزمایشی:
+
+```json
+"lntb1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5wtu3ws8aua895ruar4kw2ps6vrc4cj2nrsyms6t5n8q38rrpw6nqnus2fen69uwyzru2m65qxvvezmw6y8pxqz9qg3px6jldq40smpgp05rvjk"
+```
+
+<aside class="notice">
+دقت نمایید صورت‌حساب ثبت شده نمی‌تواند مربوط به شبکه‌های آزمایشی رمزارز باشد. برای تفسیر صورت‌حساب‌های آزمایشی از محیط آزمایشی نوبیتکس استفاده نمایید.
+</aside>
+
+* پارامترهای پاسخ:
+
+پارامتر | نوع | توضیحات | نمونه
+------- | ---- | --------- | ---------
+status | string | وضعیت پاسخ | ok
+amount | monetary | مقدار صورت‌حساب | "0.000001"
+date | int | زمان ایجاد صورت‌حساب | 1634496751
+address | string | کلید عمومی پرداخت کننده | <span class="long">"03e7156ae33b0a208d0744199163177e909e80176e55d97a2f221ede0f934dd9ad"</span>
+fee | monetary | کارمزد انتقال | "0.00000010"
+
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در 2 دقیقه
+</aside>
+
+* حالت‌های خطا
+
+کد خطا | توضیحات
+---- | ----
+InvalidInvoice | <p>صورت‌حساب نامعتبر است یا پشتیبانی نمی‌شود</p>
