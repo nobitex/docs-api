@@ -19,6 +19,7 @@
 ```shell
 curl -X POST 'https://api.nobitex.ir/users/wallets/invoice/generate' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  -H 'Content-Type: application/json' \
   --data '{"wallet": 1, "amount": 100}'
 ```
 
@@ -178,6 +179,7 @@ ParseError |نوع یا شرط الزامی بودن یکی از پارامتر�
 ```shell
 curl -X POST 'https://api.nobitex.ir/users/wallets/invoice/decode' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  -H 'Content-Type: application/json' \
   --data '{"wallet": 1,"invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}'
 ```
 
