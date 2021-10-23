@@ -8,6 +8,7 @@ language_tabs:
   - swift
   - plaintext
 includes:
+  - internal/2fa
   - internal/notifications
   - internal/wallet_invoice
 toc_footers:

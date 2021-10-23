@@ -10,6 +10,7 @@ toc_footers:
 
 # مستندات جدید
 ## 1400/07
+* فعال‌سازی شناسایی دوعاملی (/users/tfa/request)
 * تفسیر صورت‌حساب (/users/wallets/invoice/decode)
 * ایجاد صورت‌حساب واریز (/users/wallets/invoice/generate)
 * لیست نوتیفیکیشن‌ها (/notifications/list)
