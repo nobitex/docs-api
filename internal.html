@@ -311,6 +311,20 @@
             <a href="#api" class="toc-h1 toc-link" data-title="مستندات API داخلی نوبیتکس">مستندات API داخلی نوبیتکس</a>
           </li>
           <li>
+            <a href="#a68e7d7c2f" class="toc-h1 toc-link" data-title="شناسایی دوعاملی">شناسایی دوعاملی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#42abd66a01" class="toc-h2 toc-link" data-title="فعال‌سازی شناسایی دوعاملی">فعال‌سازی شناسایی دوعاملی</a>
+                  </li>
+                  <li>
+                    <a href="#5172077f3e" class="toc-h2 toc-link" data-title="تایید شناسایی دوعاملی">تایید شناسایی دوعاملی</a>
+                  </li>
+                  <li>
+                    <a href="#508568a81e" class="toc-h2 toc-link" data-title="غیرفعال‌سازی شناسایی دوعاملی">غیرفعال‌سازی شناسایی دوعاملی</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#46db07baca" class="toc-h1 toc-link" data-title="اعلان‌های کاربر">اعلان‌های کاربر</a>
               <ul class="toc-list-h2">
                   <li>
@@ -363,6 +377,380 @@
 <p>مستندات این بخش، سایر APIهای نوبیتکس را که عموما با بازار نوبیتکس ارتباطی نداشته و بیشتر ناظر به نیازهای ارتباطی و عملکردی سایت و اپلیکیشن نوبیتکس می‌باشد، توضیح می‌دهد.</p>
 
 <p>توجه داشته باشید بعضی از APIها نیاز به احراز هویت و دریافت توکن دارد که میتوانید از <a href="./#login">مستندات احراز هویت</a> نحوه عملکرد آن را مطالعه کنید.</p>
+<h1 id='a68e7d7c2f'>شناسایی دوعاملی</h1>
+<p>شناسایی دوعاملی جهت افزایش امنیت حساب و دارایی کاربر در زمان ورود، علاوه بر گذرواژه، یک کد شش رقمی تقاضا خواهد نمود که از <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" title="Google Authenticator">احرازگر گوگل</a> دریافت می‌شود.</p>
+
+<aside class="notice">
+فعالسازی شناسایی دو عاملی برای کاربران سطح دو نوبیتکس اجباری است.
+</aside>
+
+<aside class="notice">
+احراز هویت در API های این مجموعه الزامی است.
+</aside>
+<h2 id='42abd66a01'>فعال‌سازی شناسایی دوعاملی</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/tfa/request'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/tfa/request</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@GET</span><span class="o">(</span><span class="s">"/users/tfa/request"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">request2FA</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">request2FA</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /users/tfa/request HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"device"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"otpauth://totp/Nobitex%3Atest%40nobitex.net?secret=FXZJ28P2V3U0F4W3U7707EYIKNBJAKR6&amp;algorithm=SHA1&amp;digits=6&amp;period=30&amp;issuer=Nobitex"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای فعال‌سازی شناسایی دوعاملی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li>آدرس: <code>GET /users/tfa/request</code></li>
+</ul>
+
+<aside class="notice">
+کاربر درخواست دهنده بایستی شماره تماس و ایمیل تایید شده در نوبیتکس داشته باشد.
+</aside>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>device</td>
+<td>TOTPDevice</td>
+<td>اطلاعات تنظیم دستگاه</td>
+<td>{&quot;id&quot;: 1, ...}</td>
+</tr>
+</tbody></table>
+<h3 id='totpdevice'>شی TOTPDevice</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>شناسه دستگاه</td>
+<td>1</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>نام دستگاه</td>
+<td>&quot;App&quot;</td>
+</tr>
+<tr>
+<td>confirmed</td>
+<td>boolean</td>
+<td>تایید شده با پیامک</td>
+<td>false</td>
+</tr>
+<tr>
+<td>configUrl</td>
+<td>string</td>
+<td>آدرس تنظیم شناسایی دوعاملی در احرازگر گوگل</td>
+<td><span class="long">&quot;otpauth://totp/Nobitex%3Atest%40nobitex.net?secret=FXZJ28P2V3U0F4W3U7707EYIKNBJAKR6&amp;algorithm=SHA1&amp;digits=6&amp;period=30&amp;issuer=Nobitex&quot;</span></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 3 درخواست در 10 دقیقه / 10 درخواست در ساعت
+</aside>
+
+<aside class="notice">
+پس از ثبت درخواست، پیامکی حاوی کد شش رقمی جهت تایید دستگاه به شماره همراه کاربر ارسال می‌شود که ظرف مدت 30 دقیقه منقضی خواهد شد.
+</aside>
+
+<ul>
+<li>حالت‌های خطا</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UnverifiedMobile</td>
+<td>کاربر شماره تماس یا ایمیل تایید شده ندارد.</td>
+</tr>
+</tbody></table>
+
+<p>کاربر با خروجی این API می‌تواند برنامه احرازگر گوگل را فعال نماید. این برنامه هر 30 ثانیه یک بار کد جدیدی تولید می‌کند که تا دو دقیقه قابل استفاده است.
+در صورت تنظیم درست احرازگر گوگل می‌توانید برای تایید دستگاه (device) و تکمیل درخواست خود اقدام کنید.</p>
+<h2 id='5172077f3e'>تایید شناسایی دوعاملی</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/tfa/confirm'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"device": 1, "otp": 123456, "sms_otp": 987654}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/tfa/confirm</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">device</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">otp</span><span class="p">:</span> <span class="mi">123456</span><span class="p">,</span> <span class="na">sms_otp</span><span class="p">:</span> <span class="mi">987654</span><span class="p">},</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@FormUrlEncoded</span>
+  <span class="nd">@POST</span><span class="o">(</span><span class="s">"/users/tfa/confirm"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">confirm2FA</span><span class="o">(</span><span class="nd">@Field</span><span class="o">(</span><span class="s">"device"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">deviceId</span><span class="o">,</span> <span class="nd">@Field</span><span class="o">(</span><span class="s">"otp"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">otp</span><span class="o">,</span> <span class="nd">@Field</span><span class="o">(</span><span class="s">"sms_otp"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">smsOtp</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">confirm2FA</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">123456</span><span class="o">,</span> <span class="mi">987654</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/tfa/confirm HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+{"device": 1, "otp": 123456, "sms_otp": 987654}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>پس از تنظیم شناسایی دوعاملی در احرازگر گوگل و دریافت پیامک کد تایید، برای تکمیل درخواست خود از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/tfa/confirm</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>device</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه دستگاهی که فعال‌سازی شناسایی دوعاملی را درخواست کرده</td>
+<td>1</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>رمز یکبارمصرف شش رقمی دریافت شده از احرازگر گوگل</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>sms_otp</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>کد تایید شش رقمی پیامک شده به شماره همراه کاربر</td>
+<td>987654</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در 10 دقیقه / 20 درخواست در ساعت
+</aside>
+
+<aside class="notice">
+در صورت اشتباه وارد کردن رمز یکبارمصرف احرازگر گوگل، برای درخواست بعدی با توجه به دفعات اشتباه بایستی به ترتیب 1، 2، 4، 8 و ... ثانیه پیش از درخواست مجدد صبر کنید.
+</aside>
+
+<aside class="notice">
+حداکثر یک دستگاه دارای شناسایی دوعاملی فعال در هر لحظه برای کاربر مجاز است و در صورت فعال‌سازی دستگاه دیگر، دستگاه قبلی غیر فعال خواهد شد.
+</aside>
+
+<ul>
+<li>حالت‌های خطا</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidOTP</td>
+<td>رمز یکبارمصرف نامعتبر است یا زمان لازم برای انتظار پس از ورود اشتباه رمز سپری نشده است.</td>
+</tr>
+<tr>
+<td>MissingSmsOTP</td>
+<td>کد تایید پیامک شده ارسال نشده است.</td>
+</tr>
+<tr>
+<td>InvalidSmsOTP</td>
+<td>کد تایید پیامک شده منقضی یا نامعتبر است.</td>
+</tr>
+</tbody></table>
+<h2 id='508568a81e'>غیرفعال‌سازی شناسایی دوعاملی</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/tfa/disable'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"otp": 123456}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/tfa/disable</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">otp</span><span class="p">:</span> <span class="mi">123456</span><span class="p">},</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@FormUrlEncoded</span>
+  <span class="nd">@POST</span><span class="o">(</span><span class="s">"/users/tfa/disable"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">disable2FA</span><span class="o">(</span><span class="nd">@Field</span><span class="o">(</span><span class="s">"otp"</span><span class="o">)</span> <span class="kt">int</span> <span class="n">otp</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">disable2FA</span><span class="o">(</span><span class="mi">123456</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/tfa/disable HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+{"otp": 123456}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای غیرفعال‌سازی شناسایی دوعاملی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/tfa/disable</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>otp</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>رمز یکبارمصرف شش رقمی دریافت شده از احرازگر گوگل</td>
+<td>123456</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در صورت اشتباه وارد کردن رمز یکبارمصرف احرازگر گوگل، برای درخواست بعدی با توجه به دفعات اشتباه بایستی به ترتیب 1، 2، 4، 8 و ... ثانیه پیش از درخواست مجدد صبر کنید.
+</aside>
+
+<ul>
+<li>حالت‌های خطا</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidOTP</td>
+<td>رمز یکبارمصرف نامعتبر است یا زمان لازم برای انتظار پس از ورود اشتباه رمز سپری نشده است.</td>
+</tr>
+</tbody></table>
 <h1 id='46db07baca'>اعلان‌های کاربر</h1>
 <p>این اعلانات برای اطلاع‌رسانی به کاربر از سوی نوبیتکس ارسال می‌شود و در بخش اعلانات سایت و اپلیکیشن به نمایش در می‌آید.</p>
 
@@ -847,7 +1235,7 @@ Content-Type: application/json
 Host: api.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
-{"wallet": 1,""invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}
+{"wallet": 1, "invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
