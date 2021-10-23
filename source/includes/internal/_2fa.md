@@ -193,3 +193,81 @@ status | string | وضعیت پاسخ | ok
 InvalidOTP | رمز یکبارمصرف نامعتبر است یا زمان لازم برای انتظار پس از ورود اشتباه رمز سپری نشده است.
 MissingSmsOTP | کد تایید پیامک شده ارسال نشده است.
 InvalidSmsOTP | کد تایید پیامک شده منقضی یا نامعتبر است.
+
+
+##غیرفعال‌سازی شناسایی دوعاملی
+
+>نمونه درخواست:
+
+```shell
+curl -X POST 'https://api.nobitex.ir/users/tfa/disable' \
+  -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  -H 'Content-Type: application/json' \
+  --data '{"otp": 123456}'
+```
+
+```javascript
+api.post('/users/tfa/disable', {otp: 123456}, {
+  headers: {Authorization: "Token yourTOKENhereHEX0000000000"},
+}).then((response) => {
+  console.log(response);
+});
+```
+
+```java
+public interface APIService {
+  @Headers({"Authorization: Token yourTOKENhereHEX0000000000"})
+  @FormUrlEncoded
+  @POST("/users/tfa/disable")
+  Call<JsonObject> disable2FA(@Field("otp") int otp);
+}
+
+APIService api = retrofit.create(APIService.class);
+
+Call<JsonObject> call = api.disable2FA(123456);
+```
+
+```swift
+// Contact us
+```
+
+```plaintext
+POST /users/tfa/disable HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+{"otp": 123456}
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+برای غیرفعال‌سازی شناسایی دوعاملی از این نوع درخواست استفاده نمایید:
+
+* آدرس: `POST /users/tfa/disable`
+
+* پارامترهای ورودی:
+
+پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
+------- | ---- | ---- | --------- | ---------
+otp | integer | الزامی | رمز یکبارمصرف شش رقمی دریافت شده از احرازگر گوگل | 123456
+
+* پارامترهای پاسخ:
+
+پارامتر | نوع | توضیحات | نمونه
+------- | ---- | --------- | ---------
+status | string | وضعیت پاسخ | ok
+
+<aside class="notice">
+در صورت اشتباه وارد کردن رمز یکبارمصرف احرازگر گوگل، برای درخواست بعدی با توجه به دفعات اشتباه بایستی به ترتیب 1، 2، 4، 8 و ... ثانیه پیش از درخواست مجدد صبر کنید.
+</aside>
+
+* حالت‌های خطا
+
+کد خطا | توضیحات
+---- | ----
+InvalidOTP | رمز یکبارمصرف نامعتبر است یا زمان لازم برای انتظار پس از ورود اشتباه رمز سپری نشده است.
