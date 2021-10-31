@@ -332,6 +332,11 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 انواع ارز:
 usd, rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, doge, xlm, trx, ada, xmr, xem, iota, etc, dash, zec, neo, qtum, xtz
 </aside>
+<aside class="warning">
+در شی پاسخ جهت سازگاری با نسخه‌های پیشین، آمار بازار بایننس نیز برگردانده می‌شود.
+دقت کنید این قسمت از اطلاعات (متناظر با کلید global) منسوخ شده و در نسخه‌های آتی به طور کامل حذف خواهد شد.
+توصیه می‌شود جهت دریافت آمار بازار بایینس از <a href="#cdf265d0e6">آمار بازار جهانی</a> استفاده نمایید.
+</aside>
 
 ## آمار OHLC بازار نوبیتکس
 
