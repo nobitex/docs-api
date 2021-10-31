@@ -51,6 +51,7 @@ CoinDepositDisabled | CoinDepositDisabled
 
 ## مستندات جدید آبان ۱۴۰۰
 
+* لیست سفارشات همه بازارها (/v2/orderbook/all)
 * تاریخچه تراکنش‌های مالی کاربر (/users/transactions-history)
 * لیست معاملات صرافی (/exchange/trades-list)
 * ثبت معامله در صرافی (/exchange/create-trade)
