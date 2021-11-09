@@ -210,6 +210,9 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 
 
 <aside class="notice">
+محدودیت فراخوانی : 60 درخواست در دقیقه
+</aside>
+<aside class="notice">
 خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
 </aside>
 <aside class="notice">
