@@ -81,12 +81,12 @@ toc_footers:
 curl 'https://api.nobitex.ir/auth/login/' \
   -X POST \
   -H "Content-Type: application/json" \
-  --data $'{"username":"name@example.com","password":"secret-password-1234"}'
+  --data $'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/auth/login/ \
-  username=name@example.com password=secret-password-1234
+  username=name@example.com password=secret-password-1234 captcha=api
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -117,6 +117,7 @@ http POST https://api.nobitex.ir/auth/login/ \
 username | string | الزامی | ایمیل کاربر | `name@example.com`
 password | string | الزامی | رمز عبور کاربر | `secret-password-1234`
 remember | string | no | آیا توکن بلند مدت صادر شود؟ | `yes` یا `no`
+captcha | string | الزامی | کپچا | `api`
 
 <aside class="notice">
 توکن‌های دریافت شده از این روش، بعد از اتمام زمان اعتبار (چهار ساعت یا سی روز) منقضی می‌شوند. در صورت نیاز به توکن‌های با تاریخ انقضای
