@@ -10,9 +10,11 @@ includes:
   - faq
   - deprecated
 toc_footers:
-  - <a href='https://github.com/nobitex/docs-api'>مخزن گیت هاب</a>
-  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
+  - <a href='/changelog/'>سابقه تغییرات API</a>
+  - <a href='/terms/'>شرایط استفاده از API</a>
+  - <a href='https://github.com/nobitex/docs-api'>مخزن گیت‌هاب</a>
   - <a href='https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest'>کالکشن Postman</a>
+  - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
 
 # مستندات API نوبیتکس
@@ -1413,7 +1415,7 @@ dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
 ```shell
 curl 'https://api.nobitex.ir/security/emergency-cancel/activate' \
   -X GET \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568" 
+  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
 ```
 
 ```plaintext
@@ -1434,7 +1436,7 @@ http GET https://api.nobitex.ir/security/emergency-cancel/activate \
 
 
 جهت فعالسازی امکان لغو اضطراریِ درخواست های برداشت از این درخواست استفاده نمائید.
-پس از فعالسازی این امکان، پیامک و ایمیل ارسالی پس از ثبت درخواست برداشت، 
+پس از فعالسازی این امکان، پیامک و ایمیل ارسالی پس از ثبت درخواست برداشت،
 حاوی لینکی خواهد بود که شما میتوانید با استفاده از آن در صورتی که درخواست برداشت توسط شما ثبت نشده است، در کمترین زمان ممکن و بدون نیاز به لاگین، درخواست های برداشت خود را لغو نمایید.
 
 - آدرس : `GET /security/emergency-cancel/activate`
