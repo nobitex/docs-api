@@ -572,9 +572,9 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/auth/login/'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234"}'</span>
+  <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/auth/login/ \
-  username=name@example.com password=secret-password-1234
+  username=name@example.com password=secret-password-1234 captcha=api
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -626,6 +626,13 @@
 <td>no</td>
 <td>آیا توکن بلند مدت صادر شود؟</td>
 <td><code>yes</code> یا <code>no</code></td>
+</tr>
+<tr>
+<td>captcha</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کپچا</td>
+<td><code>api</code></td>
 </tr>
 </tbody></table>
 
