@@ -102,7 +102,7 @@ channel | string | کانال اطلاع‌رسانی<sup>3</sup> | "Email/Notif
 
 1. **نوع اعلان:** در حال حاضر تنها می‌تواند Price باشد. اعلان نوع Price برای پایش رسیدن به یک قیمت مشخص به‌کار می‌رود.
 2. **جهت تغییر بازار:** می‌تواند دو مقدار + یا - داشته باشد. جهت + یعنی اعلان در صورت بیشتر شدن قیمت بازار از قیمت تعیین شده فعال می‌شود و جهت - یعنی در صورت پایین تر آمدن قیمت بازار تا قیمت تعیین شده، اعلان فعال و ارسال خواهد شد.
-3. **کانال اطلاع‌رسانی:** می‌تواند هر یک از کانال‌های نوتیفیکیشن (Nofit)، ایمیل (Email) یا پیامک (SMS) و یا ترکیبی از آن‌ها باشد. (کانال پیامک در آینده پشتیبانی خواهد شد و در حال حاضر غیرفعال است.)
+3. **کانال اطلاع‌رسانی:** می‌تواند هر یک از کانال‌های نوتیفیکیشن (Notif)، ایمیل (Email) یا پیامک (SMS) و یا ترکیبی از آن‌ها باشد. (کانال پیامک در آینده پشتیبانی خواهد شد و در حال حاضر غیرفعال است.)
 
 <aside class="notice">
 محدودیت فراخوانی : 25 درخواست در 5 دقیقه
@@ -325,3 +325,76 @@ alert | PriceAlert | اعلان قیمت به‌روز شده | {"id": 3, ...}
 * حالت‌های خطا
   * در صورتی که کاربر اعلانی با شناسه ارسال شده نداشته باشد، خطای 404 بازگردانده می‌شود.
   * سایر خطاها مشابه حالات خطا در ایجاد اعلان قیمت است.
+
+##حذف اعلان قیمت
+
+>نمونه درخواست:
+
+```shell
+curl -X DELETE 'https://api.nobitex.ir/v2/price-alerts?delete_item=1,3' \
+  -H 'Authorization: Token yourTOKENhereHEX0000000000'
+```
+
+```javascript
+api.delete('/v2/price-alerts?delete_item=1,3', {
+  headers: {Authorization: 'Token yourTOKENhereHEX0000000000'},
+}).then((response) => {
+  console.log(response);
+});
+```
+
+```java
+public interface APIService {
+  @Headers({"Authorization: Token yourTOKENhereHEX0000000000"})
+  @DELETE("/v2/price-alerts")
+  Call<JsonObject> deletePriceAlerts(@Query("delete_item") String deleteItems);
+}
+
+APIService api = retrofit.create(APIService.class);
+
+Call<JsonObject> call = api.deletePriceAlerts("1,3");
+```
+
+```swift
+// Contact us
+```
+
+```plaintext
+DELETE /v2/price-alerts?delete_item=1,3 HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+برای حذف اعلان‌های قیمت خود از این نوع درخواست استفاده نمایید:
+
+* آدرس: `DELETE /v2/price-alerts`
+
+* پارامترهای ورودی:
+
+پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
+------- | ---- | ---- | --------- | ---------
+delete_item | string | الزامی | شناسه اعلان‌های قیمت مدنظر حذف | "1,3"
+
+* پارامترهای پاسخ:
+
+پارامتر | نوع | توضیحات | نمونه
+------- | ---- | --------- | ---------
+status | string | وضعیت پاسخ | ok
+
+<aside class="notice">
+محدودیت فراخوانی : 25 درخواست در 5 دقیقه
+</aside>
+
+* حالت‌های خطا
+
+کد خطا | توضیحات
+---- | ----
+ValidationError | شناسه اعلان قیمتی برای حذف ارسال نشده است.
