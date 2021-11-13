@@ -222,3 +222,106 @@ alert | PriceAlert | اعلان قیمت ایجاد شده | {"id": 3, ...}
 InvalidSymbol | نماد بازار (market) نامعتبر است.
 ParseError | مقادیر ورودی‌ها از الگوی خواسته شده پیروی نمی‌کند.
 ValidationError | ورودی‌های الزامی ارسال نشده است.
+
+
+##ویرایش اعلان قیمت
+
+>نمونه درخواست:
+
+```shell
+curl -X POST 'https://api.nobitex.ir/v2/price-alerts' \
+  -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  -H 'Content-Type: application/json' \
+  --data '{"pk": 3, "tp": "price", "market": "btcusdt", "direction": "+", "price": "64000", "channel": "notif"}'
+```
+
+```javascript
+api.post('/v2/price-alerts', {
+  pk: 3,
+  tp: 'price',
+  market: 'btcusdt',
+  direction: '+',
+  price: '64000',
+  channel: 'notif',
+}, {
+  headers: {Authorization: 'Token yourTOKENhereHEX0000000000'},
+}).then((response) => {
+  console.log(response);
+});
+```
+
+```java
+public interface APIService {
+  @Headers({"Authorization: Token yourTOKENhereHEX0000000000"})
+  @FormUrlEncoded
+  @POST("/v2/price-alerts")
+  Call<JsonObject> updatePriceAlert(
+    @Field("pk") int alertId,
+    @Field("tp") String alertType,
+    @Field("market") String market,
+    @Field("direction") String direction,
+    @Field("price") String price,
+    @Field("channel") String channel,
+  );
+}
+
+APIService api = retrofit.create(APIService.class);
+
+Call<JsonObject> call = api.updatePriceAlert(3, "price", "btcusdt", "+", "64000", "notif");
+```
+
+```swift
+// Contact us
+```
+
+```plaintext
+POST /v2/price-alerts HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{"pk": 3, tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "ok",
+  "alert": {
+    "id": 3,
+    "createdAt": "2021-08-10T20:07:07.977328+00:00",
+    "market": "BTCUSDT",
+    "type": "Price",
+    "direction": "+",
+    "price": "64000.0000000000",
+    "description": "",
+    "channel": "Notif"
+  }
+}
+```
+
+برای ویرایش یک اعلان قیمت، از درخواستی مشابه درخواست ایجاد اعلان قیمت استفاده می‌کنیم، با این تفاوت که شناسه اعلان قیمت مورد نظر نیز به پارامترهای ورودی افزوده می‌شود:
+
+* آدرس: `POST /v2/price-alerts`
+
+* پارامترهای ورودی:
+
+پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
+------- | ---- | ---- | --------- | ---------
+pk | integer | الزامی | شناسه یکتای اعلان | 3 <tr><td>...<td colspan=4>مشابه پارامترهای ورودی ایجاد اعلان قیمت
+
+* پارامترهای پاسخ:
+
+پارامتر | نوع | توضیحات | نمونه
+------- | ---- | --------- | ---------
+status | string | وضعیت پاسخ | ok
+alert | PriceAlert | اعلان قیمت به‌روز شده | {"id": 3, ...}
+
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در 5 دقیقه
+</aside>
+
+* حالت‌های خطا
+  * در صورتی که کاربر اعلانی با شناسه ارسال شده نداشته باشد، خطای 404 بازگردانده می‌شود.
+  * سایر خطاها مشابه حالات خطا در ایجاد اعلان قیمت است.
