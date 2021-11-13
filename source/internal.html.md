@@ -11,6 +11,7 @@ includes:
   - internal/2fa
   - internal/notifications
   - internal/wallet_invoice
+  - internal/price_alerts
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---

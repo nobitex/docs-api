@@ -48,6 +48,7 @@ CoinDepositDisabled | CoinDepositDisabled
 
 ## مستندات جدید آبان ۱۴۰۰
 
+* CRUD اعلان قیمت (/v2/price-alerts)
 * غیرفعال‌سازی شناسایی دوعاملی (/users/tfa/disable)
 * تایید شناسایی دوعاملی (/users/tfa/confirm)
 * فعال‌سازی شناسایی دوعاملی (/users/tfa/request)
