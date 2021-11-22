@@ -13,6 +13,7 @@ includes:
   - internal/wallet_invoice
   - internal/price_alerts
   - internal/exchange
+  - internal/transactions
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
