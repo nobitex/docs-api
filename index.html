@@ -450,6 +450,9 @@
                     <a href="#82d68ae596" class="toc-h2 toc-link" data-title="پاسخ‌های ناموفق">پاسخ‌های ناموفق</a>
                   </li>
                   <li>
+                    <a href="#cb16a9b01c" class="toc-h2 toc-link" data-title="صفحه‌بندی">صفحه‌بندی</a>
+                  </li>
+                  <li>
                     <a href="#monetary" class="toc-h2 toc-link" data-title="مقادیر پولی (monetary)">مقادیر پولی (monetary)</a>
                   </li>
                   <li>
@@ -682,24 +685,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"1.016"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.2561"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.016"</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2561"</span><span class="p">]</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.126571"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.818994"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.126571"</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.818994"</span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -743,6 +734,37 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
 که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
+</aside>
+
+<blockquote>
+<p>نمونه پاسخ درخواست /v2/orderbook/all:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTCIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.016"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2561"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"USDTIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"277990"</span><span class="p">,</span><span class="w"> </span><span class="s2">"6688.3"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"278000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"28185.03"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTCIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.126571"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.818994"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"USDTIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"277960"</span><span class="p">,</span><span class="w"> </span><span class="s2">"119.31"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"277960"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1079.75"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+در صورت علاقه به دریافت لیست سفارشات همه بازارها به صورت یکجا از مقدار all برای symbol استفاده نمایید.
 </aside>
 <h2 id='3fe8d57657'>لیست معاملات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades/BCHIRT'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/trades/BCHIRT
@@ -2618,6 +2640,41 @@ resolution: 60
 <td><a target="_blank" rel="nofollow" href="https://http.cat/500">🐱</a></td>
 </tr>
 </tbody></table>
+<h2 id='cb16a9b01c'>صفحه‌بندی</h2>
+<p>پارامترهای زیر در API های دریافت لیست دارای صفحه‌بندی قابل استفاده است:</p>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>اختیاری</td>
+<td>شماره صفحه</td>
+<td>2</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>int</td>
+<td>اختیاری</td>
+<td>اندازه صفحه</td>
+<td>10</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+برای page و pageSize مقادیر بین 1 تا 100 قابل قبول است.
+</aside>
+
+<aside class="notice">
+اندازه صفحه پیش‌فرض برای هر API جداگانه مشخص می‌شود، اما به طور عمومی 50 عدد در صفحه است.
+</aside>
 <h2 id='monetary'>مقادیر پولی (monetary)</h2>
 <p>در موارد متعددی پارامترهای ورودی درخواست‌ها از نوع مقدار پولی یا monetary مشخص شده است. برای داشتن بالاترین دقت، پیشنهاد می‌شود که این مقادیر را به صورت رشته‌ای ارسال نمایید، چرا که استفاده از انواع داده‌ای مانند <code>float</code> در کاربردهای دقیق مالی توصیه نمی‌شود.</p>
 <h2 id='dbf936619c'>اعتبارسنجی دو عاملی</h2>
