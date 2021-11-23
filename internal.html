@@ -1965,7 +1965,7 @@ Authorization: Token yourTOKENhereHEX0000000000
   <span class="na">dstCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">USDT</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.01</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">},</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
@@ -2044,7 +2044,7 @@ Content-Type: application/json
 
 <ol>
 <li><strong>نوع معامله:</strong> دو مقدار <code>sell</code> برای فروش و <code>buy</code> برای خرید قابل قبول است.</li>
-<li><strong>رمزارز مبدا:</strong> بایستی نماد یکی از رمزارزهای مورد پشتیبانی نوبیتکس مانند <code>BTC</code>، <code>ETH</code>، و ... باشد.</li>
+<li><strong>رمزارز مبدا:</strong> بایستی نماد یکی از رمزارزهای <code>BTC</code>، <code>ETH</code>، <code>LTC</code>، <code>XRP</code>، <code>BCH</code>، <code>BNB</code>، <code>EOS</code>، <code>DOGE</code>، <code>XLM</code>، <code>TRX</code>، <code>ETC</code>، <code>ADA</code>، <code>LINK</code>، <code>DAI</code>، <code>DOT</code>، <code>UNI</code>، <code>AAVE</code>، <code>GRT</code>، <code>ADA</code> و <code>SHIB</code> باشد.</li>
 <li><strong>ارز مقصد:</strong> می‌تواند یکی از دو مقدار <code>IRT</code> و <code>USDT</code> باشد.</li>
 </ol>
 
@@ -2101,6 +2101,35 @@ Content-Type: application/json
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"type": "sell", "srcCurrency": "BTC", "dstCurrency": "USDT", "amount": "0.01", "price": "56707.59"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/exchange/create-trade</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sell</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">srcCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">BTC</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">dstCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">USDT</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.01</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">price</span><span class="p">:</span> <span class="dl">'</span><span class="s1">56707.59</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@FormUrlEncoded</span>
+  <span class="nd">@POST</span><span class="o">(</span><span class="s">"/exchange/create-trade"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">createExchangeTrade</span><span class="o">(</span><span class="nd">@Field</span><span class="o">(</span><span class="s">"type"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">type</span><span class="o">,</span> <span class="nd">@Field</span><span class="o">(</span><span class="s">"srcCurrency"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">srcCurrency</span><span class="o">,</span> 
+                                       <span class="nd">@Field</span><span class="o">(</span><span class="s">"dstCurrency"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">dstCurrency</span><span class="o">,</span> <span class="nd">@Field</span><span class="o">(</span><span class="s">"amount"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">amount</span><span class="o">,</span>
+                                       <span class="nd">@Field</span><span class="o">(</span><span class="s">"price"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">price</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">createExchangeTrade</span><span class="o">(</span><span class="s">"sell"</span><span class="o">,</span> <span class="s">"BTC"</span><span class="o">,</span> <span class="s">"USDT"</span><span class="o">,</span> <span class="s">"0.01"</span><span class="o">,</span> <span class="s">"56707.59"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /exchange/create-trade HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{"type": "sell", "srcCurrency": "BTC", "dstCurrency": "USDT", "amount": "0.01", "price": "56707.59"}
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -2114,8 +2143,8 @@ Content-Type: application/json
     </span><span class="nl">"isSell"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56718.3200000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100000000"</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56718.32"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2172,6 +2201,12 @@ Content-Type: application/json
 <td>&quot;56707.59&quot;</td>
 </tr>
 </tbody></table>
+
+<ol>
+<li><strong>نوع معامله:</strong> دو مقدار <code>sell</code> برای فروش و <code>buy</code> برای خرید قابل قبول است.</li>
+<li><strong>رمزارز مبدا:</strong> بایستی نماد یکی از رمزارزهای <code>BTC</code>، <code>ETH</code>، <code>LTC</code>، <code>XRP</code>، <code>BCH</code>، <code>BNB</code>، <code>EOS</code>، <code>DOGE</code>، <code>XLM</code>، <code>TRX</code>، <code>ETC</code>، <code>ADA</code>، <code>LINK</code>، <code>DAI</code>، <code>DOT</code>، <code>UNI</code>، <code>AAVE</code>، <code>GRT</code>، <code>ADA</code> و <code>SHIB</code> باشد.</li>
+<li><strong>ارز مقصد:</strong> می‌تواند یکی از دو مقدار <code>IRT</code> و <code>USDT</code> باشد.</li>
+</ol>
 
 <aside class="notice">
 ارزش معاملات ریالی بایستی بین 500,000 تومان تا 25,000,000 تومان باشد و ارزش معاملات تتری باید بین 20 تا 1000 تتر باشد.
@@ -2251,13 +2286,13 @@ Content-Type: application/json
 <td>amount</td>
 <td>monetary</td>
 <td>مقدار معامله</td>
-<td>&quot;0.0100000000&quot;</td>
+<td>&quot;0.01&quot;</td>
 </tr>
 <tr>
 <td>price</td>
 <td>monetary</td>
 <td>قیمت معامله</td>
-<td>&quot;56718.3200000000&quot;</td>
+<td>&quot;56718.32&quot;</td>
 </tr>
 </tbody></table>
 
@@ -2293,7 +2328,7 @@ Content-Type: application/json
 
 <ol>
 <li>بازار درخواستی پشتیبانی نمی‌شود.</li>
-<li>مقدار یا قیمت بسیار کم است.</li>
+<li>مقدار یا قیمت بسیار کم و نزدیک به صفر است.</li>
 <li>قیمت مورد انتظار (قیمت در زمان تخمین) با قیمت لحظه‌ای بازار جهانی بیش از 1% اختلاف دارد.</li>
 <li>ارزش ریالی / تتری معامله در محدوده مجاز نیست.</li>
 </ol>
@@ -2301,8 +2336,26 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/exchange/create-trade'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/exchange/trades-list'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/exchange/trades-list</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@GET</span><span class="o">(</span><span class="s">"/exchange/trades-list"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">listExchangeTrades</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listExchangeTrades</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /exchange/trades-list HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -2317,7 +2370,7 @@ Content-Type: application/json
       </span><span class="nl">"isSell"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"﷼"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13498884000.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13498884000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0010000000"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -2325,10 +2378,10 @@ Content-Type: application/json
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-13T11:34:40.781904+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"isSell"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"﷼"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"238000.0000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68.0000000000"</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"238000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -2337,8 +2390,8 @@ Content-Type: application/json
       </span><span class="nl">"isSell"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56718.3200000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100000000"</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56718.32"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
