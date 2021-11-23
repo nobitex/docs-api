@@ -22,6 +22,9 @@ toc_footers:
 
 ## تغییرات آبان ۱۴۰۰
 
+* افزودن پارامتر hasNext به پاسخ endpoint های زیر:
+  - /users/transactions-history
+
 * افزودن کد خطا به endpoint های زیر:
 
 message | code <th>endpoint
@@ -48,6 +51,10 @@ CoinDepositDisabled | CoinDepositDisabled
 
 ## مستندات جدید آبان ۱۴۰۰
 
+* تاریخچه تراکنش‌های مالی کاربر (/users/transactions-history)
+* لیست معاملات صرافی (/exchange/trades-list)
+* ثبت معامله در صرافی (/exchange/create-trade)
+* دریافت قیمت از صرافی (/exchange/estimate)
 * CRUD اعلان قیمت (/v2/price-alerts)
 * غیرفعال‌سازی شناسایی دوعاملی (/users/tfa/disable)
 * تایید شناسایی دوعاملی (/users/tfa/confirm)
