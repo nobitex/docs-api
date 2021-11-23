@@ -374,6 +374,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#f719db164f" class="toc-h1 toc-link" data-title="تراکنش‌های مالی">تراکنش‌های مالی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#c0e10167ee" class="toc-h2 toc-link" data-title="تاریخچه تراکنش‌ها">تاریخچه تراکنش‌ها</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -2431,6 +2439,193 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <aside class="notice">
 دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 15
+</aside>
+<h1 id='f719db164f'>تراکنش‌های مالی</h1>
+<p>هر گونه تغییر در موجودی کیف‌پول کاربر توسط یک تراکنش ایجاد و ثبت می‌شود. افزایش یا کسری موجودی در اثر واریز، برداشت، معامله و کارمزد همگی نمونه‌ای از تراکنش‌های مالی کاربر هستند.</p>
+
+<aside class="notice">
+احراز هویت در API های این مجموعه الزامی است.
+</aside>
+<h2 id='c0e10167ee'>تاریخچه تراکنش‌ها</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/transactions-history'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/transactions-history</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
+  <span class="nd">@Headers</span><span class="o">({</span><span class="s">"Authorization: Token yourTOKENhereHEX0000000000"</span><span class="o">})</span>
+  <span class="nd">@GET</span><span class="o">(</span><span class="s">"/users/transactions-history"</span><span class="o">)</span>
+  <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="nf">listTransactions</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+<span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listTransactions</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /users/transactions-history HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"واریز"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-13T14:35:18.766Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"واریز شتابی - شماره کارت: 123456******1234 - شماره پیگیری: 39577-bpiZpZw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"معامله"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-23T15:47:12.835Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-8000000.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خرید 32.00 USDT به قیمت واحد ﷼250000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"معامله"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-23T15:47:12.835Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32.0000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"خرید 32.00 USDT به قیمت واحد ﷼250000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"calculatedFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت تاریخچه همه تراکنش‌های مالی کاربر از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>GET /users/transactions-history</code></p></li>
+<li><p>پارامترهای پاسخ:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>list of Transaction</td>
+<td>لیستی از تراکنش‌ها</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>hasNext</td>
+<td>boolean</td>
+<td>آیا لیست ادامه دارد؟</td>
+<td>false</td>
+</tr>
+</tbody></table>
+
+<p>شی Transaction</p>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>شناسه تراکنش</td>
+<td>1</td>
+</tr>
+<tr>
+<td>tp</td>
+<td>string</td>
+<td>نوع تراکنش</td>
+<td>&quot;deposit&quot;</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>نوع قابل فهم</td>
+<td>&quot;واریز&quot;</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>iso-string</td>
+<td>زمان ایجاد</td>
+<td>&quot;2021-11-13T14:35:18.766Z&quot;</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>نوع ارز</td>
+<td>&quot;rls&quot;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار</td>
+<td>&quot;10000000.0000000000&quot;</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>monetary</td>
+<td>موجودی نهایی</td>
+<td>&quot;10000000.0000000000&quot;</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>توضیحات</td>
+<td>&quot;واریز شتابی - شماره کارت: 123456******1234 - شماره پیگیری: 39577-bpiZpZw&quot;</td>
+</tr>
+<tr>
+<td>calculatedFee</td>
+<td>monetary</td>
+<td>کارمزد حساب شده</td>
+<td>null</td>
+</tr>
+</tbody></table>
+
+<ol>
+<li><strong>نوع تراکنش:</strong> می‌تواند یکی از مقادیر <code>deposit</code> (واریز)، <code>withdraw</code> (برداشت)، <code>buy</code> و <code>sell</code> (معامله)، <code>fee</code> (کارمزد)، <code>gateway</code> (درگاه)، <code>ex_src</code> و <code>ex_dst</code> (صرافی) و <code>manual</code> (سیستمی) باشد.</li>
+<li><strong>مقدار:</strong> در تراکنش مقدار منفی نشان‌دهنده کاهش موجودی و مقدار مثبت نشان‌دهنده افزایش موجودی می‌باشد.</li>
+</ol>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در ساعت
+</aside>
+
+<aside class="notice">
+دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 50
 </aside>
 
       </div>
