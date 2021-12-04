@@ -8,6 +8,7 @@ includes:
   - referral
   - general_notes
   - faq
+  - symbols
 toc_footers:
   - <a href='/changelog/'>سابقه تغییرات API</a>
   - <a href='/terms/'>شرایط استفاده از API</a>
@@ -247,7 +248,7 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 در این api نیاز به توکن وجود ندارد.
 </aside>
 <aside class="notice">
-لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>
 که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
 </aside>
 
@@ -332,7 +333,7 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 در این api نیاز به توکن وجود ندازد.
 </aside>
 <aside class="notice">
-لیست نمادهای بازار ها عبارتنداز :BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT،  XLMIRT، ETCIRT،‌ TRXIRT ،USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT
+لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>
 که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
 </aside>
 <aside class="notice">
@@ -392,7 +393,7 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 </aside>
 <aside class="notice">
 انواع ارز:
-usd, rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, doge, xlm, trx, ada, xmr, xem, iota, etc, dash, zec, neo, qtum, xtz
+<span class="currency-symbols"></span>
 </aside>
 <aside class="warning">
 در شی پاسخ جهت سازگاری با نسخه‌های پیشین، آمار بازار بایننس نیز برگردانده می‌شود.
