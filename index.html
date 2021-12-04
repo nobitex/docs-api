@@ -311,6 +311,9 @@
                     <a href="#d04ae27f5f" class="toc-h2 toc-link" data-title="احراز هویت و توکن">احراز هویت و توکن</a>
                   </li>
                   <li>
+                    <a href="#user-agent" class="toc-h2 toc-link" data-title="تنظیم User Agent">تنظیم User Agent</a>
+                  </li>
+                  <li>
                     <a href="#5edee21991" class="toc-h2 toc-link" data-title="محدودیت ها">محدودیت ها</a>
                   </li>
                   <li>
@@ -339,7 +342,7 @@
             <a href="#6528ce0c42" class="toc-h1 toc-link" data-title="اطلاعات بازار (عمومی)">اطلاعات بازار (عمومی)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#a283f9354b" class="toc-h2 toc-link" data-title="لیست سفارشات">لیست سفارشات</a>
+                    <a href="#orderbook" class="toc-h2 toc-link" data-title="لیست سفارش‌ها: اردربوک">لیست سفارش‌ها: اردربوک</a>
                   </li>
                   <li>
                     <a href="#3fe8d57657" class="toc-h2 toc-link" data-title="لیست معاملات">لیست معاملات</a>
@@ -558,6 +561,8 @@
 <p>در صورت تمایل به دریافت دوره‌ای و خودکار توکن، می‌توانید از
 <a href="#auth-login">API ورود - دریافت توکن</a>
 استفاده نمایید. ولی این کار ضروری نیست و روش پیشنهادی ما برای اغلب کاربران دریافت مستقیم توکن از پنل کاربری است. تنها در صورتی که با مخاطرات ذخیره گذرواژه خود در کد و روش‌های امن این کار آشنا هستید، در استفاده از API مهارت دارید، و از طرفی نیاز به دریافت کاملاً خودکار توکن دارید، از API دریافت توکن استفاده نمایید.</p>
+<h2 id='user-agent'>تنظیم User Agent</h2>
+<p>جهت شناسایی و تفکیک بهتر بات‌ها و پشتیبانی از آن‌ها، اکیداً توصیه می‌شود که در تمامی درخواست‌ها مقدار UserAgent را مطابق الگوی <code>TraderBot/XXXXX</code> ارسال نمایید، که بخش <code>XXXXX</code> هر نام یکتایی است که می‌توانید برای بات خود انتخاب کنید. با رعایت این نام‌گذاری پاسخگویی به درخواست‌های پشتیبانی و عیب‌یابی مشکلات بهتر صورت می‌گیرد.</p>
 <h2 id='5edee21991'>محدودیت ها</h2>
 <p>توجه داشته باشید، برای استفاده از APIها محدودیت هایی وجود دارد که در قسمت توضیحات هر کدام از APIها این موارد ذکر شده است.</p>
 <h2 id='0514831144'>تغییرات و موارد قدیمی</h2>
@@ -710,7 +715,9 @@ Authorization: Token yourTOKENhereHEX0000000000
 <ul>
 <li>آدرس : <code>/POST /auth/logout</code></li>
 </ul>
-<h1 id='6528ce0c42'>اطلاعات بازار (عمومی)</h1><h2 id='a283f9354b'>لیست سفارشات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/orderbook/BTCIRT'</span>
+<h1 id='6528ce0c42'>اطلاعات بازار (عمومی)</h1>
+<h2 id="orderbook">لیست سفارش‌ها: اردربوک</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/orderbook/BTCIRT'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/orderbook/BTCIRT
 </code></pre></div>
 <blockquote>
@@ -728,13 +735,18 @@ Authorization: Token yourTOKENhereHEX0000000000
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:</p>
+<p>برای دریافت لیست سفارش‌ها یا همان اردربوک بازارهای مختلف، از این درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /v2/orderbook/SYMBOL</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET /v2/orderbook/SYMBOL</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
 
+<aside class="warning">
+برای دریافت اردربوک حتماً از متد GET و با ارسال نماد در آدرس url استفاده نمایید. روش قدیمی مبتنی بر POST دیگر پشتیبانی نمی‌شود.
+</aside>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -745,29 +757,16 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tr>
 </thead><tbody>
 <tr>
-<td>symbol</td>
+<td>SYMBOL</td>
 <td>string</td>
 <td>الزامی</td>
-<td>نماد</td>
+<td>نماد بازار</td>
 <td><code>BTCIRT</code></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 60 درخواست در دقیقه
-</aside>
-
-<aside class="notice">
-خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد.
-</aside>
-
-<aside class="notice">
-در این api نیاز به توکن وجود ندارد.
-</aside>
-
-<aside class="notice">
-لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>
-که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
+لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
 </aside>
 
 <blockquote>
@@ -798,8 +797,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside class="notice">
-در صورت علاقه به دریافت لیست سفارشات همه بازارها به صورت یکجا از مقدار all برای symbol استفاده نمایید.
+در صورت تمایل به دریافت لیست سفارشات همه بازارها به صورت یکجا از مقدار <code>all</code> برای symbol استفاده نمایید.
 </aside>
+<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<p>خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد. به دلایل تاریخی سفارش‌های فروش در <code>bids</code> و سفارش‌های خرید در <code>asks</code> بازگردانده می‌شوند. هر یک از این آرایه‌ها شامل دوتایی‌های «قیمت، مقدار» هستند.</p>
+<h3 id='1e4125a980'>روش پیشنهادی نگهداری اردربوک</h3>
+<p>در صورتی که در کد خود نیاز به نگهداری آخرین وضعیت اردربوک نوبیتکس هستید، در یک حلقه اقدام به دریافت اردربوک نوبیتکس نمایید. حتماً در میان هر دو بار اجرای حلقه حداقل یک تا ده ثانیه صبر نمایید و از فراخوانی پیاپی و بی‌مکث اردربوک خودداری کنید. به دلیل وجود لایه‌های کش، در صورت فراخوانی در بازه‌های زیر یک ثانیه، همان داده فراخوانی قبلی را دریافت خواهید نمود. اگر در اغلب بازارهای نوبیتکس فعال هستید، می‌توانید در هر فراخوانی کل اردربوک را دریافت نمایید تا نیازی به فراخوانی همزمان چند اردربوک نداشته باشید. اگر کد خود را در چند رشته (ترد) یا پردازه یا سرور اجرا می‌کنید، حتماً اردربوک را در یک مرجع واحد دریافت نمایید و آن را در میان نمونه‌های برنامه خود به اشتراک بگذارید.</p>
 <h2 id='3fe8d57657'>لیست معاملات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades/BCHIRT'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/trades/BCHIRT
 </code></pre></div>
@@ -1817,7 +1820,7 @@ resolution: 60
 <p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
 
 <p>سفارش‌ها پس از ثبت، پیش از ورود به دفتر معاملاتی و انجام معامله، مجدداً از نظر اعتبار مورد بررسی قرار گرفته و در صورت نامعتبر بودن، به وضعیت «رد شده» برده خواهند شد. به همین علت در صورتی که سفارش‌های شما ثبت می‌شود ولی بلافاصله به وضعیت «رد شده» تغییر حالت پیدا می‌کنند، پارامترهای ارسالی خود به ویژه مقدار و قیمت سفارش و موجودی حساب خود را دقیق‌تر بررسی نمایید.</p>
-<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2041,7 +2044,7 @@ resolution: 60
 <p><code>POST /market/orders/list</code></p>
 
 <p>برای دریافت فهرست سفارش‌های خود، از این درخواست استفاده نمایید.</p>
-<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2087,7 +2090,7 @@ resolution: 60
 <td><code>1</code> یا <code>2</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2768,7 +2771,7 @@ https://en.wikipedia.org/wiki/Unix_time</p>
 <h2 id='api-4'>آیا برای apiها کدهای نمونه تهیه شده است؟</h2>
 <p>بله، collection کلیه api ها برای استفاده در برنامه postman تهیه و از <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a> میتوانید به آن دسترسی داشته باشید. در این collection شما میتوانید نمونه فراخوانی هر کدام از این apiها را به زبان‌های مختلف برنامه نویسی نظیر پی اچ پی، پایتون، سی شارپ  و … در این مجموعه مشاهده کرده و آن را در سیستم خود اجرا نمائید.</p>
 <p><template id="market-symbols">
-BTCIRT، ETHIRT، LTCIRT، XRPIRT، BCHIRT، BNBIRT، EOSIRT، XLMIRT، ETCIRT، TRXIRT، DOGEIRT، UNIIRT، DAIIRT، LINKIRT، DOTIRT، AAVEIRT، ADAIRT، SHIBIRT، USDTIRT، BTCUSDT، ETHUSDT، LTCUSDT، XRPUSDT، BCHUSDT، BNBUSDT، EOSUSDT، XLMUSDT، ETCUSDT، TRXUSDT، PMNUSDT، DOGEUSDT، UNIUSDT، DAIUSDT، LINKUSDT، DOTUSDT، AAVEUSDT، ADAUSDT، SHIBUSDT
+BTCIRT, ETHIRT, LTCIRT, XRPIRT, BCHIRT, BNBIRT, EOSIRT, XLMIRT, ETCIRT, TRXIRT, DOGEIRT, UNIIRT, DAIIRT, LINKIRT, DOTIRT, AAVEIRT, ADAIRT, SHIBIRT, USDTIRT, BTCUSDT, ETHUSDT, LTCUSDT, XRPUSDT, BCHUSDT, BNBUSDT, EOSUSDT, XLMUSDT, ETCUSDT, TRXUSDT, PMNUSDT, DOGEUSDT, UNIUSDT, DAIUSDT, LINKUSDT, DOTUSDT, AAVEUSDT, ADAUSDT, SHIBUSDT
 </template></p>
 
 <p><template id="currency-symbols">
