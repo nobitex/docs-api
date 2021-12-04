@@ -382,16 +382,16 @@ token | string |   الزامی | Token   | `e9282e56c83f93eb077043e5ad8b6cf5b3f
 بدیهی است که درگاه تست نوبیتکس با شبکه های واقعی کار نکرده و فقط با شبکه های تست نت کوین مورد نظر کار خواهد کرد.
 ###آدرس‌ها در شبکه تست‌نت
 
-<code>API_URL = https://testnetapi.nobitex.net</code>
+<code>API_URL = https://testnetapi.nobitex.ir</code>
 
-<code>SITE_URL = https://testnet.nobitex.net</code>
+<code>SITE_URL = https://testnet.nobitex.ir</code>
 ###آدرس‌ها در شبکه اصلی
 <code>API_URL = https://api.nobitex.ir</code>
 
 <code>SITE_URL = https://nobitex.ir</code>
 
 <aside class="warning">
-شما برای استفاده از شبکه تست نت، به جای استفاده از<code>API_URL = https://api.nobitex.ir</code> باید از<code>API_URL = https://testnetapi.nobitex.net</code> و بجای استفاده از <code>SITE_URL = https://nobitex.ir</code> باید از <code>SITE_URL = https://nobitex.ir</code> استفاده کنید.   
+شما برای استفاده از شبکه تست نت، به جای استفاده از<code>API_URL = https://api.nobitex.ir</code> باید از<code>API_URL = https://testnetapi.nobitex.ir</code> و بجای استفاده از <code>SITE_URL = https://nobitex.ir</code> باید از <code>SITE_URL = https://testnet.nobitex.ir</code> استفاده کنید.   
 </aside>
 
 
