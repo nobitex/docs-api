@@ -6,6 +6,14 @@ BTCIRT, ETHIRT, LTCIRT, XRPIRT, BCHIRT, BNBIRT, EOSIRT, XLMIRT, ETCIRT, TRXIRT, 
 rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, xlm, etc, trx, pmn, doge, uni, dai, link, dot, aave, ada, shib
 </template>
 
+<template id="network-symbols">
+FIAT_MONEY, ETH, BSC, ADA, BCH, BNB, BTC, BTCLN, DOGE, DOT, EOS, ETC, LTC, PMN, TRX, OMNI, ZTRX, XLM, XRP
+</template>
+
+<template id="tag-required-networks">
+BNB, EOS, PMN, XLM, XRP
+</template>
+
 
 <script>
 const templates = document.getElementsByTagName('template');
