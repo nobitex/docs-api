@@ -383,10 +383,33 @@
                     <a href="#ae038c6100" class="toc-h2 toc-link" data-title="لیست تراکنش‌ها">لیست تراکنش‌ها</a>
                   </li>
                   <li>
-                    <a href="#839c14d5aa" class="toc-h2 toc-link" data-title="لیست واریزها و برداشت‌ها">لیست واریزها و برداشت‌ها</a>
+                    <a href="#18a62645f3" class="toc-h2 toc-link" data-title="لیست واریزها">لیست واریزها</a>
                   </li>
                   <li>
                     <a href="#87af031464" class="toc-h2 toc-link" data-title="تولید آدرس بلاکچین">تولید آدرس بلاکچین</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#b73bd69412" class="toc-h1 toc-link" data-title="برداشت">برداشت</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#13542d0e0d" class="toc-h2 toc-link" data-title="ثبت درخواست برداشت">ثبت درخواست برداشت</a>
+                  </li>
+                  <li>
+                    <a href="#99c31022cf" class="toc-h2 toc-link" data-title="تایید درخواست برداشت">تایید درخواست برداشت</a>
+                  </li>
+                  <li>
+                    <a href="#9601ea96ae" class="toc-h2 toc-link" data-title="لغو درخواست برداشت">لغو درخواست برداشت</a>
+                  </li>
+                  <li>
+                    <a href="#3f0cb81e5f" class="toc-h2 toc-link" data-title="لیست برداشت‌ها">لیست برداشت‌ها</a>
+                  </li>
+                  <li>
+                    <a href="#14019063d9" class="toc-h2 toc-link" data-title="مشاهده برداشت">مشاهده برداشت</a>
+                  </li>
+                  <li>
+                    <a href="#fce75b5a67" class="toc-h2 toc-link" data-title="به‌روزرسانی وضعیت برداشت">به‌روزرسانی وضعیت برداشت</a>
                   </li>
               </ul>
           </li>
@@ -1549,7 +1572,7 @@ resolution: 60
 <td><code>4159</code></td>
 </tr>
 </tbody></table>
-<h2 id='839c14d5aa'>لیست واریزها و برداشت‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list'</span> <span class="se">\</span>
+<h2 id='18a62645f3'>لیست واریزها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
@@ -1580,19 +1603,6 @@ resolution: 60
             </span><span class="nl">"confirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nl">"requiredConfirmations"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"withdraws"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2398</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf81e99e79fb06294a70af39443e2639e22c69bc30d6ecda67/"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T12:59:38.196935+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4159</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lgn1zc77mEjk72KvXPqyXq8K1mAfcDE6YR"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1664,6 +1674,445 @@ resolution: 60
 
 <aside class="notice">
 محدودیت فراخوانی : 6 درخواست در ساعت
+</aside>
+<h1 id='b73bd69412'>برداشت</h1><h2 id='13542d0e0d'>ثبت درخواست برداشت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-TOTP: 123456'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"wallet": 3456, "invoice": "lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/withdraw \
+  wallet=3456 invoice=lnbc123m1pskcu80pp5qqqsyqcyq5rqwz...
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل یا پیامک می‌شود.</p>
+</blockquote>
+
+<p>برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/wallets/withdraw</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه کیف پول کاربر</td>
+<td>3456</td>
+</tr>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شبکه انتقال<sup>1</sup></td>
+<td>&quot;BTCLN&quot;</td>
+</tr>
+<tr>
+<td>invoice</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>صورت‌حساب<sup>2</sup></td>
+<td>&quot;lnbc123m1pskcu80pp5qqqsyqcyq5rqwz...&quot;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>اختیاری</td>
+<td>مقدار<sup>3</sup></td>
+<td>&quot;0.123&quot;</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>آدرس مقصد<sup>4</sup></td>
+<td>&quot;SaMpLeWaLlEtAdDrEsS&quot;</td>
+</tr>
+<tr>
+<td>explanations</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>توضیحات</td>
+<td>&quot;sample explanation&quot;</td>
+</tr>
+<tr>
+<td>noTag</td>
+<td>boolean</td>
+<td>false</td>
+<td>بدون تگ<sup>5</sup></td>
+<td>false</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>تگ انتقال<sup>6</sup></td>
+<td>&quot;123456&quot;</td>
+</tr>
+</tbody></table>
+
+<ol>
+<li><strong>شبکه انتقال:</strong> مقادیر <span class="network-symbols"></span> قابل قبول است. در مواردی که چند شبکه برداشت برای رمزارز درخواستی پشتیبانی می‌شود، می‌توان شبکه انتقال را تعیین نمود.</li>
+<li><strong>صورت‌حساب:</strong> در انتقال‌های شبکه <code>BTCLN</code> الزامی است. در صورت وجود invoice پارامترهای amount و  address از آن استخراج شده و در بدنه درخواست بلااستفاده خواهند شد. شبکه صورت‌حساب باید با network در صورت مشخص شدن در درخواست مطابقت داشته باشد.</li>
+<li><strong>مقدار:</strong> در صورتی که بدون invoice درخواست برداشت ثبت می‌کنید، الزامی می‌شود.</li>
+<li><strong>آدرس مقصد:</strong> برای برداشت‌های ریالی <a href="/#88cb25e727" title="دریافت از پروفایل">شناسه حساب بانکی</a> تایید شده کاربر جهت دریافت وجه و برای برداشت‌های رمزارزی آدرس کیف پول مقصد می‌باشد. در صورتی که از invoice برای برداشت استفاده می‌کنید، بلااستفاده خواهد شد.</li>
+<li><strong>بدون تگ:</strong> برای برداشت از شبکه‌های <span class="tag-required-networks"></span> که تگ انتقال در آن‌ها ضروری است بدون درج تگ، مقدار آن را true قرار دهید.</li>
+<li><strong>تگ انتقال:</strong> در شبکه‌های <span class="tag-required-networks"></span>بدون فعال کردن noTag الزامی است.</li>
+</ol>
+
+<aside class="notice">
+این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد.
+</aside>
+
+<aside class="notice">
+کاربر درخواست دهنده بایستی اجازه برداشت از کیف پول خود را داشته باشد.
+(مثلا دارای حداقل سطح مجاز برای برداشت و شماره تماس تایید شده بوده و سقف برداشت مجاز روزانه و ماهانه خود را رد نکرده باشد و شرایط و پیشنیازات ذکر شده در مقررات نوبیتکس را رعایت کرده باشد.)
+</aside>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در 3 دقیقه
+</aside>
+<h2 id='99c31022cf'>تایید درخواست برداشت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"withdraw": 432, "otp": 623005}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/withdraw-confirm \
+  withdraw=432 otp=623005
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای تایید درخواست برداشت با ارسال رمز یکبارمصرف از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/wallets/withdraw-confirm</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>withdraw</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>432</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>int</td>
+<td>الزامی</td>
+<td>رمز یکبارمصرف ارسال شده</td>
+<td>623005</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 30 درخواست در ساعت
+</aside>
+<h2 id='9601ea96ae'>لغو درخواست برداشت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw-cancel'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"withdraw": 432}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/withdraw-cancel \
+  withdraw=432
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای لغو درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /users/wallets/withdraw-cancel</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>withdraw</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>432</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در دقیقه، 60 درخواست در ساعت
+</aside>
+<h2 id='3f0cb81e5f'>لیست برداشت‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/withdraws/list'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/withdraws/list
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraws"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">238</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-19T14:17:23.441723+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">062a</span><span class="se">\u</span><span class="s2">062c</span><span class="se">\u</span><span class="s2">0627</span><span class="se">\u</span><span class="s2">0631</span><span class="se">\u</span><span class="s2">062a: IR140180000000003333333333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3451</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T12:59:38.196935+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lgn1zc77mEjk72KvX..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3454</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست آخرین برداشت‌ها از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>GET /users/wallets/withdraws/list</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>all</td>
+<td>شناسه کیف پول کاربر</td>
+<td>3456</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+برای هر کیف پول حداکثر 20 برداشت تایید شده آخر نمایش داده می‌شود.
+</aside>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در 2 دقیقه
+</aside>
+<h2 id='14019063d9'>مشاهده برداشت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/withdraws/433'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/withdraws/433
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">433</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-14T06:53:11.593812+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3458</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://etherscan.io/tx/tx111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای مشاهده وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>GET /withdraws/WITHDRAW</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WITHDRAW</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>433</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در 2 دقیقه
+</aside>
+<h2 id='fce75b5a67'>به‌روزرسانی وضعیت برداشت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/withdraws/433/update-status'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/withdraws/433/update-status
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraw"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">433</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-14T06:53:11.593812+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3458</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://etherscan.io/tx/tx111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای به‌روزرسانی وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /withdraws/WITHDRAW/update-status</code></p></li>
+<li><p>پارامترها:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WITHDRAW</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>433</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در ساعت
 </aside>
 <h1 id='05299979b0'>بازار</h1><h2 id='e12b63a512'>ثبت سفارش جدید</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
@@ -2778,6 +3227,14 @@ BTCIRT, ETHIRT, LTCIRT, XRPIRT, BCHIRT, BNBIRT, EOSIRT, XLMIRT, ETCIRT, TRXIRT, 
 
 <p><template id="currency-symbols">
 rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, xlm, etc, trx, pmn, doge, uni, dai, link, dot, aave, ada, shib
+</template></p>
+
+<p><template id="network-symbols">
+FIAT_MONEY, ETH, BSC, ADA, BCH, BNB, BTC, BTCLN, DOGE, DOT, EOS, ETC, LTC, PMN, TRX, OMNI, ZTRX, XLM, XRP
+</template></p>
+
+<p><template id="tag-required-networks">
+BNB, EOS, PMN, XLM, XRP
 </template></p>
 
 <script>
