@@ -13,6 +13,7 @@ includes:
   - security
   - referral
   - auth
+  - other
   - general_notes
   - faq
   - symbols
