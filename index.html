@@ -3017,6 +3017,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <th>فیلد</th>
 <th>نوع</th>
 <th>توضیحات</th>
+<th>پیش‌فرض</th>
 <th>نمونه</th>
 </tr>
 </thead><tbody>
@@ -3024,7 +3025,22 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>coin</td>
 <td>str</td>
 <td>نماد یکتای رمزارز، معمولاً با حروف کوچک</td>
-<td><code>rls</code> یا <code>btc</code> یا <code>eth</code></td>
+<td>ضروری</td>
+<td><code>rls</code> یا <code>btc</code> یا <code>eth</code> یا …</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>نام انگلیسی رمزارز</td>
+<td>ضروری</td>
+<td><code>Bitcoin</code> یا <code>TRON</code> یا <code>Dogecoin</code> یا …</td>
+</tr>
+<tr>
+<td>default_network</td>
+<td>str</td>
+<td>شبکه پیش‌فرض رمزارز، یکی از کلیدهای NetworkOptions آن رمزارز</td>
+<td>ضروری</td>
+<td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code> یا …</td>
 </tr>
 </tbody></table>
 <h3 id='networkoptions'>پارامترهای پاسخ - NetworkOptions</h3>
@@ -3033,6 +3049,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <th>فیلد</th>
 <th>نوع</th>
 <th>توضیحات</th>
+<th>پیش‌فرض</th>
 <th>نمونه</th>
 </tr>
 </thead><tbody>
@@ -3040,7 +3057,22 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>network</td>
 <td>str</td>
 <td>نماد یکتای شبکه، معمولاً با حروف بزرگ</td>
-<td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code></td>
+<td>ضروری</td>
+<td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code> یا …</td>
+</tr>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>نام انگلیسی شبکه</td>
+<td>ضروری</td>
+<td><code>BTC</code> یا <code>ERC20</code> یا …</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>boolean</td>
+<td>آیا این شبکه هنوز در حالت آزمایشی است؟</td>
+<td><code>false</code></td>
+<td><code>true</code> یا <code>false</code></td>
 </tr>
 </tbody></table>
 <h1 id="general-considerations">ملاحظات عمومی</h1>
