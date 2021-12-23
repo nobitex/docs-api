@@ -3042,6 +3042,13 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>ضروری</td>
 <td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code> یا …</td>
 </tr>
+<tr>
+<td>network_list</td>
+<td>dict</td>
+<td>یک دیکشنری از شبکه‌های مختلف این رمزارز، با کلیدهای نام انگلیسی هر شبکه و مقادیر از نوع NetworkOptions</td>
+<td>ضروری</td>
+<td></td>
+</tr>
 </tbody></table>
 <h3 id='networkoptions'>پارامترهای پاسخ - NetworkOptions</h3>
 <table><thead>
@@ -3063,9 +3070,16 @@ Authorization: Token yourTOKENhereHEX0000000000
 <tr>
 <td>name</td>
 <td>str</td>
-<td>نام انگلیسی شبکه</td>
+<td>نام انگلیسی خوانای شبکه</td>
 <td>ضروری</td>
 <td><code>BTC</code> یا <code>ERC20</code> یا …</td>
+</tr>
+<tr>
+<td>isDefault</td>
+<td>boolean</td>
+<td>آیا این شبکه پیش‌فرض برای این رمزارز در نوبیتکس است؟</td>
+<td><code>false</code></td>
+<td><code>true</code> یا <code>false</code></td>
 </tr>
 <tr>
 <td>beta</td>
@@ -3073,6 +3087,111 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>آیا این شبکه هنوز در حالت آزمایشی است؟</td>
 <td><code>false</code></td>
 <td><code>true</code> یا <code>false</code></td>
+</tr>
+<tr>
+<td>addressRegex</td>
+<td>str</td>
+<td>الگوی آدرس‌ها در این شبکه</td>
+<td>ضروری</td>
+<td><code>^0x[0-9A-Fa-f]{40}$</code></td>
+</tr>
+<tr>
+<td>memoRequired</td>
+<td>boolean</td>
+<td>آیا تراکنش روی این شبکه نیازمند ممو است؟</td>
+<td><code>false</code></td>
+<td><code>true</code> یا <code>false</code></td>
+</tr>
+<tr>
+<td>memoRegex</td>
+<td>str</td>
+<td>در صورت وجود، ممو باید چه الگویی داشته باشد؟</td>
+<td><code>&#39;&#39;</code></td>
+<td><code>^[0-9A-Za-z]{1,28}$</code></td>
+</tr>
+<tr>
+<td>depositEnable</td>
+<td>boolean</td>
+<td>آیا واریز رمزارز روی این شبکه فعال است؟</td>
+<td><code>true</code></td>
+<td><code>true</code> یا <code>false</code></td>
+</tr>
+<tr>
+<td>minConfirm</td>
+<td>int</td>
+<td>حداقل تعداد کانفیرم شبکه برای تایید اولیه واریز</td>
+<td><code>1</code></td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td>unlockConfirm</td>
+<td>int</td>
+<td>حداقل تعداد کانفیرم شبکه برای تایید نهایی واریز</td>
+<td><code>minConfirm</code></td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td>deposit_info</td>
+<td>dict</td>
+<td>فهرست پارامترهای واریز به تفکیک نوع آدرس واریز</td>
+<td><code>{}</code></td>
+<td><code>{&quot;standard&quot;: {&quot;depositMin&quot;: &quot;0.01&quot;}}</code></td>
+</tr>
+<tr>
+<td>deposit_info.type.depositFee</td>
+<td>monetary</td>
+<td>کارمزد واریز این رمزارز روی شبکه و نوع آدرس</td>
+<td><code>0</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td>deposit_info.type.depositMin</td>
+<td>monetary</td>
+<td>حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
+<td><code>0</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>deposit_info.type.depositMax</td>
+<td>monetary</td>
+<td>حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
+<td><code>~20bIRT</code></td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td>withdrawEnable</td>
+<td>boolean</td>
+<td>آیا برداشت رمزارز روی این شبکه فعال است؟</td>
+<td><code>true</code></td>
+<td><code>true</code> یا <code>false</code></td>
+</tr>
+<tr>
+<td>withdrawIntegerMultiple</td>
+<td>monetary</td>
+<td>حداقل مقدار تغییر مقدار قابل برداشت</td>
+<td><code>&#39;1e-8&#39;</code></td>
+<td><code>0.000001</code></td>
+</tr>
+<tr>
+<td>withdrawFee</td>
+<td>monetary</td>
+<td>کارمزد برداشت</td>
+<td><code>0</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td>withdrawMin</td>
+<td>monetary</td>
+<td>حداقل مقدار قابل برداشت</td>
+<td><code>withdrawFee</code></td>
+<td><code>0.1</code></td>
+</tr>
+<tr>
+<td>withdrawMax</td>
+<td>monetary</td>
+<td>حداکثر مقدار قابل برداشت</td>
+<td><code>~20bIRT</code></td>
+<td><code>1000</code></td>
 </tr>
 </tbody></table>
 <h1 id="general-considerations">ملاحظات عمومی</h1>
