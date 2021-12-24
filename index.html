@@ -2964,21 +2964,108 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>ساختار کلی پاسخ به صورت زیر خواهد بود. کلیدهای موجود در هر بخش در مستندات توضیح داده شده‌اند.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CoinX"</span><span class="p">,</span><span class="w">
-        </span><span class="err">...other</span><span class="w"> </span><span class="err">CoinOptions...</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"networkX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...NetworkOptions...</span><span class="p">},</span><span class="w">
-          </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CoinX"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...other</span><span class="w"> </span><span class="err">CoinOptions...</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"networkX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...NetworkOptions...</span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+    </span><span class="err">...other</span><span class="w"> </span><span class="err">NobitexOptions...</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>برای نمونه یک پاسخ کامل شامل دو رمزارز فعال به صورت زیر خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$|^(bc1)[0-9A-Za-z]{39,59}$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"segwit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00040000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00040000"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0003500000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"BTCLN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"depositEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"depositMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000100"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lightning"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000010"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.20000000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000100"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
-      </span><span class="err">...other</span><span class="w"> </span><span class="err">NobitexOptions...</span><span class="p">,</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BSC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^(0x)[0-9A-Fa-f]{40}$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEP20 (BSC)"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00050000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0x[0-9A-Fa-f]{40}$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00300000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"activeCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>عملکرد سیستم نوبیتکس بر اساس پارامترهای مختلف تنظیم می‌شود که با استفاده از API «تنظیمات سیستم» می‌توانید مقادیر این پارامترها را دریافت نمایید. مواردی مانند رمزارزهای فعال، حداقل معامله در هر بازار، پله‌های کارمزد، سقف برداشت و بسیاری اطلاعات مفید دیگر از این طریق در دسترس شما قرار خواهد داشت. پاسخ در دو کلید <code>nobitex</code> شامل تنظیمات کلی سیستمی، و کلید <code>coins</code> شامل تنظیمات مخصوص هر رمزارز بازگردانده می‌شود. همچنین هر رمزارز دارای چندین «شبکه» است که برخی تنظیمات ممکن است فقط در سطح شبکه تعریف شوند یا در سطح رمزارز به صورت عمومی وجود داشته باشند ولی در بعضی شبکه‌های آن رمزارز متفاوت بوده و بازتعریف شوند.</p>
@@ -3131,28 +3218,28 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td><code>12</code></td>
 </tr>
 <tr>
-<td>deposit_info</td>
+<td>depositInfo</td>
 <td>dict</td>
 <td>فهرست پارامترهای واریز به تفکیک نوع آدرس واریز</td>
 <td><code>{}</code></td>
 <td><code>{&quot;standard&quot;: {&quot;depositMin&quot;: &quot;0.01&quot;}}</code></td>
 </tr>
 <tr>
-<td>deposit_info.type.depositFee</td>
+<td>depositInfo.type.depositFee</td>
 <td>monetary</td>
 <td>کارمزد واریز این رمزارز روی شبکه و نوع آدرس</td>
 <td><code>0</code></td>
 <td><code>0.1</code></td>
 </tr>
 <tr>
-<td>deposit_info.type.depositMin</td>
+<td>depositInfo.type.depositMin</td>
 <td>monetary</td>
 <td>حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
 <td><code>0</code></td>
 <td><code>10</code></td>
 </tr>
 <tr>
-<td>deposit_info.type.depositMax</td>
+<td>depositInfo.type.depositMax</td>
 <td>monetary</td>
 <td>حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
 <td><code>~20bIRT</code></td>
