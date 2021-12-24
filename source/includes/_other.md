@@ -14,21 +14,109 @@ http POST https://api.nobitex.ir/v2/options
 
 ```json
 {
-    "status": "ok",
-    "coins": [
-      {
-        "coin": "CoinX",
-        ...other CoinOptions...,
-        "networkList": {
-          "networkX": {...NetworkOptions...},
-          ...
+  "status": "ok",
+  "coins": [
+    {
+      "coin": "CoinX",
+      ...other CoinOptions...,
+      "networkList": {
+        "networkX": {...NetworkOptions...},
+        ...
+      }
+    }
+  ],
+  "nobitex": {
+    "allCurrencies": ["btc", "eth", ...],
+    ...other NobitexOptions...,
+  }
+}
+```
+
+> برای نمونه یک پاسخ کامل شامل دو رمزارز فعال به صورت زیر خواهد بود:
+
+```json
+{
+  "status": "ok",
+  "coins": [
+    {
+      "coin": "btc",
+      "defaultNetwork": "BTC",
+      "name": "Bitcoin",
+      "networkList": {
+        "BTC": {
+          "addressRegex": "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$|^(bc1)[0-9A-Za-z]{39,59}$",
+          "depositInfo": {
+            "segwit": {
+              "depositMin": "0.00040000"
+            },
+            "standard": {
+              "depositMin": "0.00040000"
+            }
+          },
+          "isDefault": true,
+          "minConfirm": 2,
+          "name": "BTC",
+          "network": "BTC",
+          "withdrawFee": "0.0003500000",
+          "withdrawIntegerMultiple": "0.00000001",
+          "withdrawMin": "0.00100000"
+        },
+        "BTCLN": {
+          "addressRegex": "",
+          "depositEnable": false,
+          "depositInfo": {
+            "standard": {
+              "depositMax": "0.00100000",
+              "depositMin": "0.00000100"
+            }
+          },
+          "minConfirm": 1,
+          "name": "Lightning",
+          "network": "BTCLN",
+          "withdrawFee": "0.00000010",
+          "withdrawIntegerMultiple": "0.00000001",
+          "withdrawMax": "0.20000000",
+          "withdrawMin": "0.00000100"
         }
       }
-    ],
-    "nobitex": {
-      "allCurrencies": ["btc", "eth", ...],
-      ...other NobitexOptions...,
-    }
+    },
+    {
+      "coin": "eth",
+      "defaultNetwork": "ETH",
+      "name": "Ethereum",
+      "networkList": {
+        "BSC": {
+          "addressRegex": "^(0x)[0-9A-Fa-f]{40}$",
+          "minConfirm": 15,
+          "name": "BEP20 (BSC)",
+          "network": "BSC",
+          "withdrawFee": "0.00050000",
+          "withdrawIntegerMultiple": "0.00000001",
+          "withdrawMin": "0.00200000"
+        },
+        "ETH": {
+          "addressRegex": "^0x[0-9A-Fa-f]{40}$",
+          "depositInfo": {
+            "standard": {
+              "depositMin": "0.00100000"
+            }
+          },
+          "isDefault": true,
+          "minConfirm": 12,
+          "name": "ERC20",
+          "network": "ETH",
+          "withdrawEnable": false,
+          "withdrawFee": "0.00300000",
+          "withdrawIntegerMultiple": "0.00000001",
+          "withdrawMin": "0.0100000"
+        }
+      }
+    },
+  ],
+  "nobitex": {
+    "allCurrencies": ["btc", "eth"],
+    "activeCurrencies": ["btc", "eth"]
+  }
 }
 ```
 
@@ -69,10 +157,10 @@ memoRegex | str | در صورت وجود، ممو باید چه الگویی د�
 depositEnable | boolean | آیا واریز رمزارز روی این شبکه فعال است؟ | `true` | `true` یا `false`
 minConfirm | int | حداقل تعداد کانفیرم شبکه برای تایید اولیه واریز | `1` | `12`
 unlockConfirm | int | حداقل تعداد کانفیرم شبکه برای تایید نهایی واریز | `minConfirm` | `12`
-deposit_info | dict | فهرست پارامترهای واریز به تفکیک نوع آدرس واریز | `{}` | `{"standard": {"depositMin": "0.01"}}`
-deposit_info.type.depositFee | monetary | کارمزد واریز این رمزارز روی شبکه و نوع آدرس | `0` | `0.1`
-deposit_info.type.depositMin | monetary | حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس | `0` | `10`
-deposit_info.type.depositMax | monetary | حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس | `~20bIRT` | `1000`
+depositInfo | dict | فهرست پارامترهای واریز به تفکیک نوع آدرس واریز | `{}` | `{"standard": {"depositMin": "0.01"}}`
+depositInfo.type.depositFee | monetary | کارمزد واریز این رمزارز روی شبکه و نوع آدرس | `0` | `0.1`
+depositInfo.type.depositMin | monetary | حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس | `0` | `10`
+depositInfo.type.depositMax | monetary | حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس | `~20bIRT` | `1000`
 withdrawEnable | boolean | آیا برداشت رمزارز روی این شبکه فعال است؟ | `true` | `true` یا `false`
 withdrawIntegerMultiple | monetary | حداقل مقدار تغییر مقدار قابل برداشت | `'1e-8'` | `0.000001`
 withdrawFee | monetary | کارمزد برداشت | `0` | `0.1`
