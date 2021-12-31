@@ -3097,6 +3097,18 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>نماد رمزارزهای اصلی و سطح یک</td>
 <td><code>[&#39;btc&#39;, &#39;eth&#39;]</code></td>
 </tr>
+<tr>
+<td>amountPrecisions</td>
+<td>dict</td>
+<td>دقت اعشار مقدار در بازارهای مختلف</td>
+<td><code>{&quot;BTCIRT&quot;: &quot;0.000001&quot;,…}</code></td>
+</tr>
+<tr>
+<td>pricePrecisions</td>
+<td>dict</td>
+<td>دقت اعشار قیمت در بازارهای مختلف</td>
+<td><code>{&quot;BTCUSDT&quot;: &quot;0.01&quot;,…}</code></td>
+</tr>
 </tbody></table>
 <h3 id='coinoptions'>پارامترهای پاسخ - CoinOptions</h3>
 <table><thead>
@@ -3135,6 +3147,13 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>یک دیکشنری از شبکه‌های مختلف این رمزارز، با کلیدهای نام انگلیسی هر شبکه و مقادیر از نوع NetworkOptions</td>
 <td>ضروری</td>
 <td></td>
+</tr>
+<tr>
+<td>displayPrecision</td>
+<td>str</td>
+<td>دقت اعشار پیش‌فرض نمایش مقادیر این رمزارز</td>
+<td><code>0.00000001</code></td>
+<td><code>0.0001</code> یا <code>0.1</code> یا <code>1</code></td>
 </tr>
 </tbody></table>
 <h3 id='networkoptions'>پارامترهای پاسخ - NetworkOptions</h3>
