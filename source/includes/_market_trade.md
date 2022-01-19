@@ -76,6 +76,7 @@ http POST https://api.nobitex.ir/market/orders/add \
     "dstCurrency": "\ufdfc",
     "price": "market",
     "amount": "64",
+    "param1": "47500",
     "totalPrice": "0",
     "totalOrderPrice": "3008000",
     "matchedAmount": "0",
@@ -273,6 +274,7 @@ dstCurrency | string | رمزارز مقصد سفارش | `﷼` یا `Tether`
 price | monetary | قیمت ثبت شده برای سفارش | `2900000000` یا `market`
 amount | monetary | مقدار ثبت شده برای سفارش | `0.023324`
 matchedAmount | monetary | مقدار پر شده از سفارش | `0.012001`
+param1 | monetary | قیمت توقف در حد ضرر | `2790000000`
 
 همچنین در صورتی که پارامتر `details=2` باشد این فیلدها نیز برای هر سفارش بازگردانده می‌شود:
 
