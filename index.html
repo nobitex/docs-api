@@ -1136,6 +1136,40 @@ resolution: 60
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>نمونه سفارش حد ضرر:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
+  type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StopMarket"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOGE-RLS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dogecoin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">fdfc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalOrderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3008000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inactive"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-17T12:14:18.005896+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p><code>POST /market/orders/add</code></p>
 
 <p>برای ثبت سفارش معامله در بازار نوبیتکس از این درخواست استفاده نمایید.</p>
@@ -1165,7 +1199,7 @@ resolution: 60
 <td>string</td>
 <td>الزامی</td>
 <td>نحوه‌ی اجرای سفارش</td>
-<td>‍‍‍<code>market</code> یا <code>limit</code></td>
+<td><code>market</code> یا <code>limit</code> یا <code>stop_market</code> یا <code>stop_limit</code></td>
 </tr>
 <tr>
 <td>srcCurrency</td>
@@ -1195,6 +1229,13 @@ resolution: 60
 <td>قیمت واحد</td>
 <td><code>1210000000</code></td>
 </tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>الزامی در سفارش حد ضرر</td>
+<td>قیمت توقف حد ضرر</td>
+<td><code>1180000000</code></td>
+</tr>
 </tbody></table>
 <h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
 <p>در صورتی که درخواست ثبت سفارش معتبر نباشد، ممکن است یکی از این خطاها برگردانده شود. در صورت دریافت هر یک از این خطاها، آن سفارش شما ثبت نشده است و در صورت تمایل باید درخواست ثبت آن سفارش را دوباره ارسال کنید.</p>
@@ -1211,7 +1252,7 @@ resolution: 60
 </tr>
 <tr>
 <td>BadPrice</td>
-<td>قیمت تعیین شده برای سفارش نسبت به قیمت فعلی بازار تفاوت زیادی دارد. قیمت سفارش خود را در بازه‌ی ۳۰٪ قیمت کنونی بازار تعیین کنید.</td>
+<td>در سفارش عادی: قیمت تعیین شده برای سفارش نسبت به قیمت فعلی بازار تفاوت زیادی دارد. قیمت سفارش خود را در بازه‌ی ۳۰٪ قیمت کنونی بازار تعیین کنید.<br/> در سفارش حد ضرر: قیمت تعیین شده برای سفارش بازار نمی‌تواند از قیمت توقف بهتر باشد.</td>
 </tr>
 <tr>
 <td>InvalidExecutionType</td>
@@ -1246,8 +1287,8 @@ resolution: 60
 <td>کاربر اجازه‌ی معامله ندارد، فرآیند احراز هویت خود را تکمیل نمایید.</td>
 </tr>
 <tr>
-<td>TradeLimitation</td>
-<td>سقف معاملات کاربر به اتمام رسیده است، فرآیند احراز هویت خود را تکمیل نمایید.</td>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
 </tr>
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
@@ -1258,7 +1299,12 @@ resolution: 60
 <li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر <code>price</code> را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر <code>price</code> را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.</li>
 <li><strong>سفارش تکراری:</strong> برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای <code>DuplicateOrder</code> دریافت می‌کنند. (غیرفعال در حالت Pro)</li>
 <li><strong>دقت مقادیر پولی (monetary):</strong> نوع monetary که در پارامترهای <code>amount</code> و <code>price</code> به کار می‌رود، بسته به بازار هر رمزارز، تعداد رقم اعشار متغیری بین ۰ تا ۸ رقم دارد. در صورت ارسال مقادیر با ارقام اعشاری بیشتر، ارقام بی‌معنی حذف (به پایین گرد) خواهند شد.<br>مشاهده جدول دقت‌ها</li>
+<li><strong>سفارش حد ضرر:</strong> این سفارش در زمان رسیدن قیمت بازار به قیمت توقف فعال خواهد شد. کاربرد اصلی آن، جلوگیری از زیان در صورت تغییر غیرمنتظره قیمت بازار است. با ثبت این نوع سفارش می‌توان بدون نیاز به رصد مداوم بازار، در صورت خروج قیمت از بازه مد نظر، اقدام به تبدیل دارایی نمود.</li>
 </ol>
+
+<aside class="notice">
+سفارش حد ضرر در مرحله آزمایشی است و به زودی برای تمام کاربران فعال خواهد شد.
+</aside>
 <h2 id='8c18d795de'>وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -1312,7 +1358,7 @@ resolution: 60
 <td>int</td>
 <td>الزامی</td>
 <td>شناسه سفارش</td>
-<td>‍‍<code>5684</code></td>
+<td><code>5684</code></td>
 </tr>
 </tbody></table>
 
@@ -1325,7 +1371,7 @@ resolution: 60
 <ul>
 <li>Active: سفارش مقدار پر نشده (<code>unmatched_amount</code>) برای شرکت در معاملات دارد و در بازار فعال است.</li>
 <li>Done: سفارش تماما معامله شده است.</li>
-<li>Inactive: سفارش توقف هنوز به محدوده قیمت تعیین شده نرسیده و غیرفعال است.</li>
+<li>Inactive: سفارش حد ضرر هنوز به محدوده قیمت توقف تعیین شده نرسیده و غیرفعال است.</li>
 <li>Canceled: سفارش پیش از پر شدن کامل توسط کاربر یا سامانه لغو شده است.
 سفارش به چند دلیل می‌تواند توسط سامانه لغو شود:
 
@@ -1448,7 +1494,7 @@ resolution: 60
 <td>execution</td>
 <td>string</td>
 <td>نوع اجرای سفارش</td>
-<td><code>Limit</code> یا <code>Market</code></td>
+<td><code>Limit</code> یا <code>Market</code> یا <code>StopMarket</code> یا <code>StopLimit</code></td>
 </tr>
 <tr>
 <td>srcCurrency</td>
@@ -1502,7 +1548,7 @@ resolution: 60
 <td>status</td>
 <td>string</td>
 <td>وضعیت فعلی سفارش</td>
-<td><code>New</code> یا <code>Active</code> یا <code>Done</code> یا <code>Canceled</code></td>
+<td><code>New</code> یا <code>Active</code> یا <code>Inactive</code> یا <code>Done</code> یا <code>Canceled</code></td>
 </tr>
 <tr>
 <td>fee</td>
@@ -1566,7 +1612,7 @@ resolution: 60
 <td>int</td>
 <td>الزامی</td>
 <td>شناسه سفارش</td>
-<td><code>‍5684‍‍</code></td>
+<td><code>5684</code></td>
 </tr>
 <tr>
 <td>status</td>
@@ -1582,7 +1628,7 @@ resolution: 60
 </aside>
 
 <aside class="notice">
-مقدار status میتواند از 'new' به 'active' و یا از 'active' به 'cancel' تغییر کند.
+مقدار status میتواند از 'new' به 'active' و یا از 'active'/'inactive' به 'cancel' تغییر کند.
 در غیر اینصورت، درخواست رد میشود.
 </aside>
 <h2 id='27f17a67f7'>لغو سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
@@ -1600,7 +1646,7 @@ resolution: 60
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای لغو سفارشات از این نوع درخواست استفاده نمایید:</p>
+<p>برای لغو دسته‌جمعی سفارشات فعال از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><p>آدرس : <code>POST /market/orders/cancel-old</code></p></li>
@@ -1628,7 +1674,7 @@ resolution: 60
 <td>string</td>
 <td><code>market</code></td>
 <td>نحوه سفارش</td>
-<td>‍‍‍<code>market</code> یا <code>limit</code></td>
+<td><code>market</code> یا <code>limit</code> یا <code>stop_market</code> یا <code>stop_limit</code></td>
 </tr>
 <tr>
 <td>srcCurrency</td>
@@ -1661,7 +1707,11 @@ resolution: 60
 </aside>
 
 <aside class="notice">
-در صورتی که مقدار hours ارسال نشود، تمامی سفارشات مربوط لغو خواهد شد.
+در صورتی که مقدار hours ارسال نشود، تمامی سفارشات فعال مربوط لغو خواهد شد.
+</aside>
+
+<aside class="notice">
+سفارشات حد ضرر غیرفعال مشمول این نوع لغو نخواهند شد.
 </aside>
 <h1 id='0d2655f072'>اطلاعات کاربر</h1><h2 id='88cb25e727'>پروفایل</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
