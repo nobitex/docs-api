@@ -1,0 +1,37 @@
+name: درخواست فیچر
+description: امکانات مورد نیاز خود را به ما پیشنهاد دهید
+title: "[پیشنهاد]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **توجه:** قبل از ثبت مورد جدید، [مستندات امکانات موجود](https://apidocs.nobitex.ir/) و [موردهای قدیمی فیچر](https://github.com/nobitex/docs-api/issues?q=is%3Aissue+label%3Aenhancement) را بخوانید. در صورت یافتن مورد مشابه همانجا مسئله خود را مطرح کنید
+  - type: textarea
+    id: requirement
+    attributes:
+      label: نیازمندی
+      description: |
+        چرا به این امکان نیازمند شده‌اید؟ مشکلی که با آن روبرو شده‌اید را دقیقا شرح دهید:
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: راه‌حل
+      description: |
+        چه راه‌حلی برای رفع این نیاز می‌توانیم به شما ارائه کنیم؟ پیشنهاد(های) خود را شفاف و دقیق شرح دهید:
+    validations:
+      required: true
+  - type: textarea
+    id: similar-features
+    attributes:
+      label: امکانات مشابه
+      description: |
+        سایر صرافی‌های بزرگ چه امکانات مشابهی برای رفع این نیاز در نظر گرفته‌اند؟ با ضمیمه کردن پیوند به مستندات آنها ما را در تحلیل سریع‌تر درخواست‌های شما یاری کنید:
+  - type: textarea
+    id: additional-words
+    attributes:
+      label: توضیح تکمیلی
+      description: |
+        هر چیزی که از قلم مانده و به فهم بهتر ما کمک می‌کند در اینجا شرح دهید:

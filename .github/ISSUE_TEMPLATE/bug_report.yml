@@ -1,0 +1,84 @@
+name: گزارش خطا
+description: برای کمک به بهبود ما، مشاهدات خود را گزارش کنید
+title: "[خطا]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **توجه:** قبل از ثبت مورد جدید، [مستندات عملکرد فعلی](https://apidocs.nobitex.ir/) و [موردهای قدیمی خطا](https://github.com/nobitex/docs-api/issues?q=is%3Aissue+label%3Abug) را بخوانید. در صورت یافتن مورد مشابه همانجا مسئله خود را مطرح کنید
+  - type: textarea
+    id: description
+    attributes:
+      label: شرح خطا
+      description: |
+        خطای مشاهده شده را به طور اجمالی شرح دهید:
+  - type: textarea
+    id: request
+    attributes:
+      label: جزئیات درخواست
+      placeholder: |
+        1. آدرس: `POST /sample/url`
+        2. داده:
+            - key1: value1
+            - key2: value2
+            - ...
+        3. هدر:
+            - Authorization: yes
+            - ...
+        4. محیط:
+            - تست‌نت
+            - اصلی
+      value: |
+        1. آدرس: `POST /sample/url`
+        2. داده:
+            - key1: value1
+            - key2: value2
+            - ...
+        3. هدر:
+            - Authorization: yes
+            - ...
+        4. محیط:
+            - تست‌نت
+            - اصلی
+    validations:
+      required: true
+  - type: textarea
+    id: current-response
+    attributes:
+      label: پاسخ دریافتی
+      description: |
+        پاسخ کامل نوبیتکس را در اینجا درج کنید. داده‌های حساس خود را در آن با * مخدوش نمایید:
+      placeholder: |
+        ```{"status": "ok", "result": {"id": 12***5,...}```
+    validations:
+      required: true
+  - type: textarea
+    id: expected-response
+    attributes:
+      label: پاسخ مورد انتظار
+      description: |
+        شرح دقیقی از رفتار مورد انتظار خود از نوبیتکس بدهید:
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: پیوند مراجع
+      description: |
+        در صورتی که رفتار نوبیتکس با توصیفات مستندات مغایرت دارد، لینک یا تصویر بخش مد نظر خود را ضمیمه کنید/
+        در صورتی که رفتار با منطق کاری صرافی‌ها تفاوت دارد، لینک مقاله تایید کننده پاسخ مورد انتظار را ضمیمه کنید:
+      placeholder: |
+        - https://apidocs.nobitex.ir/#example-section
+        - https://www.investopedia.com/...
+        - ...
+  - type: textarea
+    id: additional-data
+    attributes:
+      label: اطلاعات تکمیلی
+      description: |
+        هر اطلاعات دیگری که برای کشف ریشه خطا می‌تواند به ما کمک کند:
+      placeholder: |
+        - محل استفاده (محلی/VPS/...)
+        - محل IP (داخلی/خارجی)
+        - ...
