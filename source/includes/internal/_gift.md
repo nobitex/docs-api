@@ -64,7 +64,7 @@ curl -X POST 'https://api.nobitex.ir/gift/create-gift' \
     "redeem_type": "internal",
     "redeem_date": "2023-11-12",
     "receiver_full_name": "ali karimi"
-}
+}'
 ```
 
 
@@ -77,6 +77,7 @@ curl -X POST 'https://api.nobitex.ir/gift/create-gift' \
     "gift_id": 22
 }
 ```
+
 ##تایید برداشت هدیه
 برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.
 
@@ -102,6 +103,7 @@ status | string  | وضعیت پاسخ    | ok
 
 
 >نمونه درخواست:
+
 ```shell
 curl -X POST 'https://api.nobitex.ir/gift/confirm-gift-withdraw' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000' \
@@ -113,8 +115,8 @@ _h 'Content-Type: application/json' \
 }'
 ```
 
-
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
 ```json
 {
     "status": "ok"
@@ -212,6 +214,7 @@ curl -X POST 'https://api.nobitex.ir/gift/redeem' \
     "gift_id": 22
 }
 ```
+
 > در صورت فراخوانی درست، پاسخ به حالتی که دریافت به صورت lightning این صورت خواهد بود:
 
 ```json
@@ -220,6 +223,7 @@ curl -X POST 'https://api.nobitex.ir/gift/redeem' \
     "lnUrl": "lnurlZX6N..."
 }
 ```
+
 > در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، این صورت خواهد بود:
 
 ```json
@@ -270,6 +274,7 @@ lnUrl | string   | هدیه lnurl | "lnurlZX6N..."
 </aside>
 
 >نمونه درخواست:
+
 ```shell
 curl -X POST 'https://api.nobitex.ir/gift/redeem-lightning' \
 -H 'Content-Type: application/json' \
@@ -349,12 +354,14 @@ curl -X POST 'https://api.nobitex.ir/gift/confirm-redeem' \
 
 
 > در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:
+
 ```json
 {
   "status": "ok",
   "lnUrl": "lnurlPURQEQ..."
 }
 ```
+
 > در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:
 
 ```json
@@ -402,6 +409,7 @@ curl -X POST 'https://api.nobitex.ir/gift/confirm-redeem-lightning' \
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
 ```json
 {
   "status": "ok",
