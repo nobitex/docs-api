@@ -354,16 +354,16 @@
                     <a href="#e12b63a512" class="toc-h2 toc-link" data-title="ثبت سفارش جدید">ثبت سفارش جدید</a>
                   </li>
                   <li>
-                    <a href="#8c18d795de" class="toc-h2 toc-link" data-title="وضعیت سفارش">وضعیت سفارش</a>
+                    <a href="#0c113519df" class="toc-h2 toc-link" data-title="مشاهده وضعیت سفارش">مشاهده وضعیت سفارش</a>
                   </li>
                   <li>
                     <a href="#a2ce8ff7e3" class="toc-h2 toc-link" data-title="فهرست سفارش‌های کاربر">فهرست سفارش‌های کاربر</a>
                   </li>
                   <li>
-                    <a href="#cdbcd8fa96" class="toc-h2 toc-link" data-title="به روز رسانی سفارش">به روز رسانی سفارش</a>
+                    <a href="#4a50e713bf" class="toc-h2 toc-link" data-title="تغییر وضعیت سفارش">تغییر وضعیت سفارش</a>
                   </li>
                   <li>
-                    <a href="#27f17a67f7" class="toc-h2 toc-link" data-title="لغو سفارش">لغو سفارش</a>
+                    <a href="#2a3bc4fdc6" class="toc-h2 toc-link" data-title="لغو جمعی سفارشات">لغو جمعی سفارشات</a>
                   </li>
               </ul>
           </li>
@@ -1311,7 +1311,7 @@ resolution: 60
 <aside class="notice">
 سفارش حد ضرر در مرحله آزمایشی است و به زودی برای تمام کاربران فعال خواهد شد.
 </aside>
-<h2 id='8c18d795de'>وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
+<h2 id='0c113519df'>مشاهده وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
@@ -1584,10 +1584,10 @@ resolution: 60
 <h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
 <ol>
 <li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در هر دقیقه</li>
-<li>در پاسخ حداکثر اطلاعات هزار سفارش بازگردانده می‌شود. با استفاده از پارامترهای ورودی می‌توانید تعداد محدودتری از سفارش‌های خود را دریافت کنید. همچنین پیشنهاد می‌شود که در صورتی که تعداد زیادی سفارش باز دارید، شناسه آن‌ها را در زمان ثبت سفارش دریافت و ذخیره نمایید و به صورت مستقل با استفاده از درخواست «وضعیت سفارش» اطلاعات هر یک را بنا به نیاز به‌روز کنید. همچنین برای اطلاع از معاملات انجام شده خود می‌توانید از درخواست «market/trades/list» استفاده نمایید.</li>
+<li>در پاسخ حداکثر اطلاعات هزار سفارش بازگردانده می‌شود. با استفاده از پارامترهای ورودی می‌توانید تعداد محدودتری از سفارش‌های خود را دریافت کنید. همچنین پیشنهاد می‌شود که در صورتی که تعداد زیادی سفارش باز دارید، شناسه آن‌ها را در زمان ثبت سفارش دریافت و ذخیره نمایید و به صورت مستقل با استفاده از درخواست «مشاهده وضعیت سفارش» اطلاعات هر یک را بنا به نیاز به‌روز کنید. همچنین برای اطلاع از معاملات انجام شده خود می‌توانید از درخواست «market/trades/list» استفاده نمایید.</li>
 <li>منظور از وضعیت Done سفارشی است که به صورت صد در صد اجرا شده باشد. ممکن است سفارش شما به تدریج اجرا شود، و در این حالت وضعیت آن کماکان Active می‌ماند. از فیلد matchedAmount برای تشخیص وضعیت اجرا و پر شدن سفارش استفاده کنید. همچنین ممکن است سفارش شما قبل از اجرای کامل، به دلیل درخواست «لغو سفارش» یا کمبود موجودی یا تغییر شدید قیمت بازار (در سفارش‌های مارکت) لغو شود که در این حالت وضعیت آن Canceled خواهد بود، به این معنی که به صورت صد در صد اجرا نشده است ولی می‌تواند مقدار matchedAmount آن بزرگ‌تر از صفر باشد.</li>
 </ol>
-<h2 id='cdbcd8fa96'>به روز رسانی سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/update-status'</span> <span class="se">\</span>
+<h2 id='4a50e713bf'>تغییر وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/update-status'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
@@ -1603,7 +1603,7 @@ resolution: 60
     </span><span class="nl">"updatedStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای سفارش گذاری از این نوع درخواست استفاده نمایید:</p>
+<p>برای تغییر وضعیت یک سفارش (لغو یا فعال‌سازی) از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><p>آدرس : <code>POST /market/orders/update-status</code></p></li>
@@ -1643,7 +1643,7 @@ resolution: 60
 مقدار status میتواند از 'new' به 'active' و یا از 'active'/'inactive' به 'cancel' تغییر کند.
 در غیر اینصورت، درخواست رد میشود.
 </aside>
-<h2 id='27f17a67f7'>لغو سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
+<h2 id='2a3bc4fdc6'>لغو جمعی سفارشات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
