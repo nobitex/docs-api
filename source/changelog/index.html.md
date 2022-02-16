@@ -57,10 +57,8 @@ CoinDepositDisabled | CoinDepositDisabled
 
 * ثبت درخواست برداشت (/users/wallets/withdraw)
 * تایید درخواست برداشت (/users/wallets/withdraw-confirm)
-* لغو درخواست برداشت (/users/wallets/withdraw-cancel)
 * لیست برداشت‌ها (/users/wallets/withdraws/list)
 * مشاهده برداشت (/withdraws/`ID`)
-* به‌روزرسانی وضعیت برداشت (/withdraws/`ID`/update-status)
 
 ## مستندات جدید آبان ۱۴۰۰
 
