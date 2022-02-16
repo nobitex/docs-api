@@ -382,6 +382,35 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#591570d949" class="toc-h1 toc-link" data-title="گیفت کارت">گیفت کارت</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ad0b7a2c5e" class="toc-h2 toc-link" data-title="ایجاد هدیه">ایجاد هدیه</a>
+                  </li>
+                  <li>
+                    <a href="#440c07fe65" class="toc-h2 toc-link" data-title="تایید برداشت هدیه">تایید برداشت هدیه</a>
+                  </li>
+                  <li>
+                    <a href="#56e3cb5859" class="toc-h2 toc-link" data-title="لندینگ هدیه">لندینگ هدیه</a>
+                  </li>
+                  <li>
+                    <a href="#3d9594a87d" class="toc-h2 toc-link" data-title="دریافت هدیه‌ برای کاربران عضو">دریافت هدیه‌ برای کاربران عضو</a>
+                  </li>
+                  <li>
+                    <a href="#lightning" class="toc-h2 toc-link" data-title="دریافت هدیه‌ی lightning برای کاربران غیر عضو">دریافت هدیه‌ی lightning برای کاربران غیر عضو</a>
+                  </li>
+                  <li>
+                    <a href="#c04c45b9da" class="toc-h2 toc-link" data-title="تایید دوعاملی هدیه برای کاربران عضو">تایید دوعاملی هدیه برای کاربران عضو</a>
+                  </li>
+                  <li>
+                    <a href="#95481e8356" class="toc-h2 toc-link" data-title="تایید دو عاملی هدیه‌ برای کاربران غیر عضو">تایید دو عاملی هدیه‌ برای کاربران غیر عضو</a>
+                  </li>
+                  <li>
+                    <a href="#f62370d40a" class="toc-h2 toc-link" data-title="لیست کارت‌های هدیه‌ی کاربر">لیست کارت‌های هدیه‌ی کاربر</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -2627,7 +2656,927 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 50
 </aside>
+<h1 id='591570d949'>گیفت کارت</h1>
+<p>کارت هدیه‌ی نوبیتکس، امکان ارسال هدیه‌ به صورت فیزیکی و مجازی را به شخص دیگری فراهم می‌کند. فرایند دریافت هدیه نیز
+می‌تواند به صورت داخلی و یا از نوع lightning باشد.</p>
 
+<aside class="notice">
+از آنجایی در حالت دریافت lightning دریافت کننده می‌تواند کاربر نوبیتکس نباشد برای بعضی از APIهای این مجموعه احراز هویت الزامی نیست.
+</aside>
+<h2 id='ad0b7a2c5e'>ایجاد هدیه</h2>
+<p>برای ایجاد هدیه‌ی باید از درخواست با مشخصات زیر استفاده نمایید:</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/create-gift</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار رمزارز</td>
+<td>&quot;0.02&quot;</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز</td>
+<td>&quot;BTC&quot;</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>همراه گیرنده</td>
+<td>&quot;9127774565&quot;</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>ایمیل گیرنده</td>
+<td>&quot;test@gmail.com&quot;</td>
+</tr>
+<tr>
+<td>gift_type</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع هدیه</td>
+<td>&quot;pyshical&quot;</td>
+</tr>
+<tr>
+<td>gift_sentence</td>
+<td>string</td>
+<td>الزامی</td>
+<td>جمله برای گیرنده</td>
+<td>&quot;تقدیم به شما&quot;</td>
+</tr>
+<tr>
+<td>package_type</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>نوع پکیج</td>
+<td>&quot;default&quot;</td>
+</tr>
+<tr>
+<td>receiver_address</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>آدرس گیرنده</td>
+<td>&quot;iran-tehran&quot;</td>
+</tr>
+<tr>
+<td>receiver_postal_code</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>کد پستی گیرنده</td>
+<td>&quot;3354-7721&quot;</td>
+</tr>
+<tr>
+<td>receiver_full_name</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نام و نام خانوادگی گیرنده</td>
+<td>&quot;masoud mohamadi&quot;</td>
+</tr>
+<tr>
+<td>card_design</td>
+<td>string</td>
+<td>الزامی</td>
+<td>طرح کارت</td>
+<td>&quot;default&quot;</td>
+</tr>
+<tr>
+<td>redeeem_date</td>
+<td>iso-string</td>
+<td>اختیاری</td>
+<td>تاریخ دریافت</td>
+<td>&quot;2022-09-17&quot;</td>
+</tr>
+<tr>
+<td>redeem_type</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع دریافت</td>
+<td>&quot;lightning&quot;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>الزامی</td>
+<td>گذرواژه‌ی گیرنده</td>
+<td>&quot;testpass123&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>created</td>
+</tr>
+<tr>
+<td>giftWithdrawId</td>
+<td>integer</td>
+<td>شناسه‌ی برداشت</td>
+<td>159</td>
+</tr>
+<tr>
+<td>giftId</td>
+<td>integer</td>
+<td>شناسه‌ی هدیه‌</td>
+<td>36</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در دقیقه
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/create-gift'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-TOTP: 2568148'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "amount": 0.02,
+    "currency": "bnb",
+    "gift_type": "digital",
+    "package_type": "new",
+    "mobile": "09127759318",
+    "gift_sentence": "تقدیم به شما",
+    "receiver_address": "iran-tehran",
+    "receiver_postal_code": "3348-8841",
+    "card_design": "default",
+    "password": "testpass123",
+    "redeem_type": "internal",
+    "redeem_date": "2023-11-12",
+    "receiver_full_name": "ali karimi"
+}
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_withdraw_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='440c07fe65'>تایید برداشت هدیه</h2>
+<p>برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/create-gift</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gift_withdraw_id</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه‌ی برداشت هدیه</td>
+<td>159</td>
+</tr>
+<tr>
+<td>gift_id</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه‌ی هدیه</td>
+<td>36</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد دوعاملی ارسال شده به کاربر</td>
+<td>&quot;040515&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 30 درخواست در ساعت
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:
+<code>shell
+curl -X POST &#39;https://api.nobitex.ir/gift/confirm-gift-withdraw&#39; \
+-H &#39;Authorization: Token yourTOKENhereHEX0000000000&#39; \
+_h &#39;Content-Type: application/json&#39; \
+--data &#39;{
+    &quot;gift_withdraw_id&quot;: 155,
+    &quot;gift_id&quot;: 36,
+    &quot;otp&quot;: &quot;040515&quot;
+}&#39;
+</code></p>
+
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+<code>json
+{
+    &quot;status&quot;: &quot;ok&quot;
+}
+</code></p>
+</blockquote>
+<h2 id='56e3cb5859'>لندینگ هدیه</h2>
+<p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/&lt;redeem-code&gt;</code></p></li>
+<li><p>پارامترهای پاسخ:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>redeem_code</td>
+<td>string</td>
+<td>کد هدیه‌ي کاربر</td>
+<td>&quot;FB57379C&quot;</td>
+</tr>
+<tr>
+<td>card_design</td>
+<td>string</td>
+<td>طرح کارت</td>
+<td>&quot;default&quot;</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>رمزارز</td>
+<td>&quot;bnb&quot;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار رمزارز</td>
+<td>&quot;0.02&quot;</td>
+</tr>
+<tr>
+<td>mobile_provided</td>
+<td>boolean</td>
+<td>اینکه فرستنده شماره همراه گیرنده را ارسال کرده یا خیر</td>
+<td>true</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 3 درخواست در 3 دقیقه
+</aside>
+<h2 id='3d9594a87d'>دریافت هدیه‌ برای کاربران عضو</h2>
+<p>برای دریافت هدیه‌ی کاربری که عضو نوبیتکس است، فارق از نوع دریافت این API فراخوانی شود.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/redeem</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>redeem_code</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد هدیه</td>
+<td>&quot;FB57379C&quot;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>الزامی</td>
+<td>گذرواژه‌ی هدیه</td>
+<td>&quot;testpass123&quot;</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شماره‌ همراه کاربر گیرنده</td>
+<td>&quot;9127774565&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در صورتی که کاربر ایجاده کننده‌ی هدیه شماره همراه کاربر گیرنده را وارد کرده باشد،‌ به این معناست که نحوه‌ی دریافت هدیه به‌صورت دوعاملی هست. 
+</aside>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<aside class="notice">
+در حالتی که نوع برداشت داخلی باشد و دریافت به صورت دوعاملی نباشد:
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در حالتی که نوع برداشت lightning باشد و دریافت به صورت دوعاملی نباشد:
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>lnUrl</td>
+<td>string</td>
+<td>هدیه lnurl</td>
+<td>&quot;lnurlZX6N...&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در حالتی که شماره همراه گیرنده مشخص شده باشد: 
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>پیام پاسخ</td>
+<td>&quot;OTP sent to user.&quot;</td>
+</tr>
+<tr>
+<td>gift_id</td>
+<td>integer</td>
+<td>شناسه‌ی هدیه</td>
+<td>36</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در 10 دقیقه
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "redeem_code": "30BBBBCA",
+    "password": "testpass123"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ برای حالتی که دریافت دوعاملی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت به صورت lightning این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlZX6N..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='lightning'>دریافت هدیه‌ی lightning برای کاربران غیر عضو</h2>
+<p>در صورتی که کاربری عضو نوبیتکس نباشد و نوع هدیه نیز lightning باشد باید از این API برای دریافت هدیه استفاده شود.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/redeem-lightning</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>redeem_code</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد هدیه</td>
+<td>&quot;FB57379C&quot;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>الزامی</td>
+<td>گذرواژه‌ی هدیه</td>
+<td>&quot;testpass123&quot;</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شماره‌ همراه کاربر گیرنده</td>
+<td>&quot;9127774565&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<aside class="notice">
+در حالتی که شماره همراه گیرنده مشخص شده باشد: 
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>پیام پاسخ</td>
+<td>&quot;OTP sent to user.&quot;</td>
+</tr>
+<tr>
+<td>gift_id</td>
+<td>integer</td>
+<td>شناسه‌ی هدیه</td>
+<td>36</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در حالت کلی: 
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>lnUrl</td>
+<td>string</td>
+<td>هدیه lnurl</td>
+<td>&quot;lnurlZX6N...&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در 10 دقیقه
+</aside>
+
+<aside class="notice">
+در این api نیاز به توکن وجود ندازد.
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:
+<code>shell
+curl -X POST &#39;https://api.nobitex.ir/gift/redeem-lightning&#39; \
+-H &#39;Content-Type: application/json&#39; \
+--data &#39;{
+    &quot;redeem_code&quot;: &quot;8AFA1DF3&quot;,
+    &quot;password&quot;: &quot;testpass123&quot;
+}&#39;
+</code></p>
+
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نیاز به دوعاملی باشد برای دریافت، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ در حالت کلی، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='c04c45b9da'>تایید دوعاملی هدیه برای کاربران عضو</h2>
+<p>برای مرحله‌ی تایید دوعاملی برای دریافت هدیه برای کاربران عضو نوبیتکس باید از این API استفاده شود.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/confirm-redeem</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gift_id</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه‌ی کد هدیه</td>
+<td>36</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد دوعاملی ارسال شده به کاربر</td>
+<td>&quot;386155&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<aside class="notice">
+در حالتی که نوع برداشت lightning باشد:
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>lnUrl</td>
+<td>string</td>
+<td>هدیه lnurl</td>
+<td>&quot;lnurlZX6N...&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+در حالتی که نوع برداشت داخلی باشد:
+</aside>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : ۵ درخواست در 10 دقیقه
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "gift_id": 37,
+    "otp": "144470"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:
+<code>json
+{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;lnUrl&quot;: &quot;lnurlPURQEQ...&quot;
+}
+</code>
+در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='95481e8356'>تایید دو عاملی هدیه‌ برای کاربران غیر عضو</h2>
+<p>برای مرحله‌ی تایید دریافت هدیه برای حالت lightnign و کاربران غیر عضو از این API استفاده می‌شود.
+* آدرس: <code>POST /gift/confirm-redeem-lightning</code></p>
+
+<ul>
+<li>پارامترهای ورودی:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gift_id</td>
+<td>integer</td>
+<td>الزامی</td>
+<td>شناسه‌ی کد هدیه</td>
+<td>36</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد دوعاملی ارسال شده به کاربر</td>
+<td>&quot;386155&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>lnUrl</td>
+<td>string</td>
+<td>هدیه lnurl</td>
+<td>&quot;lnurlZX6N...&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در 10 دقیقه
+</aside>
+
+<aside class="notice">
+در این api نیاز به توکن وجود ندازد.
+</aside>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem-lightning'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "gift_id": 37,
+    "otp": "981237"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+<code>json
+{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;lnUrl&quot;: &quot;lnurlPURQEQ...&quot;
+}
+</code></p>
+</blockquote>
+<h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
+<p>برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.</p>
+
+<ul>
+<li><p>آدرس: <code>GET /gift/user-gifts</code></p></li>
+<li><p>پارامترهای پاسخ:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>sent_gift_cards</td>
+<td>list of user sent gifts</td>
+<td>لیست هدایای فرستاده شده‌ی کاربر</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>received_gift_cards</td>
+<td>list of user received gifts</td>
+<td>لیست هدایای گرفته شده‌ی کاربر</td>
+<td>[]</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در دقیقه
+</aside>
+
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sent_gift_cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"masoud mohamadi"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iran-tehran"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09127842542"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3579-4123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EF9472B7"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_sentence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"تقدیم به شما"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@gmail.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bnb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digital"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Redeemed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"card_design"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-13T11:42:27.338380+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"redeem_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-11T20:30:00+00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"received_gift_cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mohsen amini"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iran-tehran"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09125412335"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8568-9982"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"package_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"redeem_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D758A8A2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_sentence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"جمله‌ی تست هدیه"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@gmail.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new_user@gmail.com"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bnb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digital"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gift_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Redeemed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"card_design"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T12:33:08.226370+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"redeem_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-11T20:30:00+00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
