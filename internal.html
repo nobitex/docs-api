@@ -2837,8 +2837,8 @@ Authorization: Token yourTOKENhereHEX0000000000
     "redeem_type": "internal",
     "redeem_date": "2023-11-12",
     "receiver_full_name": "ali karimi"
-}
-</span></code></pre></div>
+}'</span>
+</code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
@@ -2912,26 +2912,24 @@ Authorization: Token yourTOKENhereHEX0000000000
 </aside>
 
 <blockquote>
-<p>نمونه درخواست:
-<code>shell
-curl -X POST &#39;https://api.nobitex.ir/gift/confirm-gift-withdraw&#39; \
--H &#39;Authorization: Token yourTOKENhereHEX0000000000&#39; \
-_h &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;gift_withdraw_id&quot;: 155,
-    &quot;gift_id&quot;: 36,
-    &quot;otp&quot;: &quot;040515&quot;
-}&#39;
-</code></p>
-
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
-<code>json
-{
-    &quot;status&quot;: &quot;ok&quot;
-}
-</code></p>
+<p>نمونه درخواست:</p>
 </blockquote>
-<h2 id='56e3cb5859'>لندینگ هدیه</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-gift-withdraw'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+_h <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "gift_withdraw_id": 155,
+    "gift_id": 36,
+    "otp": "040515"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='56e3cb5859'>لندینگ هدیه</h2>
 <p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.</p>
 
 <ul>
@@ -3257,16 +3255,16 @@ _h &#39;Content-Type: application/json&#39; \
 </aside>
 
 <blockquote>
-<p>نمونه درخواست:
-<code>shell
-curl -X POST &#39;https://api.nobitex.ir/gift/redeem-lightning&#39; \
--H &#39;Content-Type: application/json&#39; \
---data &#39;{
-    &quot;redeem_code&quot;: &quot;8AFA1DF3&quot;,
-    &quot;password&quot;: &quot;testpass123&quot;
-}&#39;
-</code></p>
-
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem-lightning'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "redeem_code": "8AFA1DF3",
+    "password": "testpass123"
+}'</span>
+</code></pre></div>
+<blockquote>
 <p>در صورت فراخوانی درست، پاسخ در حالتی که نیاز به دوعاملی باشد برای دریافت، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3381,14 +3379,15 @@ curl -X POST &#39;https://api.nobitex.ir/gift/redeem-lightning&#39; \
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:
-<code>json
-{
-  &quot;status&quot;: &quot;ok&quot;,
-  &quot;lnUrl&quot;: &quot;lnurlPURQEQ...&quot;
-}
-</code>
-در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
@@ -3471,15 +3470,13 @@ curl -X POST &#39;https://api.nobitex.ir/gift/redeem-lightning&#39; \
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
-<code>json
-{
-  &quot;status&quot;: &quot;ok&quot;,
-  &quot;lnUrl&quot;: &quot;lnurlPURQEQ...&quot;
-}
-</code></p>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
-<h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
 <p>برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.</p>
 
 <ul>
