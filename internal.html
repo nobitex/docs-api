@@ -2851,7 +2851,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.</p>
 
 <ul>
-<li><p>آدرس: <code>POST /gift/create-gift</code></p></li>
+<li><p>آدرس: <code>POST /gift/gift/confirm-gift-withdraw</code></p></li>
 <li><p>پارامترهای ورودی:</p></li>
 </ul>
 
@@ -2916,7 +2916,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-gift-withdraw'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
-_h <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "gift_withdraw_id": 155,
     "gift_id": 36,
