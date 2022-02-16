@@ -36,8 +36,8 @@ password | string   | الزامی           | گذرواژه‌ی گیرنده 
 پارامتر | نوع     | توضیحات       | نمونه
 ------- |---------|---------------| ---------
 status | string  | وضعیت پاسخ    | created
-giftWithdrawId | integer | شناسه‌ی برداشت | 159
-giftId | integer | شناسه‌ی هدیه‌ | 36
+gift_withdraw_id | integer | شناسه‌ی برداشت | 159
+gift_id | integer | شناسه‌ی هدیه‌ | 36
 
 <aside class="notice">
 محدودیت فراخوانی : 10 درخواست در دقیقه
