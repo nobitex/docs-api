@@ -14,6 +14,7 @@ includes:
   - internal/price_alerts
   - internal/exchange
   - internal/transactions
+  - internal/gift
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
