@@ -81,7 +81,7 @@ curl -X POST 'https://api.nobitex.ir/gift/create-gift' \
 ##تایید برداشت هدیه
 برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.
 
-* آدرس: `POST /gift/create-gift`
+* آدرس: `POST /gift/gift/confirm-gift-withdraw`
 
 * پارامترهای ورودی:
 
@@ -107,7 +107,7 @@ status | string  | وضعیت پاسخ    | ok
 ```shell
 curl -X POST 'https://api.nobitex.ir/gift/confirm-gift-withdraw' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000' \
-_h 'Content-Type: application/json' \
+-H 'Content-Type: application/json' \
 --data '{
     "gift_withdraw_id": 155,
     "gift_id": 36,
