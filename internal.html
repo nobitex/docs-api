@@ -2664,6 +2664,38 @@ Authorization: Token yourTOKENhereHEX0000000000
 از آنجایی در حالت دریافت lightning دریافت کننده می‌تواند کاربر نوبیتکس نباشد برای بعضی از APIهای این مجموعه احراز هویت الزامی نیست.
 </aside>
 <h2 id='ad0b7a2c5e'>ایجاد هدیه</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/create-gift'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-TOTP: 2568148'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "amount": 0.02,
+    "currency": "bnb",
+    "gift_type": "digital",
+    "package_type": "new",
+    "mobile": "09127759318",
+    "gift_sentence": "تقدیم به شما",
+    "receiver_address": "iran-tehran",
+    "receiver_postal_code": "3348-8841",
+    "card_design": "default",
+    "password": "testpass123",
+    "redeem_type": "internal",
+    "redeem_date": "2023-11-12",
+    "receiver_full_name": "ali karimi"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_withdraw_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>برای ایجاد هدیه‌ی باید از درخواست با مشخصات زیر استفاده نمایید:</p>
 
 <ul>
@@ -2815,39 +2847,26 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 محدودیت فراخوانی : 10 درخواست در دقیقه
 </aside>
-
+<h2 id='440c07fe65'>تایید برداشت هدیه</h2>
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/create-gift'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-gift-withdraw'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'X-TOTP: 2568148'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
-    "amount": 0.02,
-    "currency": "bnb",
-    "gift_type": "digital",
-    "package_type": "new",
-    "mobile": "09127759318",
-    "gift_sentence": "تقدیم به شما",
-    "receiver_address": "iran-tehran",
-    "receiver_postal_code": "3348-8841",
-    "card_design": "default",
-    "password": "testpass123",
-    "redeem_type": "internal",
-    "redeem_date": "2023-11-12",
-    "receiver_full_name": "ali karimi"
+    "gift_withdraw_id": 155,
+    "gift_id": 36,
+    "otp": "040515"
 }'</span>
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_withdraw_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='440c07fe65'>تایید برداشت هدیه</h2>
+</span></code></pre></div>
 <p>برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.</p>
 
 <ul>
@@ -2910,30 +2929,11 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 محدودیت فراخوانی : 30 درخواست در ساعت
 </aside>
-
-<blockquote>
-<p>نمونه درخواست:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-gift-withdraw'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "gift_withdraw_id": 155,
-    "gift_id": 36,
-    "otp": "040515"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='56e3cb5859'>لندینگ هدیه</h2>
+<h2 id='56e3cb5859'>لندینگ هدیه</h2>
 <p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.</p>
 
 <ul>
-<li><p>آدرس: <code>POST /gift/&lt;redeem-code&gt;</code></p></li>
+<li><p>آدرس: <code>GET /gift/&lt;redeem-code&gt;</code></p></li>
 <li><p>پارامترهای پاسخ:</p></li>
 </ul>
 
@@ -2981,6 +2981,41 @@ Authorization: Token yourTOKENhereHEX0000000000
 محدودیت فراخوانی : 3 درخواست در 3 دقیقه
 </aside>
 <h2 id='3d9594a87d'>دریافت هدیه‌ برای کاربران عضو</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "redeem_code": "30BBBBCA",
+    "password": "testpass123"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ برای حالتی که دریافت دوعاملی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت به صورت lightning این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlZX6N..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>برای دریافت هدیه‌ی کاربری که عضو نوبیتکس است، فارق از نوع دریافت این API فراخوانی شود.</p>
 
 <ul>
@@ -3109,42 +3144,34 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 محدودیت فراخوانی : 5 درخواست در 10 دقیقه
 </aside>
-
+<h2 id='lightning'>دریافت هدیه‌ی lightning برای کاربران غیر عضو</h2>
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem-lightning'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
-    "redeem_code": "30BBBBCA",
+    "redeem_code": "8AFA1DF3",
     "password": "testpass123"
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ برای حالتی که دریافت دوعاملی باشد، این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نیاز به دوعاملی باشد برای دریافت، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت به صورت lightning این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ در حالت کلی، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlZX6N..."</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='lightning'>دریافت هدیه‌ی lightning برای کاربران غیر عضو</h2>
 <p>در صورتی که کاربری عضو نوبیتکس نباشد و نوع هدیه نیز lightning باشد باید از این API برای دریافت هدیه استفاده شود.</p>
 
 <ul>
@@ -3253,34 +3280,33 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 در این api نیاز به توکن وجود ندازد.
 </aside>
-
+<h2 id='c04c45b9da'>تایید دوعاملی هدیه برای کاربران عضو</h2>
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem-lightning'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
-    "redeem_code": "8AFA1DF3",
-    "password": "testpass123"
+    "gift_id": 37,
+    "otp": "144470"
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نیاز به دوعاملی باشد برای دریافت، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالت کلی، این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='c04c45b9da'>تایید دوعاملی هدیه برای کاربران عضو</h2>
+</span></code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>برای مرحله‌ی تایید دوعاملی برای دریافت هدیه برای کاربران عضو نوبیتکس باید از این API استفاده شود.</p>
 
 <ul>
@@ -3366,33 +3392,25 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 محدودیت فراخوانی : ۵ درخواست در 10 دقیقه
 </aside>
-
+<h2 id='95481e8356'>تایید دو عاملی هدیه‌ برای کاربران غیر عضو</h2>
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem-lightning'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "gift_id": 37,
-    "otp": "144470"
+    "otp": "981237"
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='95481e8356'>تایید دو عاملی هدیه‌ برای کاربران غیر عضو</h2>
 <p>برای مرحله‌ی تایید دریافت هدیه برای حالت lightnign و کاربران غیر عضو از این API استفاده می‌شود.
 * آدرس: <code>POST /gift/confirm-redeem-lightning</code></p>
 
@@ -3458,64 +3476,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 در این api نیاز به توکن وجود ندازد.
 </aside>
-
-<blockquote>
-<p>نمونه درخواست:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem-lightning'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "gift_id": 37,
-    "otp": "981237"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
-<p>برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.</p>
-
-<ul>
-<li><p>آدرس: <code>GET /gift/user-gifts</code></p></li>
-<li><p>پارامترهای پاسخ:</p></li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-<tr>
-<td>sent_gift_cards</td>
-<td>list of user sent gifts</td>
-<td>لیست هدایای فرستاده شده‌ی کاربر</td>
-<td>[]</td>
-</tr>
-<tr>
-<td>received_gift_cards</td>
-<td>list of user received gifts</td>
-<td>لیست هدایای گرفته شده‌ی کاربر</td>
-<td>[]</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 60 درخواست در دقیقه
-</aside>
-
+<h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
@@ -3574,6 +3535,45 @@ Authorization: Token yourTOKENhereHEX0000000000
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.</p>
+
+<ul>
+<li><p>آدرس: <code>GET /gift/user-gifts</code></p></li>
+<li><p>پارامترهای پاسخ:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+<tr>
+<td>sent_gift_cards</td>
+<td>list of user sent gifts</td>
+<td>لیست هدایای فرستاده شده‌ی کاربر</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>received_gift_cards</td>
+<td>list of user received gifts</td>
+<td>لیست هدایای گرفته شده‌ی کاربر</td>
+<td>[]</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 60 درخواست در دقیقه
+</aside>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
