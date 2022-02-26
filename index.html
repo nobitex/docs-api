@@ -284,7 +284,7 @@
     </style>
     <link href="stylesheets/screen-f47d16a4.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-5c68d5d9.css" rel="stylesheet" media="print" />
-    <link href="stylesheets/custom-80a17624.css" rel="stylesheet" />
+    <link href="stylesheets/custom-1213ed84.css" rel="stylesheet" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
   </head>
@@ -1808,9 +1808,9 @@ resolution: 60
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"currency":"btc"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/generate-address \
-  wallet=4159
+  currency=btc
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -1837,16 +1837,27 @@ resolution: 60
 </tr>
 </thead><tbody>
 <tr>
-<td>wallet</td>
+<td>currency <sup class="badge">ارجح</sup></td>
 <td>string</td>
-<td>الزامی</td>
-<td>شناسه کیف پول(id)</td>
+<td>الزامی (جایگزین wallet)</td>
+<td>رمزارز کیف</td>
+<td><code>btc</code></td>
+</tr>
+<tr>
+<td>wallet <sup class="badge">قدیمی</sup></td>
+<td>string</td>
+<td>(در نبود currency الزامی)</td>
+<td>شناسه کیف پول</td>
 <td><code>4159</code></td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
 محدودیت فراخوانی : 6 درخواست در ساعت
+</aside>
+
+<aside class="notice">
+برای ایجاد آدرس بلاکچین می‌توانید از currency کیف مقصد استفاده نمایید. ارسال wallet برای ایجاد آدرس قدیمی است و توصیه نمی‌شود.
 </aside>
 <h2 id='f9fd4e8e3a'>افزودن کارت بانکی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/cards-add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
@@ -2059,6 +2070,15 @@ resolution: 60
 </ul>
 
 <aside class="notice">
+محدودیت فراخوانی : 20 درخواست در 2 دقیقه
+</aside>
+
+<aside class="notice">
+کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
+این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.
+</aside>
+
+<aside class="notice">
     در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
 </aside>
 <h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets'</span> <span class="se">\</span>
@@ -2112,6 +2132,15 @@ resolution: 60
 <td><code>rls,btc</code></td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 12 درخواست در دقیقه
+</aside>
+
+<aside class="notice">
+کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
+این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.
+</aside>
 <h2 id='55645b2c6d'>موجودی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/balance'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
