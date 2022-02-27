@@ -401,13 +401,10 @@
                     <a href="#lightning" class="toc-h2 toc-link" data-title="دریافت هدیه‌ی lightning برای کاربران غیر عضو">دریافت هدیه‌ی lightning برای کاربران غیر عضو</a>
                   </li>
                   <li>
-                    <a href="#c04c45b9da" class="toc-h2 toc-link" data-title="تایید دوعاملی هدیه برای کاربران عضو">تایید دوعاملی هدیه برای کاربران عضو</a>
-                  </li>
-                  <li>
-                    <a href="#95481e8356" class="toc-h2 toc-link" data-title="تایید دو عاملی هدیه‌ برای کاربران غیر عضو">تایید دو عاملی هدیه‌ برای کاربران غیر عضو</a>
-                  </li>
-                  <li>
                     <a href="#f62370d40a" class="toc-h2 toc-link" data-title="لیست کارت‌های هدیه‌ی کاربر">لیست کارت‌های هدیه‌ی کاربر</a>
+                  </li>
+                  <li>
+                    <a href="#d6f322bb99" class="toc-h2 toc-link" data-title="ایجاد درخواست تعداد بالای هدیه">ایجاد درخواست تعداد بالای هدیه</a>
                   </li>
               </ul>
           </li>
@@ -2693,7 +2690,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gift_withdraw_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>برای ایجاد هدیه‌ی باید از درخواست با مشخصات زیر استفاده نمایید:</p>
@@ -2842,6 +2840,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>شناسه‌ی هدیه‌</td>
 <td>36</td>
 </tr>
+<tr>
+<td>cost</td>
+<td>monetary</td>
+<td>شناسه‌ی هدیه‌</td>
+<td>&quot;100&quot;</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -2930,7 +2934,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 محدودیت فراخوانی : 30 درخواست در ساعت
 </aside>
 <h2 id='56e3cb5859'>لندینگ هدیه</h2>
-<p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.</p>
+<p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.
+لازم به ذکر است در صورتی که کاربر فرستنده، شماره موبایل کاربر گیرنده را وارد کرده باشد رمز یکبار مصرف در این مرحله برای کاربر فرستاده خواهد شد.</p>
 
 <ul>
 <li><p>آدرس: <code>GET /gift/&lt;redeem-code&gt;</code></p></li>
@@ -2975,6 +2980,18 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>اینکه فرستنده شماره همراه گیرنده را ارسال کرده یا خیر</td>
 <td>true</td>
 </tr>
+<tr>
+<td>sentence</td>
+<td>string</td>
+<td>جمله‌ی هدیه</td>
+<td>&quot;تقدیم به شما&quot;</td>
+</tr>
+<tr>
+<td>redeem_type</td>
+<td>string</td>
+<td>نوع دریافت هدیه</td>
+<td>&quot;lightning&quot;</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -2989,7 +3006,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "redeem_code": "30BBBBCA",
-    "password": "testpass123"
+    "password": "testpass123",
+    "otp": "813846"
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -3047,11 +3065,11 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>&quot;testpass123&quot;</td>
 </tr>
 <tr>
-<td>mobile</td>
+<td>otp</td>
 <td>string</td>
 <td>اختیاری</td>
-<td>شماره‌ همراه کاربر گیرنده</td>
-<td>&quot;9127774565&quot;</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
+<td>&quot;564785&quot;</td>
 </tr>
 </tbody></table>
 
@@ -3142,7 +3160,11 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 5 درخواست در 10 دقیقه
+محدودیت فراخوانی : 5 درخواست در ۱ ساعت
+</aside>
+
+<aside class="notice">
+در صورتی که موبایل گیرنده از طرف کاربر گیرنده ارسال شده باشد مقدار otp باید وارد شود.
 </aside>
 <h2 id='lightning'>دریافت هدیه‌ی lightning برای کاربران غیر عضو</h2>
 <blockquote>
@@ -3152,7 +3174,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "redeem_code": "8AFA1DF3",
-    "password": "testpass123"
+    "password": "testpass123",
+    "otp": "158354"
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -3203,10 +3226,10 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>&quot;testpass123&quot;</td>
 </tr>
 <tr>
-<td>mobile</td>
+<td>otp</td>
 <td>string</td>
 <td>اختیاری</td>
-<td>شماره‌ همراه کاربر گیرنده</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
 <td>&quot;9127774565&quot;</td>
 </tr>
 </tbody></table>
@@ -3274,207 +3297,15 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 5 درخواست در 10 دقیقه
+محدودیت فراخوانی : 5 درخواست در ۱ ساعت
 </aside>
 
 <aside class="notice">
 در این api نیاز به توکن وجود ندازد.
 </aside>
-<h2 id='c04c45b9da'>تایید دوعاملی هدیه برای کاربران عضو</h2>
-<blockquote>
-<p>نمونه درخواست:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "gift_id": 37,
-    "otp": "144470"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت lightning باشد، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نوع دریافت داخلی باشد، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای مرحله‌ی تایید دوعاملی برای دریافت هدیه برای کاربران عضو نوبیتکس باید از این API استفاده شود.</p>
-
-<ul>
-<li><p>آدرس: <code>POST /gift/confirm-redeem</code></p></li>
-<li><p>پارامترهای ورودی:</p></li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>الزامی</td>
-<td>شناسه‌ی کد هدیه</td>
-<td>36</td>
-</tr>
-<tr>
-<td>otp</td>
-<td>string</td>
-<td>الزامی</td>
-<td>کد دوعاملی ارسال شده به کاربر</td>
-<td>&quot;386155&quot;</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>پارامترهای پاسخ:</li>
-</ul>
 
 <aside class="notice">
-در حالتی که نوع برداشت lightning باشد:
-</aside>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-<tr>
-<td>lnUrl</td>
-<td>string</td>
-<td>هدیه lnurl</td>
-<td>&quot;lnurlZX6N...&quot;</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-در حالتی که نوع برداشت داخلی باشد:
-</aside>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : ۵ درخواست در 10 دقیقه
-</aside>
-<h2 id='95481e8356'>تایید دو عاملی هدیه‌ برای کاربران غیر عضو</h2>
-<blockquote>
-<p>نمونه درخواست:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-redeem-lightning'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "gift_id": 37,
-    "otp": "981237"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای مرحله‌ی تایید دریافت هدیه برای حالت lightnign و کاربران غیر عضو از این API استفاده می‌شود.
-* آدرس: <code>POST /gift/confirm-redeem-lightning</code></p>
-
-<ul>
-<li>پارامترهای ورودی:</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>الزامی</td>
-<td>شناسه‌ی کد هدیه</td>
-<td>36</td>
-</tr>
-<tr>
-<td>otp</td>
-<td>string</td>
-<td>الزامی</td>
-<td>کد دوعاملی ارسال شده به کاربر</td>
-<td>&quot;386155&quot;</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>پارامترهای پاسخ:</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-<tr>
-<td>lnUrl</td>
-<td>string</td>
-<td>هدیه lnurl</td>
-<td>&quot;lnurlZX6N...&quot;</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 5 درخواست در 10 دقیقه
-</aside>
-
-<aside class="notice">
-در این api نیاز به توکن وجود ندازد.
+در صورتی که موبایل گیرنده از طرف کاربر گیرنده ارسال شده باشد مقدار otp باید وارد شود.
 </aside>
 <h2 id='f62370d40a'>لیست کارت‌های هدیه‌ی کاربر</h2>
 <blockquote>
@@ -3572,6 +3403,34 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <aside class="notice">
 محدودیت فراخوانی : 60 درخواست در دقیقه
+</aside>
+<h2 id='d6f322bb99'>ایجاد درخواست تعداد بالای هدیه</h2>
+<p>در صورتی که کاربری درخواست برای تعداد بالای هدیه داشته باشد باید این api فراخوانی شود که درخواست کاربر ثبت شود.
+برای این درخواست نیاز به ارسال پارامتر ورودی نیست و فقط کاربر درخواست کننده باید لاگین باشد.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/create-gift-batch</code></p></li>
+<li><p>پارامترهای پاسخ:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;created&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در ساعت
 </aside>
 
       </div>
