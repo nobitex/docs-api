@@ -406,6 +406,9 @@
                   <li>
                     <a href="#d6f322bb99" class="toc-h2 toc-link" data-title="ایجاد درخواست تعداد بالای هدیه">ایجاد درخواست تعداد بالای هدیه</a>
                   </li>
+                  <li>
+                    <a href="#3ff731b9c9" class="toc-h2 toc-link" data-title="ارسال مجدد رمزیکبار مصرف">ارسال مجدد رمزیکبار مصرف</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -2995,7 +2998,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 3 درخواست در 3 دقیقه
+محدودیت فراخوانی : 5 درخواست در ۱ ساعت
 </aside>
 <h2 id='3d9594a87d'>دریافت هدیه‌ برای کاربران عضو</h2>
 <blockquote>
@@ -3431,6 +3434,71 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <aside class="notice">
 محدودیت فراخوانی : 10 درخواست در ساعت
+</aside>
+<h2 id='3ff731b9c9'>ارسال مجدد رمزیکبار مصرف</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/resend-gift-otp'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "redeem_code": "07DB85D7210E4D29AEFF112FF53B2C74"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>در صورت نیاز به ارسال مجدد رمز یکبار مصرف برای دریافت هدیه این api فراخوانی می‌شود.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/resend-gift-otp</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>redeem_code</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد هدیه</td>
+<td>&quot;07DB85D7210E4D29AEFF112FF53B2C74&quot;</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 5 درخواست در ساعت
 </aside>
 
       </div>
