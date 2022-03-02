@@ -389,7 +389,7 @@
                     <a href="#ad0b7a2c5e" class="toc-h2 toc-link" data-title="ایجاد هدیه">ایجاد هدیه</a>
                   </li>
                   <li>
-                    <a href="#440c07fe65" class="toc-h2 toc-link" data-title="تایید برداشت هدیه">تایید برداشت هدیه</a>
+                    <a href="#1ecce8f7b9" class="toc-h2 toc-link" data-title="تایید برداشت">تایید برداشت</a>
                   </li>
                   <li>
                     <a href="#56e3cb5859" class="toc-h2 toc-link" data-title="لندینگ هدیه">لندینگ هدیه</a>
@@ -2658,11 +2658,30 @@ Authorization: Token yourTOKENhereHEX0000000000
 </aside>
 <h1 id='591570d949'>گیفت کارت</h1>
 <p>کارت هدیه‌ی نوبیتکس، امکان ارسال هدیه‌ به صورت فیزیکی و مجازی را به شخص دیگری فراهم می‌کند. فرایند دریافت هدیه نیز
-می‌تواند به صورت داخلی و یا از نوع lightning باشد.</p>
-
+می‌تواند به صورت داخلی و یا از نوع lightning باشد.
+<aside class="notice">
+فرآیند کلی به این صورت هست که ابتدا کاربر درخواست خود را از طریق APIی ایجاد هدیه ثبت می‌کند و بعد از چک شدن محدودیت‌های برداشت کاربر شی هدیه ایجاد می‌شود. در این قسمت کاربر می‌تواند نوع هدیه که فیزیکی یا مجازی بودنش و همینطور نوع دریافت که به صورت برداشت داخلی و یا lightningای باشد را انتخاب کند.
+</aside>
+<aside class="notice">
+مرحله‌ی بعد تایید برداشت ابتدایی هدیه است که در این گام از APIی تایید برداشت معمول استفاده می‌شود و فرآیند ایجاد هدیه تکمیل می‌شود.
+</aside>
+<aside class="notice">
+گام بعد برای دریافت هدیه دریافت اطلاعات مربوط به هدیه از طریق api لندینگ هدیه است که اگر کاربر فرستنده شماره همراه گیرنده را وارد کرده باشد در این مرحله رمزیکبار مصرف برای کاربر ارسال می‌شود.
+در نهایت گیرنده با وارد کردن رمزعبوری که گیرنده برای او مشخص کرده و رمز یکبار مصرف (در صورت ارسال) قادر به دریافت هدیه در APIی دریافت هدیه است.
+</aside>
+<aside class="notice">
+اگر هدیه از نوع برداشت داخلی باشد برداشت به حساب گیرنده که حتما باید عضو نوبیتکس باشد زده می‌شود.
+در غیر این صورت در پاسخ lnurl مربوط به هدیه در پاسخ فرستاده می‌شود.
+</aside>
+<aside class="notice"> 
+لازم به ذکر است در صورتی که نوع دریافت lightning باشد گیرنده می‌تواند عضو نوبیتکس نباشد و در این حالت از APIی دریافت هدیه برای کاربران غیر عضو استفاده می‌شود که در صورت صحت اطلاعات ورودی پاسخ lnurl مربوط به هدیه است.
+</aside>
+<aside class="notice">
+برای هر نوع از دریافت هدیه گیرنده می‌تواند کاربر نوبیتکس نباشد و قبل از دریافت هدیه عضو شود.
+</aside>
 <aside class="notice">
 از آنجایی در حالت دریافت lightning دریافت کننده می‌تواند کاربر نوبیتکس نباشد برای بعضی از APIهای این مجموعه احراز هویت الزامی نیست.
-</aside>
+</aside></p>
 <h2 id='ad0b7a2c5e'>ایجاد هدیه</h2>
 <blockquote>
 <p>نمونه درخواست:</p>
@@ -2675,7 +2694,7 @@ Authorization: Token yourTOKENhereHEX0000000000
     "amount": 0.02,
     "currency": "bnb",
     "gift_type": "digital",
-    "package_type": "new",
+    "package_type": "default",
     "mobile": "09127759318",
     "gift_sentence": "تقدیم به شما",
     "receiver_address": "iran-tehran",
@@ -2693,11 +2712,28 @@ Authorization: Token yourTOKENhereHEX0000000000
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"gift_withdraw_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
     </span><span class="nl">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای ایجاد هدیه‌ی باید از درخواست با مشخصات زیر استفاده نمایید:</p>
+<p>برای ایجاد هدیه‌ی باید از درخواست با مشخصات زیر استفاده نمایید:
+<aside class="notice">
+لازم به ذکر است برای فراخوانی این API کاربر باید لاگین باشد. همینطور در صورت انتخاب نوع هدیه‌ی فیزیکی آدرس و کد پستی گیرنده الزامی است.
+</aside>
+<aside class="notice">
+مرحله‌ی بعد برای ایجاد هدیه و تکمیل فرآیند هدیه فراخوانی تایید برداشت هدیه است و پس از فراخوانی موفق تایید برداشت فرآیند ایجاد هدیه تکمیل خواهد شد. 
+</aside>
+<aside class="notice">
+مقادیر مورد قبول برای نوع هدیه:
+1- digital 
+2- physical
+خواهند بود.
+</aside>
+<aside class="notice">
+مقادیر مورد قبول برای نوع دریافت هدیه:
+1- internal 
+2- lightning
+خواهند بود.
+</aside></p>
 
 <ul>
 <li><p>آدرس: <code>POST /gift/create-gift</code></p></li>
@@ -2838,12 +2874,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>159</td>
 </tr>
 <tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>شناسه‌ی هدیه‌</td>
-<td>36</td>
-</tr>
-<tr>
 <td>cost</td>
 <td>monetary</td>
 <td>شناسه‌ی هدیه‌</td>
@@ -2854,87 +2884,23 @@ Authorization: Token yourTOKENhereHEX0000000000
 <aside class="notice">
 محدودیت فراخوانی : 10 درخواست در دقیقه
 </aside>
-<h2 id='440c07fe65'>تایید برداشت هدیه</h2>
-<blockquote>
-<p>نمونه درخواست:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/confirm-gift-withdraw'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "gift_withdraw_id": 155,
-    "gift_id": 36,
-    "otp": "040515"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای تکمیل پروسه‌ی ایجاد هدیه‌ باید کاربر تایید برداشت را به‌صورت دوعاملی انجام دهد.</p>
-
-<ul>
-<li><p>آدرس: <code>POST /gift/gift/confirm-gift-withdraw</code></p></li>
-<li><p>پارامترهای ورودی:</p></li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>gift_withdraw_id</td>
-<td>integer</td>
-<td>الزامی</td>
-<td>شناسه‌ی برداشت هدیه</td>
-<td>159</td>
-</tr>
-<tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>الزامی</td>
-<td>شناسه‌ی هدیه</td>
-<td>36</td>
-</tr>
-<tr>
-<td>otp</td>
-<td>string</td>
-<td>الزامی</td>
-<td>کد دوعاملی ارسال شده به کاربر</td>
-<td>&quot;040515&quot;</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>پارامترهای پاسخ:</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>ok</td>
-</tr>
-</tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 30 درخواست در ساعت
+آرگومان مورد نیاز برای فراخوانی APIی تایید برداشت در پاسخ این APIی موجود است و مقدار gift_withdraw_id است.
+</aside>
+<h2 id='1ecce8f7b9'>تایید برداشت</h2>
+<p>برای این منظور باید از APIی تایید درخواست برداشت در قسمت برداشت استفاده کرد.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"withdraw": 432, "otp": 623005}'</span>
+</code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/wallets/withdraw-confirm</code></li>
+</ul>
+
+<aside class="notice">
+که مقدار withdraw را در این درخواست باید برابر مقدار gift_withdraw_id از پاسخ API ایجاد هدیه قرار داد.
 </aside>
 <h2 id='56e3cb5859'>لندینگ هدیه</h2>
 <p>کاربر بعد از اسکن کد هدیه‌ی خود به این صفحه انتقال داده می‌شود. که در انتهای مسیر این API کد هدیه‌ی کاربر قرار دارد.
@@ -3014,15 +2980,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ برای حالتی که دریافت دوعاملی باشد، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
 <p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت به صورت lightning این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3031,13 +2988,23 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، این صورت خواهد بود:</p>
+<p>در صورت فراخوانی درست، پاسخ به حالتی که دریافت داخلی باشد، به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای دریافت هدیه‌ی کاربری که عضو نوبیتکس است، فارق از نوع دریافت این API فراخوانی شود.</p>
+<p>برای دریافت هدیه‌ی کاربری که عضو نوبیتکس است، فارق از نوع دریافت این API فراخوانی شود.
+<aside class="notice">
+در این قسمت با توجه به نوع دریافت هدیه‌ی کاربر پاسخ متفاوت فرستاده خواهد شد.
+اگر نوع دریافت به صورت داخلی انتخاب شده باشد بعد از بررسی صحت اطلاعات ورودی صرفا پاسخ موفقیت فرستاده خواهد شد.
+</aside>
+<aside class="notice">
+در صورتی که نوع دریافت lightning باشد در پاسخ lnurl مربوط به هدیه فرستاده خواهد شد.
+</aside>
+<aside class="notice">
+آرگومان otp در این API اختیاری است زمانی نیاز به ارسال است که در پاسخ لندینگ مقدار mobile_provided صحیح (true) باشد.
+</aside></p>
 
 <ul>
 <li><p>آدرس: <code>POST /gift/redeem</code></p></li>
@@ -3085,7 +3052,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </ul>
 
 <aside class="notice">
-در حالتی که نوع برداشت داخلی باشد و دریافت به صورت دوعاملی نباشد:
+در حالتی که نوع برداشت داخلی باشد:
 </aside>
 
 <table><thead>
@@ -3105,7 +3072,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tbody></table>
 
 <aside class="notice">
-در حالتی که نوع برداشت lightning باشد و دریافت به صورت دوعاملی نباشد:
+در حالتی که نوع برداشت lightning باشد:
 </aside>
 
 <table><thead>
@@ -3131,43 +3098,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </tbody></table>
 
 <aside class="notice">
-در حالتی که شماره همراه گیرنده مشخص شده باشد: 
-</aside>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-<tr>
-<td>message</td>
-<td>string</td>
-<td>پیام پاسخ</td>
-<td>&quot;OTP sent to user.&quot;</td>
-</tr>
-<tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>شناسه‌ی هدیه</td>
-<td>36</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
 محدودیت فراخوانی : 5 درخواست در ۱ ساعت
-</aside>
-
-<aside class="notice">
-در صورتی که موبایل گیرنده از طرف کاربر گیرنده ارسال شده باشد مقدار otp باید وارد شود.
 </aside>
 <h2 id='lightning'>دریافت هدیه‌ی lightning برای کاربران غیر عضو</h2>
 <blockquote>
@@ -3182,15 +3113,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>در صورت فراخوانی درست، پاسخ در حالتی که نیاز به دوعاملی باشد برای دریافت، این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent to user."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gift_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
 <p>در صورت فراخوانی درست، پاسخ در حالت کلی، این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3198,7 +3120,8 @@ Authorization: Token yourTOKENhereHEX0000000000
   </span><span class="nl">"lnUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnurlPURQEQ..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>در صورتی که کاربری عضو نوبیتکس نباشد و نوع هدیه نیز lightning باشد باید از این API برای دریافت هدیه استفاده شود.</p>
+<p>در صورتی که کاربری عضو نوبیتکس نباشد و نوع هدیه نیز lightning باشد باید از این API برای دریافت هدیه استفاده شود.
+این API فقط برای دریافت هدایا از نوع دریافت lightning و زمانی که گیرنده عضو نوبیتکس نباشد استفاده می‌شود.</p>
 
 <ul>
 <li><p>آدرس: <code>POST /gift/redeem-lightning</code></p></li>
@@ -3241,42 +3164,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <li>پارامترهای پاسخ:</li>
 </ul>
 
-<aside class="notice">
-در حالتی که شماره همراه گیرنده مشخص شده باشد: 
-</aside>
-
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>وضعیت پاسخ</td>
-<td>&quot;ok&quot;</td>
-</tr>
-<tr>
-<td>message</td>
-<td>string</td>
-<td>پیام پاسخ</td>
-<td>&quot;OTP sent to user.&quot;</td>
-</tr>
-<tr>
-<td>gift_id</td>
-<td>integer</td>
-<td>شناسه‌ی هدیه</td>
-<td>36</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-در حالت کلی: 
-</aside>
-
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -3304,7 +3191,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </aside>
 
 <aside class="notice">
-در این api نیاز به توکن وجود ندازد.
+در این API نیاز به توکن وجود ندازد.
 </aside>
 
 <aside class="notice">
@@ -3369,7 +3256,8 @@ Authorization: Token yourTOKENhereHEX0000000000
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.</p>
+<p>این API برای نمایش تمامی هدایای فرستاده شده و یا دریافت شده‌ی کاربر استفاده می‌شود.
+در صورتی که کاربر گیرنده عضو نوبیتکس نباشه ایمیل و یا نام و نام خانوادگی مقدار receiver خواهند بود.</p>
 
 <ul>
 <li><p>آدرس: <code>GET /gift/user-gifts</code></p></li>
@@ -3408,7 +3296,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 محدودیت فراخوانی : 60 درخواست در دقیقه
 </aside>
 <h2 id='d6f322bb99'>ایجاد درخواست تعداد بالای هدیه</h2>
-<p>در صورتی که کاربری درخواست برای تعداد بالای هدیه داشته باشد باید این api فراخوانی شود که درخواست کاربر ثبت شود.
+<p>در صورتی که کاربری درخواست برای تعداد بالای هدیه داشته باشد باید این API فراخوانی شود که درخواست کاربر ثبت شود.
 برای این درخواست نیاز به ارسال پارامتر ورودی نیست و فقط کاربر درخواست کننده باید لاگین باشد.</p>
 
 <ul>
@@ -3452,7 +3340,7 @@ Authorization: Token yourTOKENhereHEX0000000000
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>در صورت نیاز به ارسال مجدد رمز یکبار مصرف برای دریافت هدیه این api فراخوانی می‌شود.</p>
+<p>در صورت نیاز به ارسال مجدد رمز یکبار مصرف برای دریافت هدیه این API فراخوانی می‌شود.</p>
 
 <ul>
 <li><p>آدرس: <code>POST /gift/resend-gift-otp</code></p></li>
