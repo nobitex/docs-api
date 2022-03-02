@@ -204,7 +204,9 @@ curl -X POST 'https://api.nobitex.ir/gift/redeem' \
 <aside class="notice">
 آرگومان otp در این API اختیاری است زمانی نیاز به ارسال است که در پاسخ لندینگ مقدار mobile_provided صحیح (true) باشد.
 </aside>
-
+<aside class="notice">
+در این مرحله برای امنیت بیشتر کاربران ارسال کپچا اجباری است.
+</aside>
 
 * آدرس: `POST /gift/redeem`
 
@@ -271,6 +273,11 @@ curl -X POST 'https://api.nobitex.ir/gift/redeem-lightning' \
 
 در صورتی که کاربری عضو نوبیتکس نباشد و نوع هدیه نیز lightning باشد باید از این API برای دریافت هدیه استفاده شود.
 این API فقط برای دریافت هدایا از نوع دریافت lightning و زمانی که گیرنده عضو نوبیتکس نباشد استفاده می‌شود.
+
+<aside class="notice">
+در این مرحله برای امنیت بیشتر کاربران ارسال کپچا اجباری است.
+</aside>
+
 
 * آدرس: `POST /gift/redeem-lightning`
 
