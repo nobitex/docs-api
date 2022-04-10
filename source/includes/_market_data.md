@@ -137,7 +137,7 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 محدودیت فراخوانی : 15 درخواست در دقیقه
 </aside>
 <aside class="notice">
-در این api نیاز به توکن وجود ندازد.
+در این api نیاز به توکن وجود ندارد.
 </aside>
 <aside class="notice">
 لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>

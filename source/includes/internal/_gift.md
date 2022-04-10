@@ -279,7 +279,7 @@ lnUrl | string   | هدیه lnurl | "lnurlZX6N..."
 محدودیت فراخوانی : 5 درخواست در ۱ ساعت
 </aside>
 <aside class="notice">
-در این API نیاز به توکن وجود ندازد.
+در این API نیاز به توکن وجود ندارد.
 </aside>
 
 <aside class="notice">
