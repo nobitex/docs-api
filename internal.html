@@ -407,6 +407,9 @@
                     <a href="#d6f322bb99" class="toc-h2 toc-link" data-title="ایجاد درخواست تعداد بالای هدیه">ایجاد درخواست تعداد بالای هدیه</a>
                   </li>
                   <li>
+                    <a href="#aa1c6bb46c" class="toc-h2 toc-link" data-title="تایید درخواست تعداد بالای هدیه">تایید درخواست تعداد بالای هدیه</a>
+                  </li>
+                  <li>
                     <a href="#3ff731b9c9" class="toc-h2 toc-link" data-title="ارسال مجدد رمزیکبار مصرف">ارسال مجدد رمزیکبار مصرف</a>
                   </li>
               </ul>
@@ -2832,6 +2835,82 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>&quot;testpass123&quot;</td>
 </tr>
 </tbody></table>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ValidationError</td>
+<td>وارد نشدن آدرس و کد پستی در صورت انتخاب نوع هدیه‌ی فیزیکی</td>
+</tr>
+<tr>
+<td>ValidationError</td>
+<td>در صورت وارد شدن تاریخ مربوط به گذشته</td>
+</tr>
+<tr>
+<td>InvalidAmount</td>
+<td>مقدار وارد شده برای مقادیر ثابت ریالی جز مقادیر در نظر گرفته شده نباشد</td>
+</tr>
+<tr>
+<td>InvalidRequest</td>
+<td>ایمیل وارد شده ایمیل درخواست دهنده باشد در حالت دیجیتال</td>
+</tr>
+<tr>
+<td>PleaseEnable2FA</td>
+<td>سطح کاربر بالاتر از ۲ باشد و درخواست ریالی نباشد و دوعاملی کاربر فعال نشده باشد</td>
+</tr>
+<tr>
+<td>Invalid2FA</td>
+<td>دوعاملی کاربر فعال باشد و رمزیکبار مصرف اشتباه وارد شده باشد</td>
+</tr>
+<tr>
+<td>WithdrawUnavailable</td>
+<td>در صورتی که کاربر محدودیت برداشت داشته باشد و مجوز برداشتی برای او تعریف نشده باشد</td>
+</tr>
+<tr>
+<td>WithdrawAmountLimitation</td>
+<td>در صورتی که کاربر سقف برداشت مجازش را برای رمزارز مشخصی رد کرده باشد</td>
+</tr>
+<tr>
+<td>WithdrawLimitReached</td>
+<td>در صورتی که کاربر از سقف تعداد برداشتش عبور کرده باشد</td>
+</tr>
+<tr>
+<td>WithdrawCurrencyUnavailable</td>
+<td>در صورتی که برداشت از رمزارز درخواست شده امکان پذیر نباشد</td>
+</tr>
+<tr>
+<td>WithdrawDisabled</td>
+<td>در صورتی که برداشت برای رمزارزی موقتی بسته باشد</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>در صورتی که کاربر مقدار بالانس مورد نیاز برای هزینه‌ی صدور کارت فیزیکی را نداشته باشد</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>در صورتی که مقدار درخواستی کاربر از مقدار بالانسش بیشتر باشد</td>
+</tr>
+<tr>
+<td>AmountTooLow</td>
+<td>اگر مقدار درخواستی کاربر کمتر از حداقل مقدار برداشت رمزارز مورد نظر باشد</td>
+</tr>
+<tr>
+<td>AmountTooHigh</td>
+<td>اگر مقدار درخواستی کاربر بیشتر از حداکثر مقدار برداشت رمزارز مورد نظر باشد</td>
+</tr>
+<tr>
+<td>InvalidMobileNumber</td>
+<td>اگر کاربر موبایل تایید شده نداشته باشد</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>در صورتی که تراکنش برای کسر هزینه‌ی صدور کارت فیزیکی موفقیت آمیز نباشد</td>
+</tr>
+</tbody></table>
 
 <ul>
 <li>پارامترهای پاسخ:</li>
@@ -2891,8 +2970,23 @@ Authorization: Token yourTOKENhereHEX0000000000
 لازم به ذکر است در صورتی که کاربر فرستنده، شماره موبایل کاربر گیرنده را وارد کرده باشد رمز یکبار مصرف در این مرحله برای کاربر فرستاده خواهد شد.</p>
 
 <ul>
-<li><p>آدرس: <code>GET /gift/&lt;redeem-code&gt;</code></p></li>
-<li><p>پارامترهای پاسخ:</p></li>
+<li>آدرس: <code>GET /gift/&lt;redeem-code&gt;</code></li>
+</ul>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidRedeemCode</td>
+<td>در صورتی که کد وارد شده نامعتبر باشد</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
 </ul>
 
 <table><thead>
@@ -3024,6 +3118,67 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>رمزیکبار مصرف ارسال شده به کاربر</td>
 <td>&quot;564785&quot;</td>
 </tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
+<td>&quot;564785&quot;</td>
+</tr>
+<tr>
+<td>captcha</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
+<td>&quot;564785&quot;</td>
+</tr>
+<tr>
+<td>client</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
+<td>&quot;564785&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidCaptcha</td>
+<td>در صورت اشتباه وارد شدن کپچا</td>
+</tr>
+<tr>
+<td>InvalidOTP</td>
+<td>اگر رمزیکبار مصرف ارسال شده به گوشی کاربر اشتباه وارد شده باشد</td>
+</tr>
+<tr>
+<td>InvalidPassword</td>
+<td>اگر پین یا رمزعبور مشخص شده برای گیرند‌ه‌ی هدیه اشتباه وارد شده باشد</td>
+</tr>
+<tr>
+<td>CardIsCanceled</td>
+<td>اگر وضعیت هدیه کنسل شده باشد</td>
+</tr>
+<tr>
+<td>AlreadyRedeemedOrCanceled</td>
+<td>اگر هدیه داخلی باشد و وضعیت قابل ریدیم کردن نداشته باشد</td>
+</tr>
+<tr>
+<td>InvalidInitialWithdraw</td>
+<td>در صورتی که برداشت اولیه مربوط به هدیه موفق نبوده باشد</td>
+</tr>
+<tr>
+<td>LnurlUnavailable</td>
+<td>در صورتی که نوع کارت لایتنینگی باشد و مشکلی در دریافت lnurl باشد</td>
+</tr>
+<tr>
+<td>InternalWithdrawFailed</td>
+<td>در صورتی که نوع کارت داخلی باشد و برداشت به ولت گیرنده موفق نباشد</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -3144,6 +3299,42 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>اختیاری</td>
 <td>رمزیکبار مصرف ارسال شده به کاربر</td>
 <td>&quot;254862&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-4'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidCaptcha</td>
+<td>در صورت اشتباه وارد شدن کپچا</td>
+</tr>
+<tr>
+<td>InvalidOTP</td>
+<td>اگر رمزیکبار مصرف ارسال شده به گوشی کاربر اشتباه وارد شده باشد</td>
+</tr>
+<tr>
+<td>InvalidPassword</td>
+<td>اگر پین یا رمزعبور مشخص شده برای گیرند‌ه‌ی هدیه اشتباه وارد شده باشد</td>
+</tr>
+<tr>
+<td>CardIsCanceled</td>
+<td>اگر وضعیت هدیه کنسل شده باشد</td>
+</tr>
+<tr>
+<td>InvalidRequest</td>
+<td>اگر نوع دریافت هدیه لایتنینگ نباشد</td>
+</tr>
+<tr>
+<td>InvalidInitialWithdraw</td>
+<td>در صورتی که برداشت اولیه مربوط به هدیه موفق نبوده باشد</td>
+</tr>
+<tr>
+<td>LnurlUnavailable</td>
+<td>در صورتی که نوع کارت لایتنینگی باشد و مشکلی در دریافت lnurl باشد</td>
 </tr>
 </tbody></table>
 
@@ -3284,7 +3475,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 </aside>
 <h2 id='d6f322bb99'>ایجاد درخواست تعداد بالای هدیه</h2>
 <p>در صورتی که کاربری درخواست برای تعداد بالای هدیه داشته باشد باید این API فراخوانی شود که درخواست کاربر ثبت شود.
-برای این درخواست نیاز به ارسال پارامتر ورودی نیست و فقط کاربر درخواست کننده باید لاگین باشد.</p>
+برای این درخواست نیاز به ارسال پارامتر ورودی نیست و فقط کاربر درخواست کننده باید لاگین باشد.
+در پاسخ شناسه‌ی درخواست ساخته شده نیز فرستاده می‌شود که باید در درخواست مربوط به تایید درخواست‌ هدیه‌ی دسته‌ای ارسال شود.</p>
 
 <ul>
 <li><p>آدرس: <code>POST /gift/create-gift-batch</code></p></li>
@@ -3305,10 +3497,85 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>وضعیت پاسخ</td>
 <td>&quot;created&quot;</td>
 </tr>
+<tr>
+<td>batch_id</td>
+<td>integer</td>
+<td>شناسه‌ی درخواست دسته‌ای</td>
+<td>58</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
 محدودیت فراخوانی : 10 درخواست در ساعت
+</aside>
+<h2 id='aa1c6bb46c'>تایید درخواست تعداد بالای هدیه</h2>
+<p>برای ارسال رمزیکبار مصرف فرستاده شده به کاربر برای تایید ایجاد تعداد بالای هدیه باید از این API استفاده شود.
+مقادیر ورودی رمزیکبار مصرف و شناسه‌ی درخواست ایجاد شده هستند.</p>
+
+<ul>
+<li><p>آدرس: <code>POST /gift/confirm-gift-batch</code></p></li>
+<li><p>پارامترهای ورودی:</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>otp</td>
+<td>string</td>
+<td>اجباری</td>
+<td>رمزیکبار مصرف ارسال شده به کاربر</td>
+<td>&quot;615519&quot;</td>
+</tr>
+<tr>
+<td>batch_id</td>
+<td>string</td>
+<td>اجباری</td>
+<td>شناسه‌ی درخواست ایجاد شده</td>
+<td>58</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-5'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidOTP</td>
+<td>در صورتی که رمزیکبار مصرف تایید برای ایجاد و تایید درخواست هدیه‌ی دسته‌ای اشتباه باشد</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>پارامترهای پاسخ:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>&quot;ok&quot;</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+محدودیت فراخوانی : 10 درخواست در دقیقه
 </aside>
 <h2 id='3ff731b9c9'>ارسال مجدد رمزیکبار مصرف</h2>
 <blockquote>
@@ -3349,6 +3616,22 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>الزامی</td>
 <td>کد هدیه</td>
 <td>&quot;07DB85D7210E4D29AEFF112FF53B2C74&quot;</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-6'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MobileNotProvided</td>
+<td>اگر موبایل گیرنده وجود نداشته باشد</td>
+</tr>
+<tr>
+<td>TooManyRequests</td>
+<td>اگر تعداد پیامک‌های ارسالی برای در ۱۲ ساعت گذشته بیشتر از تعداد مجاز ۷ عدد باشد</td>
 </tr>
 </tbody></table>
 
