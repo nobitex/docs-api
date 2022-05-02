@@ -2722,6 +2722,21 @@ Authorization: Token yourTOKENhereHEX0000000000
 خواهند بود.
 </aside>
 
+<aside class="notice">
+مقادیر مورد قبول برای طرح کارت:
+1- grand 
+2- mind
+3- cute
+2- light
+خواهند بود.
+</aside>
+
+<aside class="notice">
+مقادیر مورد قبول حال حاضر برای نوع پکیج:
+1- default 
+خواهند بود.
+</aside>
+
 <ul>
 <li><p>آدرس: <code>POST /gift/create-gift</code></p></li>
 <li><p>پارامترهای ورودی:</p></li>
@@ -2814,7 +2829,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>&quot;default&quot;</td>
 </tr>
 <tr>
-<td>redeeem_date</td>
+<td>redeem_date</td>
 <td>iso-string</td>
 <td>اختیاری</td>
 <td>تاریخ دریافت</td>
@@ -2939,7 +2954,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <tr>
 <td>cost</td>
 <td>monetary</td>
-<td>شناسه‌ی هدیه‌</td>
+<td>هزینه‌ی ایجاد هدیه‌</td>
 <td>&quot;100&quot;</td>
 </tr>
 </tbody></table>
@@ -2950,6 +2965,10 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <aside class="notice">
 آرگومان مورد نیاز برای فراخوانی APIی تایید برداشت در پاسخ این APIی موجود است و مقدار gift_withdraw_id است.
+</aside>
+
+<aside class="notice">
+در صورتی که نوع هدیه دیجیتال باشد ارسال ایمیل گیرنده الزامی خواهد بود.
 </aside>
 <h2 id='1ecce8f7b9'>تایید برداشت</h2>
 <p>برای این منظور باید از APIی تایید درخواست برداشت در قسمت برداشت استفاده کرد.</p>
