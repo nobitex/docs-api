@@ -365,6 +365,9 @@
                   <li>
                     <a href="#2a3bc4fdc6" class="toc-h2 toc-link" data-title="لغو جمعی سفارشات">لغو جمعی سفارشات</a>
                   </li>
+                  <li>
+                    <a href="#1cf6f6c643" class="toc-h2 toc-link" data-title="فهرست معاملات کاربر">فهرست معاملات کاربر</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1642,7 +1645,7 @@ resolution: 60
 </tbody></table>
 <h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
 <ol>
-<li>در پاسخ حداکثر اطلاعات هزار سفارش بازگردانده می‌شود. با استفاده از پارامترهای ورودی می‌توانید تعداد محدودتری از سفارش‌های خود را دریافت کنید. همچنین پیشنهاد می‌شود که در صورتی که تعداد زیادی سفارش باز دارید، شناسه آن‌ها را در زمان ثبت سفارش دریافت و ذخیره نمایید و به صورت مستقل با استفاده از درخواست «مشاهده وضعیت سفارش» اطلاعات هر یک را بنا به نیاز به‌روز کنید. همچنین برای اطلاع از معاملات انجام شده خود می‌توانید از درخواست «market/trades/list» استفاده نمایید.</li>
+<li>در پاسخ حداکثر اطلاعات هزار سفارش بازگردانده می‌شود. با استفاده از پارامترهای ورودی می‌توانید تعداد محدودتری از سفارش‌های خود را دریافت کنید. همچنین پیشنهاد می‌شود که در صورتی که تعداد زیادی سفارش باز دارید، شناسه آن‌ها را در زمان ثبت سفارش دریافت و ذخیره نمایید و به صورت مستقل با استفاده از درخواست «مشاهده وضعیت سفارش» اطلاعات هر یک را بنا به نیاز به‌روز کنید. همچنین برای اطلاع از معاملات انجام شده خود می‌توانید از درخواست <a href="/#1cf6f6c643">فهرست معاملات کاربر</a> استفاده نمایید.</li>
 <li>منظور از وضعیت Done سفارشی است که به صورت صد در صد اجرا شده باشد. ممکن است سفارش شما به تدریج اجرا شود، و در این حالت وضعیت آن کماکان Active می‌ماند. از فیلد matchedAmount برای تشخیص وضعیت اجرا و پر شدن سفارش استفاده کنید. همچنین ممکن است سفارش شما قبل از اجرای کامل، به دلیل درخواست «لغو سفارش» یا کمبود موجودی یا تغییر شدید قیمت بازار (در سفارش‌های مارکت) لغو شود که در این حالت وضعیت آن Canceled خواهد بود، به این معنی که به صورت صد در صد اجرا نشده است ولی می‌تواند مقدار matchedAmount آن بزرگ‌تر از صفر باشد.</li>
 <li>این API متناظر مواردی مانند <a href="https://binance-docs.github.io/apidocs/spot/en/#current-open-orders-user_data" rel="nofollow" target="_blank">Current Open Orders</a> و <a href="https://binance-docs.github.io/apidocs/spot/en/#all-orders-user_data" rel="nofollow" target="_blank">All Orders</a> در اکسچنج بایننس است.</li>
 </ol>
@@ -1788,6 +1791,159 @@ resolution: 60
 <aside class="notice">
 سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.
 </aside>
+<h2 id='1cf6f6c643'>فهرست معاملات کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"﷼"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT-RLS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-05T09:57:38.560820+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"316800"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57.3605"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18171806.4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27257.7096"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت فهرست معاملات ۳ روز اخیر خود، از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>آدرس</strong>: <code>GET /market/trades/list</code></li>
+</ul>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>رمزارز مبدا بازار</td>
+<td><code>btc</code> یا  ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>رمزارز مقصد بازار</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>در فیلتر بازار هر دو پارامتر رمزارز مبدا و مقصد باید مقدار داشته باشند یا هر دو خالی باشند.</li>
+</ul>
+
+<aside class="notice">
+دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 30
+</aside>
+
+<aside class="notice">
+محدودیت فراخوانی : 20 درخواست در دقیقه
+</aside>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trades</td>
+<td>list of Trade</td>
+<td>فهرست معاملان کاربر</td>
+<td><code>[{...Trade...}, ...]</code></td>
+</tr>
+<tr>
+<td>hasNext</td>
+<td>boolean</td>
+<td>صفحه بعدی دارد؟</td>
+<td><code>false</code></td>
+</tr>
+</tbody></table>
+<h3 id='trade'>شی Trade</h3>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>رمزارز مبدا معامله</td>
+<td><code>Bitcoin</code> یا <code>Ethereum</code> یا <code>TRON</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>ارز مقصد معامله</td>
+<td><code>﷼</code> یا <code>Tether</code></td>
+</tr>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>نماد بازار معامله</td>
+<td><code>USDT-RLS</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>string</td>
+<td>زمان انجام معامله</td>
+<td><code>2022-07-05T09:57:38.560820+00:00</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>نوع خرید یا فروش</td>
+<td><code>buy</code> یا <code>sell</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>قیمت انجام معامله</td>
+<td><code>316800</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار معامله شده</td>
+<td><code>57.3605</code></td>
+</tr>
+<tr>
+<td>total</td>
+<td>monetary</td>
+<td>قیمت کل معامله</td>
+<td><code>18171806.4</code></td>
+</tr>
+<tr>
+<td>fee</td>
+<td>monetary</td>
+<td>کارمزد معامله</td>
+<td><code>27257.7096</code></td>
+</tr>
+</tbody></table>
 <h1 id='0d2655f072'>اطلاعات کاربر</h1><h2 id='88cb25e727'>پروفایل</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/profile \
