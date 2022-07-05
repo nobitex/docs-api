@@ -63,6 +63,10 @@ CoinDepositDisabled | CoinDepositDisabled
 
 # مستندات جدید
 
+## مستندات جدید تیر ۱۴۰۱
+
+* فهرست معاملات کاربر (/market/trades/list)
+
 ## مستندات جدید آذر ۱۴۰۰
 
 * ثبت درخواست برداشت (/users/wallets/withdraw)
