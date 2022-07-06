@@ -435,16 +435,16 @@ http POST https://api.nobitex.ir/market/orders/cancel-old \
 
 برای لغو دسته‌جمعی سفارشات فعال از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/orders/cancel-old`
+- آدرس : `POST /market/orders/cancel`
 
 - پارامترها :
 
-پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
------------ | ----   | ------   |   ---------   | -----
-hours        | float |  اختیاری  |    زمان سفارش | 4.2
+پارامتر     | نوع    | پیش‌فرض  |   توضیحات     | نمونه
+----------- | ----   |----------|   ---------   | -----
+hours        | float | اختیاری  |    زمان سفارش | 4.2
 execution   | string | `market` |   نحوه سفارش  | `market` یا `limit` یا `stop_market` یا `stop_limit`
-srcCurrency | string |  الزامی  |    ارز مبدا   | `btc`
-dstCurrency | string |  الزامی  |    ارز مقصد   | `rls`
+srcCurrency | string | اختیاری  |    ارز مبدا   | `btc`
+dstCurrency | string | اختیاری  |    ارز مقصد   | `rls`
 
 - خطاها :
 
