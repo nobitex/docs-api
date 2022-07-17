@@ -435,7 +435,7 @@ http POST https://api.nobitex.ir/market/orders/cancel-old \
 
 برای لغو دسته‌جمعی سفارشات فعال از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/orders/cancel`
+- آدرس : `POST /market/orders/cancel-old`
 
 - پارامترها :
 
