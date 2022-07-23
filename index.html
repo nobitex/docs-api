@@ -334,6 +334,9 @@
                     <a href="#orderbook" class="toc-h2 toc-link" data-title="لیست سفارش‌ها: اردربوک">لیست سفارش‌ها: اردربوک</a>
                   </li>
                   <li>
+                    <a href="#54977c5fca" class="toc-h2 toc-link" data-title="نمودار عمق (آزمایشی)">نمودار عمق (آزمایشی)</a>
+                  </li>
+                  <li>
                     <a href="#3fe8d57657" class="toc-h2 toc-link" data-title="لیست معاملات">لیست معاملات</a>
                   </li>
                   <li>
@@ -728,6 +731,54 @@
 <p>همچنین زمان آخرین به‌روزرسانی در اردربوک ذیل پارامتر <code>lastUpdate</code> به فرمت یونیکس داده می‌شود.</p>
 <h3 id='1e4125a980'>روش پیشنهادی نگهداری اردربوک</h3>
 <p>در صورتی که در کد خود نیاز به نگهداری آخرین وضعیت اردربوک نوبیتکس هستید، در یک حلقه اقدام به دریافت اردربوک نوبیتکس نمایید. حتماً در میان هر دو بار اجرای حلقه حداقل یک تا ده ثانیه صبر نمایید و از فراخوانی پیاپی و بی‌مکث اردربوک خودداری کنید. به دلیل وجود لایه‌های کش، در صورت فراخوانی در بازه‌های زیر یک ثانیه، همان داده فراخوانی قبلی را دریافت خواهید نمود. اگر در اغلب بازارهای نوبیتکس فعال هستید، می‌توانید در هر فراخوانی کل اردربوک را دریافت نمایید تا نیازی به فراخوانی همزمان چند اردربوک نداشته باشید. اگر کد خود را در چند رشته (ترد) یا پردازه یا سرور اجرا می‌کنید، حتماً اردربوک را در یک مرجع واحد دریافت نمایید و آن را در میان نمونه‌های برنامه خود به اشتراک بگذارید.</p>
+<h2 id='54977c5fca'>نمودار عمق (آزمایشی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/depth/BTCIRT'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/depth/BTCIRT
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1658565992195"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"7309999000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2.200274"</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"7310000000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2.199856"</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"7310025000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2.102569"</span><span class="p">]],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s2">"7409894000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.054789"</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"7447665000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.055276"</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">"7450000000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.059756"</span><span class="p">]],</span><span class="w">
+  </span><span class="nl">"lastTradePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7417000000"</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت داده‌های نمودار عمق، یا همان اردربوک بازارهای مختلف، از این درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /v2/depth/SYMBOL</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
+</ul>
+
+<aside class="warning">
+برای دریافت اردربوک حتماً از متد GET و با ارسال نماد در آدرس url استفاده نمایید.
+</aside>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SYMBOL</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد بازار</td>
+<td><code>BTCIRT</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<p>خروجی شامل دو آرایه asks و bids بوده که در هر یک قیمت و مقدار سفارش‌های بازار وجود دارد. <strong>سفارش‌های خرید در <code>bids</code> و سفارش‌های فروش در <code>asks</code> بازگردانده می‌شوند.</strong> هر یک از این آرایه‌ها شامل دوتایی‌های «قیمت، مقدار» هستند که در هر دوتایی، مقدار قیمت، تجمیع شده و گرد شده با دقت مناسب بازار مورد نظر است.</p>
+
+<p>همچنین زمان آخرین به‌روزرسانی نمودار عمق ذیل پارامتر <code>lastUpdate</code> به فرمت یونیکس داده می‌شود.</p>
+<h3 id='9ed355a0f6'>روش پیشنهادی نگهداری نمودار عمق</h3>
+<p>در صورتی که در کد خود نیاز به نگهداری آخرین وضعیت نمودار عمق نوبیتکس هستید، در یک حلقه اقدام به دریافت نمودار عمق نوبیتکس نمایید. حتماً در میان هر دو بار اجرای حلقه حداقل یک تا ده ثانیه صبر نمایید و از فراخوانی پیاپی و بی‌مکث خودداری کنید. به دلیل وجود لایه‌های کش، در صورت فراخوانی در بازه‌های زیر یک ثانیه، همان داده فراخوانی قبلی را دریافت خواهید نمود.</p>
 <h2 id='3fe8d57657'>لیست معاملات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades/BCHIRT'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/trades/BCHIRT
 </code></pre></div>
