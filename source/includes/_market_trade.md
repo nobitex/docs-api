@@ -514,7 +514,7 @@ http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=
 * در فیلتر بازار هر دو پارامتر رمزارز مبدا و مقصد باید مقدار داشته باشند یا هر دو خالی باشند.
 
 <aside class="notice">
-دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 30
+دارای <a href="/#pagination">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 30
 </aside>
 
 <aside class="notice">

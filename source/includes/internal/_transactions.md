@@ -122,5 +122,5 @@ calculatedFee | monetary | کارمزد حساب شده | null
 </aside>
 
 <aside class="notice">
-دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 50
+دارای <a href="/#pagination">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 50
 </aside>

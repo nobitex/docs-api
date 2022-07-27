@@ -331,5 +331,5 @@ trades | list of ExchangeTrade | لیست معاملات صرافی کاربر |
 </aside>
 
 <aside class="notice">
-دارای <a href="/#cb16a9b01c">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 15
+دارای <a href="/#pagination">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 15
 </aside>

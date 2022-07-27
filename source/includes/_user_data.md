@@ -463,6 +463,7 @@ http POST https://api.nobitex.ir/users/wallets/transactions/list \
 
 ```json
 {
+    "status": "ok",
     "transactions": [
         {
             "currency": "ltc",
@@ -482,7 +483,7 @@ http POST https://api.nobitex.ir/users/wallets/transactions/list \
         },
         ...
     ],
-    "status": "ok"
+    "hasNext": true
 }
 ```
 
@@ -495,6 +496,11 @@ http POST https://api.nobitex.ir/users/wallets/transactions/list \
 پارامتر     | نوع    | پیش‌فرض   |       توضیحات     | نمونه
 ----------- | ----   | ------   |   ---------       | -----
 wallet      | int    |   الزامی | شناسه کیف پول(id) | `4159`
+
+<aside class="notice">
+دارای <a href="/#pagination">صفحه‌بندی</a>
+</aside>
+
 
 ## لیست واریزها
 
@@ -535,16 +541,25 @@ http POST https://api.nobitex.ir/users/wallets/deposits/list \
             "requiredConfirmations": 3,
             "amount": "3.0000000000"
         }
-    ]
+    ],
+    "hasNext": true
 }
 ```
 
-برای دریافت لیست واریزها و برداشت‌ها از این نوع درخواست استفاده نمایید:
+برای دریافت لیست واریزها از این نوع درخواست استفاده نمایید:
 
 - آدرس : `POST /users/wallets/deposits/list`
 
 - پارامترها :
 
-پارامتر     | نوع    | پیش‌فرض   |       توضیحات     | نمونه
------------ | ----   | ------   |   ---------       | -----
-wallet      | string |   all    | شناسه کیف پول(id) | `4159`
+پارامتر     | نوع        | پیش‌فرض | توضیحات       | نمونه
+----------- |------------|---------|---------------| -----
+wallet      | string     | all     | شناسه کیف پول | `4159`
+
+<aside class="notice">
+دارای <a href="/#pagination">صفحه‌بندی</a> و <a href="/#date-filter">فیلتر زمانی</a> برای واریزهای یک کیف‌پول مشخص
+</aside>
+
+<aside class="notice">
+از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.
+</aside>

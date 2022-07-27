@@ -188,7 +188,8 @@ http GET https://api.nobitex.ir/users/wallets/withdraws/list
       "blockchain_url": "https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf...",
       "is_cancelable": false
     }
-  ]
+  ],
+  "hasNext": true
 }
 ```
 
@@ -202,8 +203,9 @@ http GET https://api.nobitex.ir/users/wallets/withdraws/list
 |---------|--------|---------|---------------------|-------|
 | wallet  | string | all     | شناسه کیف پول کاربر | 3456  |
 
+
 <aside class="notice">
-برای هر کیف پول حداکثر 20 برداشت تایید شده آخر نمایش داده می‌شود.
+دارای <a href="/#pagination">صفحه‌بندی</a> و <a href="/#date-filter">فیلتر زمانی</a> / اندازه صفحه پیش‌فرض: 20
 </aside>
 
 <aside class="notice">
