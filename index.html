@@ -853,11 +853,8 @@
 <aside class="notice">
 پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود
 </aside>
-<h2 id='6ae2dae4a2'>آمار بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/stats'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"rls"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/stats \
+<h2 id='6ae2dae4a2'>آمار بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/stats?srcCurrency=btc&amp;dstCurrency=rls'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/stats \
   srcCurrency=btc dstCurrency=rls
 </code></pre></div>
 <blockquote>
@@ -885,7 +882,7 @@
 <p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /market/stats</code></p></li>
+<li><p>آدرس : <code>GET /market/stats</code></p></li>
 <li><p>پارامترها :</p></li>
 </ul>
 
@@ -1493,12 +1490,9 @@ resolution: 60
 <li>موجودی کیف پول کاربر از طریق سایر تراکنش‌ها کاهش یافته است و از موجودی لازم برای پر شدن معامله کمتر شده است.</li>
 </ul></li>
 </ul>
-<h2 id='a2ce8ff7e3'>فهرست سفارش‌های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/list'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"srcCurrency":"btc","dstCurrency":"usdt","details":2}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/list \
+<h2 id='a2ce8ff7e3'>فهرست سفارش‌های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/list?srcCurrency=btc&amp;dstCurrency=usdt&amp;details=2'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/orders/list \
   srcCurrency=btc dstCurrency=usdt details=2
 </code></pre></div>
 <blockquote>
@@ -1526,7 +1520,7 @@ resolution: 60
 <p>برای دریافت فهرست سفارش‌های خود، از این درخواست استفاده نمایید.</p>
 
 <ul>
-<li><strong>درخواست:</strong> <code>POST /market/orders/list</code></li>
+<li><strong>درخواست:</strong> <code>GET /market/orders/list</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 30 درخواست در دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
@@ -2321,9 +2315,8 @@ resolution: 60
 
 <p>برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به <a href="https://nobitex.net/policies/user-levels/">سطوح حساب کاربری در نوبیتکس</a> مراجعه کنید.</p>
 <h1 id='d6a07813e2'>اطلاعات مالی کاربر</h1><h2 id='1100025d2c'>لیست کیف پول ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/list'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/list \
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/list \
   Authorization=Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -2350,7 +2343,7 @@ resolution: 60
 <p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li>آدرس : <code>POST /users/wallets/list</code></li>
+<li>آدرس : <code>GET /users/wallets/list</code></li>
 </ul>
 
 <aside class="notice">
@@ -2365,11 +2358,9 @@ resolution: 60
 <aside class="notice">
     در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
 </aside>
-<h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
+<h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets?currencies=rls,btc'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
-  <span class="nt">--data</span> <span class="s1">'{"currencies":"rls,btc"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/wallets \
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/wallets \
   Authorization=Token yourTOKENhereHEX0000000000
   currencies=rls,btc
 </code></pre></div>
@@ -2395,7 +2386,7 @@ resolution: 60
 <p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /v2/wallets</code></p></li>
+<li><p>آدرس : <code>GET /v2/wallets</code></p></li>
 <li><p>پارامترها :</p></li>
 </ul>
 
@@ -2472,12 +2463,9 @@ resolution: 60
 <aside class="notice">
 اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.
 </aside>
-<h2 id='ae038c6100'>لیست تراکنش‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/transactions/list'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/transactions/list \
+<h2 id='ae038c6100'>لیست تراکنش‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/transactions/list?wallet=4159'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/transactions/list \
   wallet=4159
 </code></pre></div>
 <blockquote>
@@ -2510,7 +2498,7 @@ resolution: 60
 <p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/wallets/transactions/list</code></p></li>
+<li><p>آدرس : <code>GET /users/wallets/transactions/list</code></p></li>
 <li><p>پارامترها :</p></li>
 </ul>
 
@@ -2535,12 +2523,9 @@ resolution: 60
 <aside class="notice">
 دارای <a href="/#pagination">صفحه‌بندی</a>
 </aside>
-<h2 id='18a62645f3'>لیست واریزها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"wallet":"4159"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/wallets/deposits/list \
+<h2 id='18a62645f3'>لیست واریزها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list?wallet=4159'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/deposits/list \
   wallet=4159
 </code></pre></div>
 <blockquote>
@@ -2574,7 +2559,7 @@ resolution: 60
 <p>برای دریافت لیست واریزها از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/wallets/deposits/list</code></p></li>
+<li><p>آدرس : <code>GET /users/wallets/deposits/list</code></p></li>
 <li><p>پارامترها :</p></li>
 </ul>
 
@@ -3342,8 +3327,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 <h1 id="other">سایر</h1>
 
 <h2 id="options">تنظیمات سیستم</h2>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/v2/options'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/options
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/options'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/options
 </code></pre></div>
 <blockquote>
 <p>ساختار کلی پاسخ به صورت زیر خواهد بود. کلیدهای موجود در هر بخش در مستندات توضیح داده شده‌اند.</p>
@@ -3456,7 +3441,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>عملکرد سیستم نوبیتکس بر اساس پارامترهای مختلف تنظیم می‌شود که با استفاده از API «تنظیمات سیستم» می‌توانید مقادیر این پارامترها را دریافت نمایید. مواردی مانند رمزارزهای فعال، حداقل معامله در هر بازار، پله‌های کارمزد، سقف برداشت و بسیاری اطلاعات مفید دیگر از این طریق در دسترس شما قرار خواهد داشت. پاسخ در دو کلید <code>nobitex</code> شامل تنظیمات کلی سیستمی، و کلید <code>coins</code> شامل تنظیمات مخصوص هر رمزارز بازگردانده می‌شود. همچنین هر رمزارز دارای چندین «شبکه» است که برخی تنظیمات ممکن است فقط در سطح شبکه تعریف شوند یا در سطح رمزارز به صورت عمومی وجود داشته باشند ولی در بعضی شبکه‌های آن رمزارز متفاوت بوده و بازتعریف شوند.</p>
 
 <ul>
-<li><strong>درخواست:</strong> <code>POST /v2/options</code></li>
+<li><strong>درخواست:</strong> <code>GET /v2/options</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 1 درخواست در دقیقه با امکان burst</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 <li><strong>پارامتر ورودی:</strong> ندارد</li>
