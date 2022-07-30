@@ -201,14 +201,11 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 ##آمار بازار نوبیتکس
 
 ```shell
-curl 'https://api.nobitex.ir/market/stats' \
-  -X POST \
-  -H "content-type: application/json" \
-  --data '{"srcCurrency":"btc","dstCurrency":"rls"}'
+curl 'https://api.nobitex.ir/market/stats?srcCurrency=btc&dstCurrency=rls'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/stats \
+http GET https://api.nobitex.ir/market/stats \
   srcCurrency=btc dstCurrency=rls
 ```
 
@@ -237,7 +234,7 @@ http POST https://api.nobitex.ir/market/stats \
 
 برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/stats`
+- آدرس : `GET /market/stats`
 
 - پارامترها :
 

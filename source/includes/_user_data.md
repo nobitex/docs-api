@@ -297,12 +297,11 @@ http GET https://api.nobitex.ir/users/limitations
 
 ```shell
 curl 'https://api.nobitex.ir/users/wallets/list' \
-  -X POST \
   --header "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/list \
+http GET https://api.nobitex.ir/users/wallets/list \
   Authorization=Token yourTOKENhereHEX0000000000
 ```
 
@@ -330,7 +329,7 @@ http POST https://api.nobitex.ir/users/wallets/list \
 
 برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /users/wallets/list`
+- آدرس : `GET /users/wallets/list`
 
 <aside class="notice">
 محدودیت فراخوانی : 20 درخواست در 2 دقیقه
@@ -348,14 +347,12 @@ http POST https://api.nobitex.ir/users/wallets/list \
 ##لیست کیف پول ها (انتخابی)
 
 ```shell
-curl 'https://api.nobitex.ir/v2/wallets' \
-  -X POST \
+curl 'https://api.nobitex.ir/v2/wallets?currencies=rls,btc' \
   --header "Authorization: Token yourTOKENhereHEX0000000000"
-  --data '{"currencies":"rls,btc"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/wallets \
+http GET https://api.nobitex.ir/v2/wallets \
   Authorization=Token yourTOKENhereHEX0000000000
   currencies=rls,btc
 ```
@@ -382,7 +379,7 @@ http POST https://api.nobitex.ir/v2/wallets \
 
 برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /v2/wallets`
+- آدرس : `GET /v2/wallets`
 
 - پارامترها :
 
@@ -447,15 +444,12 @@ currency    | string |   الزامی | نوع کیف پول(ارز) | `ltc`
 ## لیست تراکنش‌ها
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/transactions/list' \
-  -X POST \
-  -H "Authorization: Token yourTOKENhereHEX0000000000" \
-  -H "content-type: application/json" \
-  --data '{"wallet":"4159"}'
+curl 'https://api.nobitex.ir/users/wallets/transactions/list?wallet=4159' \
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/transactions/list \
+http GET https://api.nobitex.ir/users/wallets/transactions/list \
   wallet=4159
 ```
 
@@ -489,7 +483,7 @@ http POST https://api.nobitex.ir/users/wallets/transactions/list \
 
 برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /users/wallets/transactions/list`
+- آدرس : `GET /users/wallets/transactions/list`
 
 - پارامترها :
 
@@ -505,15 +499,12 @@ wallet      | int    |   الزامی | شناسه کیف پول(id) | `4159`
 ## لیست واریزها
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/deposits/list' \
-  -X POST \
-  -H "Authorization: Token yourTOKENhereHEX0000000000" \
-  -H "content-type: application/json" \
-  --data '{"wallet":"4159"}'
+curl 'https://api.nobitex.ir/users/wallets/deposits/list?wallet=4159' \
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/deposits/list \
+http GET https://api.nobitex.ir/users/wallets/deposits/list \
   wallet=4159
 ```
 
@@ -548,7 +539,7 @@ http POST https://api.nobitex.ir/users/wallets/deposits/list \
 
 برای دریافت لیست واریزها از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /users/wallets/deposits/list`
+- آدرس : `GET /users/wallets/deposits/list`
 
 - پارامترها :
 

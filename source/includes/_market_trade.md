@@ -271,15 +271,12 @@ id          | int    |  الزامی  |     شناسه سفارش | `5684`
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/list' \
-  -X POST \
-  -H "Authorization: Token yourTOKENhereHEX0000000000" \
-  -H "content-type: application/json" \
-  --data '{"srcCurrency":"btc","dstCurrency":"usdt","details":2}'
+curl 'https://api.nobitex.ir/market/orders/list?srcCurrency=btc&dstCurrency=usdt&details=2' \
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/list \
+http GET https://api.nobitex.ir/market/orders/list \
   srcCurrency=btc dstCurrency=usdt details=2
 ```
 
@@ -308,7 +305,7 @@ http POST https://api.nobitex.ir/market/orders/list \
 
 برای دریافت فهرست سفارش‌های خود، از این درخواست استفاده نمایید.
 
-- **درخواست:** `POST /market/orders/list`
+- **درخواست:** `GET /market/orders/list`
 - **محدودیت فراخوانی:** 30 درخواست در دقیقه
 
 ### پارامترهای ورودی
