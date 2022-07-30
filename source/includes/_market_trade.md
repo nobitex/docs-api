@@ -483,6 +483,8 @@ http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=
   "status": "ok",
   "trades": [
     {
+      "id": 123412,
+      "orderId": 1231222,
       "srcCurrency": "Tether",
       "dstCurrency": "﷼",
       "market": "USDT-RLS",
@@ -507,8 +509,10 @@ http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=
 |-------------|--------|---------|-------------------|-----------------|
 | srcCurrency | string | اختیاری | رمزارز مبدا بازار | `btc` یا  ...   |
 | dstCurrency | string | اختیاری | رمزارز مقصد بازار | `rls` یا `usdt` |
+| fromId      | int    | اختیاری |       حداقل شناسه |           10023 |
 
 * در فیلتر بازار هر دو پارامتر رمزارز مبدا و مقصد باید مقدار داشته باشند یا هر دو خالی باشند.
+* در صورت اختصاص مقدار به حداقل شناسه تنها معاملاتی که شناسه‌ی آن‌ها بیشتر از یا مساوی با حداقل شناسه است برگردانده می‌شوند.
 
 <aside class="notice">
 دارای <a href="/#pagination">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 30
@@ -527,6 +531,8 @@ http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=
 ### شی Trade
 | فیلد        | نوع      | توضیحات            | نمونه                                    |
 |-------------|----------|--------------------|------------------------------------------|
+| id          | int      | شناسه‌ی معامله      | 122545                                   |
+| orderId     | int      | شناسه‌ی سفارش       | 214534534434                             |
 | srcCurrency | string   | رمزارز مبدا معامله | `Bitcoin` یا `Ethereum` یا `TRON` یا ... |
 | dstCurrency | string   | ارز مقصد معامله    | `﷼` یا `Tether`                          |
 | market      | string   | نماد بازار معامله  | `USDT-RLS`                               |
