@@ -925,42 +925,29 @@
 دقت کنید این قسمت از اطلاعات (متناظر با کلید global) منسوخ شده و در نسخه‌های آتی به طور کامل حذف خواهد شد.
 توصیه می‌شود جهت دریافت آمار بازار بایینس از <a href="#cdf265d0e6">آمار بازار جهانی</a> استفاده نمایید.
 </aside>
-<h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1560120967&amp;to=1562230967'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1560120967&amp;to=1562230967
+<h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">1562182200</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"157000000.0000000000"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"150551000.0000000000"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"161869500.0000000000"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"150551000.0000000000"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"9.8592626506"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1562095800</span><span class="p">,</span><span class="w"> </span><span class="mi">1562182200</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">146272500</span><span class="p">,</span><span class="w"> </span><span class="mi">150551000</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">155869600</span><span class="p">,</span><span class="w"> </span><span class="mi">161869500</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">140062400</span><span class="p">,</span><span class="w"> </span><span class="mi">150551000</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">151440200</span><span class="p">,</span><span class="w"> </span><span class="mi">157000000</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">18.221362316</span><span class="p">,</span><span class="w"> </span><span class="mf">9.8592626506</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>برای توضیحات بیشتر در مورد  OHLC به <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">این لینک</a> مراجعه کنید.<br><br>
 برای دریافت  آمار OHLC نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /market/udf/history</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET /v2/udf/history</code></li>
 </ul>
-
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -974,14 +961,14 @@
 <td>symbol</td>
 <td>string</td>
 <td>الزامی</td>
-<td>جفت ارز</td>
-<td><code>BTCIR</code></td>
+<td>نماد بازار</td>
+<td><code>BTCIRT</code></td>
 </tr>
 <tr>
 <td>resolution</td>
 <td>string</td>
 <td>الزامی</td>
-<td>بازه زمانی هر خروجی</td>
+<td>بازه زمانی هر کندل</td>
 <td><code>D</code></td>
 </tr>
 <tr>
@@ -989,7 +976,7 @@
 <td>int</td>
 <td>الزامی</td>
 <td>زمان ابتدای بازه</td>
-<td><code>1562120967</code></td>
+<td><code>1562058167</code></td>
 </tr>
 <tr>
 <td>to</td>
@@ -1000,48 +987,91 @@
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>در صورت ورودی اشتباه برای resolution پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid resolution!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <ul>
-<li>پارامتر Resolution  بازه زمانی  کندل‌های خروجی می‌باشد و مقدار آن می‌تواند یکی از مقادیر زیر باشد:</li>
+<li>پارامتر resolution  بازه زمانی  کندل‌های خروجی می‌باشد و مقدار آن می‌تواند یکی از مقادیر زیر باشد:</li>
 </ul>
 
 <table><thead>
 <tr>
-<th>پارامتر</th>
+<th>دقیقه‌ای</th>
+<th>توضیح</th>
+<th>ساعتی</th>
+<th>توضیح</th>
+<th>روزانه</th>
 <th>توضیح</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>یک ساعت</td>
+<td><code>1</code></td>
+<td>یک دقیقه</td>
 <td><code>60</code></td>
+<td>یک ساعت</td>
+<td><code>D</code></td>
+<td>یک روز</td>
 </tr>
 <tr>
-<td>یک روز</td>
-<td><code>D</code></td>
+<td><code>5</code></td>
+<td>پنج دقیقه</td>
+<td><code>180</code></td>
+<td>سه ساعت</td>
+<td><code>2D</code></td>
+<td>دو روز</td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td>یک ربع</td>
+<td><code>240</code></td>
+<td>چهار ساعت</td>
+<td><code>3D</code></td>
+<td>سه روز</td>
+</tr>
+<tr>
+<td><code>30</code></td>
+<td>نیم ساعت</td>
+<td><code>360</code></td>
+<td>شش ساعت</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>720</code></td>
+<td>دوازده ساعت</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-مقادیر from و to زمان شروع و پایان جست‌وجو را مشخص میکند. برای مثال اگر شما میخواهید بازه 4 ساعته از تاریخ 2019/2/9 11:39:41 را به خروجی های 1 ساعته دریافت کنید،مقادیر شما باید به این صورت باشد:
-from: 1567424381
-to: 1567395581
-resolution: 60
-</aside>
-
-<aside class="notice">
-در صورت ورودی اشتباه برای resolution پاسخ به این صورت خواهد بود:
-`{
-   "s": "error",
-   "errmsg": "Invalid resolution!"
- }
- `
-</aside>
-
 <ul>
-<li>پاسخ سرور
-در هر بازه زمانی، بسته به resolution انتخابی، تعداد مقادیر برگشتی متفاوت میباشد. برای مثال اگر شما اختلاف بازه زمانی خود را 7 روز و resolution را مقدار D یعنی 1 روز انتخاب کنید، 7 پاسخ به شما برگشت داده می‌شود.
-هر کدام از این پاسخ‌ها در واقع یک candle هستند.
-هر candle، مقادیر زیر را دارد:</li>
+<li>مقادیر from و to زمان شروع و پایان جست‌وجو را مشخص می‌کند و با فرمت یونیکس به ثانیه مشخص می‌شود.</li>
 </ul>
+
+<blockquote>
+<p>در صورت نبودن داده در بازه درخواستی پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no_data"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+کندل‌های دقیقه‌ای بازارها از آغاز سال 1401 در دسترسند و دسترسی به کندل‌های دقیقه‌ای پیش از آن موجود نیست.
+</aside>
+
+<aside class="notice">
+لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
+</aside>
+<h3 id='b5a1caf9af-3'>پارامترهای پاسخ</h3>
+<p>در هر درخواست بسته به بازه زمانی تعیین شده و resolution انتخابی، تعداد کندل‌های برگشتی متفاوت است.
+برای مثال تعداد کندل‌های 1 ساعته از تاریخ 2019/2/9 11:39:41 تا چهار ساعت بعد آن، ۴ تاست.</p>
 
 <table><thead>
 <tr>
@@ -1059,51 +1089,41 @@ resolution: 60
 </tr>
 <tr>
 <td><code>t</code></td>
-<td>زمان</td>
-<td>float</td>
-<td><code>1562182200</code></td>
-</tr>
-<tr>
-<td><code>c</code></td>
-<td>مقدار انتهای بازه</td>
-<td>string</td>
-<td><code>157000000.0000000000</code></td>
+<td>شروع زمان</td>
+<td>[ ] int</td>
+<td><code>[1562182200]</code></td>
 </tr>
 <tr>
 <td><code>o</code></td>
-<td>مقدار ابندای بازه</td>
-<td>string</td>
-<td><code>150551000.0000000000</code></td>
+<td>قیمت شروع</td>
+<td>[ ] float</td>
+<td><code>[150551000]</code></td>
 </tr>
 <tr>
 <td><code>h</code></td>
-<td>بالاترین مقدار بازه</td>
-<td>string</td>
-<td><code>161869500.0000000000</code></td>
+<td>بیشترین قیمت</td>
+<td>[ ] float</td>
+<td><code>[161869500]</code></td>
 </tr>
 <tr>
 <td><code>l</code></td>
-<td>پایین ترین مقدار بازه</td>
-<td>string</td>
-<td><code>150551000.0000000000</code></td>
+<td>کمترین قیمت</td>
+<td>[ ] float</td>
+<td><code>[150551000]</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>قیمت پایانی</td>
+<td>[ ] float</td>
+<td><code>[157000000]</code></td>
 </tr>
 <tr>
 <td><code>v</code></td>
-<td>حجم بازه</td>
-<td>array</td>
-<td><code>[&quot;9.8592626506&quot;]</code></td>
+<td>حجم معاملات</td>
+<td>[ ] float</td>
+<td><code>[9.8592626506]</code></td>
 </tr>
 </tbody></table>
-
-<p>پارامتر o (open) مقدار شروع بازه (در مثال ما بازه 1 روزه) را نشان می‌دهد. یعنی این بازه با مقدار 150551000.0000000000 شروع شده است.</p>
-
-<p>پارامتر c  (close) مقدار پایان بازه را نشان می‌دهد. یعنی این بازه با مقدار 157000000.0000000000 به پایان رسیده‌است.</p>
-
-<p>پارامتر h(high) است. بالاترین مقدار بازه را نشان می‌دهد. یعنی بالاترین مقدار این بازه  &quot;150551000.0000000000&quot;</p>
-
-<p>پارامتر l  (low) پایین‌ ترین مقدار بازه را نشان می‌دهد. پایین ترین مقدار این بازه 150551000.000000 می‌باشد.</p>
-
-<p>پارامتر v  (volume) حجم بازه بازه را نشان می‌دهد. حجم این بازه 9.8592626506 می‌باشد.</p>
 <h2 id='cdf265d0e6'>آمار بازار جهانی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/global-stats'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST
 
