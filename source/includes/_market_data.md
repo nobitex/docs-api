@@ -259,11 +259,11 @@ dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 ## آمار OHLC بازار نوبیتکس
 
 ```shell
-curl 'https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967'
+curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967
+http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -283,7 +283,7 @@ http GET https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&resolution=D&from=1
 برای توضیحات بیشتر در مورد  OHLC به [این لینک](https://en.wikipedia.org/wiki/Open-high-low-close_chart) مراجعه کنید.<br><br>
 برای دریافت  آمار OHLC نوبیتکس از این نوع درخواست استفاده نمایید:
 
-- **درخواست:** `GET /v2/udf/history`
+- **درخواست:** `GET /market/udf/history`
 
 ### پارامترهای ورودی
 
