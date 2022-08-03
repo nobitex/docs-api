@@ -1876,6 +1876,8 @@
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123412</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1231222</span><span class="p">,</span><span class="w">
       </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"﷼"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT-RLS"</span><span class="p">,</span><span class="w">
@@ -1919,10 +1921,18 @@
 <td>رمزارز مقصد بازار</td>
 <td><code>rls</code> یا <code>usdt</code></td>
 </tr>
+<tr>
+<td>fromId</td>
+<td>int</td>
+<td>اختیاری</td>
+<td>حداقل شناسه</td>
+<td>10023</td>
+</tr>
 </tbody></table>
 
 <ul>
 <li>در فیلتر بازار هر دو پارامتر رمزارز مبدا و مقصد باید مقدار داشته باشند یا هر دو خالی باشند.</li>
+<li>در صورت اختصاص مقدار به حداقل شناسه تنها معاملاتی که شناسه‌ی آن‌ها بیشتر از یا مساوی با حداقل شناسه است برگردانده می‌شوند.</li>
 </ul>
 
 <aside class="notice">
@@ -1963,6 +1973,18 @@
 <th>نمونه</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه‌ی معامله</td>
+<td>122545</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>int</td>
+<td>شناسه‌ی سفارش</td>
+<td>214534534434</td>
+</tr>
 <tr>
 <td>srcCurrency</td>
 <td>string</td>
