@@ -925,8 +925,8 @@
 دقت کنید این قسمت از اطلاعات (متناظر با کلید global) منسوخ شده و در نسخه‌های آتی به طور کامل حذف خواهد شد.
 توصیه می‌شود جهت دریافت آمار بازار بایینس از <a href="#cdf265d0e6">آمار بازار جهانی</a> استفاده نمایید.
 </aside>
-<h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967
+<h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -945,7 +945,7 @@
 برای دریافت  آمار OHLC نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><strong>درخواست:</strong> <code>GET /v2/udf/history</code></li>
+<li><strong>درخواست:</strong> <code>GET /market/udf/history</code></li>
 </ul>
 <h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
