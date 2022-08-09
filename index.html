@@ -985,6 +985,13 @@
 <td>زمان پایان بازه</td>
 <td><code>1562230967</code></td>
 </tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>شماره صفحه</td>
+<td><code>3</code></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1124,6 +1131,10 @@
 <td><code>[9.8592626506]</code></td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>در هر درخواست حداکثر 500 کندل بازگردانده می‌شود. برای بازیابی همه کندل‌های یک بازه با بیش از 500 کندل، از پارامتر page برای صفحه‌بندی استفاده نمایید.</li>
+</ul>
 <h2 id='cdf265d0e6'>آمار بازار جهانی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/global-stats'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST
 
