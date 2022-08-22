@@ -1184,34 +1184,88 @@
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ریال"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"520000000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"312000000.0"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ریال"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"520000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"312000000.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<p>برای ثبت سفارش معامله در بازار نوبیتکس از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>آدرس</strong>: <code>POST /market/orders/add</code></li>
+</ul>
+
+<p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «مشاهده وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
+
+<p>سفارش‌ها پس از ثبت، پیش از ورود به دفتر معاملاتی و انجام معامله، مجدداً از نظر اعتبار مورد بررسی قرار گرفته و در صورت نامعتبر بودن، به وضعیت «رد شده» برده خواهند شد. به همین علت در صورتی که سفارش‌های شما ثبت می‌شود ولی بلافاصله به وضعیت «رد شده» تغییر حالت پیدا می‌کنند، پارامترهای ارسالی خود به ویژه مقدار و قیمت سفارش و موجودی حساب خود را دقیق‌تر بررسی نمایید.</p>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع سفارش</td>
+<td><code>buy</code> یا <code>sell</code></td>
+</tr>
+<tr>
+<td>execution</td>
+<td>string</td>
+<td><code>limit</code></td>
+<td>نحوه‌ی اجرای سفارش</td>
+<td><code>market</code>: با قیمت بازار<br/><code>limit</code>: با قیمت معین</td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مبدا</td>
+<td><code>btc</code> یا <code>eth</code> یا <code>xrp</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مقصد</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار رمزارز (حجم)</td>
+<td><code>0.0623</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت واحد</td>
+<td><code>1210000000</code></td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>نمونه سفارش حد ضرر:</p>
 </blockquote>
@@ -1246,7 +1300,35 @@
     </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h3 id='01ec6c25ad'>سفارش حد ضرر</h3>
+<p>این سفارش در زمان رسیدن قیمت بازار به قیمت توقف فعال خواهد شد. کاربرد اصلی آن، جلوگیری از زیان در صورت تغییر غیرمنتظره قیمت بازار است.
+با ثبت این نوع سفارش می‌توان بدون نیاز به رصد مداوم بازار، در صورت خروج قیمت از بازه مد نظر، اقدام به تبدیل دارایی نمود.</p>
+<h4 id='4971e0ccb3'>پارامترهای ویژه حد ضرر</h4>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>execution</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نحوه‌ی اجرای سفارش</td>
+<td><code>stop_market</code>: حد ضرر<br/><code>stop_limit</code>: حد ضرر معین</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت توقف</td>
+<td><code>1180000000</code></td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>نمونه سفارش OCO:</p>
 </blockquote>
@@ -1257,7 +1339,11 @@
   <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
   type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715
-</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1274,7 +1360,8 @@
       </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
@@ -1291,19 +1378,15 @@
       </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inactive"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><code>POST /market/orders/add</code></p>
-
-<p>برای ثبت سفارش معامله در بازار نوبیتکس از این درخواست استفاده نمایید.</p>
-
-<p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «مشاهده وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
-
-<p>سفارش‌ها پس از ثبت، پیش از ورود به دفتر معاملاتی و انجام معامله، مجدداً از نظر اعتبار مورد بررسی قرار گرفته و در صورت نامعتبر بودن، به وضعیت «رد شده» برده خواهند شد. به همین علت در صورتی که سفارش‌های شما ثبت می‌شود ولی بلافاصله به وضعیت «رد شده» تغییر حالت پیدا می‌کنند، پارامترهای ارسالی خود به ویژه مقدار و قیمت سفارش و موجودی حساب خود را دقیق‌تر بررسی نمایید.</p>
-<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+</span></code></pre></div><h3 id='oco'>سفارش OCO</h3>
+<p>این سفارش روی یک مقدار از موجودی در یک جهت از بازار همزمان <em>یک سفارش با قیمت معین</em> و <em>یک سفارش حد ضرر معین</em> ثبت می‌نماید که حداکثر یکی از دو سفارش انجام خواهد شد.
+با رسیدن بازار به قیمت سفارش معین و انجام اولین معامله، سفارش حد ضرر لغو خواهد شد و با رسیدن بازار به قیمت توقف، سفارش دیگر لغو خواهد شد.</p>
+<h4 id='oco-2'>پارامترهای ویژه OCO</h4>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1314,70 +1397,45 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>type</td>
-<td>string</td>
-<td>الزامی</td>
-<td>نوع سفارش</td>
-<td><code>buy</code> یا <code>sell</code></td>
-</tr>
-<tr>
 <td>mode</td>
 <td>string</td>
-<td><code>default</code></td>
+<td>الزامی</td>
 <td>حالت سفارش</td>
-<td><code>default</code>: عادی (تک سفارش)<br/><code>oco</code>: <bdi>OCO</bdi> (دو سفارش همزمان)</td>
-</tr>
-<tr>
-<td>execution</td>
-<td>string</td>
-<td><code>limit</code></td>
-<td>نحوه‌ی اجرای سفارش</td>
-<td><code>market</code>: با قیمت بازار<br/><code>limit</code>: با قیمت معین<br/><code>stop_market</code>: حد ضرر<br/><code>stop_limit</code>: حد ضرر معین</td>
-</tr>
-<tr>
-<td>srcCurrency</td>
-<td>string</td>
-<td>الزامی</td>
-<td>رمزارز مبدا</td>
-<td><code>btc</code> یا <code>eth</code> یا <code>xrp</code> یا ...</td>
-</tr>
-<tr>
-<td>dstCurrency</td>
-<td>string</td>
-<td>الزامی</td>
-<td>رمزارز مقصد</td>
-<td><code>rls</code> یا <code>usdt</code></td>
-</tr>
-<tr>
-<td>amount</td>
-<td>monetary</td>
-<td>الزامی</td>
-<td>مقدار رمزارز (حجم)</td>
-<td><code>0.0623</code></td>
-</tr>
-<tr>
-<td>price</td>
-<td>monetary</td>
-<td>الزامی</td>
-<td>قیمت واحد</td>
-<td><code>1210000000</code></td>
+<td><code>oco</code></td>
 </tr>
 <tr>
 <td>stopPrice</td>
 <td>monetary</td>
-<td>الزامی در سفارش حد ضرر و OCO</td>
+<td>الزامی</td>
 <td>قیمت توقف حد ضرر</td>
 <td><code>1180000000</code></td>
 </tr>
 <tr>
 <td>stopLimitPrice</td>
 <td>monetary</td>
-<td>الزامی در سفارش OCO</td>
+<td>الزامی</td>
 <td>قیمت حد ضرر</td>
 <td><code>1179500000</code></td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+شرط قیمت سفارش OCO:
+<ul>
+<li><b>خرید:</b> price < آخرین قیمت بازار < stopPrice و stopLimitPrice</li>
+<li><b>فروش:</b> price > آخرین قیمت بازار > stopPrice و stopLimitPrice</li>
+</ul>
+</aside>
 <h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>در صورتی که درخواست ثبت سفارش معتبر نباشد، ممکن است یکی از این خطاها برگردانده شود. در صورت دریافت هر یک از این خطاها، آن سفارش شما ثبت نشده است و در صورت تمایل باید درخواست ثبت آن سفارش را دوباره ارسال کنید.</p>
 
 <table><thead>
@@ -1392,7 +1450,11 @@
 </tr>
 <tr>
 <td>BadPrice</td>
-<td>در سفارش عادی: قیمت تعیین شده برای سفارش نسبت به قیمت فعلی بازار تفاوت زیادی دارد. قیمت سفارش خود را در بازه‌ی ۳۰٪ قیمت کنونی بازار تعیین کنید.<br/> در سفارش حد ضرر: قیمت تعیین شده برای سفارش بازار نمی‌تواند از قیمت توقف بهتر باشد.<br/> در سفارش OCO: قیمت و قیمت توقف تعیین شده برای سفارش حد ضرر نمی‌تواند از قیمت سفارش با قیمت معین بهتر باشد.</td>
+<td>در سفارش عادی: قیمت تعیین شده برای سفارش نسبت به قیمت فعلی بازار تفاوت زیادی دارد. قیمت سفارش خود را در بازه‌ی ۳۰٪ قیمت کنونی بازار تعیین کنید.<br/> در سفارش حد ضرر: قیمت تعیین شده برای سفارش بازار نمی‌تواند از قیمت توقف بهتر باشد.</td>
+</tr>
+<tr>
+<td>PriceConditionFailed</td>
+<td>شرط قیمت در سفارش لحاظ نشده است. شرط قیمت میان پارامترهای قیمتی و قیمت بازار تعریف می‌شود.</td>
 </tr>
 <tr>
 <td>InvalidExecutionType</td>
@@ -1439,13 +1501,7 @@
 <li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر <code>price</code> را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر <code>price</code> را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.</li>
 <li><strong>سفارش تکراری:</strong> برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای <code>DuplicateOrder</code> دریافت می‌کنند. (غیرفعال در حالت Pro)</li>
 <li><strong>دقت مقادیر پولی (monetary):</strong> نوع monetary که در پارامترهای <code>amount</code> و <code>price</code> به کار می‌رود، بسته به بازار هر رمزارز، تعداد رقم اعشار متغیری بین ۰ تا ۸ رقم دارد. در صورت ارسال مقادیر با ارقام اعشاری بیشتر، ارقام بی‌معنی در مقدار به پایین و در قیمت به روش بانکداری گرد خواهند شد.<br><a href="https://nobitex.ir/policies/markets/" title="بازارهای رمزارزی نوبیتکس">مشاهده جدول دقت‌ها</a></li>
-<li><strong>سفارش حد ضرر:</strong> این سفارش در زمان رسیدن قیمت بازار به قیمت توقف فعال خواهد شد. کاربرد اصلی آن، جلوگیری از زیان در صورت تغییر غیرمنتظره قیمت بازار است. با ثبت این نوع سفارش می‌توان بدون نیاز به رصد مداوم بازار، در صورت خروج قیمت از بازه مد نظر، اقدام به تبدیل دارایی نمود.</li>
-<li><strong>سفارش OCO:</strong> این سفارش روی یک مقدار از موجودی در یک جهت از بازار همزمان یک سفارش با قیمت معین و یک حد ضرر معین ثبت می‌نماید که حداکثر یکی از دو سفارش انجام خواهد شد. با رسیدن بازار به قیمت سفارش معین و انجام اولین معامله، سفارش حد ضرر لغو خواهد شد و با رسیدن بازار به قیمت توقف، سفارش دیگر لغو خواهد شد.</li>
 </ol>
-
-<aside class="notice">
-سفارش OCO در مرحله آزمایشی است و به زودی برای تمام کاربران فعال خواهد شد.
-</aside>
 <h2 id='0c113519df'>مشاهده وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
