@@ -64,8 +64,10 @@ Content-Type: application/json
 
 ```json
 {
-  "status": "ok",
-  "price": "56707.59"
+    "status": "ok",
+    "price": "173.75",
+    "token": "02edda54886a47249b668bf48995b911",
+    "tokenTtl": 10.0
 }
 
 ```
@@ -92,6 +94,8 @@ amount | monetary | اختیاری | مقدار رمزارز مورد معامل
 ------- | ---- | --------- | ---------
 status | string | وضعیت پاسخ | ok
 price | monetary | قیمت تخمینی معامله | "56707.59"
+token | string | توکن تضمین قیمت | "e2146258302843a9b1e7c78967e062f0"
+tokenTtl | float | زمان معتبر بودن توکن تضمین قیمت‌(ثانیه) | 10.0
 
 <aside class="notice">
 محدودیت فراخوانی : 30 درخواست در دقیقه
@@ -159,17 +163,35 @@ Content-Type: application/json
 
 ```json
 {
-  "status": "ok",
-  "trade": {
-    "id": 3,
-    "status": "New",
-    "created_at": "2021-11-22T14:40:36.129372+00:00",
-    "isSell": true,
-    "srcCurrency": "Bitcoin",
-    "dstCurrency": "Tether",
-    "price": "56718.32",
-    "amount": "0.01"
-  }
+    "status": "ok",
+    "src_wallet": {
+        "id": 210430,
+        "currency": "sol",
+        "balance": "99999999995.5",
+        "blockedBalance": "0",
+        "activeBalance": "99999999995.5",
+        "rialBalance": 0,
+        "rialBalanceSell": 0
+    },
+    "dst_wallet": {
+        "id": 5,
+        "currency": "usdt",
+        "balance": "100000000769.555",
+        "blockedBalance": "0",
+        "activeBalance": "100000000769.555",
+        "rialBalance": 0,
+        "rialBalanceSell": 0
+    },
+    "trade": {
+        "id": 25,
+        "status": "Done",
+        "created_at": "2022-09-11T11:50:36.729740+00:00",
+        "isSell": true,
+        "srcCurrency": "Solana",
+        "dstCurrency": "Tether",
+        "price": "173.75",
+        "amount": "0.5"
+    }
 }
 
 ```
@@ -186,6 +208,8 @@ srcCurrency | string | الزامی | رمزارز مبدا | "BTC"
 dstCurrency | string | الزامی | ارز مقصد | "USDT"
 amount | monetary | الزامی | مقدار رمزارز مورد معامله | "0.01"
 price | monetary | الزامی | قیمت مورد انتظار واحد رمزارز | "56707.59"
+token | string | الزامی | توکن تضمین قیمت | "e2146258302843a9b1e7c78967e062f0"
+getWallets | boolean | اختیاری | دریافت کیف پول‌های رمزارز مبدا و مقصد کاربر | "true"
 
 1. **نوع معامله:** دو مقدار `sell` برای فروش و `buy` برای خرید قابل قبول است.
 2. **رمزارز مبدا:** بایستی نماد یکی از رمزارزهای `BTC`، `ETH`، `LTC`، `XRP`، `BCH`، `BNB`، `EOS`، `DOGE`، `XLM`، `TRX`، `ETC`، `ADA`، `LINK`، `DAI`، `DOT`، `UNI`، `AAVE`، `GRT`، `ADA` و `SHIB` باشد.
@@ -201,6 +225,8 @@ price | monetary | الزامی | قیمت مورد انتظار واحد رمز
 ------- | ---- | --------- | ---------
 status | string | وضعیت پاسخ | ok
 trade | ExchangeTrade | معامله انجام شده | {"id": 3, ...}
+src_wallet | Wallet | کیف پول | {"id": 3, ...}
+src_wallet | Wallet | کیف پول | {"id": 3, ...}
 
 ###شی ExchangeTrade
 
