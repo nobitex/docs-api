@@ -3786,12 +3786,43 @@ Authorization: Token yourTOKENhereHEX0000000000
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<ul>
-<li><strong>آدرس:</strong> <code>POST /security/anti-phishing</code></li>
-<li><p><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</p></li>
-<li><p>پارامترهای ورودی:</p></li>
-</ul>
+<blockquote>
+<p><strong>حالت های خطا</strong></p>
 
+<p>در صورتی که کدیکبار مصرف ارسال شده، نامعتبر باشد با این خطا روبرو خواهید بود.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidOTPCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please use otp/request endpoint"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که کد تعیین شده بیشتر از ۲۰ کاراکتر باشد با این خطا مواجه خواهید شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value too long for type character varying(20)"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی طول کد تعیین شده کمتر از ۸ کاراکتر باشد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است)."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است)."</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /security/anti-phishing</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='b37895e837'>پارامترهای ورودی:</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -3816,41 +3847,14 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>12345</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p><strong>حالت‌های خطا</strong></p>
-
-<p>در صورتی که کدیکبار مصرف ارسال شده، نامعتبر باشد با این خطا روبرو خواهید بود.
-<code>json
-{
-  &quot;status&quot;: &quot;failed&quot;,
-  &quot;code&quot;: &quot;InvalidOTPCode&quot;,
-  &quot;message&quot;: &quot;Please use otp/request endpoint&quot;,
-}
-</code></p>
-
-<p>در صورتی که کد تعیین شده بیشتر از ۲۰ کاراکتر باشد با این خطا مواجه خواهید شد
-<code>json
-{
-    &quot;all&quot;: &quot;value too long for type character varying(20)&quot;
-}
-</code></p>
-
-<p>در صورتی طول کد تعیین شده کمتر از ۸ کاراکتر باشد
-<code>json
-{
-    &quot;status&quot;: &quot;failed&quot;,
-    &quot;code&quot;: &quot;ValidationError&quot;,
-    &quot;message&quot;: {
-        &quot;code&quot;: [
-            &quot;طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است).&quot;,
-            &quot;طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است).&quot;
-        ]
-    }
-}
-</code></p>
-</blockquote>
 <h2 id='954cdbfeb5'>دریافت کد آنتی فیشینگ</h2>
+<ul>
+<li><strong>درخواست:</strong> <code>GET /security/anti-phishing</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</li>
+</ul>
+
+<aside class="notice"> توجه فرمائید محدودیت فراخوانی ۵ درخواست در هر دقیقه برای هردوحالت دریافت و ثبت کد آنتی فیشینگ است.</aside>
+
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>

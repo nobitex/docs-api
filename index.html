@@ -815,10 +815,11 @@
 <p>برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET v2/trades/SYMBOL</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET v2/trades/SYMBOL</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 15 درخواست در دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
-
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -838,21 +839,10 @@
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 15 درخواست در دقیقه
+لیست نمادهای معتبر بازار ها عبارتند از: <br><span class="market-symbols"></span>
 </aside>
 
-<aside class="notice">
-در این api نیاز به توکن وجود ندازد.
-</aside>
-
-<aside class="notice">
-لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>
-که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
-</aside>
-
-<aside class="notice">
-پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود
-</aside>
+<p>پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود</p>
 <h2 id='6ae2dae4a2'>آمار بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/stats?srcCurrency=btc&amp;dstCurrency=rls'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/stats \
   srcCurrency=btc dstCurrency=rls
@@ -947,7 +937,7 @@
 <ul>
 <li><strong>درخواست:</strong> <code>GET /market/udf/history</code></li>
 </ul>
-<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
