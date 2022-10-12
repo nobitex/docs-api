@@ -175,9 +175,12 @@ http GET https://api.nobitex.ir/v2/trades/BCHIRT
 
 برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:
 
-- آدرس : `GET v2/trades/SYMBOL `
+- **درخواست:** `GET v2/trades/SYMBOL `
+- **محدودیت فراخوانی:** 15 درخواست در دقیقه
+- **نیاز به ارسال توکن:** ندارد
 
-- پارامترها :
+
+###پارامترهای ورودی
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
@@ -185,18 +188,10 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 
 
 <aside class="notice">
-محدودیت فراخوانی : 15 درخواست در دقیقه
+لیست نمادهای معتبر بازار ها عبارتند از: <br><span class="market-symbols"></span>
 </aside>
-<aside class="notice">
-در این api نیاز به توکن وجود ندازد.
-</aside>
-<aside class="notice">
-لیست نمادهای بازار ها عبارتند از: <span class="market-symbols"></span>
-که می بایست یکی از این نمادها را به صورت پارامتر با نام symbol به آدرس api ارسال و استفاده نمائید
-</aside>
-<aside class="notice">
+
 پارامتر بازگشتی time زمان دقیق انجام شدن معامله است که با فرمت <a href="https://fa.wikipedia.org/wiki/%D8%B3%D8%A7%D8%B9%D8%AA_%DB%8C%D9%88%D9%86%DB%8C%DA%A9%D8%B3" target="_blank">یونیکس</a> نمایش داده میشود
-</aside>
 
 ##آمار بازار نوبیتکس
 
