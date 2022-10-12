@@ -391,11 +391,6 @@
                   <li>
                     <a href="#e2ecdd60d4" class="toc-h2 toc-link" data-title="محدودیت های کاربر">محدودیت های کاربر</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#d6a07813e2" class="toc-h1 toc-link" data-title="اطلاعات مالی کاربر">اطلاعات مالی کاربر</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#1100025d2c" class="toc-h2 toc-link" data-title="لیست کیف پول ها">لیست کیف پول ها</a>
                   </li>
@@ -872,10 +867,10 @@
 <p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /market/stats</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست</strong> <code>GET /market/stats</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -902,11 +897,7 @@
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 100 درخواست در 10 دقیقه
-</aside>
-
-<aside class="notice">
-انواع ارز:
+انواع ارز:<br>
 <span class="currency-symbols"></span>
 </aside>
 
@@ -937,7 +928,7 @@
 <ul>
 <li><strong>درخواست:</strong> <code>GET /market/udf/history</code></li>
 </ul>
-<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-5'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1152,15 +1143,12 @@
 <p>برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li>آدرس : <code>POST /market/global-stats</code></li>
+<li><strong>درخواست:</strong> <code>POST /market/global-stats</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در ۱۰ دقیقه</li>
 </ul>
 
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
-</aside>
-
-<aside class="notice">
-محدودیت فراخوانی : 100 درخواست در 10 دقیقه
 </aside>
 <h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='e12b63a512'>ثبت سفارش جدید</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
@@ -1196,7 +1184,8 @@
 <p>برای ثبت سفارش معامله در بازار نوبیتکس از این درخواست استفاده نمایید.</p>
 
 <ul>
-<li><strong>آدرس</strong>: <code>POST /market/orders/add</code></li>
+<li><strong>درخواست:</strong>: <code>POST /market/orders/add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۲۰۰ درخواست در هر ۱۰ دقیقه</li>
 </ul>
 
 <p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «مشاهده وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
@@ -1488,7 +1477,6 @@
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
-<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در هر ۱۰ دقیقه</li>
 <li><strong>واحدها:</strong> واحد قیمت در بازارهای ریالی به ریال (و نه تومان) می‌باشد. واحد قیمت در بازارهای تتری نیز تتر می‌باشد. واحد پارامتر مقدار (amount) بر حسب رمزارز مبدا (srcCurrency) است.</li>
 <li><strong>سفارش مارکت:</strong> برای ثبت سفارش سریع (سفارش مارکت، سفارش به قیمت بازار)، مقدار پارامتر <code>execution</code> را برابر <code>market</code> ارسال نمایید. منظور از سفارش مارکت سفارشی است که کاربر درخواست دارد تا به بهترین قیمت موجود بازار مورد انجام قرار گیرد. <a href="https://www.binance.vision/tutorials/what-is-a-market-order">ℹB</a> - <a href="https://www.investopedia.com/terms/m/marketorder.asp">ℹI</a></li>
 <li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر <code>price</code> را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر <code>price</code> را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.</li>
@@ -1530,10 +1518,10 @@
 <p>برای دریافت وضعیت سفارش از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /market/orders/status</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /market/orders/status</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در هر دقیقه</li>
 </ul>
-
+<h3 id='b37895e837'>پارامترهای ورودی:</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1551,10 +1539,6 @@
 <td><code>5684</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 60 درخواست در 1 دقیقه
-</aside>
 <h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
 <p><strong>انواع مقادیر <code>status</code>:</strong></p>
 
@@ -1802,10 +1786,10 @@
 <p>برای تغییر وضعیت یک سفارش (لغو یا فعال‌سازی) از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /market/orders/update-status</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /market/orders/update-status</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1830,19 +1814,12 @@
 <td><code>canceled</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 30 درخواست در دقیقه
-</aside>
-
-<aside class="notice">
-مقدار status میتواند از 'new' به 'active' و یا از 'active'/'inactive' به 'cancel' تغییر کند.
-در غیر اینصورت، درخواست رد میشود.
-</aside>
-
-<aside class="notice">
-در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.
-</aside>
+<h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
+<ol>
+<li>مقدار status میتواند از &#39;new&#39; به &#39;active&#39; و یا از &#39;active&#39;/&#39;inactive&#39; به &#39;cancel&#39; تغییر کند.
+در غیر اینصورت، درخواست رد میشود.</li>
+<li>در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.</li>
+</ol>
 <h2 id='2a3bc4fdc6'>لغو جمعی سفارشات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -1861,10 +1838,10 @@
 <p>برای لغو دسته‌جمعی سفارشات فعال از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /market/orders/cancel-old</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /market/orders/cancel-old</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1903,28 +1880,13 @@
 <td><code>rls</code></td>
 </tr>
 </tbody></table>
-
-<ul>
-<li>خطاها :</li>
-</ul>
-
-<p>در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.</p>
-
-<aside class="notice">
-محدودیت فراخوانی : 10 درخواست در دقیقه
-</aside>
-
-<aside class="notice">
-مقدار hours در واقع مقدار ساعت قبل از زمان ارسال درخواست میباشد. برای مثال اگر مقدار ساعت '2' ارسال شود، سفارش های 2 ساعت قبل لغو خواهند شد.
-</aside>
-
-<aside class="notice">
-در صورتی که مقدار hours ارسال نشود، تمامی سفارشات فعال مربوط لغو خواهد شد.
-</aside>
-
-<aside class="notice">
-سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.
-</aside>
+<h3 id='2f74b9d52e-5'>نکات و ملاحظات</h3>
+<ol>
+<li>مقدار hours در واقع مقدار ساعت قبل از زمان ارسال درخواست میباشد. برای مثال اگر مقدار ساعت &#39;2&#39; ارسال شود، سفارش های 2 ساعت قبل لغو خواهند شد.</li>
+<li>در صورتی که مقدار hours ارسال نشود، تمامی سفارشات فعال مربوط لغو خواهد شد.</li>
+<li>سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.</li>
+<li>در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.</li>
+</ol>
 <h2 id='1cf6f6c643'>فهرست معاملات کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls
@@ -1955,9 +1917,11 @@
 <p>برای دریافت فهرست معاملات ۳ روز اخیر خود، از این درخواست استفاده نمایید.</p>
 
 <ul>
-<li><strong>آدرس</strong>: <code>GET /market/trades/list</code></li>
+<li><strong>درخواست:</strong> <code>GET /market/trades/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 20 درخواست در دقیقه</li>
+<li><strong><a href="/#pagination">صفحه بندی:</a></strong> دارد (پیش فرض ۳۰)</li>
 </ul>
-<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-5'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -1994,14 +1958,6 @@
 <li>در فیلتر بازار هر دو پارامتر رمزارز مبدا و مقصد باید مقدار داشته باشند یا هر دو خالی باشند.</li>
 <li>در صورت اختصاص مقدار به حداقل شناسه تنها معاملاتی که شناسه‌ی آن‌ها بیشتر از یا مساوی با حداقل شناسه است برگردانده می‌شوند.</li>
 </ul>
-
-<aside class="notice">
-دارای <a href="/#pagination">صفحه‌بندی</a> / اندازه صفحه پیش‌فرض: 30
-</aside>
-
-<aside class="notice">
-محدودیت فراخوانی : 20 درخواست در دقیقه
-</aside>
 <h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
@@ -2178,12 +2134,10 @@
 <p>برای دریافت پروفایل کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li>آدرس : <code>GET /users/profile</code></li>
+<li><strong>درخواست:</strong> <code>GET /users/profile</code></li>
 </ul>
-
-<aside class="notice">
-برای این درخواست فقط کافیست توکن را ارسال فرمایید.
-</aside>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<p>برای دریافت پاسخ، کافیست توکن احراز هویت را ارسال نمایید</p>
 <h2 id='87af031464'>تولید آدرس بلاکچین</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/generate-address'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2203,10 +2157,10 @@
 <p>برای تولید آدرس بلاکچین از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/wallets/generate-address</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /users/wallets/generate-address</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در ساعت</li>
 </ul>
-
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2233,10 +2187,6 @@
 </tbody></table>
 
 <aside class="notice">
-محدودیت فراخوانی : 6 درخواست در ساعت
-</aside>
-
-<aside class="notice">
 برای ایجاد آدرس بلاکچین می‌توانید از currency کیف مقصد استفاده نمایید. ارسال wallet برای ایجاد آدرس قدیمی است و توصیه نمی‌شود.
 </aside>
 <h2 id='f9fd4e8e3a'>افزودن کارت بانکی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/cards-add'</span> <span class="se">\</span>
@@ -2257,10 +2207,10 @@
 <p>برای افزودن کارت بانکی جدید از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/cards-add</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /users/cards-add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در هر ۳۰ دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2285,10 +2235,6 @@
 <td><code>رسالت</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 5 درخواست در ساعت
-</aside>
 <h2 id='0f4b9b52e8'>افزودن حساب بانکی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/accounts-add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2307,10 +2253,10 @@
 <p>برای افزودن حساب بانکی جدید از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/accounts-add</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /users/accounts-add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در ۳۰ دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2342,10 +2288,6 @@
 <td><code>رسالت</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 5 درخواست در ساعت
-</aside>
 <h2 id='e2ecdd60d4'>محدودیت های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/limitations'</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2388,17 +2330,19 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='55bbd4b9a8'>توضیحات</h3>
+<p>کاربران در نوبیتکس بر اساس سطح کاربری خود، محدودیت هایی در برداشت، واریز و مبادلات خود دارند. هر کاربر نسبت به نیاز خود و میزان مبادلاتی که دارد میتواند با ارائه مدارک مورد نیاز ، سطح کاربری خود را پس از احراز هویت و تایید مدراک، ارتقا دهد. اطلاعات نمایش داده شده در خروجی api شامل همین محدودیت ها میباشد:</p>
+
+<p>برای دریافت محدودیت های کاربر از این نوع درخواست استفاده نمایید:</p>
+
 <ul>
-<li><p>کاربران در نوبیتکس بر اساس سطح کاربری خود، محدودیت هایی در برداشت، واریز و مبادلات خود دارند. هر کاربر نسبت به نیاز خود و میزان مبادلاتی که دارد میتواند با ارائه مدارک مورد نیاز ، سطح کاربری خود را پس از احراز هویت و تایید مدراک، ارتقا دهد. اطلاعات نمایش داده شده در خروجی api شامل همین محدودیت ها میباشد:
-برای دریافت محدودیت های کاربر از این نوع درخواست استفاده نمایید:</p></li>
-<li><p>آدرس : <code>POST /users/limitations</code></p></li>
+<li><strong>درخواست:</strong> <code>POST /users/limitations</code></li>
 </ul>
-<h3 id='86bc97da3f'>شرح ورودی</h3>
+<h3 id='f9f1b685f9-5'>پارامترهای ورودی</h3>
 <ul>
 <li>در این بخش به ورودی نیاز نیست.</li>
 <li>توکن دریافتی از بخش لاگین باید در هدر ارسال شود.</li>
 </ul>
-<h3 id='8ce96f6bb4'>شرح خروجی</h3><h3 id='features'>features: شرایط حساب کاربری</h3>
+<h3 id='8c43ac4221'>پارامترهای خروجی</h3><h3 id='features'>features: شرایط حساب کاربری</h3>
 <ul>
 <li>crypto_trade: امکان مبادله رمز ارزها</li>
 <li>rial_trade: امکان مبادله با ریال</li>
@@ -2407,16 +2351,20 @@
 <li>coin_withdrawal: امکان برداشت رمز ارز از کیف پول نوبیتکس به کیف پول دیگر</li>
 <li>rial_withdrawal: امکان برداشت ریال از کیف پول نوبیتکس به حساب بانکی</li>
 </ul>
-<h3 id='limits'>limits: محدودیت های حساب کاربری</h3><h4 id='c4753222c0'>تمامی واحد ها به ریال هستند</h4>
+<h3 id='limits'>limits: محدودیت های حساب کاربری</h3>
 <ul>
 <li>withdrawRialDaily: مقدار مجاز برای برداشت روزانه ریال</li>
 <li>withdrawRialDaily: مقدار مجاز برای برداشت روزانه رمز ارز</li>
 <li>withdrawTotalDaily: مقدار مجاز برای برداشت روزانه مجموع رمز ارز و ریال</li>
 <li>withdrawTotalMonthly: مقدار مجاز برای برداشت ماهیانه مجموع رمز ارز و ریال</li>
 </ul>
-
-<p>برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به <a href="https://nobitex.net/policies/user-levels/">سطوح حساب کاربری در نوبیتکس</a> مراجعه کنید.</p>
-<h1 id='d6a07813e2'>اطلاعات مالی کاربر</h1><h2 id='1100025d2c'>لیست کیف پول ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/list'</span> <span class="se">\</span>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li>تمامی مبالغ در خروجی به ریال هستند.</li>
+<li>برای اطلاع از جزئیات سطوح کاربری، میزان محدودیت ها، مدارک مورد نیاز هر سطح و توضیحات کامل هر سطح به <a href="https://nobitex.net/policies/user-levels/">سطوح حساب کاربری در نوبیتکس</a> مراجعه کنید.
+#اطلاعات مالی کاربر</li>
+</ol>
+<h2 id='1100025d2c'>لیست کیف پول ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/list'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/list \
   Authorization=Token yourTOKENhereHEX0000000000
@@ -2445,21 +2393,15 @@
 <p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li>آدرس : <code>GET /users/wallets/list</code></li>
+<li><strong>درخواست:</strong> <code>GET /users/wallets/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 20 درخواست در 2 دقیقه</li>
 </ul>
-
-<aside class="notice">
-محدودیت فراخوانی : 20 درخواست در 2 دقیقه
-</aside>
-
-<aside class="notice">
-کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
-این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.
-</aside>
-
-<aside class="notice">
-    در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
-</aside>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<ol>
+<li><p>کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
+این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.</p></li>
+<li><p>در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید</p></li>
+</ol>
 <h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets?currencies=rls,btc'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/v2/wallets \
@@ -2488,10 +2430,10 @@
 <p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /v2/wallets</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET /v2/wallets</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-6'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2509,10 +2451,6 @@
 <td><code>rls,btc</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 12 درخواست در دقیقه
-</aside>
 
 <aside class="notice">
 کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
@@ -2536,10 +2474,10 @@
 <p>برای دریافت موجودی کیف پول های خود در نوبیتکس (شامل کیف پول ریالی و کیف پول های رمز ارزی) از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>POST /users/wallets/balance</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>POST /users/wallets/balance</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در ۲ دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-7'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2557,14 +2495,11 @@
 <td><code>ltc</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-مقدار بازگشتی برای موجودی، یک عدد است که به صورت string برگردانده میشود. این مقدار می‌تواند اعداد اعشاری زیادی داشته باشد.
-</aside>
-
-<aside class="notice">
-اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.
-</aside>
+<h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
+<ol>
+<li>مقدار بازگشتی برای موجودی، یک عدد است که به صورت string برگردانده میشود. این مقدار می‌تواند اعداد اعشاری زیادی داشته باشد.</li>
+<li>اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.</li>
+</ol>
 <h2 id='ae038c6100'>لیست تراکنش‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/transactions/list?wallet=4159'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/transactions/list \
@@ -2600,10 +2535,11 @@
 <p>برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /users/wallets/transactions/list</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET /users/wallets/transactions/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در ۲ دقیقه</li>
+<li><strong><a href="#pagination">صفحه بندی:</a></strong> دارد (پیشفرض ۵۰)</li>
 </ul>
-
+<h3 id='f9f1b685f9-8'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2621,10 +2557,6 @@
 <td><code>4159</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-دارای <a href="/#pagination">صفحه‌بندی</a>
-</aside>
 <h2 id='18a62645f3'>لیست واریزها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/deposits/list?wallet=4159'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/wallets/deposits/list \
@@ -2661,10 +2593,12 @@
 <p>برای دریافت لیست واریزها از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس : <code>GET /users/wallets/deposits/list</code></p></li>
-<li><p>پارامترها :</p></li>
+<li><strong>درخواست:</strong> <code>GET /users/wallets/deposits/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در ۲ دقیقه</li>
+<li><strong><a href="#pagination">صفحه بندی:</a></strong> دارد (پیشفرض ۱۰برای ریال و ۲۰برای سایر)</li>
+<li><strong><a href="#date-filter">فیلترزمانی:</a></strong> دارد</li>
 </ul>
-
+<h3 id='f9f1b685f9-9'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2682,14 +2616,8 @@
 <td><code>4159</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-دارای <a href="/#pagination">صفحه‌بندی</a> و <a href="/#date-filter">فیلتر زمانی</a> برای واریزهای یک کیف‌پول مشخص
-</aside>
-
-<aside class="notice">
-از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.
-</aside>
+<h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
+<p>از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.</p>
 <h1 id="withdraw">برداشت</h1>
 
 <h2 id="withdraw-request">ثبت درخواست برداشت</h2>
