@@ -229,9 +229,11 @@ http GET https://api.nobitex.ir/market/stats \
 
 برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:
 
-- آدرس : `GET /market/stats`
+- **درخواست** `GET /market/stats`
+- **محدودیت فراخوانی:** ۱۰۰ درخواست در دقیقه
 
-- پارامترها :
+
+###پارامترهای ورودی
 
 پارامتر     | نوع    | پیش‌فرض   |  توضیحات   | نمونه
 ----------- | ----   | ------   | ---------  | -----
@@ -239,10 +241,7 @@ srcCurrency | string |   الزامی | ارزها مبدا | `btc,usdt`
 dstCurrency | string |   الزامی | ارز مقصد   | `rls`
 
 <aside class="notice">
-محدودیت فراخوانی : 100 درخواست در 10 دقیقه
-</aside>
-<aside class="notice">
-انواع ارز:
+انواع ارز:<br>
 <span class="currency-symbols"></span>
 </aside>
 <aside class="warning">
@@ -379,11 +378,9 @@ http POST https://api.nobitex.ir/market/global-stats
 
 برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:
 
-- آدرس : `POST /market/global-stats`
+- **درخواست:** `POST /market/global-stats`
+- **محدودیت فراخوانی:** ۱۰۰ درخواست در ۱۰ دقیقه
 
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
-</aside>
-<aside class="notice">
-محدودیت فراخوانی : 100 درخواست در 10 دقیقه
 </aside>
