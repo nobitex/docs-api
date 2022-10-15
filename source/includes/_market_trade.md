@@ -337,6 +337,7 @@ http GET https://api.nobitex.ir/market/orders/list \
 
 - **درخواست:** `GET /market/orders/list`
 - **محدودیت فراخوانی:** 30 درخواست در دقیقه
+- **<a href="/#pagination">صفحه بندی:</a>** دارد (پیش فرض ۱۰۰۰)
 
 ### پارامترهای ورودی
 پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
