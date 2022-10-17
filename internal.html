@@ -425,6 +425,32 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#80a824915c" class="toc-h1 toc-link" data-title="تیکتینگ">تیکتینگ</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#bc8511870a" class="toc-h2 toc-link" data-title="فهرست تمام تاپیک‌ها">فهرست تمام تاپیک‌ها</a>
+                  </li>
+                  <li>
+                    <a href="#7d03f546dd" class="toc-h2 toc-link" data-title="فهرست تیکت‌های کاربر">فهرست تیکت‌های کاربر</a>
+                  </li>
+                  <li>
+                    <a href="#7a5a26ebad" class="toc-h2 toc-link" data-title="جزئیات تیکت (شامل کامنت‌ها و فایل‌های مربوطه)">جزئیات تیکت (شامل کامنت‌ها و فایل‌های مربوطه)</a>
+                  </li>
+                  <li>
+                    <a href="#a7b1a5ebaa" class="toc-h2 toc-link" data-title="ایجاد تیکت">ایجاد تیکت</a>
+                  </li>
+                  <li>
+                    <a href="#0f7cd5cd9f" class="toc-h2 toc-link" data-title="ایجاد کامنت">ایجاد کامنت</a>
+                  </li>
+                  <li>
+                    <a href="#d8dc9c1f1c" class="toc-h2 toc-link" data-title="بستن تیکت">بستن تیکت</a>
+                  </li>
+                  <li>
+                    <a href="#e6beb49128" class="toc-h2 toc-link" data-title="نظرسنجی روی تیکت">نظرسنجی روی تیکت</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -3866,6 +3892,560 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="nl">"anti_phishing_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa*********ng"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='80a824915c'>تیکتینگ</h1>
+<p>از این سرویس برای ارتباط مشتریان با پشتیبانان استفاده می‌شود.</p>
+<h2 id='bc8511870a'>فهرست تمام تاپیک‌ها</h2>
+<p>برای دریافت لیست تاپیک‌ها از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /ticketing/topics</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در دقیقه</li>
+</ul>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/topics'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در تراکنش"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='7d03f546dd'>فهرست تیکت‌های کاربر</h2>
+<p>برای دریافت لیست تیکت‌هایتان از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /ticketing/tickets</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در دقیقه</li>
+</ul>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"tickets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000003</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"هرزنامه"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-09T16:00:22.090278+03:30"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;محتوای تک پاراگرفی&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">           
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000005</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در تراکنش"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"پاسخ‌داده‌شده"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-07T22:32:22.245872+03:30"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;محتوای تک پاراگرفی&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">         
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>همان‌طور که در نمونه خروجی بالا نیز مشخص است، محتوای تیکت با فرمت HTML ذخیره شده است. این مسئله در مورد محتوای کامنت نیز صدق می‌کند. در واقع به‌منظور داشتن قابلیت استایل دادن به محتوای تیکت و کامنت‌ها، از این فرمت استفاده شده است. دقت کنید که مقدار seen_at ممکن است null باشد.</p>
+</blockquote>
+<h2 id='7a5a26ebad'>جزئیات تیکت (شامل کامنت‌ها و فایل‌های مربوطه)</h2>
+<p>برای دریافت حزئیات تیکت موردنظرتان از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /ticketing/tickets/ticket_id</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در دقیقه</li>
+</ul>
+
+<p>توجه فرمایید ticket_id در url درخواست از نوع int می باشد.</p>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/2546'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حل‌شده"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:33:43.573529+03:30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;سلام&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align: right;</span><span class="se">\"</span><span class="s2">&gt;کاربر گرامی&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align: right;</span><span class="se">\"</span><span class="s2">&gt;این چه تیکتیه زدی؟! چته؟! چی می&amp;zwnj;گی؟!&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">&lt;p style=</span><span class="se">\"</span><span class="s2">text-align: right;</span><span class="se">\"</span><span class="s2">&gt;خدافظظظ&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/ef2bd46b9ad94920b2dbf4896b17f5a8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/8a461f1da3ad4ad9a752d13641acf172"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حمیدرضا احمدی"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;یک پاسخ با سه تا فایل!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:17:48.311145+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-15T13:05:33.298386+00:00"</span><span class="p">,</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حمیدرضا احمدی"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;این یکی سه تا داره!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:29:53.241361+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rating_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در نظر داشته باشید که با فراخوانی این سرویس توسط کاربر مربوط به این تیکت، فیلد seen_at در کامنت‌هایی که توسط ادمین مسئول ایجاد شده و مقدار قبلی نداشته‌اند، تاریخ و ساعت اکنون در آنها ثبت می‌گردد.</p>
+
+<p>در صورتی که تیکت وجود نداشته باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticket does not exist."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='a7b1a5ebaa'>ایجاد تیکت</h2>
+<p>برای ایجاد تیکت از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /ticketing/tickets/create</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۲۰ درخواست در دقیقه</li>
+</ul>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/create'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><h3 id='b37895e837'>پارامترهای ورودی:</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>الزامی</td>
+<td>محتوای تیکت</td>
+<td><p>hello world</p></td>
+</tr>
+<tr>
+<td>topic</td>
+<td>number</td>
+<td>الزامی</td>
+<td>شناسه‌ی موضوع (تاپیک) تیکت</td>
+<td>2</td>
+</tr>
+<tr>
+<td>files</td>
+<td>list[file]</td>
+<td>اختیاری</td>
+<td>فایلهای پیوست</td>
+<td>[photo.jpg]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ مشابه پاسخ جزئیات تیکت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ارسال شده"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:33:43.573529+03:30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;hello world&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/ef2bd46b9ad94920b2dbf4896b17f5a8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/8a461f1da3ad4ad9a752d13641acf172"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rating_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که حجم برخی از ضمیمه‌ها بیشتر از مقدار تعیین شده باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TooLargeFile"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some uploaded files are too large."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"این فیلد اجباری است"</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>ضمنا هر ضمیمه‌ای که از نوع مجاز (عکس) نباشد، به پیوست قرار نمی‌گیرد و خطایی اعلام نمی‌گردد.</p>
+</blockquote>
+<h2 id='0f7cd5cd9f'>ایجاد کامنت</h2>
+<p>برای ایجاد کامنت روی یک تیکت از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /ticketing/tickets/comments/create</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در دقیقه</li>
+</ul>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/comments/create'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><h3 id='b37895e837-2'>پارامترهای ورودی:</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>الزامی</td>
+<td>محتوای کامنت</td>
+<td><p>hello world</p></td>
+</tr>
+<tr>
+<td>ticket</td>
+<td>number</td>
+<td>الزامی</td>
+<td>شناسه‌ی تیکت</td>
+<td>2</td>
+</tr>
+<tr>
+<td>files</td>
+<td>list[file]</td>
+<td>اختیاری</td>
+<td>فایلهای پیوست</td>
+<td>[photo.jpg]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ مشابه پاسخ جزئیات تیکت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ارسال شده"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:33:43.573529+03:30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;hello world&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/ef2bd46b9ad94920b2dbf4896b17f5a8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/8a461f1da3ad4ad9a752d13641acf172"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حمیدرضا احمدی"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;لطفا تصاویر پنل خود را ارسال کنید&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-08T17:54:42.311891+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-15T13:05:33.298386+00:00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اشا منوچهری"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;comment from api!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/8a9759e4cedc49bda0856204499fd3de"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/efe4b6b28cb5457ea2ec95ce0ce32af1"</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-13T18:35:12.606787+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rating_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت وجود نداشته باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticket does not exist."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که حجم برخی از ضمیمه‌ها بیشتر از مقدار تعیین شده باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TooLargeFile"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some uploaded files are too large."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"این فیلد اجباری است"</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>ضمنا هر ضمیمه‌ای که از نوع مجاز (عکس) نباشد، به پیوست قرار نمی‌گیرد و خطایی اعلام نمی‌گردد.</p>
+</blockquote>
+<h2 id='d8dc9c1f1c'>بستن تیکت</h2>
+<p>برای بستن یک تیکت از درخواست زیر استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /ticketing/tickets/ticket_id/close</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۲۰ درخواست در دقیقه</li>
+</ul>
+
+<p>توجه فرمایید ticket_id در url درخواست از نوع int می باشد.</p>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/&lt;id:int&gt;/close'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><h3 id='b37895e837-3'>پارامترهای ورودی:</h3>
+<p>نیاز نیست.</p>
+
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ مشابه پاسخ جزئیات تیکت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"بسته شده"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:33:43.573529+03:30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;hello world&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/ef2bd46b9ad94920b2dbf4896b17f5a8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/8a461f1da3ad4ad9a752d13641acf172"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حمیدرضا احمدی"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;لطفا تصاویر پنل خود را ارسال کنید&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-08T17:54:42.311891+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-15T13:05:33.298386+00:00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اشا منوچهری"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;comment from api!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/8a9759e4cedc49bda0856204499fd3de"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/efe4b6b28cb5457ea2ec95ce0ce32af1"</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-13T18:35:12.606787+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rating_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت وجود نداشته باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticket does not exist."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت در وضعیت پاسح‌داده‌شده نبوده باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is not resolved yet."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='e6beb49128'>نظرسنجی روی تیکت</h2>
+<p>برای نظردهی به یک تیکت از درخواست زیر استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /ticketing/tickets/ticket_id/rate</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۲۰ درخواست در دقیقه</li>
+</ul>
+
+<p>توجه فرمایید ticket_id در url درخواست از نوع int می باشد.</p>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/&lt;id:int&gt;/rate'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><h3 id='b37895e837-4'>پارامترهای ورودی:</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rating_note</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>توضیح بیشتر</td>
+<td>The response was excellent</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>number</td>
+<td>الزامی</td>
+<td>امتیاز ۱ تا ۵</td>
+<td>5</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ مشابه پاسخ جزئیات تیکت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000001</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"مشکل در معاملات"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"state_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"بسته شده"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-06T15:33:43.573529+03:30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;hello world&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/ef2bd46b9ad94920b2dbf4896b17f5a8"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"/media/uploads/files/8a461f1da3ad4ad9a752d13641acf172"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"حمیدرضا احمدی"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;لطفا تصاویر پنل خود را ارسال کنید&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-08T17:54:42.311891+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-15T13:05:33.298386+00:00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"actor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اشا منوچهری"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;comment from api!&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"files_urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/8a9759e4cedc49bda0856204499fd3de"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"/media/uploads/files/efe4b6b28cb5457ea2ec95ce0ce32af1"</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-13T18:35:12.606787+03:30"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seen_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rating_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The response was excellent"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت وجود نداشته باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticket does not exist."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت هنوز بسته نشده باشد و یا قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is not closed yet, or it has already been rated."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"این فیلد اجباری است"</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
       </div>
