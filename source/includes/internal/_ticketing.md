@@ -62,6 +62,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets' \
                     "id": 4,
                     "title": "مشکل در معاملات"
                 },
+                "state": "spam",
                 "stateName": "هرزنامه",
                 "createdAt": "2022-02-09T16:00:22.090278+03:30",
                 "content": "<p>محتوای تک پاراگرفی</p>",
@@ -73,6 +74,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets' \
                     "id": 4,
                     "title": "مشکل در تراکنش"
                 },
+                "state": "resolved",
                 "stateName": "پاسخ‌داده‌شده",
                 "createdAt": "2022-02-07T22:32:22.245872+03:30",
                 "content": "<p>محتوای تک پاراگرفی</p>",
@@ -113,7 +115,8 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
                 "id": 4,
                 "title": "مشکل در معاملات"
             },
-            "stateName": "حل‌شده",
+            "state": "closed",
+            "stateName": "بسته",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>سلام</p>\r\n<p style=\"text-align: right;\">کاربر گرامی</p>\r\n<p style=\"text-align: right;\">این چه تیکتیه زدی؟! چته؟! چی می&zwnj;گی؟!</p>\r\n<p style=\"text-align: right;\">خدافظظظ</p>",
             "filesUrls": [
@@ -192,6 +195,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
                 "id": 4,
                 "title": "مشکل در معاملات"
             },
+            "state": "sent",
             "stateName": "ارسال شده",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
@@ -277,6 +281,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
                 "id": 4,
                 "title": "مشکل در معاملات"
             },
+            "state": "sent",
             "stateName": "ارسال شده",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
@@ -383,7 +388,8 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
                 "id": 4,
                 "title": "مشکل در معاملات"
             },
-            "stateName": "بسته شده",
+            "state": "closed",
+            "stateName": "بسته",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
@@ -473,7 +479,8 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
                 "id": 4,
                 "title": "مشکل در معاملات"
             },
-            "stateName": "بسته شده",
+            "state": "closed",
+            "stateName": "بسته",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
