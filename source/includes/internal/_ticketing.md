@@ -214,7 +214,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 {
   "status": "failed",
   "code": "TooLargeFile",
-  "error": "Some uploaded files are too large."
+  "message": "Some uploaded files are too large."
 }
 ```
 
@@ -224,7 +224,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 {
   "status": "failed",
   "code": "ValidationError",
-  "error": "Incorrect mime type."
+  "message": "Incorrect mime type."
 }
 ```
 
@@ -234,7 +234,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 {
   "status": "failed",
   "code": "ValidationError",
-  "errors": [{"content": "این فیلد اجباری است"}]
+  "message": [{"content": "این فیلد اجباری است"}]
 }
 ```
 
@@ -316,7 +316,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 {
   "status": "failed",
   "code": "NotFound",
-  "error": "ticket does not exist."
+  "message": "ticket does not exist."
 }
 ```
 
@@ -327,7 +327,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 {
   "status": "failed",
   "code": "TooLargeFile",
-  "error": "Some uploaded files are too large."
+  "message": "Some uploaded files are too large."
 }
 ```
 
@@ -337,7 +337,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 {
   "status": "failed",
   "code": "ValidationError",
-  "error": "Incorrect mime type."
+  "message": "Incorrect mime type."
 }
 ```
 
@@ -347,7 +347,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 {
   "status": "failed",
   "code": "ValidationError",
-  "errors": [{"content": "این فیلد اجباری است"}]
+  "message": [{"content": "این فیلد اجباری است"}]
 }
 ```
 
@@ -422,7 +422,7 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
 {
   "status": "failed",
   "code": "NotFound",
-  "error": "ticket does not exist."
+  "message": "ticket does not exist."
 }
 ```
 
@@ -433,7 +433,7 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
 {
   "status": "failed",
   "code": "ValidationError",
-  "error": "Ticket is not resolved yet."
+  "message": "Ticket is not resolved yet."
 }
 ```
 
@@ -512,7 +512,7 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 {
   "status": "failed",
   "code": "NotFound",
-  "error": "ticket does not exist."
+  "message": "ticket does not exist."
 }
 ```
 
@@ -523,7 +523,7 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 {
   "status": "failed",
   "code": "ValidationError",
-  "error": "Ticket is not closed yet, or it has already been rated."
+  "message": "Ticket is not closed yet, or it has already been rated."
 }
 ```
 
@@ -533,6 +533,6 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 {
   "status": "failed",
   "code": "ValidationError",
-  "errors": [{"rating": "این فیلد اجباری است"}]
+  "message": [{"rating": "این فیلد اجباری است"}]
 }
 ```
