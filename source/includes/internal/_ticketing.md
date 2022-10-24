@@ -155,7 +155,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
 {
   "status": "failed",
   "code": "NotFound",
-  "error": "ticket does not exist."
+  "message": "ticket does not exist."
 }
 ```
 
@@ -602,7 +602,7 @@ b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00
 {
   "status": "failed",
   "code": "ValidationError",
-  "error": "Invalid ticket attachment filename."
+  "message": "Invalid ticket attachment filename."
 }
 ```
 
@@ -612,7 +612,7 @@ b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00
 {
   "status": "failed",
   "code": "NotFound",
-  "error": "Ticket attachment does not exist."
+  "message": "Ticket attachment does not exist."
 }
 ```
 
@@ -622,6 +622,6 @@ b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00
 {
   "status": "failed",
   "code": "InvalidFileType",
-  "error": "The file type is not a ticket attachment."
+  "message": "The file type is not a ticket attachment."
 }
 ```
