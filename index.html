@@ -2159,7 +2159,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>POST /users/wallets/generate-address</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در ساعت</li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در ساعت</li>
 </ul>
 <h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
@@ -2452,11 +2452,9 @@
 <td><code>rls,btc</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
-این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.
-</aside>
+<h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
+<p>کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
+این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.</p>
 <h2 id='55645b2c6d'>موجودی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/balance'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2496,7 +2494,7 @@
 <td><code>ltc</code></td>
 </tr>
 </tbody></table>
-<h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
+<h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
 <ol>
 <li>مقدار بازگشتی برای موجودی، یک عدد است که به صورت string برگردانده میشود. این مقدار می‌تواند اعداد اعشاری زیادی داشته باشد.</li>
 <li>اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.</li>
@@ -2617,8 +2615,11 @@
 <td><code>4159</code></td>
 </tr>
 </tbody></table>
-<h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
-<p>از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.</p>
+<h3 id='2f74b9d52e-5'>نکات و ملاحظات</h3>
+<ul>
+<li>از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.</li>
+<li>صفحه بندی و فیلترزمانی فقط برای حالتی است که wallet تعیین شده باشد و برای حالت پیشفرض یعنی all کارایی ندارد.</li>
+</ul>
 <h1 id="withdraw">برداشت</h1>
 
 <h2 id="withdraw-request">ثبت درخواست برداشت</h2>
@@ -2658,10 +2659,10 @@
 <p>برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس: <code>POST /users/wallets/withdraw</code></p></li>
-<li><p>پارامترها:</p></li>
+<li><strong>درخواست:</strong> <code>POST /users/wallets/withdraw</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در 3 دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2737,19 +2738,12 @@
 <li><strong>بدون تگ:</strong> برای برداشت از شبکه‌های <span class="tag-required-networks"></span> که تگ انتقال در آن‌ها ضروری است بدون درج تگ، مقدار آن را true قرار دهید.</li>
 <li><strong>تگ انتقال:</strong> در شبکه‌های <span class="tag-required-networks"></span>بدون فعال کردن noTag الزامی است.</li>
 </ol>
-
-<aside class="notice">
-این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد.
-</aside>
-
-<aside class="notice">
-کاربر درخواست دهنده بایستی اجازه برداشت از کیف پول خود را داشته باشد.
-(مثلا دارای حداقل سطح مجاز برای برداشت و شماره تماس تایید شده بوده و سقف برداشت مجاز روزانه و ماهانه خود را رد نکرده باشد و شرایط و پیشنیازات ذکر شده در مقررات نوبیتکس را رعایت کرده باشد.)
-</aside>
-
-<aside class="notice">
-محدودیت فراخوانی : 10 درخواست در 3 دقیقه
-</aside>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li>این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
+<li>کاربر درخواست دهنده بایستی اجازه برداشت از کیف پول خود را داشته باشد.
+(مثلا دارای حداقل سطح مجاز برای برداشت و شماره تماس تایید شده بوده و سقف برداشت مجاز روزانه و ماهانه خود را رد نکرده باشد و شرایط و پیشنیازات ذکر شده در مقررات نوبیتکس را رعایت کرده باشد.)</li>
+</ol>
 
 <h2 id="withdraw-confirm">تایید درخواست برداشت</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
@@ -2786,7 +2780,7 @@
 <li><strong>درخواست:</strong> <code>POST /users/wallets/withdraw-confirm</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 30 درخواست در ساعت</li>
 </ul>
-<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2811,10 +2805,8 @@
 <td>623005</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-برای تایید برداشت باید کد ارسال شده به شماره تلفن همراه یا ایمیل حساب کاربری خود را از طریق کد به صورت خودکار دریافت کنید و به این API ارسال نمایید. همچنین امکان استفاده از آی‌پی اختصاصی و آدرس‌بوک به زودی فراهم خواهد شد.
-</aside>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<p>برای تایید برداشت باید کد ارسال شده به شماره تلفن همراه یا ایمیل حساب کاربری خود را از طریق کد به صورت خودکار دریافت کنید و به این API ارسال نمایید. همچنین امکان استفاده از آی‌پی اختصاصی و آدرس‌بوک به زودی فراهم خواهد شد.</p>
 
 <h2 id="withdraw-list">فهرست برداشت‌ها</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/wallets/withdraws/list'</span> <span class="se">\</span>
@@ -2875,10 +2867,12 @@
 <p>برای دریافت لیست آخرین برداشت‌ها از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس: <code>GET /users/wallets/withdraws/list</code></p></li>
-<li><p>پارامترها:</p></li>
+<li><strong>درخواست:</strong> <code>GET /users/wallets/withdraws/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در ۲ دقیقه</li>
+<li><strong><a href="#pagination">صفحه بندی:</a></strong> دارد (پیش فرض 20)</li>
+<li><strong><a href="#date-filter">فیلترزمانی:</a></strong> دارد</li>
 </ul>
-
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2896,14 +2890,6 @@
 <td>3456</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-دارای <a href="/#pagination">صفحه‌بندی</a> و <a href="/#date-filter">فیلتر زمانی</a> / اندازه صفحه پیش‌فرض: 20
-</aside>
-
-<aside class="notice">
-محدودیت فراخوانی : 60 درخواست در 2 دقیقه
-</aside>
 
 <h2 id="withdraw-view">مشاهده برداشت</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/withdraws/433'</span> <span class="se">\</span>
@@ -2934,10 +2920,10 @@
 <p>برای مشاهده وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس: <code>GET /withdraws/WITHDRAW</code></p></li>
-<li><p>پارامترها:</p></li>
+<li><strong>درخواست:</strong> <code>GET /withdraws/WITHDRAW</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در ۲ دقیقه</li>
 </ul>
-
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -2955,10 +2941,6 @@
 <td>433</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-محدودیت فراخوانی : 60 درخواست در 2 دقیقه
-</aside>
 <h1 id='a5b0c55df6'>امنیت</h1><h2 id='e0478463ad'>سابقه ورود</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/login-attempts'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/login-attempts \
@@ -2982,7 +2964,7 @@
 <p>برای دریافت سابقه ورود از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li>آدرس : <code>GET /users/login-attempts</code></li>
+<li><strong>درخواست:</strong> <code>GET /users/login-attempts</code></li>
 </ul>
 <h2 id='01ab60950a'>فعالسازی لغو اضطراری</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/security/emergency-cancel/activate'</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
@@ -3005,12 +2987,11 @@
 حاوی لینکی خواهد بود که شما میتوانید با استفاده از آن در صورتی که درخواست برداشت توسط شما ثبت نشده است، در کمترین زمان ممکن و بدون نیاز به لاگین، درخواست های برداشت خود را لغو نمایید.</p>
 
 <ul>
-<li>آدرس : <code>GET /security/emergency-cancel/activate</code></li>
+<li><strong>درخواست:</strong> <code>GET /security/emergency-cancel/activate</code></li>
 </ul>
-
-<aside class="notice">
-توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
-</aside>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<p>توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
+</aside></p>
 <h1 id='57bcd8d937'>طرح معرفی دوستان</h1>
 <p>نوبیتکس طرحی به نام معرفی دوستان در نظر گرفته است که از طریق آن هم به گسترش نوبیتکس کمک می‌کنید و هم از مزایای آن بهره‌مند می‌شوید. براساس این طرح شما می‌توانید دوستان خود را با لینک اختصاصی خود به نوبیتکس دعوت کنید و درصدی از کارمزد معاملات آن‌ها را به عنوان پاداش دریافت نمایید. برای اطلاعات بیشتر به <a href="https://nobitex.ir/policies/referral/">صفحه قوانین طرح معرفی دوستان</a> مراجعه کنید.</p>
 
@@ -3353,7 +3334,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <ul>
-<li>آدرس : <code>/POST /auth/logout</code></li>
+<li><strong>درخواست:</strong> <code>/POST /auth/logout</code></li>
 </ul>
 <h1 id="other">سایر</h1>
 
