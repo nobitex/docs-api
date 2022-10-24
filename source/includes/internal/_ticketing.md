@@ -121,8 +121,8 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>سلام</p>\r\n<p style=\"text-align: right;\">کاربر گرامی</p>\r\n<p style=\"text-align: right;\">این چه تیکتیه زدی؟! چته؟! چی می&zwnj;گی؟!</p>\r\n<p style=\"text-align: right;\">خدافظظظ</p>",
             "filesUrls": [
-                "ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -200,9 +200,9 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
             "stateName": "ارسال شده",
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
-            "fielsUrls": [
-                "ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "8a461f1da3ad4ad9a752d13641acf172"
+            "filesUrls": [
+                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [],
             "rating": null,
@@ -298,8 +298,8 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -313,8 +313,8 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "8a9759e4cedc49bda0856204499fd3de",
-                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
+                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
@@ -425,8 +425,8 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -440,8 +440,8 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "8a9759e4cedc49bda0856204499fd3de",
-                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
+                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
@@ -516,8 +516,8 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -531,8 +531,8 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "8a9759e4cedc49bda0856204499fd3de",
-                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
+                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
