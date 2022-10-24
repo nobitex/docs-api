@@ -3,6 +3,7 @@
 
 ## فهرست تمام تاپیک‌ها
 برای دریافت لیست تاپیک‌ها از این درخواست استفاده نمایید.
+دقت نمایید که این لیست فقط شامل تاپیک‌هایی می‌باشد که از سمت ادمین، مقدار show_to_users برایشان برابر با True قرار داده شده باشد
 
 * **درخواست:** `GET /ticketing/topics`
 * **محدودیت فراخوانی:** ۳۰ درخواست در دقیقه
@@ -232,13 +233,24 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 }
 ```
 
+
+> در صورتی که تعداد ضمیمه‌ها مجاز نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "TooManyFiles",
+  "message": "A maximum of 10 files is allowed."
+}
+```
+
 > در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
   "code": "ValidationError",
-  "message": [{"content": "این فیلد اجباری است"}]
+  "message": {"content": ["این فیلد اجباری است"]}
 }
 ```
 
@@ -325,6 +337,16 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 }
 ```
 
+> در صورتی که تیکت در وضعیت بسته باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ValidationError",
+  "message": {"ticket": ["comment on spam or closed tickets is impossible."]}
+}
+```
+
 
 > در صورتی که حجم برخی از ضمیمه‌ها بیشتر از مقدار تعیین شده باشد، پاسخ به این صورت خواهد بود:
 
@@ -346,13 +368,23 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 }
 ```
 
+> در صورتی که تعداد ضمیمه‌ها مجاز نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "TooManyFiles",
+  "message": "A maximum of 10 files is allowed."
+}
+```
+
 > در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
   "code": "ValidationError",
-  "message": [{"content": "این فیلد اجباری است"}]
+  "message": {"content": ["این فیلد اجباری است"]}
 }
 ```
 
@@ -541,5 +573,55 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
   "status": "failed",
   "code": "ValidationError",
   "message": [{"rating": "این فیلد اجباری است"}]
+}
+```
+
+## دانلود ضمیمه‌ها
+برای دانلود ضمیمه‌ها از این درخواست استفاده نمایید.
+
+* **درخواست:** `GET /ticketing/attachments/file_hash`
+* **محدودیت فراخوانی:** ۶۰ درخواست در دقیقه
+
+توجه فرمایید file_hash در url درخواست از نوع str می باشد.
+
+>نمونه درخواست:
+
+```shell
+curl GET 'https://api.nobitex.ir/v2/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
+-H 'Authorization: Token yourTOKENhereHEX0000000000'
+```
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```shell
+b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00\x00:\xce\x8c\x97\x0
+```
+
+> در صورتی که نام فایل نامعتبر باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ValidationError",
+  "error": "Invalid ticket attachment filename."
+}
+```
+
+> در صورتی که فایل وجود نداشته باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "NotFound",
+  "error": "Ticket attachment does not exist."
+}
+```
+
+> در صورتی که فایل از نوع ضمیمه‌ی تیکت نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "InvalidFileType",
+  "error": "The file type is not a ticket attachment."
 }
 ```
