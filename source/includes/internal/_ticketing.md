@@ -3,6 +3,7 @@
 
 ## فهرست تمام تاپیک‌ها
 برای دریافت لیست تاپیک‌ها از این درخواست استفاده نمایید.
+دقت نمایید که این لیست فقط شامل تاپیک‌هایی می‌باشد که از سمت ادمین، مقدار show_to_users برایشان برابر با True قرار داده شده باشد
 
 * **درخواست:** `GET /ticketing/topics`
 * **محدودیت فراخوانی:** ۳۰ درخواست در دقیقه
@@ -120,8 +121,8 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>سلام</p>\r\n<p style=\"text-align: right;\">کاربر گرامی</p>\r\n<p style=\"text-align: right;\">این چه تیکتیه زدی؟! چته؟! چی می&zwnj;گی؟!</p>\r\n<p style=\"text-align: right;\">خدافظظظ</p>",
             "filesUrls": [
-                "/media/uploads/ticketing_attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/media/uploads/ticketing_attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -200,8 +201,8 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "fielsUrls": [
-                "/media/uploads/ticketing_attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/media/uploads/ticketing_attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [],
             "rating": null,
@@ -232,13 +233,24 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 }
 ```
 
+
+> در صورتی که تعداد ضمیمه‌ها مجاز نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "TooManyFiles",
+  "message": "A maximum of 10 files is allowed."
+}
+```
+
 > در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
   "code": "ValidationError",
-  "message": [{"content": "این فیلد اجباری است"}]
+  "message": {"content": ["این فیلد اجباری است"]}
 }
 ```
 
@@ -286,8 +298,8 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "/media/uploads/ticketing_attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/media/uploads/ticketing_attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -301,8 +313,8 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "/media/uploads/ticketing_attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/media/uploads/ticketing_attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "8a9759e4cedc49bda0856204499fd3de",
+                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
@@ -322,6 +334,16 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
   "status": "failed",
   "code": "NotFound",
   "message": "ticket does not exist."
+}
+```
+
+> در صورتی که تیکت در وضعیت بسته باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ValidationError",
+  "message": {"ticket": ["comment on spam or closed tickets is impossible."]}
 }
 ```
 
@@ -346,13 +368,23 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 }
 ```
 
+> در صورتی که تعداد ضمیمه‌ها مجاز نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "TooManyFiles",
+  "message": "A maximum of 10 files is allowed."
+}
+```
+
 > در صورتی که خطای اعتبارسنجی اطلاعات ارسالی رخ دهد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
   "code": "ValidationError",
-  "message": [{"content": "این فیلد اجباری است"}]
+  "message": {"content": ["این فیلد اجباری است"]}
 }
 ```
 
@@ -393,8 +425,8 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "/media/uploads/ticketing_attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/media/uploads/ticketing_attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -408,8 +440,8 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "/media/uploads/ticketing_attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/media/uploads/ticketing_attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "8a9759e4cedc49bda0856204499fd3de",
+                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
@@ -484,8 +516,8 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
             "createdAt": "2022-02-06T15:33:43.573529+03:30",
             "content": "<p>hello world</p>",
             "filesUrls": [
-                "/media/uploads/ticketing_attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/media/uploads/ticketing_attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "ef2bd46b9ad94920b2dbf4896b17f5a8",
+                "8a461f1da3ad4ad9a752d13641acf172"
             ],
             "comments": [
                 {
@@ -499,8 +531,8 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
                     "actorName": "اشا منوچهری",
                     "content": "<p>comment from api!</p>",
                     "filesUrls": [
-                        "/media/uploads/ticketing_attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/media/uploads/ticketing_attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
+                        "8a9759e4cedc49bda0856204499fd3de",
+                        "efe4b6b28cb5457ea2ec95ce0ce32af1"
                     ],
                     "createdAt": "2022-02-13T18:35:12.606787+03:30",
                     "seenAt": null
@@ -541,5 +573,55 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
   "status": "failed",
   "code": "ValidationError",
   "message": [{"rating": "این فیلد اجباری است"}]
+}
+```
+
+## دانلود ضمیمه‌ها
+برای دانلود ضمیمه‌ها از این درخواست استفاده نمایید.
+
+* **درخواست:** `GET /ticketing/attachments/file_hash`
+* **محدودیت فراخوانی:** ۶۰ درخواست در دقیقه
+
+توجه فرمایید file_hash در url درخواست از نوع str می باشد.
+
+>نمونه درخواست:
+
+```shell
+curl GET 'https://api.nobitex.ir/v2/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
+-H 'Authorization: Token yourTOKENhereHEX0000000000'
+```
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```shell
+b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00\x00:\xce\x8c\x97\x0
+```
+
+> در صورتی که نام فایل نامعتبر باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ValidationError",
+  "error": "Invalid ticket attachment filename."
+}
+```
+
+> در صورتی که فایل وجود نداشته باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "NotFound",
+  "error": "Ticket attachment does not exist."
+}
+```
+
+> در صورتی که فایل از نوع ضمیمه‌ی تیکت نباشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "InvalidFileType",
+  "error": "The file type is not a ticket attachment."
 }
 ```
