@@ -100,4 +100,4 @@ Authorization: Token yourTOKENhereHEX0000000000
 }
 ```
 
-- آدرس : `/POST /auth/logout `
+- **درخواست:** `/POST /auth/logout `

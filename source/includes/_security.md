@@ -30,7 +30,7 @@ http POST https://api.nobitex.ir/users/login-attempts \
 
 برای دریافت سابقه ورود از این نوع درخواست استفاده نمایید:
 
-- آدرس : `GET /users/login-attempts`
+- **درخواست:** `GET /users/login-attempts`
 
 
 ## فعالسازی لغو اضطراری
@@ -62,9 +62,9 @@ http GET https://api.nobitex.ir/security/emergency-cancel/activate \
 پس از فعالسازی این امکان، پیامک و ایمیل ارسالی پس از ثبت درخواست برداشت،
 حاوی لینکی خواهد بود که شما میتوانید با استفاده از آن در صورتی که درخواست برداشت توسط شما ثبت نشده است، در کمترین زمان ممکن و بدون نیاز به لاگین، درخواست های برداشت خود را لغو نمایید.
 
-- آدرس : `GET /security/emergency-cancel/activate`
+- **درخواست:** `GET /security/emergency-cancel/activate`
 
 
-<aside class="notice">
+###نکات و ملاحظات
 توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
 </aside>
