@@ -2738,6 +2738,80 @@
 <li><strong>بدون تگ:</strong> برای برداشت از شبکه‌های <span class="tag-required-networks"></span> که تگ انتقال در آن‌ها ضروری است بدون درج تگ، مقدار آن را true قرار دهید.</li>
 <li><strong>تگ انتقال:</strong> در شبکه‌های <span class="tag-required-networks"></span>بدون فعال کردن noTag الزامی است.</li>
 </ol>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<p>در صورتی که درخواست برداشت معتبر نباشد، ممکن است یکی از این خطاها برگردانده شود. در صورت دریافت هر یک از این خطاها، درخواست شما ثبت نشده است و در صورت تمایل باید درخواست را دوباره ارسال کنید.</p>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>InvalidCurrency</td>
+<td>بازار رمزارز مورد نظر غیرفعال است</td>
+</tr>
+<tr>
+<td>WithdrawUnavailable</td>
+<td>کاربر محدودیت برداشت دارد</td>
+</tr>
+<tr>
+<td>WithdrawCurrencyUnavailable</td>
+<td>امکان برداشت این رمزارز (در این شبکه) وجود ندارد</td>
+</tr>
+<tr>
+<td><strong>Coin</strong>WithdrawDisabled</td>
+<td>امکان برداشت این رمزارز موقتا غیرفعال شده است مثال: BTCWithdrawDisabled</td>
+</tr>
+<tr>
+<td>InvalidAddressTag</td>
+<td>تگ معتبر نمی باشد</td>
+</tr>
+<tr>
+<td>MissingAddressTag</td>
+<td>تگ فرستاده نشده یا اشتباه است</td>
+</tr>
+<tr>
+<td>ExchangeRequiredTag</td>
+<td>تگ در این بازار الزامی می باشد</td>
+</tr>
+<tr>
+<td>RedundantTag</td>
+<td>تگ ارسالی اضافی می باشد</td>
+</tr>
+<tr>
+<td>Invalid2FA</td>
+<td>کد دوعاملی ارسالی اشتباه است</td>
+</tr>
+<tr>
+<td>WithdrawAmountLimitation</td>
+<td>مقدار درخواست شده بیشتر از سقف محدودیت های کاربر (روزانه، ماهانه و ...) می باشد</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>موجودی ناکافی است</td>
+</tr>
+<tr>
+<td>WithdrawLimitReached</td>
+<td>امکان ثبت درخواست به دلیل «محدودیت در تعداد درخواست با وضعیت مشابه» وجود ندارد</td>
+</tr>
+<tr>
+<td>AmountTooLow</td>
+<td>مقدار درخواستی از حداقل مقدار مجاز این بازار(شبکه) کمتر می باشد</td>
+</tr>
+<tr>
+<td>AmountTooHigh</td>
+<td>مقدار درخواستی از حداکثر مقدار مجاز این بازار(شبکه) بیشتر می باشد</td>
+</tr>
+<tr>
+<td>InvalidMobileNumber</td>
+<td>کاربر موبایل تایید شده ندارد</td>
+</tr>
+<tr>
+<td>ShabaWithdrawCannotProceed</td>
+<td>امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد</td>
+</tr>
+</tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
 <li>این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
