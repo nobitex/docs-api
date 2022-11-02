@@ -3910,7 +3910,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/topics'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/topics'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3942,7 +3942,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/tickets'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3996,7 +3996,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/2546'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/tickets/2546'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -4065,7 +4065,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/create'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/create'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='b37895e837'>پارامترهای ورودی:</h3>
 <table><thead>
@@ -4141,7 +4141,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidMimeType"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect mime type."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4176,7 +4176,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/comments/create'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/comments/create'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='b37895e837-2'>پارامترهای ورودی:</h3>
 <table><thead>
@@ -4288,7 +4288,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidMimeType"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Incorrect mime type."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4322,7 +4322,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/&lt;id:int&gt;/close'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/close'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='b37895e837-3'>پارامترهای ورودی:</h3>
 <p>نیاز نیست.</p>
@@ -4386,7 +4386,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnresolvedTicket"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is not resolved yet."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='e6beb49128'>نظرسنجی روی تیکت</h2>
@@ -4402,7 +4402,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/v2/ticketing/tickets/&lt;id:int&gt;/rate'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/rate'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='b37895e837-4'>پارامترهای ورودی:</h3>
 <table><thead>
@@ -4485,12 +4485,21 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>در صورتی که تیکت هنوز بسته نشده باشد و یا قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:</p>
+<p>در صورتی که تیکت هنوز بسته نشده باشد، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is not closed yet, or it has already been rated."</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnclosedTicket"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is not closed yet."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که تیکت قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlreadyRated"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ticket is already rated."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -4514,7 +4523,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/v2/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -4527,7 +4536,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidFilename"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid ticket attachment filename."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
