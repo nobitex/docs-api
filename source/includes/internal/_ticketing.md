@@ -228,7 +228,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidMimeType",
   "message": "Incorrect mime type."
 }
 ```
@@ -363,7 +363,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidMimeType",
   "message": "Incorrect mime type."
 }
 ```
@@ -470,7 +470,7 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "UnresolvedTicket",
   "message": "Ticket is not resolved yet."
 }
 ```
@@ -556,13 +556,23 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 ```
 
 
-> در صورتی که تیکت هنوز بسته نشده باشد و یا قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:
+> در صورتی که تیکت هنوز بسته نشده باشد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
-  "message": "Ticket is not closed yet, or it has already been rated."
+  "code": "UnclosedTicket",
+  "message": "Ticket is not closed yet."
+}
+```
+
+> در صورتی که تیکت قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "AlreadyRated",
+  "message": "Ticket is already rated."
 }
 ```
 
@@ -601,7 +611,7 @@ b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidFilename",
   "message": "Invalid ticket attachment filename."
 }
 ```
