@@ -11,7 +11,7 @@
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/v2/ticketing/topics' \
+curl GET 'https://api.nobitex.ir/ticketing/topics' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -45,7 +45,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/topics' \
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/v2/ticketing/tickets' \
+curl GET 'https://api.nobitex.ir/ticketing/tickets' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -99,7 +99,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets' \
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
+curl GET 'https://api.nobitex.ir/ticketing/tickets/2546' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -171,7 +171,7 @@ curl GET 'https://api.nobitex.ir/v2/ticketing/tickets/2546' \
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/create' \
+curl POST 'https://api.nobitex.ir/ticketing/tickets/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -228,7 +228,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidMimeType",
   "message": "Incorrect mime type."
 }
 ```
@@ -267,7 +267,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/v2/ticketing/comments/create' \
+curl POST 'https://api.nobitex.ir/ticketing/comments/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -363,7 +363,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidMimeType",
   "message": "Incorrect mime type."
 }
 ```
@@ -400,7 +400,7 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
+curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -470,7 +470,7 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "UnresolvedTicket",
   "message": "Ticket is not resolved yet."
 }
 ```
@@ -487,7 +487,7 @@ curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/close' \
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/v2/ticketing/tickets/<id:int>/rate' \
+curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/rate' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -556,13 +556,23 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 ```
 
 
-> در صورتی که تیکت هنوز بسته نشده باشد و یا قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:
+> در صورتی که تیکت هنوز بسته نشده باشد، پاسخ به این صورت خواهد بود:
 
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
-  "message": "Ticket is not closed yet, or it has already been rated."
+  "code": "UnclosedTicket",
+  "message": "Ticket is not closed yet."
+}
+```
+
+> در صورتی که تیکت قبلا نظرسنجی شده باشد، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "AlreadyRated",
+  "message": "Ticket is already rated."
 }
 ```
 
@@ -587,7 +597,7 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/v2/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
+curl GET 'https://api.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -601,7 +611,7 @@ b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\n\x00\x00\x00\x06@\x08\x02\x00\x00
 ```json
 {
   "status": "failed",
-  "code": "ValidationError",
+  "code": "InvalidFilename",
   "message": "Invalid ticket attachment filename."
 }
 ```
