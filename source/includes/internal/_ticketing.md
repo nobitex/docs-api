@@ -58,35 +58,35 @@ curl GET 'https://api.nobitex.ir/ticketing/tickets' \
     "data": {
         "tickets": [
             {
-                "id": 1000003,
+                "id": 1000249,
                 "topic": {
-                    "id": 4,
-                    "title": "مشکل در معاملات"
+                    "id": 2,
+                    "title": "احراز"
                 },
-                "state": "spam",
-                "stateName": "هرزنامه",
-                "createdAt": "2022-02-09T16:00:22.090278+03:30",
-                "content": "<p>محتوای تک پاراگرفی</p>",
-                "rating": null           
+                "state": "sent",
+                "stateName": "ارسال‌شده",
+                "createdAt": "2022-11-07T14:25:46.606120+00:00",
+                "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+                "rating": null
             },
             {
-                "id": 1000005,
+                "id": 1000248,
                 "topic": {
-                    "id": 4,
-                    "title": "مشکل در تراکنش"
+                    "id": 2,
+                    "title": "احراز"
                 },
-                "state": "resolved",
-                "stateName": "پاسخ‌داده‌شده",
-                "createdAt": "2022-02-07T22:32:22.245872+03:30",
-                "content": "<p>محتوای تک پاراگرفی</p>",
-                "rating": 2         
+                "state": "sent",
+                "stateName": "ارسال‌شده",
+                "createdAt": "2022-11-07T14:21:56.244413+00:00",
+                "content": "سلام\\n\\n\\\\r\\\\n\\n\\nکاربر گرامی\\n\\n\\\\r\\\\n\\n\\nاین چه تیکتیه زدی؟! چته؟! چی میگی؟!\\n\\n\\\\r\\\\n\\n\\nخدافظظظ",
+                "rating": null
             }
         ]
     }
 }
 ```
 
-> همان‌طور که در نمونه خروجی بالا نیز مشخص است، محتوای تیکت با فرمت HTML ذخیره شده است. این مسئله در مورد محتوای کامنت نیز صدق می‌کند. در واقع به‌منظور داشتن قابلیت استایل دادن به محتوای تیکت و کامنت‌ها، از این فرمت استفاده شده است. دقت کنید که مقدار seenAt ممکن است null باشد.
+> همان‌طور که در نمونه خروجی بالا نیز مشخص است، محتوای تیکت با فرمت Markdown ذخیره شده است. این مسئله در مورد محتوای کامنت نیز صدق می‌کند. در واقع به‌منظور داشتن قابلیت استایل دادن به محتوای تیکت و کامنت‌ها، از این فرمت استفاده شده است. دقت کنید که مقدار seenAt ممکن است null باشد.
 
 ## جزئیات تیکت (شامل کامنت‌ها و فایل‌های مربوطه)
 برای دریافت جزئیات تیکت موردنظرتان از این درخواست استفاده نمایید.
@@ -111,36 +111,28 @@ curl GET 'https://api.nobitex.ir/ticketing/tickets/2546' \
     "status": "ok",
     "data": {
         "ticket": {
-            "id": 1000001,
+            "id": 1000249,
             "topic": {
-                "id": 4,
-                "title": "مشکل در معاملات"
+                "id": 2,
+                "title": "احراز"
             },
-            "state": "closed",
-            "stateName": "بسته",
-            "createdAt": "2022-02-06T15:33:43.573529+03:30",
-            "content": "<p>سلام</p>\r\n<p style=\"text-align: right;\">کاربر گرامی</p>\r\n<p style=\"text-align: right;\">این چه تیکتیه زدی؟! چته؟! چی می&zwnj;گی؟!</p>\r\n<p style=\"text-align: right;\">خدافظظظ</p>",
+            "state": "sent",
+            "stateName": "ارسال‌شده",
+            "createdAt": "2022-11-07T14:25:46.606120+00:00",
+            "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+            "rating": null,
             "filesUrls": [
-                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/c11bfe26-5998-4708-b404-cf406cad744a"
             ],
             "comments": [
                 {
-                    "actorName": "حمیدرضا احمدی",
-                    "content": "<p>یک پاسخ با سه تا فایل!</p>",
+                    "actorName": "tabvar@nobitex.ir",
+                    "content": "آقای فلانی لطفا موارد زیر را **سریعا** بررسی فرمایید",
                     "filesUrls": [],
-                    "createdAt": "2022-02-06T15:17:48.311145+03:30",
-                    "seenAt": "2022-08-15T13:05:33.298386+00:00",
-                },
-                {
-                    "actorName": "حمیدرضا احمدی",
-                    "content": "<p>این یکی سه تا داره!</p>",
-                    "filesUrls": [],
-                    "createdAt": "2022-02-06T15:29:53.241361+03:30",
+                    "createdAt": "2022-11-07T14:38:33.493510+00:00",
                     "seenAt": null
                 }
             ],
-            "rating": null,
             "ratingNote": ""
         }
     }
@@ -177,11 +169,11 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/create' \
 
 ### پارامترهای ورودی:
 
-پارامتر | نوع        | پیش‌فرض | توضیحات                    | نمونه
-------- |------------|---------|----------------------------| ---------
-content | string     | الزامی  | محتوای تیکت                | <p>hello world</p>
-topic | number     | الزامی  | شناسه‌ی موضوع (تاپیک) تیکت | 2
-files | list[file] | اختیاری | عکس‌های پیوست              | [photo.jpg]
+پارامتر | نوع        | پیش‌فرض | توضیحات                      | نمونه
+------- |------------|---------|------------------------------| ---------
+content | string     | الزامی  | محتوای تیکت با فرمت markdown | hello world
+topic | number     | الزامی  | شناسه‌ی موضوع (تاپیک) تیکت   | 2
+files | list[file] | اختیاری | عکس‌های پیوست                | [photo.jpg]
 
 
 > در صورت فراخوانی درست، پاسخ مشابه پاسخ جزئیات تیکت خواهد بود:
@@ -191,21 +183,20 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
     "status": "ok",
     "data": {
         "ticket": {
-            "id": 1000001,
+            "id": 1000249,
             "topic": {
-                "id": 4,
-                "title": "مشکل در معاملات"
+                "id": 2,
+                "title": "احراز"
             },
             "state": "sent",
-            "stateName": "ارسال شده",
-            "createdAt": "2022-02-06T15:33:43.573529+03:30",
-            "content": "<p>hello world</p>",
+            "stateName": "ارسال‌شده",
+            "createdAt": "2022-11-07T14:25:46.606120+00:00",
+            "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+            "rating": null,
             "filesUrls": [
-                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/c11bfe26-5998-4708-b404-cf406cad744a"
             ],
             "comments": [],
-            "rating": null,
             "ratingNote": ""
         }
     }
@@ -257,7 +248,7 @@ files | list[file] | اختیاری | عکس‌های پیوست              | 
 ## ایجاد کامنت
 برای ایجاد کامنت روی یک تیکت از این درخواست استفاده نمایید.
 
-* **درخواست:** `POST /ticketing/tickets/comments/create`
+* **درخواست:** `POST /ticketing/comments/create`
 * **محدودیت فراخوانی:** ۳۰ درخواست در دقیقه
 * **حداکثر تعداد عکس:** ۱۰ عدد
 * **حداکثر حجم هر عکس:** یک مگابایت
@@ -273,11 +264,11 @@ curl POST 'https://api.nobitex.ir/ticketing/comments/create' \
 
 ### پارامترهای ورودی:
 
-پارامتر | نوع        | پیش‌فرض | توضیحات      | نمونه
-------- |------------|---------|--------------| ---------
-content | string     | الزامی  | محتوای کامنت | <p>hello world</p>
-ticket | number     | الزامی  | شناسه‌ی تیکت | 2
-files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
+پارامتر | نوع        | پیش‌فرض | توضیحات                       | نمونه
+------- |------------|---------|-------------------------------| ---------
+content | string     | الزامی  | محتوای کامنت با فرمت markdown | hello world
+ticket | number     | الزامی  | شناسه‌ی تیکت                  | 2
+files | list[file] | اختیاری | عکسهای پیوست                  | [photo.jpg]
 
 
 
@@ -288,39 +279,28 @@ files | list[file] | اختیاری | عکسهای پیوست | [photo.jpg]
     "status": "ok",
     "data": {
         "ticket": {
-            "id": 1000001,
+            "id": 1000249,
             "topic": {
-                "id": 4,
-                "title": "مشکل در معاملات"
+                "id": 2,
+                "title": "احراز"
             },
             "state": "sent",
-            "stateName": "ارسال شده",
-            "createdAt": "2022-02-06T15:33:43.573529+03:30",
-            "content": "<p>hello world</p>",
+            "stateName": "ارسال‌شده",
+            "createdAt": "2022-11-07T14:25:46.606120+00:00",
+            "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+            "rating": null,
             "filesUrls": [
-                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/c11bfe26-5998-4708-b404-cf406cad744a"
             ],
             "comments": [
                 {
-                    "actorName": "حمیدرضا احمدی",
-                    "content": "<p>لطفا تصاویر پنل خود را ارسال کنید</p>",
+                    "actorName": "tabvar@nobitex.ir",
+                    "content": "آقای فلانی لطفا موارد زیر را **سریعا** بررسی فرمایید",
                     "filesUrls": [],
-                    "createdAt": "2022-02-08T17:54:42.311891+03:30",
-                    "seenAt": "2022-08-15T13:05:33.298386+00:00"
-                },
-                {
-                    "actorName": "اشا منوچهری",
-                    "content": "<p>comment from api!</p>",
-                    "filesUrls": [
-                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
-                    ],
-                    "createdAt": "2022-02-13T18:35:12.606787+03:30",
+                    "createdAt": "2022-11-07T14:38:33.493510+00:00",
                     "seenAt": null
                 }
             ],
-            "rating": null,
             "ratingNote": ""
         }
     }
@@ -415,39 +395,28 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
     "status": "ok",
     "data": {
         "ticket": {
-            "id": 1000001,
+            "id": 1000249,
             "topic": {
-                "id": 4,
-                "title": "مشکل در معاملات"
+                "id": 2,
+                "title": "احراز"
             },
             "state": "closed",
             "stateName": "بسته",
-            "createdAt": "2022-02-06T15:33:43.573529+03:30",
-            "content": "<p>hello world</p>",
+            "createdAt": "2022-11-07T14:25:46.606120+00:00",
+            "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+            "rating": null,
             "filesUrls": [
-                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/c11bfe26-5998-4708-b404-cf406cad744a"
             ],
             "comments": [
                 {
-                    "actorName": "حمیدرضا احمدی",
-                    "content": "<p>لطفا تصاویر پنل خود را ارسال کنید</p>",
+                    "actorName": "tabvar@nobitex.ir",
+                    "content": "آقای فلانی لطفا موارد زیر را **سریعا** بررسی فرمایید",
                     "filesUrls": [],
-                    "createdAt": "2022-02-08T17:54:42.311891+03:30",
-                    "seenAt": "2022-08-15T13:05:33.298386+00:00"
-                },
-                {
-                    "actorName": "اشا منوچهری",
-                    "content": "<p>comment from api!</p>",
-                    "filesUrls": [
-                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
-                    ],
-                    "createdAt": "2022-02-13T18:35:12.606787+03:30",
+                    "createdAt": "2022-11-07T14:38:33.493510+00:00",
                     "seenAt": null
                 }
             ],
-            "rating": null,
             "ratingNote": ""
         }
     }
@@ -506,40 +475,29 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
     "status": "ok",
     "data": {
         "ticket": {
-            "id": 1000001,
+            "id": 1000249,
             "topic": {
-                "id": 4,
-                "title": "مشکل در معاملات"
+                "id": 2,
+                "title": "احراز"
             },
             "state": "closed",
             "stateName": "بسته",
-            "createdAt": "2022-02-06T15:33:43.573529+03:30",
-            "content": "<p>hello world</p>",
+            "createdAt": "2022-11-07T14:25:46.606120+00:00",
+            "content": "سلام\\n\\nلطفا موارد زیر را بررسی بفرمایید:\\n* مشکل یک\\n* مشکل دو\\n* مشکل سه\\n* مشکل چهار\\n\\n**لطفا** مشکلات بنده را در اسرع وقت بررسی بفرمایید",
+            "rating": 5,
             "filesUrls": [
-                "/ticketing/attachments/ef2bd46b9ad94920b2dbf4896b17f5a8",
-                "/ticketing/attachments/8a461f1da3ad4ad9a752d13641acf172"
+                "/ticketing/attachments/c11bfe26-5998-4708-b404-cf406cad744a"
             ],
             "comments": [
                 {
-                    "actorName": "حمیدرضا احمدی",
-                    "content": "<p>لطفا تصاویر پنل خود را ارسال کنید</p>",
+                    "actorName": "tabvar@nobitex.ir",
+                    "content": "آقای فلانی لطفا موارد زیر را **سریعا** بررسی فرمایید",
                     "filesUrls": [],
-                    "createdAt": "2022-02-08T17:54:42.311891+03:30",
-                    "seenAt": "2022-08-15T13:05:33.298386+00:00"
-                },
-                {
-                    "actorName": "اشا منوچهری",
-                    "content": "<p>comment from api!</p>",
-                    "filesUrls": [
-                        "/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de",
-                        "/ticketing/attachments/efe4b6b28cb5457ea2ec95ce0ce32af1"
-                    ],
-                    "createdAt": "2022-02-13T18:35:12.606787+03:30",
+                    "createdAt": "2022-11-07T14:38:33.493510+00:00",
                     "seenAt": null
                 }
             ],
-            "rating": 5,
-            "ratingNote": "The response was excellent"
+            "ratingNote": "خیلی ممنون. مشکلاتم خیلی سریع حل شد"
         }
     }
 }
