@@ -3806,7 +3806,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'code="sample_anti_phishing"'</span> <span class="se">\</span>
-<span class="nt">--form</span> <span class="s1">'otp_code="123456"'</span>
+<span class="nt">--form</span> <span class="s1">'otpCode="123456"'</span>
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -3818,6 +3818,15 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p><strong>حالت های خطا</strong></p>
 
+<p>در صورتی که پارامتر کدیکبارمصرف یا آنتی فیشینگ را ارسال نکرده باشید با این خطا روبرو خواهید شد.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ParseError"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing string value"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>در صورتی که کدیکبار مصرف ارسال شده، نامعتبر باشد با این خطا روبرو خواهید بود.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3827,24 +3836,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>در صورتی که کد تعیین شده بیشتر از ۲۰ کاراکتر باشد با این خطا مواجه خواهید شد</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"all"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value too long for type character varying(20)"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>در صورتی طول کد تعیین شده کمتر از ۸ کاراکتر باشد</p>
+<p>در صورتی که طول عبارت ارسالی نامناسب باشد با این خطا مواجه خواهید شد</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValidationError"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است)."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"طول این مقدار باید حداقل 8 کاراکتر باشد (طولش 3 است)."</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidCodeLength"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code length must be between 4 and 15 characters"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <ul>
@@ -3869,7 +3866,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>sample_anti_phishing</td>
 </tr>
 <tr>
-<td>otp_code</td>
+<td>otpCode</td>
 <td>number</td>
 <td>الزامی</td>
 <td>کد یکبار مصرف ارسال شده به شماره همراه کاربر</td>
@@ -3888,13 +3885,13 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>نمونه درخواست:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> 
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="nl">"anti_phishing_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sa*********ng"</span><span class="w">
+   </span><span class="nl">"antiPhishingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s*********g"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='80a824915c'>تیکتینگ</h1>
 <p>از این سرویس برای ارتباط مشتریان با پشتیبانان استفاده می‌شود.</p>
