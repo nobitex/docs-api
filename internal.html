@@ -825,9 +825,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <h1 id='46db07baca'>اعلان‌های کاربر</h1>
 <p>این اعلانات برای اطلاع‌رسانی به کاربر از سوی نوبیتکس ارسال می‌شود و در بخش اعلانات سایت و اپلیکیشن به نمایش در می‌آید.</p>
 
-<aside class="notice">
-احراز هویت در API های این مجموعه الزامی است.
-</aside>
+<p>احراز هویت در API های این مجموعه الزامی است.</p>
 <h2 id='0d86819db0'>لیست اعلانات</h2>
 <blockquote>
 <p>نمونه درخواست: </p>
@@ -848,7 +846,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <span class="nc">APIService</span> <span class="n">api</span> <span class="o">=</span> <span class="n">retrofit</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="nc">APIService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listNotifications</span><span class="o">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /notifications/list HTTP/1.1
 Host: api.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
@@ -871,10 +868,9 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>برای دریافت اعلانات کاربر از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
-<li><p>آدرس: <code>GET /notifications/list</code></p></li>
-<li><p>پارامترهای پاسخ:</p></li>
+<li><strong>درخواست:</strong> <code>GET /notifications/list</code></li>
 </ul>
-
+<h3 id='718bb2d732'>پارامترهای پاسخ:</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
