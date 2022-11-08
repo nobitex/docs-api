@@ -4,13 +4,9 @@
 [مطلب آموزشی بلاگ](https://blog.nobitex.ir/لایتنینگ-چیست-و-چطور-از-آن-استفاده-کنیم/ "لایتنینگ چیست و چطور از آن استفاده کنیم؟")
 را مطالعه نمایید.
 
-<aside class="notice">
-در حال حاضر تنها برای کیف پول بیت‌کوین از طریق شبکه لایتنینگ انتقال صورت‌حسابی امکان‌پذیر است.
-</aside>
-
-<aside class="notice">
-احراز هویت در API های این مجموعه الزامی است.
-</aside>
+### نکات و ملاحظات:
+1. در حال حاضر تنها برای کیف پول بیت‌کوین از طریق شبکه لایتنینگ انتقال صورت‌حسابی امکان‌پذیر است.
+2. احراز هویت در API های این مجموعه الزامی است.
 
 ##ایجاد صورت‌حساب واریز
 
@@ -44,9 +40,6 @@ APIService api = retrofit.create(APIService.class);
 Call<JsonObject> call = api.generateWalletInvoice(1, 100);
 ```
 
-```swift
-// Contact us
-```
 
 ```plaintext
 POST /users/wallets/invoice/generate HTTP/1.1
@@ -90,32 +83,25 @@ Content-Type: application/json
 ```
 برای ایجاد صورت‌حساب واریز از این نوع درخواست استفاده نمایید:
 
-* آدرس: `POST /users/wallets/invoice/generate`
+* **درخواست:** `POST /users/wallets/invoice/generate`
+- **محدودیت فراخوانی:** 10 درخواست در 3 دقیقه
 
-* پارامترهای ورودی:
+### پارامترهای ورودی:
 
-پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
-------- | ---- | ---- | --------- | ---------
-wallet | integer | الزامی | شناسه کیف‌پول کاربر برای رمزارز واریز شده | 1
-amount | integer | الزامی | مقدار رمزارز واریز شده | 100
+پارامتر | نوع | پیش‌فرض | توضیحات                                      | نمونه
+------- | ---- | ---- |----------------------------------------------| ---------
+wallet | integer | الزامی | شناسه کیف‌پول کاربر برای رمزارز واریز شده    | 1
+amount | integer | الزامی | مقدار رمزارز واریز شده (ساتوشی برای بیتکوین) | 100
 
-<aside class="notice">
-واحد amount برای رمزارز بیت‌کوین در این درخواست معادل
-<a href="https://blog.nobitex.ir/glossary/satoshi/">ساتوشی</a>
-می‌باشد.
-</aside>
-<aside class="notice">
-در حال حاضر، حداقل واریز 100 ساتوشی و حداکثر واریز 100000 ساتوشی در نظر گرفته شده است.
-</aside>
 
-* پارامترهای پاسخ:
+### پارامترهای پاسخ:
 
 پارامتر | نوع | توضیحات | نمونه
 ------- | ---- | --------- | ---------
 status | string | وضعیت پاسخ | ok
 deposit | CoinDeposit | اطلاعات واریز | {"id": 1, ...}
 
-###شی Deposit
+### شی Deposit
 
 پارامتر | نوع | توضیحات | نمونه
 ------- | ---- | --------- | ---------
@@ -140,7 +126,7 @@ isConfirmed | boolean | تایید شده در شبکه رمزارزی | false
 invoice | string | صورت‌حساب واریز | <span class="long">"lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"</span>
 expired | boolean | منقضی شده | false
 
-###شی Transaction
+### شی Transaction
 
 پارامتر | نوع | توضیحات | نمونه
 ------- | ---- | --------- | ---------
@@ -152,15 +138,7 @@ created_at | iso-string | زمان تراکنش | "2021-10-17T18:52:31.679312+00
 balance | integer | موجودی نهایی کیف پول | null
 
 
-<aside class="notice">
-محدودیت فراخوانی : 10 درخواست در 3 دقیقه
-</aside>
-
-<aside class="warning">
-کاربر درخواست دهنده در این API بایستی حداقل سطح مجاز برای واریز رمزارز (سطح یک) را داشته باشد.
-</aside>
-
-* حالت‌های خطا
+### حالت‌های خطا:
 
 کد خطا | توضیحات
 ---- | ----
@@ -170,6 +148,13 @@ InvalidCurrency | رمزارز کیف‌پول درخواست از انتقال 
 CoinDepositDisabled | امکان واریز رمزارز در این شبکه به طور مقطعی توسط مدیر سیستم غیر فعال شده است.
 NotAvailable | دسترسی به شبکه برای ساخت صورت‌حساب به دلیل اختلالات در اتصال به صورت موقت وجود ندارد.
 ParseError |نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است.
+
+### نکات و ملاحظات:
+1. واحد amount برای رمزارز بیت‌کوین در این درخواست معادل
+<a href="https://blog.nobitex.ir/glossary/satoshi/">ساتوشی</a>
+می‌باشد.
+2. در حال حاضر، حداقل واریز 100 ساتوشی و حداکثر واریز 100000 ساتوشی در نظر گرفته شده است.
+3. کاربر درخواست دهنده در این API بایستی حداقل سطح مجاز برای واریز رمزارز (سطح یک) را داشته باشد.
 
 
 ##تفسیر صورت‌حساب
@@ -208,9 +193,6 @@ String invoice = "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqw
 Call<JsonObject> call = api.decodeWalletInvoice(1, invoice);
 ```
 
-```swift
-// Contact us
-```
 
 ```plaintext
 POST /users/wallets/invoice/decode HTTP/1.1
@@ -234,9 +216,10 @@ Content-Type: application/json
 
 برای استخراج مقادیر موجود در صورت‌حساب رمزگذاری شده از این نوع درخواست استفاده نمایید:
 
-* آدرس: `POST /users/wallets/invoice/decode`
+- **درخواست:** `POST /users/wallets/invoice/decode`
+- **محدودیت فراخوانی:** 60 درخواست در 2 دقیقه
 
-* پارامترهای ورودی:
+### پارامترهای ورودی:
 
 پارامتر | نوع | پیش‌فرض | توضیحات | نمونه
 ------- | ---- | ---- | --------- | ---------
@@ -249,11 +232,8 @@ invoice | string | الزامی | صورت‌حساب کد شده | <span class=
 "lntb1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5wtu3ws8aua895ruar4kw2ps6vrc4cj2nrsyms6t5n8q38rrpw6nqnus2fen69uwyzru2m65qxvvezmw6y8pxqz9qg3px6jldq40smpgp05rvjk"
 ```
 
-<aside class="notice">
-دقت نمایید صورت‌حساب ثبت شده نمی‌تواند مربوط به شبکه‌های آزمایشی رمزارز باشد. برای تفسیر صورت‌حساب‌های آزمایشی از محیط آزمایشی نوبیتکس استفاده نمایید.
-</aside>
 
-* پارامترهای پاسخ:
+### پارامترهای پاسخ:
 
 پارامتر | نوع | توضیحات | نمونه
 ------- | ---- | --------- | ---------
@@ -264,12 +244,12 @@ address | string | کلید عمومی پرداخت کننده | <span class="lo
 fee | monetary | کارمزد انتقال | "0.00000010"
 
 
-<aside class="notice">
-محدودیت فراخوانی : 60 درخواست در 2 دقیقه
-</aside>
-
-* حالت‌های خطا
+### حالت‌های خطا:
 
 کد خطا | توضیحات
 ---- | ----
 InvalidInvoice | <p>صورت‌حساب نامعتبر است یا پشتیبانی نمی‌شود</p>
+
+
+### نکات و ملاحظات:
+دقت نمایید صورت‌حساب ثبت شده نمی‌تواند مربوط به شبکه‌های آزمایشی رمزارز باشد. برای تفسیر صورت‌حساب‌های آزمایشی از محیط آزمایشی نوبیتکس استفاده نمایید.
