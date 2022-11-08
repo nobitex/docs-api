@@ -1,9 +1,7 @@
 #اعلان‌های کاربر
 این اعلانات برای اطلاع‌رسانی به کاربر از سوی نوبیتکس ارسال می‌شود و در بخش اعلانات سایت و اپلیکیشن به نمایش در می‌آید.
 
-<aside class="notice">
 احراز هویت در API های این مجموعه الزامی است.
-</aside>
 
 ##لیست اعلانات
 
@@ -34,10 +32,6 @@ APIService api = retrofit.create(APIService.class);
 Call<JsonObject> call = api.listNotifications();
 ```
 
-```swift
-// Contact us
-```
-
 ```plaintext
 GET /notifications/list HTTP/1.1
 Host: api.nobitex.ir
@@ -62,9 +56,9 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 برای دریافت اعلانات کاربر از این نوع درخواست استفاده نمایید:
 
-* آدرس: `GET /notifications/list`
+* **درخواست:** `GET /notifications/list`
 
-* پارامترهای پاسخ:
+### پارامترهای پاسخ:
 
 پارامتر | نوع | توضیحات | نمونه
 ------- | ---- | --------- | ---------
