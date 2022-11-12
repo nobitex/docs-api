@@ -434,17 +434,6 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
 ```
 
 
-> در صورتی که تیکت در وضعیت پاسح‌داده‌شده نبوده باشد، پاسخ به این صورت خواهد بود:
-
-```json
-{
-  "status": "failed",
-  "code": "UnresolvedTicket",
-  "message": "Ticket is not resolved yet."
-}
-```
-
-
 ## نظرسنجی روی تیکت
 برای نظردهی به یک تیکت از درخواست زیر استفاده نمایید:
 
