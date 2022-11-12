@@ -186,9 +186,9 @@ memoRequired | boolean | آیا تراکنش روی این شبکه نیازمن
 memoRegex | str | در صورت وجود، ممو باید چه الگویی داشته باشد؟ | `^[0-9A-Za-z]{1,28}$`
 depositEnable | boolean | آیا واریز رمزارز روی این شبکه فعال است؟ | `true`
 minConfirm | int | حداقل تعداد کانفیرم شبکه برای تایید اولیه واریز | `1` 
-depositInfo | dict | فهرست پارامترهای واریز به تفکیک نوع آدرس واریز | `{"standard": {"depositMin": "0.01"}}`
-depositInfo.standard.depositMin | monetary | حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس | `0`
-depositInfo.standard.depositMax | monetary | حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس | `1000`
+depositInfo | dict | فهرست پارامترهای واریز | `{"standard": {"depositMin": "0.01"}}`
+depositInfo.standard.depositMin | monetary | حداقل مقدار واریز این رمزارز روی شبکه | `0`
+depositInfo.standard.depositMax | monetary | حداکثر مقدار واریز این رمزارز روی شبکه | `1000`
 withdrawEnable | boolean | آیا برداشت رمزارز روی این شبکه فعال است؟ | `false`
 withdrawIntegerMultiple | monetary | حداقل مقدار تغییر مقدار قابل برداشت | `0.000001`
 withdrawFee | monetary | کارمزد برداشت | `0.1`
