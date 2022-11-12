@@ -3420,159 +3420,220 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>ساختار کلی پاسخ به صورت زیر خواهد بود. کلیدهای موجود در هر بخش در مستندات توضیح داده شده‌اند.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CoinX"</span><span class="p">,</span><span class="w">
-      </span><span class="err">...other</span><span class="w"> </span><span class="err">CoinOptions...</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"networkX"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...NetworkOptions...</span><span class="p">},</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
-    </span><span class="err">...other</span><span class="w"> </span><span class="err">NobitexOptions...</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>برای نمونه یک پاسخ کامل شامل دو رمزارز فعال به صورت زیر خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$|^(bc1)[0-9A-Za-z]{39,59}$"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"segwit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00040000"</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"fcmEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"livechat"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"walletsToNet"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"autoKYC"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabledFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"PriceAlert"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"StopLoss"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"GiftCard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"OCO"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"betaFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rial"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"defaultNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"FIATMONEY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"depositEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"withdrawEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4_000_0.00000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"withdrawMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500_000_000_0.00000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15_000_0.00000000"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00040000"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0003500000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="w">
+            </span><span class="nl">"stdName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"﷼"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"BTCLN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"depositEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"depositMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000100"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lightning"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000010"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawMax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.20000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000100"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"defaultNetwork"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"networkList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"BSC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^(0x)[0-9A-Fa-f]{40}$"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEP20 (BSC)"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00050000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00200000"</span><span class="w">
+        </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">Coins</span><span class="w"> </span><span class="err">Options</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">currencies</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"activeCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">active</span><span class="w"> </span><span class="err">currencies</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"xchangeCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"topCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"doge"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shib"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ada"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"xrp"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"testingCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"hbar"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"withdrawLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"normal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"dailyCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailyRial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"monthlySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"level0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"dailyCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailyRial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"monthlySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"44"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"dailyCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailyRial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dailySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"monthlySummation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">withdraw</span><span class="w"> </span><span class="err">options</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"addressRegex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0x[0-9A-Fa-f]{40}$"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"standard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"depositMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00100000"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"minConfirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawEnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00300000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawIntegerMultiple"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"withdrawMin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100000"</span><span class="w">
+        </span><span class="nl">"minOrders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"rls"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usdt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"13"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"amountPrecisions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"BTCIRT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"BTCUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ETHIRT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00001"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">precisions</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"pricePrecisions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"BTCIRT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"BTCUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ETHIRT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">Other</span><span class="w"> </span><span class="err">market</span><span class="w"> </span><span class="err">precisions</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"giftCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"physicalFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"360000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"nobitex"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"allCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">],</span><span class="w">
-    </span><span class="nl">"activeCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"btc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>عملکرد سیستم نوبیتکس بر اساس پارامترهای مختلف تنظیم می‌شود که با استفاده از API «تنظیمات سیستم» می‌توانید مقادیر این پارامترها را دریافت نمایید. مواردی مانند رمزارزهای فعال، حداقل معامله در هر بازار، پله‌های کارمزد، سقف برداشت و بسیاری اطلاعات مفید دیگر از این طریق در دسترس شما قرار خواهد داشت. پاسخ در دو کلید <code>nobitex</code> شامل تنظیمات کلی سیستمی، و کلید <code>coins</code> شامل تنظیمات مخصوص هر رمزارز بازگردانده می‌شود. همچنین هر رمزارز دارای چندین «شبکه» است که برخی تنظیمات ممکن است فقط در سطح شبکه تعریف شوند یا در سطح رمزارز به صورت عمومی وجود داشته باشند ولی در بعضی شبکه‌های آن رمزارز متفاوت بوده و بازتعریف شوند.</p>
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET /v2/options</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 1 درخواست در دقیقه با امکان burst</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 <li><strong>پارامتر ورودی:</strong> ندارد</li>
 </ul>
-<h3 id='nobitexoptions'>پارامترهای پاسخ - NobitexOptions</h3>
+<h3 id='features'>پارامترهای پاسخ - features</h3>
 <table><thead>
 <tr>
 <th>کلید</th>
 <th>نوع</th>
 <th>توضیحات</th>
-<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fcmEnabled</td>
+<td>bool</td>
+<td>وضعیت فعال بودن FCM</td>
+</tr>
+<tr>
+<td>autoKYC</td>
+<td>bool</td>
+<td>وضعیت فعال بودن احراز خودکار</td>
+</tr>
+<tr>
+<td>enabledFeatures</td>
+<td>list of str</td>
+<td>لیست Featureهای فعال</td>
+</tr>
+<tr>
+<td>betaFeatures</td>
+<td>list of str</td>
+<td>لیست featureهای بتا</td>
+</tr>
+</tbody></table>
+<h3 id='nobitex'>پارامترهای پاسخ - nobitex</h3>
+<table><thead>
+<tr>
+<th>کلید</th>
+<th>نوع</th>
+<th>توضیحات</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>allCurrencies</td>
 <td>list of str</td>
-<td>نماد تمام رمزارزهای موجود در بازارها و صرافی</td>
-<td><code>[&#39;btc&#39;, &#39;eth&#39;]</code></td>
+<td>نماد تمام رمزارزهای موجود در بازارها</td>
 </tr>
 <tr>
 <td>activeCurrencies</td>
 <td>list of str</td>
 <td>نماد رمزارزهای اصلی و سطح یک</td>
-<td><code>[&#39;btc&#39;, &#39;eth&#39;]</code></td>
+</tr>
+<tr>
+<td>xchangeCurrencies</td>
+<td>list of str</td>
+<td>نماد رمزارزهای صرافی</td>
+</tr>
+<tr>
+<td>topCurrencies</td>
+<td>list of str</td>
+<td>رمزارزهای برتر بازار</td>
+</tr>
+<tr>
+<td>testingCurrencies</td>
+<td>list of str</td>
+<td>رمزارزهای در حال توسعه و آزمایش</td>
+</tr>
+<tr>
+<td>withdrawLimits</td>
+<td>dict</td>
+<td>محدودیت های روزانه و ماهانه در سطوح مختلف</td>
+</tr>
+<tr>
+<td>minOrders</td>
+<td>dict</td>
+<td>حداقل مبلغ سفارش ریالی و تتری</td>
 </tr>
 <tr>
 <td>amountPrecisions</td>
 <td>dict</td>
 <td>دقت اعشار مقدار در بازارهای مختلف</td>
-<td><code>{&quot;BTCIRT&quot;: &quot;0.000001&quot;,…}</code></td>
 </tr>
 <tr>
 <td>pricePrecisions</td>
 <td>dict</td>
 <td>دقت اعشار قیمت در بازارهای مختلف</td>
-<td><code>{&quot;BTCUSDT&quot;: &quot;0.01&quot;,…}</code></td>
+</tr>
+<tr>
+<td>giftCard</td>
+<td>dict</td>
+<td>هزینه چاپ گیفت کارتهای فیزیکی</td>
 </tr>
 </tbody></table>
-<h3 id='coinoptions'>پارامترهای پاسخ - CoinOptions</h3>
+<h3 id='coins'>پارامترهای پاسخ - Coins</h3>
 <table><thead>
 <tr>
 <th>فیلد</th>
 <th>نوع</th>
 <th>توضیحات</th>
-<th>پیش‌فرض</th>
 <th>نمونه</th>
 </tr>
 </thead><tbody>
@@ -3580,45 +3641,45 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>coin</td>
 <td>str</td>
 <td>نماد یکتای رمزارز، معمولاً با حروف کوچک</td>
-<td>ضروری</td>
 <td><code>rls</code> یا <code>btc</code> یا <code>eth</code> یا …</td>
 </tr>
 <tr>
 <td>name</td>
 <td>str</td>
 <td>نام انگلیسی رمزارز</td>
-<td>ضروری</td>
 <td><code>Bitcoin</code> یا <code>TRON</code> یا <code>Dogecoin</code> یا …</td>
 </tr>
 <tr>
 <td>default_network</td>
 <td>str</td>
 <td>شبکه پیش‌فرض رمزارز، یکی از کلیدهای NetworkOptions آن رمزارز</td>
-<td>ضروری</td>
 <td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code> یا …</td>
 </tr>
 <tr>
 <td>network_list</td>
 <td>dict</td>
 <td>یک دیکشنری از شبکه‌های مختلف این رمزارز، با کلیدهای نام انگلیسی هر شبکه و مقادیر از نوع NetworkOptions</td>
-<td>ضروری</td>
 <td></td>
 </tr>
 <tr>
 <td>displayPrecision</td>
 <td>str</td>
 <td>دقت اعشار پیش‌فرض نمایش مقادیر این رمزارز</td>
-<td><code>0.00000001</code></td>
 <td><code>0.0001</code> یا <code>0.1</code> یا <code>1</code></td>
 </tr>
+<tr>
+<td>stdName</td>
+<td>str</td>
+<td>عنوان رمز ارز</td>
+<td><code>ریال</code></td>
+</tr>
 </tbody></table>
-<h3 id='networkoptions'>پارامترهای پاسخ - NetworkOptions</h3>
+<h3 id='network'>پارامترهای پاسخ - Network</h3>
 <table><thead>
 <tr>
 <th>فیلد</th>
 <th>نوع</th>
 <th>توضیحات</th>
-<th>پیش‌فرض</th>
 <th>نمونه</th>
 </tr>
 </thead><tbody>
@@ -3626,14 +3687,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>network</td>
 <td>str</td>
 <td>نماد یکتای شبکه، معمولاً با حروف بزرگ</td>
-<td>ضروری</td>
 <td><code>FIAT_MONEY</code> یا <code>BTC</code> یا <code>BSC</code> یا …</td>
 </tr>
 <tr>
 <td>name</td>
 <td>str</td>
 <td>نام انگلیسی خوانای شبکه</td>
-<td>ضروری</td>
 <td><code>BTC</code> یا <code>ERC20</code> یا …</td>
 </tr>
 <tr>
@@ -3641,20 +3700,17 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>boolean</td>
 <td>آیا این شبکه پیش‌فرض برای این رمزارز در نوبیتکس است؟</td>
 <td><code>false</code></td>
-<td><code>true</code> یا <code>false</code></td>
 </tr>
 <tr>
 <td>beta</td>
 <td>boolean</td>
 <td>آیا این شبکه هنوز در حالت آزمایشی است؟</td>
 <td><code>false</code></td>
-<td><code>true</code> یا <code>false</code></td>
 </tr>
 <tr>
 <td>addressRegex</td>
 <td>str</td>
 <td>الگوی آدرس‌ها در این شبکه</td>
-<td>ضروری</td>
 <td><code>^0x[0-9A-Fa-f]{40}$</code></td>
 </tr>
 <tr>
@@ -3662,13 +3718,11 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>boolean</td>
 <td>آیا تراکنش روی این شبکه نیازمند ممو است؟</td>
 <td><code>false</code></td>
-<td><code>true</code> یا <code>false</code></td>
 </tr>
 <tr>
 <td>memoRegex</td>
 <td>str</td>
 <td>در صورت وجود، ممو باید چه الگویی داشته باشد؟</td>
-<td><code>&#39;&#39;</code></td>
 <td><code>^[0-9A-Za-z]{1,28}$</code></td>
 </tr>
 <tr>
@@ -3676,83 +3730,59 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>boolean</td>
 <td>آیا واریز رمزارز روی این شبکه فعال است؟</td>
 <td><code>true</code></td>
-<td><code>true</code> یا <code>false</code></td>
 </tr>
 <tr>
 <td>minConfirm</td>
 <td>int</td>
 <td>حداقل تعداد کانفیرم شبکه برای تایید اولیه واریز</td>
 <td><code>1</code></td>
-<td><code>12</code></td>
-</tr>
-<tr>
-<td>unlockConfirm</td>
-<td>int</td>
-<td>حداقل تعداد کانفیرم شبکه برای تایید نهایی واریز</td>
-<td><code>minConfirm</code></td>
-<td><code>12</code></td>
 </tr>
 <tr>
 <td>depositInfo</td>
 <td>dict</td>
 <td>فهرست پارامترهای واریز به تفکیک نوع آدرس واریز</td>
-<td><code>{}</code></td>
 <td><code>{&quot;standard&quot;: {&quot;depositMin&quot;: &quot;0.01&quot;}}</code></td>
 </tr>
 <tr>
-<td>depositInfo.type.depositFee</td>
-<td>monetary</td>
-<td>کارمزد واریز این رمزارز روی شبکه و نوع آدرس</td>
-<td><code>0</code></td>
-<td><code>0.1</code></td>
-</tr>
-<tr>
-<td>depositInfo.type.depositMin</td>
+<td>depositInfo.standard.depositMin</td>
 <td>monetary</td>
 <td>حداقل مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
 <td><code>0</code></td>
-<td><code>10</code></td>
 </tr>
 <tr>
-<td>depositInfo.type.depositMax</td>
+<td>depositInfo.standard.depositMax</td>
 <td>monetary</td>
 <td>حداکثر مقدار واریز این رمزارز روی شبکه و نوع آدرس</td>
-<td><code>~20bIRT</code></td>
 <td><code>1000</code></td>
 </tr>
 <tr>
 <td>withdrawEnable</td>
 <td>boolean</td>
 <td>آیا برداشت رمزارز روی این شبکه فعال است؟</td>
-<td><code>true</code></td>
-<td><code>true</code> یا <code>false</code></td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>withdrawIntegerMultiple</td>
 <td>monetary</td>
 <td>حداقل مقدار تغییر مقدار قابل برداشت</td>
-<td><code>&#39;1e-8&#39;</code></td>
 <td><code>0.000001</code></td>
 </tr>
 <tr>
 <td>withdrawFee</td>
 <td>monetary</td>
 <td>کارمزد برداشت</td>
-<td><code>0</code></td>
 <td><code>0.1</code></td>
 </tr>
 <tr>
 <td>withdrawMin</td>
 <td>monetary</td>
 <td>حداقل مقدار قابل برداشت</td>
-<td><code>withdrawFee</code></td>
 <td><code>0.1</code></td>
 </tr>
 <tr>
 <td>withdrawMax</td>
 <td>monetary</td>
 <td>حداکثر مقدار قابل برداشت</td>
-<td><code>~20bIRT</code></td>
 <td><code>1000</code></td>
 </tr>
 </tbody></table>
