@@ -3768,10 +3768,10 @@ Authorization: Token yourTOKENhereHEX0000000000
 <h2 id='954cdbfeb5'>دریافت کد آنتی فیشینگ</h2>
 <ul>
 <li><strong>درخواست:</strong> <code>GET /security/anti-phishing</code></li>
-<li><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</li>
 </ul>
 
-<aside class="notice"> توجه فرمائید محدودیت فراخوانی ۵ درخواست در هر دقیقه برای هردوحالت دریافت و ثبت کد آنتی فیشینگ است.</aside>
+<aside class="notice"> توجه فرمائید محدودیت فراخوانی ۱۰ درخواست در هر دقیقه برای هردوحالت دریافت و ثبت کد آنتی فیشینگ است.</aside>
 
 <blockquote>
 <p>نمونه درخواست:</p>
@@ -3783,9 +3783,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"antiPhishingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s*********g"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='80a824915c'>تیکتینگ</h1>
+</span></code></pre></div>
+<p>در صورتی که کد آنتی فیشینگ موجود نباشد، رشته‌ی خالی برمیگردد. </p>
+<h1 id='80a824915c'>تیکتینگ</h1>
 <p>از این سرویس برای ارتباط مشتریان با پشتیبانان استفاده می‌شود.</p>
 <h2 id='bc8511870a'>فهرست تمام تاپیک‌ها</h2>
 <p>برای دریافت لیست تاپیک‌ها از این درخواست استفاده نمایید.
