@@ -3708,6 +3708,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
+<p>برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/otp/request?type=email&amp;usage=anti_phishing_code'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span>
+</code></pre></div>
+<blockquote>
 <p><strong>حالت های خطا</strong></p>
 
 <p>در صورتی که پارامتر کدیکبارمصرف یا آنتی فیشینگ را ارسال نکرده باشید با این خطا روبرو خواهید شد.</p>
