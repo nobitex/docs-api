@@ -58,7 +58,7 @@ curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
 
 
 * **درخواست:** `POST /security/anti-phishing`
-* **محدودیت فراخوانی:** ۵ درخواست در هر دقیقه
+* **محدودیت فراخوانی:** ۱۰ درخواست در هر دقیقه
 
 
 ### پارامترهای ورودی:
@@ -71,12 +71,11 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 
 
 
-##دریافت کد آنتی فیشینگ
+## دریافت کد آنتی فیشینگ
 
 * **درخواست:** `GET /security/anti-phishing`
 * **محدودیت فراخوانی:** ۱۰ درخواست در هر دقیقه
 
-<aside class="notice"> توجه فرمائید محدودیت فراخوانی ۱۰ درخواست در هر دقیقه برای هردوحالت دریافت و ثبت کد آنتی فیشینگ است.</aside>
 
 >نمونه درخواست:
 
@@ -94,4 +93,12 @@ curl --location --request GET 'https://api.nobitex.ir/security/anti-phishing' \
    "antiPhishingCode": "s*********g"
 }
 ```
-در صورتی که کد آنتی فیشینگ موجود نباشد، رشته‌ی خالی برمیگردد. 
+
+> در صورتی که آنتی‌فیشینگ کد برای کاربر فعال نشده باشد با این پاسخ مواجه خواهید شد
+```json
+{
+    "status": "failed",
+    "code": "NotFound",
+    "message": "AntiPhishingCode is not declared for this user"
+}
+```
