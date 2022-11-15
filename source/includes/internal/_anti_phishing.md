@@ -23,6 +23,13 @@ curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
 }
 ```
 
+> برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:
+
+```shell
+curl --location --request GET 'https://api.nobitex.ir/otp/request?type=email&usage=anti_phishing_code' \
+--header 'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'
+```
+
 > **حالت های خطا**
 
 > در صورتی که پارامتر کدیکبارمصرف یا آنتی فیشینگ را ارسال نکرده باشید با این خطا روبرو خواهید شد.
