@@ -3738,7 +3738,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span></code></pre></div>
 <ul>
 <li><strong>درخواست:</strong> <code>POST /security/anti-phishing</code></li>
-<li><strong>محدودیت فراخوانی:</strong> ۵ درخواست در هر دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</li>
 </ul>
 <h3 id='b37895e837'>پارامترهای ورودی:</h3>
 <table><thead>
@@ -3771,8 +3771,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <li><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</li>
 </ul>
 
-<aside class="notice"> توجه فرمائید محدودیت فراخوانی ۱۰ درخواست در هر دقیقه برای هردوحالت دریافت و ثبت کد آنتی فیشینگ است.</aside>
-
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
@@ -3787,7 +3785,16 @@ Authorization: Token yourTOKENhereHEX0000000000
    </span><span class="nl">"antiPhishingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s*********g"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>در صورتی که کد آنتی فیشینگ موجود نباشد، رشته‌ی خالی برمیگردد. </p>
+<blockquote>
+<p>در صورتی که آنتی‌فیشینگ کد برای کاربر فعال نشده باشد با این پاسخ مواجه خواهید شد
+<code>json
+{
+    &quot;status&quot;: &quot;failed&quot;,
+    &quot;code&quot;: &quot;NotFound&quot;,
+    &quot;message&quot;: &quot;AntiPhishingCode is not declared for this user&quot;
+}
+</code></p>
+</blockquote>
 <h1 id='80a824915c'>تیکتینگ</h1>
 <p>از این سرویس برای ارتباط مشتریان با پشتیبانان استفاده می‌شود.</p>
 <h2 id='bc8511870a'>فهرست تمام تاپیک‌ها</h2>
