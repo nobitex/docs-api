@@ -95,6 +95,7 @@ curl --location --request GET 'https://api.nobitex.ir/security/anti-phishing' \
 ```
 
 > در صورتی که آنتی‌فیشینگ کد برای کاربر فعال نشده باشد با این پاسخ مواجه خواهید شد
+
 ```json
 {
     "status": "failed",
