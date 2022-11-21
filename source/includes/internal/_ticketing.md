@@ -167,7 +167,7 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
-### پارامترهای ورودی:
+### پارامترهای ورودی
 
 پارامتر | نوع        | پیش‌فرض | توضیحات                      | نمونه
 ------- |------------|---------|------------------------------| ---------
@@ -262,7 +262,7 @@ curl POST 'https://api.nobitex.ir/ticketing/comments/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
-### پارامترهای ورودی:
+### پارامترهای ورودی
 
 پارامتر | نوع        | پیش‌فرض | توضیحات                       | نمونه
 ------- |------------|---------|-------------------------------| ---------
@@ -384,7 +384,7 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
-### پارامترهای ورودی:
+### پارامترهای ورودی
 نیاز نیست.
 
 
@@ -449,7 +449,7 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/rate' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
-### پارامترهای ورودی:
+### پارامترهای ورودی
 
 پارامتر | نوع        | پیش‌فرض | توضیحات       | نمونه
 ------- |------------|---------|---------------| ---------

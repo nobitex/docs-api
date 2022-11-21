@@ -65,6 +65,6 @@ http GET https://api.nobitex.ir/security/emergency-cancel/activate \
 - **درخواست:** `GET /security/emergency-cancel/activate`
 
 
-###نکات و ملاحظات
+### نکات و ملاحظات
 توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
 </aside>
