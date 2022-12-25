@@ -306,21 +306,55 @@ http GET https://api.nobitex.ir/users/wallets/list \
 
 ```json
 {
-    "status": "ok",
-    "wallets": [
-        {
-            "activeBalance": "10.2649975000",
-            "blockedBalance": "0",
-            "user": "name@example.com",
-            "currency": "ltc",
-            "id": 4159,
-            "balance": "10.2649975000",
-            "rialBalance": 51322935,
-            "rialBalanceSell": 52507310,
-            "depositAddress": null
+  "status": "ok",
+  "wallets": [
+    {
+      "depositAddress": null,
+      "depositTag": null,
+      "depositInfo": {
+        "FIAT_MONEY": {
+          "address": null,
+          "tag": null
+        }
+      },
+      "id": 2693280,
+      "currency": "rls",
+      "balance": "746212980",
+      "blockedBalance": "0",
+      "activeBalance": "746212980",
+      "rialBalance": 746212980,
+      "rialBalanceSell": 746212980
+    },
+    {
+      "depositAddress": "bc1qp8dvtrhgjae6qhjfmvs2dj80ck0hgdjs6ts720",
+      "depositTag": null,
+      "depositInfo": {
+        "BTC-LEGACY": {
+          "address": null,
+          "tag": null
         },
-        ...
-    ]
+        "BTC": {
+          "address": "bc1qp8dvtrhgjae6qhjfmvs2dj80ck0hgdjs6ts720",
+          "tag": null
+        },
+        "BTCLN": {
+          "address": null,
+          "tag": null
+        },
+        "BSC": {
+          "address": null,
+          "tag": null
+        }
+      },
+      "id": 133778,
+      "currency": "btc",
+      "balance": "0",
+      "blockedBalance": "0",
+      "activeBalance": "0",
+      "rialBalance": 0,
+      "rialBalanceSell": 0
+    }
+  ]
 }
 ```
 
@@ -333,10 +367,11 @@ http GET https://api.nobitex.ir/users/wallets/list \
 ### نکات و ملاحظات
 1. کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
 این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.
-
 2.     در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید
+3. برای مشخص کردن نوع کیف پول (spot or margin) میتوانید نوع آن را با استفاده از پارامتر type مشخص نمایید. به صورت پیش فرض کیف پول‌های spot لیست خواهند شد
 
-##لیست کیف پول ها (انتخابی)
+
+## لیست کیف پول ها (انتخابی)
 
 ```shell
 curl 'https://api.nobitex.ir/v2/wallets?currencies=rls,btc' \
