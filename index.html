@@ -2395,21 +2395,55 @@
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"wallets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name@example.com"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4159</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.2649975000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">51322935</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="mi">52507310</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"wallets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depositTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"FIAT_MONEY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2693280</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746212980"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746212980"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">746212980</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="mi">746212980</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qp8dvtrhgjae6qhjfmvs2dj80ck0hgdjs6ts720"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depositTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"BTC-LEGACY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+        </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qp8dvtrhgjae6qhjfmvs2dj80ck0hgdjs6ts720"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"BTCLN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"BSC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">133778</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>برای دریافت لیست کیف پول های کاربر از این نوع درخواست استفاده نمایید:</p>
@@ -2420,9 +2454,10 @@
 </ul>
 <h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
 <ol>
-<li><p>کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
-این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.</p></li>
-<li><p>در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید</p></li>
+<li>کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
+این ویژگی در رمزارزهای آتی نوبیتکس نمایش خواهد یافت. برای رمزارزهای قدیمی کاربران سابق، همه کیف‌پول‌های از پیش موجود کاربر باقی خواهند ماند.</li>
+<li>    در برخی از موارد به دلیل کنترل بار ترافیک ورودی این سرویس، ممکن است پاسخ مورد انتظار دریافت نگردد، در این حالت می بایست مجددا فراخوانی را انجام داد و یا اینکه از <a href="#1ff004071d">این سرویس</a> برای دریافت لیست کیف پول ها استفاده نمائید</li>
+<li>برای مشخص کردن نوع کیف پول (spot or margin) میتوانید نوع آن را با استفاده از پارامتر type مشخص نمایید. به صورت پیش فرض کیف پول‌های spot لیست خواهند شد</li>
 </ol>
 <h2 id='1ff004071d'>لیست کیف پول ها (انتخابی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/wallets?currencies=rls,btc'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
