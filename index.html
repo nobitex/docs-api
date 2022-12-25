@@ -348,6 +348,9 @@
                   <li>
                     <a href="#cdf265d0e6" class="toc-h2 toc-link" data-title="آمار بازار جهانی">آمار بازار جهانی</a>
                   </li>
+                  <li>
+                    <a href="#favorite_market" class="toc-h2 toc-link" data-title=" بازارهای مورد علاقه"> بازارهای مورد علاقه</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -433,6 +436,9 @@
                   </li>
                   <li>
                     <a href="#01ab60950a" class="toc-h2 toc-link" data-title="فعالسازی لغو اضطراری">فعالسازی لغو اضطراری</a>
+                  </li>
+                  <li>
+                    <a href="#7bd08f9b8d" class="toc-h2 toc-link" data-title="آنتی فیشینگ">آنتی فیشینگ</a>
                   </li>
               </ul>
           </li>
@@ -1157,6 +1163,114 @@
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
 </aside>
+
+<h2 id="favorite_market"> بازارهای مورد علاقه</h2>
+
+<p>با استفاده از این امکان، کاربران قادر خواهند بود بازارهای مورد علاقه خود را مشخص کنند.</p>
+<h3 id='920ab8c079'>دریافت لیست بازارهای مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"XLMIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>GET /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='ee14ef8257'>ثبت بازار(های) مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DOGEUSDT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='9753420ab8'>پارامتر ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد بازار comma-separated</td>
+<td><code>BTCIRT</code> or <code>BTCIRT,DOGEUSDT</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
+</aside>
+<h3 id='eee19bdcdb'>حذف بازار مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http DELETE https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DOGEUSDT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>DELETE /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='9753420ab8-2'>پارامتر ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد بازار  و یا All برای حذف همه</td>
+<td><code>All</code> or <code>BTCIRT</code></td>
+</tr>
+</tbody></table>
 <h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='e12b63a512'>ثبت سفارش جدید</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -3122,7 +3236,119 @@
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <p>توجه داشته باشید: در صورتی که درخواست برداشت شما توسط این امکان لغو گردد، امکان ثبت درخواست برداشت تا ۷۲ ساعت برای شما غیرفعال خواهد شد.
 </aside></p>
-<h1 id='57bcd8d937'>طرح معرفی دوستان</h1>
+<h2 id='7bd08f9b8d'>آنتی فیشینگ</h2>
+<p>جهت امنیت حساب کاربری و همچنین اعتماد بیشتر کاربران به ایمیل هایی که از سمت توبیتکس ارسال میشود نیاز هست که کاربر بتواند کد یونیک برای حساب کاربری خود انتخاب کند که تمامی ایمیل هایی که از سمت نوبیتکس به صورت اتوماتیک ارسال میشود حاوی این کد باشد.
+.این کد به کاربر این اطمینان را میدهد که این ایمیل قطعا از نوبیتکس ارسال شده است.</p>
+<h3 id='c7e3c76c7a'>ایجاد کد آنتی فیشینگ</h3>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'code="sample_anti_phishing"'</span> <span class="se">\</span>
+<span class="nt">--form</span> <span class="s1">'otpCode="123456"'</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/otp/request?type=email&amp;usage=anti_phishing_code'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span>
+</code></pre></div>
+<blockquote>
+<p><strong>حالت های خطا</strong></p>
+
+<p>در صورتی که پارامتر کدیکبارمصرف یا آنتی فیشینگ را ارسال نکرده باشید با این خطا روبرو خواهید شد.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ParseError"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing string value"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که کدیکبار مصرف ارسال شده، نامعتبر باشد با این خطا روبرو خواهید بود.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidOTPCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please use otp/request endpoint"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که طول عبارت ارسالی نامناسب باشد با این خطا مواجه خواهید شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidCodeLength"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code length must be between 4 and 15 characters"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /security/anti-phishing</code></li>
+<li><p><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</p></li>
+<li><p>پارامترهای ورودی</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد آنتی فیشینگ تعیین شده توسط کاربر</td>
+<td>sample_anti_phishing</td>
+</tr>
+<tr>
+<td>otpCode</td>
+<td>number</td>
+<td>الزامی</td>
+<td>کد یکبار مصرف ارسال شده به شماره همراه کاربر</td>
+<td>12345</td>
+</tr>
+</tbody></table>
+<h3 id='954cdbfeb5'>دریافت کد آنتی فیشینگ</h3>
+<ul>
+<li><strong>درخواست:</strong> <code>GET /security/anti-phishing</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</li>
+</ul>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> 
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"antiPhishingCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s*********g"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که آنتی‌فیشینگ کد برای کاربر فعال نشده باشد با این پاسخ مواجه خواهید شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AntiPhishingCode is not declared for this user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='57bcd8d937'>طرح معرفی دوستان</h1>
 <p>نوبیتکس طرحی به نام معرفی دوستان در نظر گرفته است که از طریق آن هم به گسترش نوبیتکس کمک می‌کنید و هم از مزایای آن بهره‌مند می‌شوید. براساس این طرح شما می‌توانید دوستان خود را با لینک اختصاصی خود به نوبیتکس دعوت کنید و درصدی از کارمزد معاملات آن‌ها را به عنوان پاداش دریافت نمایید. برای اطلاعات بیشتر به <a href="https://nobitex.ir/policies/referral/">صفحه قوانین طرح معرفی دوستان</a> مراجعه کنید.</p>
 
 <p>معرفی دوستان با استفاده از ایجاد «کد دعوت» انجام می‌شود. هر کاربر نوبیتکس می‌تواند برای خود یک یا چند کد دعوت بسازد. کدهای دعوت معمولاً شامل شش رقم هستند ولی می‌توانند طول متفاوتی داشته باشند یا حتی رشته‌های دلخواه باشند. در زمان ساخت هر کد دعوت می‌توان سهم کاربر معرف و کاربر دعوت شده از کارمزد اهدایی را مشخص نمود.</p>
