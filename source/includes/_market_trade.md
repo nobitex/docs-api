@@ -33,7 +33,6 @@ http POST https://api.nobitex.ir/market/orders/add \
     "status": "Active",
     "partial": false,
     "fee": 0,
-    "user": "name@example.com",
     "created_at": "2018-11-28T11:36:13.592827+00:00"
   }
 }
@@ -95,7 +94,6 @@ http POST https://api.nobitex.ir/market/orders/add \
     "status": "Inactive",
     "partial": false,
     "fee": 0,
-    "user": "name@example.com",
     "created_at": "2022-01-17T12:14:18.005896+00:00",
     "averagePrice": "0"
   }
@@ -261,7 +259,6 @@ http POST https://api.nobitex.ir/market/orders/status \
         "partial": false,
         "price": "8500000.0000000000",
         "created_at": "2018-11-28T12:25:22.696029+00:00",
-        "user": "name@example.com",
         "id": 5684,
         "srcCurrency": "Litecoin",
         "totalPrice": "25500000.00000000000000000000",
