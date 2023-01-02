@@ -1275,9 +1275,9 @@
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000,"clientOrderId":"order1"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
-  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000
+  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000 clientOrderId=order1
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -1297,7 +1297,8 @@
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order1"</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1363,6 +1364,13 @@
 <td>قیمت واحد</td>
 <td><code>1210000000</code></td>
 </tr>
+<tr>
+<td>clientOrderId</td>
+<td>string</td>
+<td><code>null</code></td>
+<td>شناسه سفارش کاربر، تا ۸ کاراکتر،‌ یکتا  برای هر کاربر و در میان سفارش های open/active (آزمایشی)</td>
+<td><code>order1</code></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1372,9 +1380,9 @@
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500,"clientOrderId":"order1"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
-  type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500
+  type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500 clientOrderId=order1
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1395,7 +1403,8 @@
     </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-17T12:14:18.005896+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order1"</span><span class="p">,</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='01ec6c25ad'>سفارش حد ضرر</h3>
@@ -1434,9 +1443,9 @@
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715,"clientOrderId":"order1"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/market/orders/add \
-  type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715
+  type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715 clientOrderId=order1
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -1459,7 +1468,8 @@
       </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="w">
+      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
@@ -1477,7 +1487,8 @@
       </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inactive"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="w">
+      </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1593,6 +1604,10 @@
 <td>FeatureUnavailable</td>
 <td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
 </tr>
+<tr>
+<td>DuplicateClientOrderId</td>
+<td>شناسه سفارش کاربر تکراری است (برای هر کاربر در لحطه فقط یه سفارش open/active با یک شماره سفارش ممکن است).</td>
+</tr>
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
@@ -1601,6 +1616,7 @@
 <li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر <code>price</code> را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر <code>price</code> را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.</li>
 <li><strong>سفارش تکراری:</strong> برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای <code>DuplicateOrder</code> دریافت می‌کنند. (غیرفعال در حالت Pro)</li>
 <li><strong>دقت مقادیر پولی (monetary):</strong> نوع monetary که در پارامترهای <code>amount</code> و <code>price</code> به کار می‌رود، بسته به بازار هر رمزارز، تعداد رقم اعشار متغیری بین ۰ تا ۸ رقم دارد. در صورت ارسال مقادیر با ارقام اعشاری بیشتر، ارقام بی‌معنی در مقدار به پایین و در قیمت به روش بانکداری گرد خواهند شد.<br><a href="https://nobitex.ir/policies/markets/" title="بازارهای رمزارزی نوبیتکس">مشاهده جدول دقت‌ها</a></li>
+<li><strong>clientOrderId</strong>: دقت کنید که این پارامتر برای هر کاربر در میان سفارش های open/active یکتاست.</li>
 </ol>
 <h2 id='0c113519df'>مشاهده وضعیت سفارش</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/status'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
@@ -1629,7 +1645,8 @@
         </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">fdfc"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"isMyOrder"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1652,12 +1669,26 @@
 <tr>
 <td>id</td>
 <td>int</td>
-<td>الزامی</td>
+<td>اختیاری</td>
 <td>شناسه سفارش</td>
 <td><code>5684</code></td>
 </tr>
+<tr>
+<td>clientOrderId</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شناسه سفارش کاربر (آزمایشی)</td>
+<td><code>order1</code></td>
+</tr>
 </tbody></table>
 <h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<ol>
+<li>حتما باید حداقل یکی از دو پارامتر ‍<code>order</code> و <code>clientOrderId</code> ارسال شوند.</li>
+<li>اگر هر دو پارامتر ‍<code>order</code> و <code>clientOrderId</code>  ارسال شوند، اولویت با <code>id</code> است.</li>
+<li><code>clientOrderId</code> فقط در میان سفارشات open/active جستجو میشود.</li>
+<li><code>clientOrderId</code> .در حالت آزمایشی است و ممکن است در آینده تغییر کند</li>
+</ol>
+
 <p><strong>انواع مقادیر <code>status</code>:</strong></p>
 
 <ul>
@@ -1672,6 +1703,27 @@
 <li>موجودی کیف پول کاربر از طریق سایر تراکنش‌ها کاهش یافته است و از موجودی لازم برای پر شدن معامله کمتر شده است.</li>
 </ul></li>
 </ul>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NullIdAndClientOrderId</td>
+<td>باید یکی از دو پارامتر <code>id</code> و <code>clientOrderId</code>  ارسال شود</td>
+</tr>
+</tbody></table>
 <h2 id='a2ce8ff7e3'>فهرست سفارش‌های کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/list?srcCurrency=btc&amp;dstCurrency=usdt&amp;details=2'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/orders/list \
@@ -1694,7 +1746,8 @@
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1935,9 +1988,16 @@
 <tr>
 <td>order</td>
 <td>int</td>
-<td>الزامی</td>
+<td>اختیاری</td>
 <td>شناسه سفارش</td>
 <td><code>5684</code></td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شناسه سفارش کاربر (آزمایشی)</td>
+<td><code>order1</code></td>
 </tr>
 <tr>
 <td>status</td>
@@ -1949,6 +2009,10 @@
 </tbody></table>
 <h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
 <ol>
+<li>حتما باید حداقل یکی از دو پارامتر ‍<code>order</code> و <code>clientOrderId</code> ارسال شوند.</li>
+<li>اگر هر دو پارامتر ‍<code>order</code> و <code>clientOrderId</code>  ارسال شوند، اولویت با <code>id</code> است.</li>
+<li><code>clientOrderId</code> فقط در میان سفارشات open/active جستجو میشود.</li>
+<li><code>clientOrderId</code> .در حالت آزمایشی است و ممکن است در آینده تغییر کند</li>
 <li>مقدار status میتواند از &#39;new&#39; به &#39;active&#39; و یا از &#39;active&#39;/&#39;inactive&#39; به &#39;cancel&#39; تغییر کند.
 در غیر اینصورت، درخواست رد میشود.</li>
 <li>در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.</li>
@@ -2020,6 +2084,27 @@
 <li>سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.</li>
 <li>در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.</li>
 </ol>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NullIdAndClientOrderId</td>
+<td>باید یکی از دو پارامتر <code>id</code> و <code>clientOrderId</code>  ارسال شود</td>
+</tr>
+</tbody></table>
 <h2 id='1cf6f6c643'>فهرست معاملات کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls
