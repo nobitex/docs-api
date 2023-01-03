@@ -458,6 +458,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#9589fc02b6" class="toc-h1 toc-link" data-title="درخواست‌های دسته‌ای">درخواست‌های دسته‌ای</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#b9ba32ea51" class="toc-h2 toc-link" data-title="ثبت سفارش دسته‌ای">ثبت سفارش دسته‌ای</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://nobitex.ir/'>سایت نوبیتکس</a></li>
@@ -4135,7 +4143,311 @@ Authorization: Token yourTOKENhereHEX0000000000
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InvalidFileType"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The file type is not a ticket attachment."</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='9589fc02b6'>درخواست‌های دسته‌ای</h1>
+<p>از درخواست‌های دسته‌ای در کاهش تاخیر شبکه استفاده می‌شود.
+این دسته از API ها برای بات‌ها معاملاتی ارائه شده و در مرحله آزمایش بتا قرار دارد.
+در صورت استفاده، احتمال تغییر یا توقف در ارائه API های این بخش را در نظر بگیرید.</p>
+
+<p>احراز هویت در API های این مجموعه مشابه نسخه تکی هر درخواست است.</p>
+<h2 id='b9ba32ea51'>ثبت سفارش دسته‌ای</h2>
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/market/orders/batch-add'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> @- <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+  {"data": [
+    {"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000},
+    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500},
+    {"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}
+  ]}
+</span><span class="no">EOF
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/market/orders/batch-add</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">buy</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">srcCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">btc</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">dstCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rls</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.6</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">price</span><span class="p">:</span> <span class="mi">520000000</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sell</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">srcCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">doge</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">dstCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rls</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">64</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">execution</span><span class="p">:</span> <span class="dl">'</span><span class="s1">stop_market</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">stopPrice</span><span class="p">:</span> <span class="mi">47500</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">buy</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">srcCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">btc</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">dstCurrency</span><span class="p">:</span> <span class="dl">'</span><span class="s1">usdt</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">amount</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0.01</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">oco</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">price</span><span class="p">:</span> <span class="mi">42390</span><span class="p">,</span>
+      <span class="na">stopPrice</span><span class="p">:</span> <span class="mi">42700</span><span class="p">,</span>
+      <span class="na">stopLimitPrice</span><span class="p">:</span> <span class="mi">42715</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /market/orders/batch-add HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{
+  "data": [
+    {"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000},
+    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500},
+    {"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}
+  ]
+}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ریال"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"520000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"312000000.0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-28T11:36:13.592827+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OverValueOrder"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order validation failed"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42390"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"totalOrderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423.9"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"StopLimit"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-USDT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tether"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42715"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"param1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42700"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"totalOrderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"427.15"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inactive"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-10T10:12:38.402795+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pairId"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<p>برای <a href="/#e12b63a512">ثبت سفارش</a> به صورت دسته‌ای از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /market/orders/batch-add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 300 درخواست در 10 دقیقه
+<br/>300 سفارش در 10 دقیقه (مشترک با ثبت سفارش تکی)</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>list</td>
+<td>الزامی</td>
+<td>لیست ورودی‌های ثبت سفارش تکی</td>
+<td>[{&quot;amount&quot;: ...}, ...]</td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>results</td>
+<td>list</td>
+<td>لیست پاسخ‌های هر درخواست تکی</td>
+<td>[]</td>
+</tr>
+</tbody></table>
+
+<p>بسته به نوع درخواست از نظر معمولی یا oco بودن و یا مواجهه با خطا، قالب پاسخ متفاوت خواهد بود:</p>
+<h4 id='968d37c50a'>پاسخ موفق حالت معمولی</h4>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>order</td>
+<td>Order</td>
+<td>شی سفارش</td>
+<td>{&quot;id&quot;: 25, ...}</td>
+</tr>
+</tbody></table>
+<h4 id='oco'>پاسخ موفق حالت oco</h4>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>orders</td>
+<td>Order list</td>
+<td>لیست دو سفارش oco</td>
+<td>[{&quot;id&quot;: 26, ...}, {&quot;id&quot;: 27, ...}]</td>
+</tr>
+</tbody></table>
+<h4 id='4113ee5a4a'>پاسخ ناموفق</h4>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>failed</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>کد خطا</td>
+<td>OverValueOrder</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>پیغام خطا</td>
+<td>Order validation failed</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<p>خطاهای ساختاری در بدنه درخواست مانع از اجرای کل درخواست خواهد شد و وضعیت نهایی پاسخ ناموفق خواهد بود.</p>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ParseError</td>
+<td>ورودی‌های الزامی ارسال نشده است.</td>
+</tr>
+<tr>
+<td>InvalidOrderPrice</td>
+<td>در سفارش با قیمت ضروری، قیمت نزدیک به صفر ارسال شده است.</td>
+</tr>
+<tr>
+<td>InvalidMarketPair</td>
+<td>بازاری برای زوج‌ارز درخواست وجود ندارد.</td>
+</tr>
+<tr>
+<td>MarketClosed</td>
+<td>بازار بسته است.</td>
+</tr>
+<tr>
+<td>TradeLimitation</td>
+<td>کاربر محدودیت سفارش‌گذاری دارد.</td>
+</tr>
+<tr>
+<td>DuplicateOrder</td>
+<td>سفارش تکراری است.</td>
+</tr>
+</tbody></table>
+
+<p>خطاهای خارج از این دسته، وضعیت نهایی کل درخواست را ناموفق نمی‌کند و برای هر ورودی جداگانه ایجاد می‌شود.</p>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li><strong>حالت Pro:</strong> امکان فعال‌سازی <a href="/#pro">حالت Pro</a> و مجاز کردن سفارش تکراری در کمتر از ۱۰ ثانیه، برای کل درخواست وجود دارد.</li>
+<li><strong>محدودیت درخواست مشترک:</strong> در صورتی که یک درخواست دسته‌ای، در میانه پردازش سفارش‌ها از محدودیت مشترک ایجاد سفارش را عبور کند،
+ادامه ثبت سفارش متوقف شده و سفارش‌های ایجاد شده تا قبل از آن باز می‌گردند. در این حالت تعداد سفارش‌های باز گردانده شده کمتر از تعداد درخواست شده خواهد بود.</li>
+<li><strong>قالب درخواست:</strong> تنها فرمت مورد پذیرش درخواست برای ثبت سفارش دسته‌ای، application/json می‌باشد.</li>
+</ol>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
