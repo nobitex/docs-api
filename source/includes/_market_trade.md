@@ -502,7 +502,7 @@ http POST https://api.nobitex.ir/market/orders/cancel-old \
 پارامتر     | نوع    | پیش‌فرض  |   توضیحات     | نمونه
 ----------- | ----   |----------|   ---------   | -----
 hours        | float | اختیاری  |    زمان سفارش | 4.2
-execution   | string | `market` |   نحوه سفارش  | `market` یا `limit` یا `stop_market` یا `stop_limit`
+execution   | string | اختیاری |   نحوه سفارش  | `market` یا `limit` یا `stop_market` یا `stop_limit`
 srcCurrency | string | اختیاری  |    ارز مبدا   | `btc`
 dstCurrency | string | اختیاری  |    ارز مقصد   | `rls`
 
