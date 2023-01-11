@@ -1368,7 +1368,7 @@
 <td>clientOrderId</td>
 <td>string</td>
 <td><code>null</code></td>
-<td>شناسه سفارش کاربر، تا ۸ کاراکتر،‌ یکتا  برای هر کاربر و در میان سفارش های open/active (آزمایشی)</td>
+<td>شناسه سفارش کاربر، تا ۳۲ کاراکتر،‌ یکتا  برای هر کاربر و در میان سفارش های open/active/inactive (آزمایشی)</td>
 <td><code>order1</code></td>
 </tr>
 </tbody></table>
@@ -1598,7 +1598,7 @@
 </tr>
 <tr>
 <td>DuplicateClientOrderId</td>
-<td>شناسه سفارش کاربر تکراری است (برای هر کاربر در لحطه فقط یه سفارش open/active با یک شماره سفارش ممکن است).</td>
+<td>شناسه سفارش کاربر تکراری است (برای هر کاربر در لحطه فقط یه سفارش open/active/inactive با یک شماره سفارش ممکن است).</td>
 </tr>
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
@@ -1607,7 +1607,7 @@
 <li><strong>سفارش مارکت:</strong> برای ثبت سفارش سریع (سفارش مارکت، سفارش به قیمت بازار)، مقدار پارامتر <code>execution</code> را برابر <code>market</code> ارسال نمایید. منظور از سفارش مارکت سفارشی است که کاربر درخواست دارد تا به بهترین قیمت موجود بازار مورد انجام قرار گیرد. <a href="https://www.binance.vision/tutorials/what-is-a-market-order">ℹB</a> - <a href="https://www.investopedia.com/terms/m/marketorder.asp">ℹI</a></li>
 <li><strong>تعیین محدوده مورد انتظار قیمت:</strong> در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر <code>price</code> را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر <code>price</code> را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.</li>
 <li><strong>دقت مقادیر پولی (monetary):</strong> نوع monetary که در پارامترهای <code>amount</code> و <code>price</code> به کار می‌رود، بسته به بازار هر رمزارز، تعداد رقم اعشار متغیری بین ۰ تا ۸ رقم دارد. در صورت ارسال مقادیر با ارقام اعشاری بیشتر، ارقام بی‌معنی در مقدار به پایین و در قیمت به روش بانکداری گرد خواهند شد.<br><a href="https://nobitex.ir/policies/markets/" title="بازارهای رمزارزی نوبیتکس">مشاهده جدول دقت‌ها</a></li>
-<li><strong>clientOrderId</strong>: دقت کنید که این پارامتر برای هر کاربر در میان سفارش های open/active یکتاست.</li>
+<li><strong>clientOrderId</strong>: دقت کنید که این پارامتر برای هر کاربر در میان سفارش های open/active/inactive یکتاست.</li>
 <li><strong>سفارش تکراری:</strong> برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای <code>DuplicateOrder</code> دریافت می‌کنند. (غیرفعال در حالت Pro)
 توصیه می‌شود در صورت استفاده از این حالت Pro حتما از پارامتر <code>clientOrderId</code> استفاده نمایید تا از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور جلوگیری نماید.</li>
 </ol>
@@ -1678,7 +1678,7 @@
 <ol>
 <li>حتما باید حداقل یکی از دو پارامتر ‍<code>order</code> و <code>clientOrderId</code> ارسال شوند.</li>
 <li>اگر هر دو پارامتر ‍<code>order</code> و <code>clientOrderId</code>  ارسال شوند، اولویت با <code>id</code> است.</li>
-<li><code>clientOrderId</code> فقط در میان سفارشات open/active جستجو میشود.</li>
+<li><code>clientOrderId</code> فقط در میان سفارشات open/active/inactive جستجو میشود.</li>
 <li><code>clientOrderId</code> .در حالت آزمایشی است و ممکن است در آینده تغییر کند</li>
 </ol>
 
@@ -2004,12 +2004,33 @@
 <ol>
 <li>حتما باید حداقل یکی از دو پارامتر ‍<code>order</code> و <code>clientOrderId</code> ارسال شوند.</li>
 <li>اگر هر دو پارامتر ‍<code>order</code> و <code>clientOrderId</code>  ارسال شوند، اولویت با <code>id</code> است.</li>
-<li><code>clientOrderId</code> فقط در میان سفارشات open/active جستجو میشود.</li>
+<li><code>clientOrderId</code> فقط در میان سفارشات open/active/inactive جستجو میشود.</li>
 <li><code>clientOrderId</code> .در حالت آزمایشی است و ممکن است در آینده تغییر کند</li>
 <li>مقدار status میتواند از &#39;new&#39; به &#39;active&#39; و یا از &#39;active&#39;/&#39;inactive&#39; به &#39;cancel&#39; تغییر کند.
 در غیر اینصورت، درخواست رد میشود.</li>
 <li>در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.</li>
 </ol>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NullIdAndClientOrderId</td>
+<td>باید یکی از دو پارامتر <code>id</code> و <code>clientOrderId</code>  ارسال شود</td>
+</tr>
+</tbody></table>
 <h2 id='2a3bc4fdc6'>لغو جمعی سفارشات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/cancel-old'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2077,7 +2098,7 @@
 <li>سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.</li>
 <li>در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.</li>
 </ol>
-<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<h3 id='eec2b3e8e4-4'>حالت‌های خطا</h3>
 <blockquote>
 <p>در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
@@ -2086,19 +2107,7 @@
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>کد خطا</th>
-<th>توضیحات</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>NullIdAndClientOrderId</td>
-<td>باید یکی از دو پارامتر <code>id</code> و <code>clientOrderId</code>  ارسال شود</td>
-</tr>
-</tbody></table>
-<h2 id='1cf6f6c643'>فهرست معاملات کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls'</span> <span class="se">\</span>
+</span></code></pre></div><h2 id='1cf6f6c643'>فهرست معاملات کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&amp;dstCurrency=rls
 </code></pre></div>
