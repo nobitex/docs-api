@@ -3889,6 +3889,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 <li><strong>درخواست:</strong> <code>POST users/portfolio/last-week-daily-profit</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 10 درخواست در 3 دقیقه</li>
 </ul>
+<h3 id='702332f289'>نکات و ملاحظات:</h3>
+<p>این API به صورت پیش فرض اطلاعات 7 روز گذشته را ارائه می دهد. برای دریافت اطلاعات ماهانه یا ۳۰ روز گذشته کافیست پارامتر monthly با مقدار true را به همراه این درخواست ارسال نمایید.</p>
 
 <h2 id="last-week-daily-total-profit">سود زیان کل به صورت روزانه در هفته گذشته</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/portfolio/last-week-daily-total-profit'</span> <span class="se">\</span>
