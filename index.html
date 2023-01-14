@@ -601,6 +601,10 @@
 
 <p>توجه داشته باشید، برای استفاده از APIها محدودیت هایی وجود دارد که در قسمت توضیحات هر کدام از APIها این موارد ذکر شده است.</p>
 
+<p>همچنین به منظور حفظ امنیت حساب کاربران، در هنگام احرازهویت(لاگین)، در صورتی که دستگاه شما جدید شناخته شود، محدودیت برداشت به مدت یک‌ساعت روی حساب کاربری شما اعمال خواهد شد. کاربرانی که فرایند دریافت توکن با زمان کمتر از این یک‌ساعت دارند میتوانند مقدار device را که در جواب دریافت توکن دریافت کرده‌اند را در مراحل بعدی به همراه دیگر پارامترها ارسال، تا از اعمال این محدودیت جلوگیری نمایند.</p>
+
+<p>روش دیگری که پیش و روی شماست استفاده از توکن‌های بلندمدت است.</p>
+
 <h2 id="intro-changelog">تغییرات و موارد قدیمی</h2>
 
 <p>با توجه به ماهیت نوین و تغییرات مستمر مورد نیاز در حوزه رمزارزها، در API نوبیتکس نیز ممکن است در طول زمان تغییراتی ایجاد شود. پشتیبانی طولانی‌مدت از نسخه‌های قدیمی API معمولاً فرآیندی پیچیده و سخت است و باعث کاهش سرعت ایجاد تغییرات جدید در بستر نوبیتکس می‌شود. به همین دلیل API نوبیتکس همواره در عین حفظ ساختار کلی و اجزای اصلی ثابت، در حال بهبود مستمر و به‌روزرسانی است. کاربران گرامی می‌توانند با پیگیری تغییرات API که در <a href="/changelog/">صفحه سابقه تغییرات API نوبیتکس</a> اطلاع‌رسانی می‌شود، همواره از تغییرات احتمالی ضروری در کد خود مطلع شوند تا بتوانند به صورت بدون وقفه از جدیدترین امکانات و روش‌های دسترسی به API نوبیتکس بهره‌مند شوند.</p>
@@ -3296,9 +3300,9 @@
 </ul>
 <h2 id='01ab60950a'>فعالسازی لغو اضطراری</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/security/emergency-cancel/activate'</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/security/emergency-cancel/activate \
-  Authorization: Token 4928f7a7d00b3sc1efaa8dda2fc7a9tf905cc69
+  Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -3328,7 +3332,7 @@
 <p>نمونه درخواست:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'code="sample_anti_phishing"'</span> <span class="se">\</span>
 <span class="nt">--form</span> <span class="s1">'otpCode="123456"'</span>
 </code></pre></div>
@@ -3343,7 +3347,7 @@
 <p>برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/otp/request?type=email&amp;usage=anti_phishing_code'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
 <p><strong>حالت های خطا</strong></p>
@@ -3414,7 +3418,7 @@
 <p>نمونه درخواست:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://api.nobitex.ir/security/anti-phishing'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'</span> 
+<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> 
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
