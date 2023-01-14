@@ -38,12 +38,12 @@ http POST https://api.nobitex.ir/users/login-attempts \
 ```shell
 curl 'https://api.nobitex.ir/security/emergency-cancel/activate' \
   -X GET \
-  -H "Authorization: Token e9282e56c83f93eb077043e5ad8b6cf5b3ff7568"
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
 http GET https://api.nobitex.ir/security/emergency-cancel/activate \
-  Authorization: Token 4928f7a7d00b3sc1efaa8dda2fc7a9tf905cc69
+  Authorization: Token yourTOKENhereHEX0000000000
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -82,7 +82,7 @@ http GET https://api.nobitex.ir/security/emergency-cancel/activate \
 
 ```shell
 curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
---header 'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941' \
+--header 'Authorization: Token yourTOKENhereHEX0000000000' \
 --form 'code="sample_anti_phishing"' \
 --form 'otpCode="123456"'
 ```
@@ -100,7 +100,7 @@ curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
 
 ```shell
 curl --location --request GET 'https://api.nobitex.ir/otp/request?type=email&usage=anti_phishing_code' \
---header 'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941'
+--header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 > **حالت های خطا**
@@ -161,7 +161,7 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 
 ```shell
 curl --location --request GET 'https://api.nobitex.ir/security/anti-phishing' \
---header 'Authorization: Token 312616c62a1b5f81a7f1049051fda3382cf41941' 
+--header 'Authorization: Token yourTOKENhereHEX0000000000' 
 ```
 
 
