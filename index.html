@@ -477,6 +477,20 @@
               </ul>
           </li>
           <li>
+            <a href="#portfolio" class="toc-h1 toc-link" data-title="سود و زیان">سود و زیان</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#last-week-daily-profit" class="toc-h2 toc-link" data-title="سود و زیان روزانه هفته گذشته">سود و زیان روزانه هفته گذشته</a>
+                  </li>
+                  <li>
+                    <a href="#last-week-daily-total-profit" class="toc-h2 toc-link" data-title="سود زیان کل به صورت روزانه در هفته گذشته">سود زیان کل به صورت روزانه در هفته گذشته</a>
+                  </li>
+                  <li>
+                    <a href="#last-month-total-profit" class="toc-h2 toc-link" data-title="سود و زیان کل ماه گذشته">سود و زیان کل ماه گذشته</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#other" class="toc-h1 toc-link" data-title="سایر">سایر</a>
               <ul class="toc-list-h2">
                   <li>
@@ -3779,6 +3793,218 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span></code></pre></div>
 <ul>
 <li><strong>درخواست:</strong> <code>/POST /auth/logout</code></li>
+</ul>
+<h1 id="portfolio">سود و زیان</h1>
+
+<p>«پرتفو» یا «پنل سود و زیان» کاربر، گزارشی است که با توجه به معاملات یا افزایش و کاهش قیمت رمزارزها در مارکت میزان سود یا ضرر بدست آمده و درصدهای آنها را نسبت به قیمت خریداری شده (موجودی) نمایش میدهد.</p>
+
+<p>در حال حاضر این اطلاعات در پرتفو هر کاربر ارائه می‌شود:</p>
+
+<ul>
+<li>سود و زیان روزانه هفته گذشته</li>
+<li>سود زیان کل به صورت روزانه در هفته گذشته</li>
+<li>سود و زیان کل ماه گذشته</li>
+</ul>
+
+<aside class="warning"> توجه: این ویژگی به صورت بتا عرضه شده است</aside>
+
+<h2 id="last-week-daily-profit">سود و زیان روزانه هفته گذشته</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/portfolio/last-week-daily-profit'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/portfolio/last-week-daily-profit \
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-04"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-05"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0E-10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4516559.9205900000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-06"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152570.1426800000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.3780165737"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4669130.0632700000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که این ویژگی برای کاربر فعال نباشد با این جواب روبرو خواهند شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PortfolioDisabled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portfolio feature is not available for your user."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که اطلاعاتی از سود و زیان کاربر وجود نداشته باشد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastWeekDailyProfitFail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اطلاعاتی جهت نمایش وجود ندارد"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت اطلاعات سود و زیان روزانه هفته گذشته از این درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST users/portfolio/last-week-daily-profit</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در 3 دقیقه</li>
+</ul>
+
+<h2 id="last-week-daily-total-profit">سود زیان کل به صورت روزانه در هفته گذشته</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/portfolio/last-week-daily-total-profit'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/portfolio/last-week-daily-total-profit \
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-27"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-28"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4507274.2415300000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"197.3669039200"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-30"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9020935.7092505000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-307.6135237294"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5373087.9340195000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1302.7642741973"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-02"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"313580813.4306171358"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-899.0991999052"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"report_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"313580813.4306171358"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-899.0991999052"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که این ویژگی برای کاربر فعال نباشد با این جواب روبرو خواهند شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PortfolioDisabled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portfolio feature is not available for your user."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که اطلاعاتی از سود و زیان کاربر وجود نداشته باشد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastWeekDailyProfitFail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اطلاعاتی جهت نمایش وجود ندارد"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت اطلاعات سود و زیان روزانه هفته گذشته از این درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST users/portfolio/last-week-daily-total-profit</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در 3 دقیقه</li>
+</ul>
+
+<h2 id="last-month-total-profit">سود و زیان کل ماه گذشته</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/portfolio/last-month-total-profit'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/portfolio/last-month-total-profit \
+Authorization: Token yourTOKENhereHEX0000000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8987787000.0000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_profit_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83.60700983438201160181729556"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که این ویژگی برای کاربر فعال نباشد با این جواب روبرو خواهند شد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PortfolioDisabled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Portfolio feature is not available for your user."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که اطلاعاتی از سود و زیان کاربر وجود نداشته باشد</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LastWeekDailyProfitFail"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اطلاعاتی جهت نمایش وجود ندارد"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت اطلاعات سود و زیان روزانه هفته گذشته از این درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST users/portfolio/last-month-total-profit</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در 3 دقیقه</li>
 </ul>
 <h1 id="other">سایر</h1>
 
