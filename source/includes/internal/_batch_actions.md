@@ -83,11 +83,14 @@ Content-Type: application/json
       "status": "ok",
       "order": {
         "type": "buy",
+        "execution": "Limit"
+        "market": "BTC-RLS",
         "srcCurrency": "Bitcoin",
         "dstCurrency": "ریال",
         "price": "520000000",
         "amount": "0.6",
-        "totalPrice": "312000000.0",
+        "totalPrice": "0",
+        "totalOrderPrice": "312000000",
         "matchedAmount": 0,
         "unmatchedAmount": "0.6",
         "id": 25,
