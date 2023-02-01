@@ -348,9 +348,6 @@
                   <li>
                     <a href="#cdf265d0e6" class="toc-h2 toc-link" data-title="آمار بازار جهانی">آمار بازار جهانی</a>
                   </li>
-                  <li>
-                    <a href="#favorite_market" class="toc-h2 toc-link" data-title=" بازارهای مورد علاقه"> بازارهای مورد علاقه</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -408,6 +405,9 @@
                   </li>
                   <li>
                     <a href="#18a62645f3" class="toc-h2 toc-link" data-title="لیست واریزها">لیست واریزها</a>
+                  </li>
+                  <li>
+                    <a href="#favorite_market" class="toc-h2 toc-link" data-title=" بازارهای مورد علاقه"> بازارهای مورد علاقه</a>
                   </li>
               </ul>
           </li>
@@ -1181,114 +1181,6 @@
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
 </aside>
-
-<h2 id="favorite_market"> بازارهای مورد علاقه</h2>
-
-<p>با استفاده از این امکان، کاربران قادر خواهند بود بازارهای مورد علاقه خود را مشخص کنند.</p>
-<h3 id='920ab8c079'>دریافت لیست بازارهای مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
-  <span class="nt">-X</span> GET
-
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/markets/favorite
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"XLMIRT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"BTCIRT"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<ul>
-<li><strong>درخواست:</strong> <code>GET /users/markets/favorite</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در ۱ دقیقه</li>
-<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
-</ul>
-<h3 id='ee14ef8257'>ثبت بازار(های) مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST
-
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/markets/favorite
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DOGEUSDT"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<ul>
-<li><strong>درخواست:</strong> <code>POST /users/markets/favorite</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
-<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
-</ul>
-<h3 id='9753420ab8'>پارامتر ورودی</h3>
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>market</td>
-<td>string</td>
-<td>الزامی</td>
-<td>نماد بازار comma-separated</td>
-<td><code>BTCIRT</code> or <code>BTCIRT,DOGEUSDT</code></td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
-</aside>
-<h3 id='eee19bdcdb'>حذف بازار مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE
-
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http DELETE https://api.nobitex.ir/users/markets/favorite
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"DOGEUSDT"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<ul>
-<li><strong>درخواست:</strong> <code>DELETE /users/markets/favorite</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
-<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
-</ul>
-<h3 id='9753420ab8-2'>پارامتر ورودی</h3>
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>market</td>
-<td>string</td>
-<td>الزامی</td>
-<td>نماد بازار  و یا All برای حذف همه</td>
-<td><code>All</code> or <code>BTCIRT</code></td>
-</tr>
-</tbody></table>
 <h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='e12b63a512'>ثبت سفارش جدید</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/add'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -2797,6 +2689,114 @@
 <li>از این طریق واریزهای حداکثر سه ماهه اخیر قابل نمایش است.</li>
 <li>صفحه بندی و فیلترزمانی فقط برای حالتی است که wallet تعیین شده باشد و برای حالت پیشفرض یعنی all کارایی ندارد.</li>
 </ul>
+
+<h2 id="favorite_market"> بازارهای مورد علاقه</h2>
+
+<p>با استفاده از این امکان، کاربران قادر خواهند بود بازارهای مورد علاقه خود را مشخص کنند.</p>
+<h3 id='920ab8c079'>دریافت لیست بازارهای مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"XLMIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>GET /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='ee14ef8257'>ثبت بازار(های) مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DOGEUSDT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='9753420ab8'>پارامتر ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد بازار comma-separated</td>
+<td><code>BTCIRT</code> or <code>BTCIRT,DOGEUSDT</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
+</aside>
+<h3 id='eee19bdcdb'>حذف بازار مورد علاقه</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/markets/favorite'</span> <span class="se">\</span>
+  <span class="nt">-X</span> DELETE
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http DELETE https://api.nobitex.ir/users/markets/favorite
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favoriteMarkets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCIRT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"DOGEUSDT"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>DELETE /users/markets/favorite</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در ۱ دقیقه</li>
+<li><strong>نیاز به ارسال توکن:</strong> دارد</li>
+</ul>
+<h3 id='9753420ab8-2'>پارامتر ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نماد بازار  و یا All برای حذف همه</td>
+<td><code>All</code> or <code>BTCIRT</code></td>
+</tr>
+</tbody></table>
 <h1 id="withdraw">برداشت</h1>
 
 <h2 id="withdraw-request">ثبت درخواست برداشت</h2>
