@@ -464,6 +464,9 @@
                   <li>
                     <a href="#b9ba32ea51" class="toc-h2 toc-link" data-title="ثبت سفارش دسته‌ای">ثبت سفارش دسته‌ای</a>
                   </li>
+                  <li>
+                    <a href="#a38034d2c1" class="toc-h2 toc-link" data-title="لغو سفارش دسته‌ای">لغو سفارش دسته‌ای</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -4160,7 +4163,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='9589fc02b6'>درخواست‌های دسته‌ای</h1>
 <p>از درخواست‌های دسته‌ای در کاهش تاخیر شبکه استفاده می‌شود.
-این دسته از API ها برای بات‌ها معاملاتی ارائه شده و در مرحله آزمایش بتا قرار دارد.
+این دسته از API ها برای بات‌ها معاملاتی ارائه شده و در مرحله <strong>آزمایش بتا</strong> قرار دارد.
 در صورت استفاده، احتمال تغییر یا توقف در ارائه API های این بخش را در نظر بگیرید.</p>
 
 <p>احراز هویت در API های این مجموعه مشابه نسخه تکی هر درخواست است.</p>
@@ -4233,7 +4236,7 @@ Content-Type: application/json
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="w">
+        </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-RLS"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ریال"</span><span class="p">,</span><span class="w">
@@ -4464,6 +4467,131 @@ Content-Type: application/json
 <li><strong>محدودیت درخواست مشترک:</strong> در صورتی که یک درخواست دسته‌ای، در میانه پردازش سفارش‌ها از محدودیت مشترک ایجاد سفارش را عبور کند،
 ادامه ثبت سفارش متوقف شده و سفارش‌های ایجاد شده تا قبل از آن باز می‌گردند. در این حالت تعداد سفارش‌های باز گردانده شده کمتر از تعداد درخواست شده خواهد بود.</li>
 <li><strong>قالب درخواست:</strong> تنها فرمت مورد پذیرش درخواست برای ثبت سفارش دسته‌ای، application/json می‌باشد.</li>
+</ol>
+<h2 id='a38034d2c1'>لغو سفارش دسته‌ای</h2>
+<p>با استفاده از این api می‌توان سفارش‌های فعال کاربر را لغو کرد. برای این هدف می‌توان مقدار رمزارز مبدا یا رمزارز مقصد را مشخص کرد که هم می‌توان همزمان آن دو را ارسال کرد و هم به صورت تکی، که در صورت ارسال هر کدام از این مقادیر تمامی ‌سفارش‌های کاربر با ارز مبدا و یا ارز مقصد لغو خواهند شد.</p>
+
+<blockquote>
+<p>نمونه درخواست:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/market/orders/cancel-batch'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"orderIds":[1,2]}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /market/orders/cancel-batch HTTP/1.1
+Host: api.nobitex.ir
+Authorization: Token yourTOKENhereHEX0000000000
+Content-Type: application/json
+{
+  "orderIds":[1,2]
+}
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Systematically placed orders are immutable"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong> <code>POST /market/orders/cancel-batch</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در هر دقیقه</li>
+<li>حداکثر 20 سفارش در هر درخواست</li>
+</ul>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderIds</td>
+<td>list</td>
+<td>الزامی</td>
+<td>شناسه‌های سفارشات</td>
+<td>[1,2]</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>integer</td>
+<td>اختیاری</td>
+<td>سفارشات x ساعت اخیر</td>
+<td>3</td>
+</tr>
+<tr>
+<td>execution_type</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>نوع سفارش</td>
+<td>market</td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td>ok</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>علت عدم لغو درخواست</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>متن خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>The maximum number of orderIds should be 20</td>
+<td>اگر تعداد آیدی ‌سفارشات ارسال شده به API بیشتر از ۲۰ عدد باشد.</td>
+</tr>
+<tr>
+<td>Order_ids list is empty</td>
+<td>اگر لیست آیدی سفارشات ارسال شده، خالی باشد</td>
+</tr>
+<tr>
+<td>Invalid integer value: &quot;{{incorrect value}}&quot;</td>
+<td>اگر لیست ارسال شده حاوی مقادیر نادرست باشد</td>
+</tr>
+<tr>
+<td>Orders are queued to be cancelled</td>
+<td>اگر سفارشات ارسال شده به صورت async حذف گردد.</td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<ol>
+<li>با استفاده از این api می‌توان سفارش‌های فعال کاربر را لغو کرد. برای این هدف می‌توان مقدار رمزارز مبدا یا رمزارز مقصد را مشخص کرد که هم می‌توان همزمان آن دو را ارسال کرد و هم به صورت تکی، که در صورت ارسال هر کدام از این مقادیر تمامی ‌سفارش‌های کاربر با ارز مبدا و یا ارز مقصد لغو خواهند شد.</li>
+<li>برای استفاده از این api می‌توان دو پارامتر دیگر به عنوان‌های hour و execution_type اشاره کرد که پارامترهای اختیاری هستند.</li>
+<li>پارامتر hour که باید به صورت عدد صحیح وارد شود به این معناست که سفارش‌های فعال کاربر در چند ساعت اخیر کنسل شوند، برای مثال اگر مقدار ۳ برای این پارامتر ارسال شود سفارش‌های فعال سه ساعت اخیر کاربر غیرفعال می‌شوند.</li>
+<li>پارامتر execution_type را می‌توان ارسال کرد که مقدار این پارامتر مشخص کننده‌ی نوع سفارشاتی است که نیاز به لغو شدند دارند. برای مثال اگر این پارامتر مقدار market داشته باشد‌، سفارشات از نوع market لغو خواهند شد.</li>
 </ol>
 
       </div>
