@@ -340,6 +340,7 @@ http GET https://api.nobitex.ir/market/orders/list \
 status | string | `open`                    | وضعیت سفارش                                                                             | `all` یا `open` یا `done` یا `close`
 type | string | تمام انواع سفارش          | نوع سفارش‌های مد نظر، خرید یا فروش                                                      | `sell` یا `buy`
 execution | string | تمام انواع سفارش گذاری‌ها | لیست سفارشات با نحوه سفارش‌گذاری مشخص                                                   | `limit`, `market`, `stop_limit`, `stop_market`
+tradeType | string | تمام انواع سفارش          | نوع سفارش اسپات یا فروش تعهدی                                                           | `spot` یا `margin`
 srcCurrency | string | تمام رمزارزها             | رمزارز مبدا                                                                             | `btc` یا `eth` یا `xrp` یا ...
 dstCurrency | string | تمام رمزارزها             | رمزارز مقصد                                                                             | `rls` یا `usdt`
 details | int | `1`                       | میزان جزئیات پاسخ، اعداد بزرگ‌تر تعداد فیلدهای بیشتری را از وضعیت هر سفارش بازمی‌گرداند | `1` یا `2`
@@ -364,6 +365,7 @@ orders | list of Order | فهرست سفارش‌های کاربر | `[{...Order
 ---- | ---- | ---- | ----
 type | string | نو ع خرید یا فروش سفارش | `buy` یا `sell`
 execution | string | نوع اجرای سفارش | `Limit` یا `Market` یا `StopMarket` یا `StopLimit`
+tradeType | string | نوع معامله سفارش         | `Spot` یا `Margin`
 srcCurrency | string | رمزارز مبدا سفارش | `Bitcoin` یا `Ethereum` یا `TRON` یا ...
 dstCurrency | string | رمزارز مقصد سفارش | `﷼` یا `Tether`
 price | monetary | قیمت ثبت شده برای سفارش | `2900000000` یا `market`
