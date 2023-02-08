@@ -10,6 +10,7 @@ includes:
   - market_trade
   - user_data
   - withdraw
+  - position
   - security
   - referral
   - auth
