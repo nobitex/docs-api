@@ -429,6 +429,38 @@
               </ul>
           </li>
           <li>
+            <a href="#2eab84587c" class="toc-h1 toc-link" data-title="فروش تعهدی">فروش تعهدی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#09e17dacd1" class="toc-h2 toc-link" data-title="مشاهده بازارهای فروش تعهدی">مشاهده بازارهای فروش تعهدی</a>
+                  </li>
+                  <li>
+                    <a href="#e89b27b30c" class="toc-h2 toc-link" data-title="مشاهده استخرهای مشارکت ارزی فعال">مشاهده استخرهای مشارکت ارزی فعال</a>
+                  </li>
+                  <li>
+                    <a href="#e593143468" class="toc-h2 toc-link" data-title="انتقال پول به کیف‌پول فروش تعهدی">انتقال پول به کیف‌پول فروش تعهدی</a>
+                  </li>
+                  <li>
+                    <a href="#3f24676a34" class="toc-h2 toc-link" data-title="دریافت محدودیت کاربری در مقدار وکالت">دریافت محدودیت کاربری در مقدار وکالت</a>
+                  </li>
+                  <li>
+                    <a href="#33299a25df" class="toc-h2 toc-link" data-title="درج سفارش فروش تعهدی">درج سفارش فروش تعهدی</a>
+                  </li>
+                  <li>
+                    <a href="#86d0280e1c" class="toc-h2 toc-link" data-title="مشاهده لیست موقعیت‌ها">مشاهده لیست موقعیت‌ها</a>
+                  </li>
+                  <li>
+                    <a href="#99b67fc9a0" class="toc-h2 toc-link" data-title="مشاهده یک موقعیت">مشاهده یک موقعیت</a>
+                  </li>
+                  <li>
+                    <a href="#efda61968d" class="toc-h2 toc-link" data-title="بستن موقعیت فروش تعهدی">بستن موقعیت فروش تعهدی</a>
+                  </li>
+                  <li>
+                    <a href="#9075c13bb8" class="toc-h2 toc-link" data-title="ویرایش وجه تضمین موقعیت باز">ویرایش وجه تضمین موقعیت باز</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#a5b0c55df6" class="toc-h1 toc-link" data-title="امنیت">امنیت</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1640,6 +1672,13 @@
 <td><code>limit</code>, <code>market</code>, <code>stop_limit</code>, <code>stop_market</code></td>
 </tr>
 <tr>
+<td>tradeType</td>
+<td>string</td>
+<td>تمام انواع سفارش</td>
+<td>نوع سفارش اسپات یا فروش تعهدی</td>
+<td><code>spot</code> یا <code>margin</code></td>
+</tr>
+<tr>
 <td>srcCurrency</td>
 <td>string</td>
 <td>تمام رمزارزها</td>
@@ -1716,6 +1755,12 @@
 <td>string</td>
 <td>نوع اجرای سفارش</td>
 <td><code>Limit</code> یا <code>Market</code> یا <code>StopMarket</code> یا <code>StopLimit</code></td>
+</tr>
+<tr>
+<td>tradeType</td>
+<td>string</td>
+<td>نوع معامله سفارش</td>
+<td><code>Spot</code> یا <code>Margin</code></td>
 </tr>
 <tr>
 <td>srcCurrency</td>
@@ -2520,6 +2565,13 @@
 <td>نوع کیف پول(ارز)، به صورت رشته ای از ارزهای جداشده با کاما</td>
 <td><code>rls,btc</code></td>
 </tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td><code>spot</code></td>
+<td>نوع کیف پول (اسپات یا فروش تعهدی)</td>
+<td><code>spot</code> یا <code>margin</code></td>
+</tr>
 </tbody></table>
 <h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
 <p>کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
@@ -3190,6 +3242,1203 @@
 <td>الزامی</td>
 <td>شناسه درخواست برداشت</td>
 <td>433</td>
+</tr>
+</tbody></table>
+<h1 id='2eab84587c'>فروش تعهدی</h1>
+<p>موقعیت فروش تعهدی امکان معامله وکالتی را برای کاربران فراهم می‌کند.
+استفاده از این ویژگی به منزله پذیرش <a href="https://nobitex.ir/position-terms/">شروط، قوانین و ضوابط فروش تعهدی</a> در نوبیتکس است.</p>
+
+<aside class="notice">
+این ویژگی در مرحله تست بتا قرار دارد.
+</aside>
+<h2 id='09e17dacd1'>مشاهده بازارهای فروش تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/margin/markets/list'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/margin/markets/list
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"markets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"BTCIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"positionFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"BTCUSDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"positionFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"DOGEIRT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doge"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"positionFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"DOGEUSDT"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doge"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"positionFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت بازارهای پشتیبانی شده برای معاملات فروش تعهدی از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /margin/markets/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در هر دقیقه</li>
+</ul>
+<h2 id='e89b27b30c'>مشاهده استخرهای مشارکت ارزی فعال</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/liquidity-pools/list'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/liquidity-pools/list
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"pools"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"btc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filledCapacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28.082343"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.879876"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ltc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filledCapacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"149.234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63.987"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"doge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"filledCapacity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"availableBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120890.34"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>استخرهای مشارکت موجودی مورد نیاز برای اعطای وکالت فروش تعهدی را تامین می‌کنند. ظرفیت مشارکت افراد در فروش تعهدی را موجودی استخرها تعیین می‌کنند. استخرها ممکن است در زمان‌هایی فعال و غیرفعال شوند. در استخرهای غیرفعال امکان ثبت سفارش فروش تعهدی وجود ندارد (اما بستن موقعیت همچنان میسر است).
+برای دریافت ظرفیت استخرهای فعال از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /liquidity-pools/list</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۲ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت وقوع خطا، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FeatureUnavailable"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShortSell feature is not activated for you"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+</tbody></table>
+<h2 id='e593143468'>انتقال پول به کیف‌پول فروش تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/wallets/transfer'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"currency": "rls", "amount": "2500000000", "src": "spot", "dst": "margin"}'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/liquidity-pools/list \
+  currency=rls&amp;amount=2500000000&amp;src=spot&amp;dst=margin
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"srcWallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">53456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1870000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"420000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1450000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1870000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1870000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"depositAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"depositTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"depositInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"FIAT_MONEY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dstWallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">86459</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blockedBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activeBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rialBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rialBalanceSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>وجوه تضمین قبل از دریافت وکالت فروش تعهدی باید در کیف‌پول فروش تعهدی قرار گیرند.
+برای انتقال موجودی میان دو کیف‌پول اسپات و فروش تعهدی از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /wallets/transfer</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز وجه تضمین</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار انتقال</td>
+<td><code>2500000000</code></td>
+</tr>
+<tr>
+<td>src</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع کیف‌پول مبدا</td>
+<td><code>spot</code> یا <code>margin</code></td>
+</tr>
+<tr>
+<td>dst</td>
+<td>string</td>
+<td>الزامی</td>
+<td>نوع کیف‌پول مقصد</td>
+<td><code>spot</code> یا <code>margin</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li>نوع کیف‌پول مبدا و مقصد نباید یکسان باشد.</li>
+<li>کیف‌پول فروش تعهدی ضمن اولین انتقال به آن ایجاد می‌شود.
+پس از آن موجودی این کیف‌پول را می‌توان از طریق <a href="/#1ff004071d">لیست کیف‌پول‌ها</a> مشاهده کرد.</li>
+</ol>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+<tr>
+<td>InvalidAmount</td>
+<td>مقدار نامعتبر است.</td>
+</tr>
+<tr>
+<td>SameDestination</td>
+<td>مبدا و مقصد از یک نوع (هر دو اسپات یا هر دو فروش تعهدی) است.</td>
+</tr>
+<tr>
+<td>WalletNotFound</td>
+<td>کیف‌پول فروش تعهدی برای ارزهای غیر از ریال و تتر وجود ندارد.</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>مقدار انتقال از موجودی آزاد کیف‌پول مبدا بیشتر است.</td>
+</tr>
+</tbody></table>
+<h2 id='3f24676a34'>دریافت محدودیت کاربری در مقدار وکالت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/margin/delegation-limit?currency=btc'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/margin/delegation-limit \
+  currency=btc
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.039062"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت سقف مقدار قابل استفاده در موقعیت فروش که متناسب با سطح کاربری است، از این درخواست استفاده کنید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /margin/delegation-limit</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۲ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز درخواستی برای اخذ وکالت (رمزارز مبدا بازار)</td>
+<td><code>btc</code> یا ...</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+<tr>
+<td>TradeLimitation</td>
+<td>کاربر سطح احراز کافی (حداقل سطح ۱) ندارد.</td>
+</tr>
+<tr>
+<td>UnsupportedMarginSrc</td>
+<td>رمزارز مبدا برای معاملات فروش تعهدی پشتیبانی نمی‌شود.</td>
+</tr>
+<tr>
+<td>MarginClosed</td>
+<td>امکان فروش تعهدی بسته شده یا باز نشده است.</td>
+</tr>
+</tbody></table>
+<h2 id='33299a25df'>درج سفارش فروش تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/margin/orders/add'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"srcCurrency": "btc", "dstCurrency": "rls", "amount": "0.01", "price": "6400000000"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/margin/orders/add \
+  srcCurrency=btc&amp;dstCurrency=rls&amp;amount=0.01&amp;price=6400000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Margin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalOrderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:13.592827+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای درج سفارش فروش تعهدی از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /margin/orders/add</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در هر ۱۰ دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مبدا بازار</td>
+<td><code>btc</code> یا  ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز مقصد بازار</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار مورد تقاضای وکالت</td>
+<td><code>0.01</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش گذاری</td>
+<td><code>640000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><a href="/#order">Order</a></td>
+<td>سفارش فروش تعهدی</td>
+<td><code>{&quot;id&quot;: 25, ...}</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<ol>
+<li>نوع اجرای سفارش با قیمت معین (<code>limit</code>) می‌باشد.</li>
+<li>سفارشات فروش تعهدی ثبت شده را می‌توان در <a href="/#a2ce8ff7e3">فهرست سفارش‌های کاربر</a> مشاهده کرد.</li>
+<li>بعد از پر شدن سفارش فروش تعهدی، موقعیت فروش تعهدی باز خواهد شد.</li>
+</ol>
+<h3 id='eec2b3e8e4-4'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+<tr>
+<td>TradeLimitation</td>
+<td>کاربر سطح احراز کافی (حداقل سطح ۱) ندارد.</td>
+</tr>
+<tr>
+<td>InvalidMarketPair</td>
+<td>زوج مبدا/مقصد بازار در میان بازارهای نوبیتکس وجود ندارد.</td>
+</tr>
+<tr>
+<td>MarketClosed</td>
+<td>بازار بسته شده یا هنوز باز نشده است.</td>
+</tr>
+<tr>
+<td>TradingUnavailable</td>
+<td>کاربر محدودیت معامله (از جانب پشتیبانی) دارد.</td>
+</tr>
+<tr>
+<td>UnsupportedMarginSrc</td>
+<td>رمزارز مبدا برای معاملات فروش تعهدی پشتیبانی نمی‌شود.</td>
+</tr>
+<tr>
+<td>MarginClosed</td>
+<td>امکان فروش تعهدی بسته شده یا باز نشده است.</td>
+</tr>
+<tr>
+<td>AmountUnavailable</td>
+<td>مقدار مورد تقاضا برای اخذ وکالت فروش در استخر موجود نیست.</td>
+</tr>
+<tr>
+<td>ExceedSellLimit</td>
+<td>مقدار از سقف مجاز فروش باقی‌مانده کاربر بیشتر است.</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>موجودی کیف‌پول فروش تعهدی کاربر برای تامین وجه تضمین به اندازه مبلغ کل سفارش کافی نیست.</td>
+</tr>
+<tr>
+<td>BadPrice</td>
+<td>قیمت سفارش نامعقول است. (مشابه درج سفارش اسپات)</td>
+</tr>
+<tr>
+<td>SmallOrder</td>
+<td>سفارش کوچک است و کمینه اندازه سفارش بازار را رعایت نکرده است. (مشابه درج سفارش اسپات)</td>
+</tr>
+</tbody></table>
+<h2 id='86d0280e1c'>مشاهده لیست موقعیت‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/positions/list?srcCurrency=btc&amp;status=active'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/positions/list \
+  srcCurrency=btc&amp;status=active
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:13.604420+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isolated Margin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collateral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"640000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:16.562038+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25174302690"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exitPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"delegatedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0300450676"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"totalAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"831712000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.9986"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liabilityInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"assetInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−576435"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−0.09"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-14T15:09:58.001901+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Closed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isolated Margin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collateral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2130"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-14T15:10:19.937801+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-17T18:39:52.890674+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38986.54"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21300"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19900"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"118.46"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.56"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست موقعیت‌های باز و تاریخچه موقعیت‌های پایان یافته از این درخواست استفاده کنید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /positions/list</code></li>
+<li><p><strong>محدودیت فراخوانی:</strong> ۳۰ درخواست در هر دقیقه</p></li>
+<li><p><strong><a href="/#pagination">صفحه‌بندی:</a></strong> دارد (پیش فرض ۵۰)</p></li>
+</ul>
+<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>همه</td>
+<td>رمزارز مبدا بازار</td>
+<td><code>btc</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>همه</td>
+<td>ارز مقصد بازار</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td><code>active</code></td>
+<td>وضعیت موقعیت</td>
+<td><code>active</code> یا <code>past</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>positions</td>
+<td>list of Position</td>
+<td>لیست موقعیت‌ها</td>
+<td><code>[{... Position ...}]</code></td>
+</tr>
+<tr>
+<td>hasNext</td>
+<td>boolean</td>
+<td>صفحه بعدی دارد؟</td>
+<td><code>false</code></td>
+</tr>
+</tbody></table>
+<h3 id='position'>شی Position</h3>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه‌ی موقعیت</td>
+<td>128</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>زمان درخواست وکالت (درج سفارش) فروش تعهدی</td>
+<td><code>2022-10-20T11:36:13.604420+00:00</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>رمزارز مبدا بازار</td>
+<td><code>btc</code> یا <code>eth</code> یا <code>trx</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>ارز مقصد بازار</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت</td>
+<td><code>Open</code> یا <code>Closed</code> یا <code>Liquidated</code> یا <code>Expired</code></td>
+</tr>
+<tr>
+<td>marginType</td>
+<td>string</td>
+<td>نوع تضمین سفارش</td>
+<td><code>Isolated Margin</code></td>
+</tr>
+<tr>
+<td>collateral</td>
+<td>monetary</td>
+<td>وجه تضمین بلوکه شده در کیف‌پول فروش تعهدی</td>
+<td><code>640000000</code></td>
+</tr>
+<tr>
+<td>openedAt</td>
+<td>string</td>
+<td>تاریخ باز شدن موقعیت</td>
+<td><code>2022-10-20T11:36:16.562038+00:00</code></td>
+</tr>
+<tr>
+<td>closedAt</td>
+<td>string</td>
+<td>تاریخ تسویه نهایی موقعیت</td>
+<td><code>2022-10-25T09:57:38.560820+00:00</code></td>
+</tr>
+<tr>
+<td>liquidationPrice</td>
+<td>monetary</td>
+<td>قیمت لیکوئید شدن موقعیت</td>
+<td><code>25174302690</code></td>
+</tr>
+<tr>
+<td>entryPrice</td>
+<td>monetary</td>
+<td>میانگین قیمت سفارش فروش تعهدی</td>
+<td><code>6400000000</code></td>
+</tr>
+<tr>
+<td>exitPrice</td>
+<td>monetary</td>
+<td>میانگین قیمت سفارش‌های خرید تعهد</td>
+<td><code>6200000000</code></td>
+</tr>
+<tr>
+<td>[ویژه موقعیت باز:]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>delegatedAmount</td>
+<td>monetary</td>
+<td>مقدار وکالت گرفته شده در لحظه (به رمزارز مبدا)</td>
+<td><code>0.03</code></td>
+</tr>
+<tr>
+<td>liability</td>
+<td>monetary</td>
+<td>تعهد خرید</td>
+<td><code>0.0300450676</code></td>
+</tr>
+<tr>
+<td>totalAsset</td>
+<td>monetary</td>
+<td>دارایی کلی (به رمزارز مقصد)</td>
+<td><code>831712000</code></td>
+</tr>
+<tr>
+<td>marginRatio</td>
+<td>decimal</td>
+<td>نسبت تعهد</td>
+<td><code>1.9986</code></td>
+</tr>
+<tr>
+<td>liabilityInOrder</td>
+<td>monetary</td>
+<td>بخشی از تعهد خرید که سفارش خرید باز دارد</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>assetInOrder</td>
+<td>monetary</td>
+<td>بخشی از دارایی کلی که در سفارش خرید باز بلوکه است</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>unrealizedPNL</td>
+<td>monetary</td>
+<td>سود و زیان محقق نشده/لحظه‌ای (به رمزارز مقصد)</td>
+<td><code>-576435</code></td>
+</tr>
+<tr>
+<td>unrealizedPNLPercent</td>
+<td>decimal</td>
+<td>درصد سود و زیان محقق نشده/لحظه‌ای</td>
+<td><code>−0.09</code></td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string</td>
+<td>تاریخ انقضای نهایی موقعیت فروش</td>
+<td><code>2022-11-20</code></td>
+</tr>
+<tr>
+<td>extensionFee</td>
+<td>monetary</td>
+<td>مقدار کارمزد تمدید در انتهای روز (به رمزارز مقصد)</td>
+<td><code>320000</code></td>
+</tr>
+<tr>
+<td>[ویژه موقعیت بسته:]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PNL</td>
+<td>monetary</td>
+<td>سود و زیان نهایی (به رمزارز مقصد)</td>
+<td><code>35584000</code></td>
+</tr>
+<tr>
+<td>PNLPercent</td>
+<td>decimal</td>
+<td>درصد سود و زیان نهایی</td>
+<td><code>5.56</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
+<ol>
+<li><strong>وضعیت</strong>: این پارامتر در ورودی بر دو قسم است:
+
+<ul>
+<li><code>active</code>: موقعیت‌های باز و تسویه نشده</li>
+<li><code>past</code>: موقعیت‌های بسته، لیکوئید و منقضی شده که تسویه شده باشد
+همچنین در خروجی بر چند مقدار است:<br></li>
+<li><code>Open</code>: باز -- همه یا بخشی از سفارش فروش تعهدی در بازار پر شده است.</li>
+<li><code>Closed</code>: بسته -- کاربر مقدار وکالت گرفته شده را بازپرداخت کرده است.</li>
+<li><code>Liquidated</code>: لیکویید شده</li>
+<li><code>Expired</code>: منقضی شده -- هر موقعیت از زمان ثبت سفارش اولیه حداکثر ۳۰ روز می‌تواند باز بماند.</li>
+</ul></li>
+<li><strong>نوع تضمین سفارش</strong>: بر دو قسم می‌تواند باشد.
+
+<ul>
+<li><code>Isolated Margin</code>: ضرر حداکثر به اندازه وجه تضمین موقعیت خواهد بود. -- پیش‌فرض</li>
+<li><code>Cross Margin</code>: ضرر حداکثر به اندازه تمام موجودی آزاد کیف‌پول فروش تعهدی خواهد بود. -- در آینده</li>
+</ul></li>
+<li><strong>تعهد خرید</strong>: مقدار وکالت گرفته شده + کارمزد سفارش خرید</li>
+<li><strong>دارایی کلی</strong>: مقدار وجه تضمین + باقی‌مانده وجه حاصل از فروش</li>
+<li><strong>نسبت تعهد</strong>:  نسبت اولیه آن ۲ و حداقل نسبت لازم برای لیکوئید نشدن ۱.۱ است.</li>
+<li>از زمان لیکویید/منقضی شدن یک موقعیت فروش باز تا زمان تسویه تعهد خرید با سفارش‌گذاری سیستمی و معامله در بازار،
+ممکنه است اندکی فاصله ایجاد شود. در این بازه، موقعیت لیکویید/منقضی شده به منزله موقعیت فعال باز می‌گردد.</li>
+</ol>
+<h3 id='eec2b3e8e4-5'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+</tbody></table>
+<h2 id='99b67fc9a0'>مشاهده یک موقعیت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/positions/128/status'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/positions/128/status
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:13.604420+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isolated Margin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collateral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"640000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:16.562038+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25174302690"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exitPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delegatedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0300450676"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"831712000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.9986"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liabilityInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−576435"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−0.09"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای مشاهده وضعیت یک موقعیت از این درخواست استفاده کنید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /positions/:positionId:/status</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در هر ۱۰ دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-5'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:positionId:</td>
+<td>url-param</td>
+<td>الزامی</td>
+<td>شناسه‌ی موقعیت</td>
+<td><code>128</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-3'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>position</td>
+<td><a href="/#position">Position</a></td>
+<td>موقعیت</td>
+<td><code>{&quot;id&quot;: 128, ...}</code></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-6'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+</tbody></table>
+<h2 id='efda61968d'>بستن موقعیت فروش تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/positions/128/close'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"amount": "0.0100150225", "price": "6200000000"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/positions/128/close \
+  amount=0.0100150225&amp;price=6200000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"execution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Margin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6200000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100150225"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalOrderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62093139"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"matchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unmatchedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0100150225"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-25T09:57:38.560820+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای بستن موقعیت فروش با درج سفارش خرید تعهد از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /positions/:positionId:/close</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۳۰۰ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-6'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:positionId:</td>
+<td>url-param</td>
+<td>الزامی</td>
+<td>شناسه‌ی موقعیت</td>
+<td><code>128</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار سفارش</td>
+<td><code>0.0100150225</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش</td>
+<td><code>6200000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-4'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><a href="/#order">Order</a></td>
+<td>سفارش خرید تعهد</td>
+<td><code>{&quot;id&quot;: 25, ...}</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
+<ol>
+<li>نوع اجرای سفارش با قیمت معین (<code>limit</code>) می‌باشد.</li>
+<li>سفارشات فروش تعهدی ثبت شده را می‌توان <a href="/#a2ce8ff7e3">فهرست سفارش‌های کاربر</a> مشاهده کرد.</li>
+<li>بعد از پر شدن سفارش خرید تعهد، موقعیت فروش تعهدی بسته و سود و زیان آن واریز خواهد شد.</li>
+<li>سفارش‌های خرید از دارایی کلی موقعیت تامین اعتبار می‌شوند. مقدار سفارش خرید (جهت بازپرداخت) باید شروط زیر را داشته باشد:
+
+<ul>
+<li>مجموع مقدار باز سفارشات خرید موقعیت از تعهد خرید بیشتر نباشد. (liability - liabilityInOrder)</li>
+<li>در صورتی که مقدار با همه تعهد خرید باقیمانده برابر نباشد --تسویه نهایی--، سفارش کوچک نباشد.
+(مثال: فرض کنید می‌خواهید ۰.۰۰۱ بیت‌کوین را با ارزش ۶۴۰ هزار تومان تسویه کنید و کف سفارش کوچک ۳۰۰ هزار تومان باشد.
+می‌توانید ۲ سفارش ۳۰۰ هزار تومانی خرید بگذارید. و در پایان برای ۴۰ هزار تومان باقیمانده سفارش کوچک بگذارید.
+اما نمی‌توانید سفارش‌های اولیه را کمتر از ۳۰۰ هزار تومان قرار دهد. -- مشابه تبدیل موجودی اندک در کیف پول)</li>
+<li>ارزش کل بخش باز سفارش‌های خرید (موجودی ضرب در قیمت) از دارایی کلی موقعیت فروش بیشتر نباشد. (totalAsset - assetInOrder)</li>
+</ul></li>
+<li>دقت کنید تعهد خرید حداکثر ۱۰ رقم دقت دارد که در زمان تسویه نهایی همه آن باید ارسال شود.</li>
+</ol>
+<h3 id='eec2b3e8e4-7'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+<tr>
+<td>TradeLimitation</td>
+<td>کاربر سطح احراز کافی (حداقل سطح ۱) ندارد.</td>
+</tr>
+<tr>
+<td>TradingUnavailable</td>
+<td>کاربر محدودیت معامله (از جانب پشتیبانی) دارد.</td>
+</tr>
+<tr>
+<td>NoOpenPosition</td>
+<td>موقعیت فروش فعالی با این شناسه وجود ندارد.</td>
+</tr>
+<tr>
+<td>ExceedLiability</td>
+<td>مقدار سفارش از تعهد خرید باقی‌مانده کاربر بیشتر است.</td>
+</tr>
+<tr>
+<td>ExceedTotalAsset</td>
+<td>ارزش کل سفارش از دارایی کلی آزاد کاربر بیشتر است.</td>
+</tr>
+<tr>
+<td>BadPrice</td>
+<td>قیمت سفارش نامعقول است. (مشابه درج سفارش اسپات)</td>
+</tr>
+<tr>
+<td>SmallOrder</td>
+<td>سفارش کوچک است و کمینه اندازه سفارش بازار را رعایت نکرده است. (مشابه درج سفارش اسپات)</td>
+</tr>
+</tbody></table>
+<h2 id='9075c13bb8'>ویرایش وجه تضمین موقعیت باز</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/positions/128/edit-collateral'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"collateral": "230000000"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/positions/128/edit-collateral \
+  collateral=230000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:13.604420+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isolated Margin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collateral"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"openedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-20T11:36:16.562038+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12230682570"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"entryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6400000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exitPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6100000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PNL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"delegatedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0200300451"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"257023981"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0340"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"liabilityInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetInOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23423565"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.18"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre></div>
+<p>برای کاهش یا افزایش وجه تضمین موقعیت باز خود از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /positions/:positionId:/edit-collateral</code></li>
+<li><strong>محدودیت فراخوانی:</strong> ۶۰ درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-7'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:positionId:</td>
+<td>url-param</td>
+<td>الزامی</td>
+<td>شناسه‌ی موقعیت</td>
+<td><code>128</code></td>
+</tr>
+<tr>
+<td>collateral</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>وجه تضمین جدید</td>
+<td><code>230000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-5'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>position</td>
+<td><a href="/#position">Position</a></td>
+<td>موقعیت فروش تعهدی</td>
+<td><code>{&quot;id&quot;: 25, ...}</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-5'>نکات و ملاحظات</h3>
+<ol>
+<li>در صورتی که موقعیت در سوددهی باشد (نسبت تعهد &gt; ۲)، کاربر می‌تواند مازاد وجه تضمین خود را تا نسبت ۲ از بلوکه در بیاورد. -- سود تنها زمان بسته شدن کامل موقعیت قابل دستیابی است. </li>
+<li>در صورتی که موقعیت فروش به نقطه لیکوئید شدن نزدیک باشد و کاربر بخواهد موقعیت خود (به امید کاهش قیمت) باز نگهدارد، می‌تواند با افزایش وجه تضمین خود، قیمت لیکوئید شدن خود را افزایش دهد.</li>
+</ol>
+<h3 id='eec2b3e8e4-8'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>FeatureUnavailable</td>
+<td>شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
+</tr>
+<tr>
+<td>TryAgainLater</td>
+<td>موقتا امکان تغییر وجه تضمین وجود ندارد.</td>
+</tr>
+<tr>
+<td>LowMarginRatio</td>
+<td>کاهش وجه تضمین کمتر از نسبت تعهد مجاز (=۲) است.</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>افزایش وجه تضمین بیشتر از موجودی أزاد کیف‌پول فروش تعهدی است.</td>
 </tr>
 </tbody></table>
 <h1 id='a5b0c55df6'>امنیت</h1><h2 id='e0478463ad'>سابقه ورود</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/login-attempts'</span> <span class="se">\</span>
