@@ -11,6 +11,7 @@ includes:
   - user_data
   - withdraw
   - position
+  - address_book
   - security
   - referral
   - auth
