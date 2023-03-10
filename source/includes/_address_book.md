@@ -24,13 +24,11 @@ https GET https://api.nobitex.ir/address_book
   "result": [
     {
       "title": "TetherBinance",
-      "address": "000000xxxxxxx111111111zzzzzzz",
-      "created_at": "2023-02-15T10:32:56+0000"
+      "address": "000000xxxxxxx111111111zzzzzzz"
     },
     {
       "title": "BinanceCoinOKX",
-      "address": "000000xxxxxxx222222222zzzzzzz",
-      "created_at": "2023-02-15T10:33:56+0000"
+      "address": "000000xxxxxxx222222222zzzzzzz"
     }
   ]
 }
@@ -44,7 +42,7 @@ https GET https://api.nobitex.ir/address_book
 ## اضافه کردن یک دفتر آدرس جدید
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/address_book/add' \
+curl -X POST 'https://api.nobitex.ir/address_book' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"address": "", "title": "", "otp": "", "totp": ""}'
@@ -62,13 +60,12 @@ http POST https://api.nobitex.ir/address_book/add
   "status": "ok",
   "data": {
     "title": "test",
-    "address": "test",
-    "created_at": "2023-03-04T15:34:44.629248+03:30"
+    "address": "test"
   }
 }
 ```
 
-- **درخواست:**: `POST /address_book/add`
+- **درخواست:**: `POST /address_book`
 - **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
@@ -96,18 +93,18 @@ http POST https://api.nobitex.ir/address_book/add
 }
 ```
 
-| کد خطا             | توضیحات                                                        |
-|--------------------|----------------------------------------------------------------|
-| ParseError         | نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است. |
-| TFAValidationError | مقدار tfa وارد شده نادرست است.                                 |
-| OTPValidationError | مقدار otp وارد شده نادرست است.                                 |
-| ValidationError    | tfa فعال نیست                                                  |
+| کد خطا      | توضیحات                                                        |
+|-------------|----------------------------------------------------------------|
+| ParseError  | نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است. |
+| InvalidOTP  | مقدار tfa وارد شده نادرست است.                                 |
+| Invalid2FA  | مقدار otp وارد شده نادرست است.                                 |
+| Inactive2FA | tfa فعال نیست                                                  |
 
 ## حذف یک دفتر آدرس
 
 ```shell
-curl 'https://api.nobitex.ir/address_b
-  -H "Authorization: Token yourTOKENhereHEX000000ook/<address_id>/delete' \0000" 
+curl 'https://api.nobitex.ir/address_book/<address_id>/delete
+  -H "Authorization: Token yourTOKENhereHEX000000ook' \0000" 
   
 ```
 
@@ -207,9 +204,9 @@ https POST https://api.nobitex.ir/address_book/whitelist/deactivate
 }
 ```
 
-| کد خطا             | توضیحات                                                        |
-|--------------------|----------------------------------------------------------------|
-| ParseError         | نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است. |
-| TFAValidationError | مقدار tfa وارد شده نادرست است.                                 |
-| OTPValidationError | مقدار otp وارد شده نادرست است.                                 |
-| ValidationError    | tfa فعال نیست                                                  |
+| کد خطا      | توضیحات                                                        |
+|-------------|----------------------------------------------------------------|
+| ParseError  | نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است. |
+| InvalidOTP  | مقدار tfa وارد شده نادرست است.                                 |
+| Invalid2FA  | مقدار otp وارد شده نادرست است.                                 |
+| Inactive2FA | tfa فعال نیست                                                  |
