@@ -2,10 +2,11 @@
 
 دفتر آدرس (address book) و حالت برداشت امن (whitelist mode)
 به منظور ارتقاء امنیت و سرعت برداشت رمزارز کاربران پیاده سازی می شود و امکان تعریف آدرس های برداشت از پیش تعیین
-و تأیید شده را در آدرس بوک برای کاربر فراهم می آورد. در صورتی که وایت لیست فعال باشد امکان برداشت به آدرس های غیر وجود
+و تأیید شده را در دفتر آدرس برای کاربر فراهم می آورد. در صورتی که حالت برداشت امن فعال باشد امکان برداشت به آدرس‌های غیر
+وجود
 نخواهد داشت.
 
-## مشاهده لیست دفتر آدرس ها
+## مشاهده لیست آدرس‌های دفتر آدرس
 
 ```shell
 curl 'https://api.nobitex.ir/address_book' \
@@ -39,18 +40,19 @@ https GET https://api.nobitex.ir/address_book
 - **درخواست:**: `GET /address_book`
 - **محدودیت فراخوانی:** 20 درخواست در هر دقیقه
 
-## اضافه کردن یک دفتر آدرس جدید
+## اضافه کردن آدرس جدید به دفتر آدرس
 
 ```shell
 curl -X POST 'https://api.nobitex.ir/address_book' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"address": "", "title": "", "otp": "", "totp": ""}'
+  --data '{"address": "000000xxxxxxx111111111zzzzzzz", "title": "test", "otpCode": "1234",
+   "tfaCode": "123"}'
   
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/address_book/add
+http POST https://api.nobitex.ir/address_book
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -60,7 +62,7 @@ http POST https://api.nobitex.ir/address_book/add
   "status": "ok",
   "data": {
     "title": "test",
-    "address": "test"
+    "address": "000000xxxxxxx111111111zzzzzzz"
   }
 }
 ```
@@ -70,12 +72,12 @@ http POST https://api.nobitex.ir/address_book/add
 
 ### پارامترهای ورودی
 
-| پارامتر | نوع    | پیش‌فرض | توضیحات                | نمونه             |
-|---------|--------|---------|------------------------|-------------------|
-| title   | string | الزامی  | عنوان آدرس             | `test`            |
-| address | string | الزامی  | آدرس                   | `www.tma.com/bit` |
-| otpCode | string | الزامی  | کد تأیید ایمیل و پیامک | `1235`            |
-| tfaCode | string | الزامی  | کد تأیید دوعاملی       | `1234`            |
+| پارامتر | نوع    | پیش‌فرض | توضیحات                | نمونه                           |
+|---------|--------|---------|------------------------|---------------------------------|
+| title   | string | الزامی  | عنوان آدرس             | `test`                          |
+| address | string | الزامی  | آدرس                   | `000000xxxxxxx111111111zzzzzzz` |
+| otpCode | string | الزامی  | کد تأیید ایمیل و پیامک | `1234`                          |
+| tfaCode | string | الزامی  | کد تأیید دوعاملی       | `123`                           |
 
 ### نکات و ملاحظات
 
@@ -104,7 +106,7 @@ http POST https://api.nobitex.ir/address_book/add
 
 ```shell
 curl 'https://api.nobitex.ir/address_book/<address_id>/delete
-  -H "Authorization: Token yourTOKENhereHEX000000ook' \0000" 
+  -H "Authorization: Token yourTOKENhereHEX000000ook'" 
   
 ```
 
@@ -135,9 +137,9 @@ https DELETE /address_book/<address_id>/delete
 }
 ```
 
-| کد خطا   | توضیحات                         |
-|----------|---------------------------------|
-| NotFound | آدرس بوکی با این id وجود ندارد. |
+| کد خطا   | توضیحات                        |
+|----------|--------------------------------|
+| NotFound | آدرسی با این شناسه وجود ندارد. |
 
 ## فعال کردن برداشت امن
 
@@ -167,7 +169,7 @@ https POST https://api.nobitex.ir/address_book/whitelist/activate
 curl 'https://api.nobitex.ir/address_book/whitelist/deactivate' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" 
   -H "content-type: application/json" \
-  --data '{"otpCode": "", "tfaCode": ""}'
+  --data '{"otpCode": "1234", "tfaCode": "12345"}'
 ```
 
 ```plaintext
@@ -187,10 +189,10 @@ https POST https://api.nobitex.ir/address_book/whitelist/deactivate
 
 ### پارامترهای ورودی
 
-| پارامتر | نوع    | توضیحات                |
-|---------|--------|------------------------|
-| otpCode | string | کد تأیید ایمیل و پیامک |
-| tfaCode | string | کد تأیید دوعاملی       |
+| پارامتر | نوع    | پیش‌فرض | توضیحات                | نمونه   |
+|---------|--------|---------|------------------------|---------|
+| otpCode | string | الزامی  | کد تأیید ایمیل و پیامک | `1234`  |
+| tfaCode | string | الزامی  | کد تأیید دوعاملی       | `12345` |
 
 ### حالت‌های خطا
 
