@@ -461,6 +461,26 @@
               </ul>
           </li>
           <li>
+            <a href="#81680ab360" class="toc-h1 toc-link" data-title="دفتر آدرس و حالت برداشت امن">دفتر آدرس و حالت برداشت امن</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#0622709577" class="toc-h2 toc-link" data-title="مشاهده لیست آدرس‌های دفتر آدرس">مشاهده لیست آدرس‌های دفتر آدرس</a>
+                  </li>
+                  <li>
+                    <a href="#24bc19da56" class="toc-h2 toc-link" data-title="اضافه کردن آدرس جدید به دفتر آدرس">اضافه کردن آدرس جدید به دفتر آدرس</a>
+                  </li>
+                  <li>
+                    <a href="#a15902df35" class="toc-h2 toc-link" data-title="حذف یک دفتر آدرس">حذف یک دفتر آدرس</a>
+                  </li>
+                  <li>
+                    <a href="#de54f7f0fe" class="toc-h2 toc-link" data-title="فعال کردن برداشت امن">فعال کردن برداشت امن</a>
+                  </li>
+                  <li>
+                    <a href="#352e9e780b" class="toc-h2 toc-link" data-title="غیرفعال کردن برداشت امن">غیرفعال کردن برداشت امن</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#a5b0c55df6" class="toc-h1 toc-link" data-title="امنیت">امنیت</a>
               <ul class="toc-list-h2">
                   <li>
@@ -4439,6 +4459,269 @@
 <tr>
 <td>InsufficientBalance</td>
 <td>افزایش وجه تضمین بیشتر از موجودی أزاد کیف‌پول فروش تعهدی است.</td>
+</tr>
+</tbody></table>
+<h1 id='81680ab360'>دفتر آدرس و حالت برداشت امن</h1>
+<p>دفتر آدرس (address book) و حالت برداشت امن (whitelist mode)
+به منظور ارتقاء امنیت و سرعت برداشت رمزارز کاربران پیاده سازی می شود و امکان تعریف آدرس‌های برداشت از پیش تعیین
+و تأیید شده را در دفتر آدرس برای کاربر فراهم می آورد. در صورتی که حالت برداشت امن فعال باشد امکان برداشت به آدرس‌های غیر
+وجود
+نخواهد داشت.</p>
+<h2 id='0622709577'>مشاهده لیست آدرس‌های دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https GET https://api.nobitex.ir/address_book
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TetherBinance"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BinanceCoinOKX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx222222222zzzzzzz"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت دفتر آدرس از این درخواست استفاده نمایید.</p>
+
+<ul>
+<li><strong>درخواست:</strong>: <code>GET /address_book</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 20 درخواست در هر دقیقه</li>
+</ul>
+<h2 id='24bc19da56'>اضافه کردن آدرس جدید به دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/address_book'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"address": "000000xxxxxxx111111111zzzzzzz", "title": "test", "otpCode": "1234",
+   "tfaCode": "123"}'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/address_book
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /address_book</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>الزامی</td>
+<td>عنوان آدرس</td>
+<td><code>test</code></td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>الزامی</td>
+<td>آدرس</td>
+<td><code>000000xxxxxxx111111111zzzzzzz</code></td>
+</tr>
+<tr>
+<td>otpCode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد تأیید ایمیل و پیامک</td>
+<td><code>1234</code></td>
+</tr>
+<tr>
+<td>tfaCode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد تأیید دوعاملی</td>
+<td><code>123</code></td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<ol>
+<li>مقدار آدرس نمی تواند تکراری باشد.</li>
+</ol>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ParseError</td>
+<td>نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است.</td>
+</tr>
+<tr>
+<td>InvalidOTP</td>
+<td>مقدار tfa وارد شده نادرست است.</td>
+</tr>
+<tr>
+<td>Invalid2FA</td>
+<td>مقدار otp وارد شده نادرست است.</td>
+</tr>
+<tr>
+<td>Inactive2FA</td>
+<td>tfa فعال نیست</td>
+</tr>
+<tr>
+<td>DuplicatedAddress</td>
+<td>آدرس قبلا ثبت شده و تکراری می باشد.</td>
+</tr>
+</tbody></table>
+<h2 id='a15902df35'>حذف یک دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book/&lt;address_id&gt;/delete
+  -H "Authorization: Token yourTOKENhereHEX000000ook'</span><span class="s2">" 
+
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https DELETE /address_book/&lt;address_id&gt;/delete
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong>: <code>DELETE /address_book/&lt;address_id&gt;/delete</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
+</ul>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NotFound</td>
+<td>آدرسی با این شناسه وجود ندارد.</td>
+</tr>
+</tbody></table>
+<h2 id='de54f7f0fe'>فعال کردن برداشت امن</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/address_book/whitelist/activate'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https POST https://api.nobitex.ir/address_book/whitelist/activate
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /address_book/address_book/whitelist/activate</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
+</ul>
+<h2 id='352e9e780b'>غیرفعال کردن برداشت امن</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book/whitelist/deactivate'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
+  <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"otpCode": "1234", "tfaCode": "12345"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https POST https://api.nobitex.ir/address_book/whitelist/deactivate
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>درخواست:</strong>: <code>POST /address_book/address_book/whitelist/deactivate</code></li>
+<li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>otpCode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد تأیید ایمیل و پیامک</td>
+<td><code>1234</code></td>
+</tr>
+<tr>
+<td>tfaCode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>کد تأیید دوعاملی</td>
+<td><code>12345</code></td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<blockquote>
+<p>در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ErrorCode"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human readable error message"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ParseError</td>
+<td>نوع یا شرط الزامی بودن یکی از پارامترهای ورودی رعایت نشده است.</td>
+</tr>
+<tr>
+<td>InvalidOTP</td>
+<td>مقدار tfa وارد شده نادرست است.</td>
+</tr>
+<tr>
+<td>Invalid2FA</td>
+<td>مقدار otp وارد شده نادرست است.</td>
+</tr>
+<tr>
+<td>Inactive2FA</td>
+<td>tfa فعال نیست</td>
 </tr>
 </tbody></table>
 <h1 id='a5b0c55df6'>امنیت</h1><h2 id='e0478463ad'>سابقه ورود</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/login-attempts'</span> <span class="se">\</span>
