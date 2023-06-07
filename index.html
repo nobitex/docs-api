@@ -3625,6 +3625,13 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>execution</td>
+<td>string</td>
+<td><code>limit</code></td>
+<td>نحوه‌ی اجرای سفارش</td>
+<td><code>limit</code> یا ...</td>
+</tr>
+<tr>
 <td>srcCurrency</td>
 <td>string</td>
 <td>الزامی</td>
@@ -3650,7 +3657,14 @@
 <td>monetary</td>
 <td>الزامی</td>
 <td>قیمت سفارش گذاری</td>
-<td><code>640000000</code></td>
+<td><code>13400000000</code></td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>اختیاری</td>
+<td>قیمت توقف در حد ضرر</td>
+<td><code>12600000000</code></td>
 </tr>
 </tbody></table>
 <h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
@@ -3669,11 +3683,99 @@
 <td><code>{&quot;id&quot;: 25, ...}</code></td>
 </tr>
 </tbody></table>
+<h3 id='oco'>سفارش OCO</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>حالت سفارش</td>
+<td><code>oco</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>رمزارز مبدا بازار</td>
+<td><code>btc</code> یا  ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>الزامی</td>
+<td>ارز مقصد بازار</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار مورد تقاضای وکالت</td>
+<td><code>0.01</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش گذاری</td>
+<td><code>13400000000</code></td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت توقف سفارش حد ضرر</td>
+<td><code>12600000000</code></td>
+</tr>
+<tr>
+<td>stopLimitPrice</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش حد ضرر</td>
+<td><code>12610000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='oco-2'>پارامترهای پاسخ OCO</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orders</td>
+<td>list of <a href="/#order">Order</a></td>
+<td>سفارش OCO تعهدی</td>
+<td><code>[{&quot;id&quot;: 25, ...}, {&quot;id&quot;: 26, ...}]</code></td>
+</tr>
+</tbody></table>
 <h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
 <ol>
-<li>نوع اجرای سفارش با قیمت معین (<code>limit</code>) می‌باشد.</li>
+<li>نوع اجرای سفارش یکی از موارد زیر می‌باشد:
+
+<ul>
+<li><code>limit</code>: با قیمت معین</li>
+<li><code>market</code>: با قیمت بازار</li>
+<li><code>stop_limit</code>: حد ضرر با قیمت معین</li>
+<li><code>stop_market</code>: حد ضرر با قیمت بازار</li>
+</ul></li>
 <li>سفارشات فروش تعهدی ثبت شده را می‌توان در <a href="/#a2ce8ff7e3">فهرست سفارش‌های کاربر</a> مشاهده کرد.</li>
 <li>بعد از پر شدن سفارش فروش تعهدی، موقعیت فروش تعهدی باز خواهد شد.</li>
+<li>شرط قیمت سفارش OCO:
+
+<ul>
+<li>price &gt; آخرین قیمت بازار &gt; stopPrice و stopLimitPrice</li>
+</ul></li>
 </ol>
 <h3 id='eec2b3e8e4-4'>حالت‌های خطا</h3>
 <blockquote>
@@ -3701,7 +3803,7 @@
 </tr>
 <tr>
 <td>TradeLimitation</td>
-<td>کاربر سطح احراز کافی (حداقل سطح ۱) ندارد.</td>
+<td>کاربر سطح احراز کافی (بالاتر از سطح ۱) ندارد.</td>
 </tr>
 <tr>
 <td>InvalidMarketPair</td>
@@ -3742,6 +3844,14 @@
 <tr>
 <td>SmallOrder</td>
 <td>سفارش کوچک است و کمینه اندازه سفارش بازار را رعایت نکرده است. (مشابه درج سفارش اسپات)</td>
+</tr>
+<tr>
+<td>PriceConditionFailed</td>
+<td>شرط قیمت میان پارامترهای قیمتی و قیمت بازار در سفارش لحاظ نشده است. (مشابه اسپات)</td>
+</tr>
+<tr>
+<td>DuplicateOrder</td>
+<td>سفارشی با همین مشخصات توسط شما در بازه زمانی ده ثانیه اخیر ارسال شده است. (مشابه اسپات)</td>
 </tr>
 </tbody></table>
 <h2 id='86d0280e1c'>مشاهده لیست موقعیت‌ها</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/positions/list?srcCurrency=btc&amp;status=active'</span> <span class="se">\</span>
@@ -4034,7 +4144,7 @@
 <ul>
 <li><code>active</code>: موقعیت‌های باز و تسویه نشده</li>
 <li><code>past</code>: موقعیت‌های بسته، لیکوئید و منقضی شده که تسویه شده باشد
-همچنین در خروجی بر چند مقدار است:<br></li>
+<br/>همچنین در خروجی بر چند مقدار است:</li>
 <li><code>Open</code>: باز -- همه یا بخشی از سفارش فروش تعهدی در بازار پر شده است.</li>
 <li><code>Closed</code>: بسته -- کاربر مقدار وکالت گرفته شده را بازپرداخت کرده است.</li>
 <li><code>Liquidated</code>: لیکویید شده</li>
@@ -4231,6 +4341,13 @@
 <td><code>128</code></td>
 </tr>
 <tr>
+<td>execution</td>
+<td>string</td>
+<td><code>limit</code></td>
+<td>نحوه‌ی اجرای سفارش</td>
+<td><code>limit</code> یا ...</td>
+</tr>
+<tr>
 <td>amount</td>
 <td>monetary</td>
 <td>الزامی</td>
@@ -4242,7 +4359,14 @@
 <td>monetary</td>
 <td>الزامی</td>
 <td>قیمت سفارش</td>
-<td><code>6200000000</code></td>
+<td><code>12600000000</code></td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>اختیاری</td>
+<td>قیمت توقف در حد ضرر</td>
+<td><code>12600000000</code></td>
 </tr>
 </tbody></table>
 <h3 id='b5a1caf9af-4'>پارامترهای پاسخ</h3>
@@ -4261,9 +4385,92 @@
 <td><code>{&quot;id&quot;: 25, ...}</code></td>
 </tr>
 </tbody></table>
+<h3 id='oco-3'>سفارش OCO</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:positionId:</td>
+<td>url-param</td>
+<td>الزامی</td>
+<td>شناسه‌ی موقعیت</td>
+<td><code>128</code></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>الزامی</td>
+<td>حالت سفارش</td>
+<td><code>oco</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار سفارش</td>
+<td><code>0.0100150225</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش</td>
+<td><code>12600000000</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش گذاری</td>
+<td><code>13400000000</code></td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت توقف سفارش حد ضرر</td>
+<td><code>13600000000</code></td>
+</tr>
+<tr>
+<td>stopLimitPrice</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>قیمت سفارش حد ضرر</td>
+<td><code>13610000000</code></td>
+</tr>
+</tbody></table>
+<h3 id='oco-4'>پارامترهای پاسخ OCO</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orders</td>
+<td>list of <a href="/#order">Order</a></td>
+<td>سفارش خرید تعهد</td>
+<td><code>[{&quot;id&quot;: 25, ...}, {&quot;id&quot;: 26, ...}]</code></td>
+</tr>
+</tbody></table>
 <h3 id='2f74b9d52e-4'>نکات و ملاحظات</h3>
 <ol>
-<li>نوع اجرای سفارش با قیمت معین (<code>limit</code>) می‌باشد.</li>
+<li>نوع اجرای سفارش یکی از موارد زیر می‌باشد:
+
+<ul>
+<li><code>limit</code>: با قیمت معین</li>
+<li><code>market</code>: با قیمت بازار</li>
+<li><code>stop_limit</code>: حد ضرر با قیمت معین</li>
+<li><code>stop_market</code>: حد ضرر با قیمت بازار</li>
+</ul></li>
 <li>سفارشات فروش تعهدی ثبت شده را می‌توان <a href="/#a2ce8ff7e3">فهرست سفارش‌های کاربر</a> مشاهده کرد.</li>
 <li>بعد از پر شدن سفارش خرید تعهد، موقعیت فروش تعهدی بسته و سود و زیان آن واریز خواهد شد.</li>
 <li>سفارش‌های خرید از دارایی کلی موقعیت تامین اعتبار می‌شوند. مقدار سفارش خرید (جهت بازپرداخت) باید شروط زیر را داشته باشد:
@@ -4277,6 +4484,11 @@
 <li>ارزش کل بخش باز سفارش‌های خرید (موجودی ضرب در قیمت) از دارایی کلی موقعیت فروش بیشتر نباشد. (totalAsset - assetInOrder)</li>
 </ul></li>
 <li>دقت کنید تعهد خرید حداکثر ۱۰ رقم دقت دارد که در زمان تسویه نهایی همه آن باید ارسال شود.</li>
+<li>شرط قیمت سفارش OCO:
+
+<ul>
+<li>price &lt; آخرین قیمت بازار &lt; stopPrice و stopLimitPrice</li>
+</ul></li>
 </ol>
 <h3 id='eec2b3e8e4-7'>حالت‌های خطا</h3>
 <blockquote>
@@ -4329,6 +4541,10 @@
 <tr>
 <td>SmallOrder</td>
 <td>سفارش کوچک است و کمینه اندازه سفارش بازار را رعایت نکرده است. (مشابه درج سفارش اسپات)</td>
+</tr>
+<tr>
+<td>PriceConditionFailed</td>
+<td>شرط قیمت میان پارامترهای قیمتی و قیمت بازار در سفارش لحاظ نشده است. (مشابه اسپات)</td>
 </tr>
 </tbody></table>
 <h2 id='9075c13bb8'>ویرایش وجه تضمین موقعیت باز</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/positions/128/edit-collateral'</span> <span class="se">\</span>
