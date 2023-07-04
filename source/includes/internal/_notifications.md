@@ -98,13 +98,6 @@ curl --location 'https://api.nobitex.ir/notifications/read' \
 --data '{"id":"234,345"}'
 ```
 
-```javascript
-api.get('notifications/read', {id: '234,345'}, {
-  headers: {Authorization: 'Token yourTOKENhereHEX0000000000'},
-}).then((response) => {
-  console.log(response);
-});
-```
 
 ```java
 public interface APIService {
