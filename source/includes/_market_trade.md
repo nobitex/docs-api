@@ -7,12 +7,12 @@ curl 'https://api.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000}'
+  --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000,"clientOrderId":"order1"}'
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/market/orders/add \
-  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000
+  type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000 clientOrderId=order1
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -34,6 +34,7 @@ http POST https://api.nobitex.ir/market/orders/add \
     "partial": false,
     "fee": 0,
     "created_at": "2018-11-28T11:36:13.592827+00:00",
+    "clientOrderId": "order1",
   }
 }
 ```
@@ -57,6 +58,7 @@ http POST https://api.nobitex.ir/market/orders/add \
 | dstCurrency | string   | الزامی | رمزارز مقصد        | `rls` یا `usdt`                                   |
 | amount      | monetary | الزامی | مقدار رمزارز (حجم) | `0.0623`                                          |
 | price       | monetary | الزامی | قیمت واحد          | `1210000000`                                      |
+| clientOrderId       | string | `null` | شناسه سفارش کاربر، تا ۳۲ کاراکتر،‌ یکتا  برای هر کاربر و در میان سفارش های open/active/inactive (آزمایشی)          | `order1`                                      |
 
 
 > نمونه سفارش حد ضرر:
@@ -66,12 +68,12 @@ curl 'https://api.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500}'
+  --data '{"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500,"clientOrderId":"order1"}'
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/market/orders/add \
-  type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500
+  type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500 clientOrderId=order1
 ```
 
 ```json
@@ -96,6 +98,7 @@ http POST https://api.nobitex.ir/market/orders/add \
     "fee": 0,
     "created_at": "2022-01-17T12:14:18.005896+00:00",
     "averagePrice": "0",
+    "clientOrderId": "order1",
   }
 }
 ```
@@ -119,12 +122,12 @@ curl 'https://api.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}'
+  --data '{"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715,"clientOrderId":"order1"}'
 ```
 
 ```plaintext
 http POST https://api.nobitex.ir/market/orders/add \
-  type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715
+  type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715 clientOrderId=order1
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -149,6 +152,7 @@ http POST https://api.nobitex.ir/market/orders/add \
       "status": "Active",
       "created_at": "2022-04-10T10:12:38.402795+00:00",
       "pairId": 28,
+      "clientOrderId": "order1"
     },
     {
       "id": 28,
@@ -167,6 +171,7 @@ http POST https://api.nobitex.ir/market/orders/add \
       "status": "Inactive",
       "created_at": "2022-04-10T10:12:38.402795+00:00",
       "pairId": 27,
+      "clientOrderId": null
     }
   ]
 }
@@ -222,13 +227,16 @@ InvalidMarketPair | رمزارز مبدا (srcCurrency) یا رمزارز مقص
 MarketClosed | بازار مد نظر در حال حاضر به صورت موقت بسته است.
 TradingUnavailable | کاربر اجازه‌ی معامله ندارد، فرآیند احراز هویت خود را تکمیل نمایید.
 FeatureUnavailable | شما از کاربران مجاز به استفاده از امکانات آزمایشی نیستید.
+DuplicateClientOrderId | شناسه سفارش کاربر تکراری است (برای هر کاربر در لحطه فقط یه سفارش open/active/inactive با یک شماره سفارش ممکن است).
 
 ### نکات و ملاحظات
 1. **واحدها:** واحد قیمت در بازارهای ریالی به ریال (و نه تومان) می‌باشد. واحد قیمت در بازارهای تتری نیز تتر می‌باشد. واحد پارامتر مقدار (amount) بر حسب رمزارز مبدا (srcCurrency) است.
 1. **سفارش مارکت:** برای ثبت سفارش سریع (سفارش مارکت، سفارش به قیمت بازار)، مقدار پارامتر `execution` را برابر `market` ارسال نمایید. منظور از سفارش مارکت سفارشی است که کاربر درخواست دارد تا به بهترین قیمت موجود بازار مورد انجام قرار گیرد. [ℹB](https://www.binance.vision/tutorials/what-is-a-market-order) - [ℹI](https://www.investopedia.com/terms/m/marketorder.asp)
 1. **تعیین محدوده مورد انتظار قیمت:** در سفارش‌های مارکت به شدت توصیه می‌شود که پارامتر `price` را نیز مشخص نمایید. این پارامتر در سفارش مارکت تخمین شما از قیمت بازار را نمایش می‌دهد و باعث می‌شود سفارش شما تنها تا جایی پر شود که قیمت معامله در بازه‌ی قیمتی مشخص شده باشد. برای نمونه اگر نوع سفارش خرید مارکت باشد و قیمت ۱۰۰ میلیون تومان تعیین شود، تنها تا جایی در بازار range کشیده می‌شود که قیمت زیر ۱۰۱ میلیون تومان باشد. برای پیش‌گیری از معاملات با قیمت ناخواسته به علت نوسانات دفعی بازار، پیشنهاد می‌شود که حتماً قیمت تقریبی مد نظر خود را در سفارش‌های مارکت نیز ارسال کنید. با این حال اگر اطمینان به کد خود و تبعات احتمالی این موضوع دارید، می‌توانید پارامتر `price` را اصلاً ارسال ننمایید که در این شرایط معامله با قیمت لحظه‌ای بازار جهانی، به هر میزان که باشد تا بازه نوسان ۱٪، انجام خواهد شد.
 1. **دقت مقادیر پولی (monetary):** نوع monetary که در پارامترهای `amount` و `price` به کار می‌رود، بسته به بازار هر رمزارز، تعداد رقم اعشار متغیری بین ۰ تا ۸ رقم دارد. در صورت ارسال مقادیر با ارقام اعشاری بیشتر، ارقام بی‌معنی در مقدار به پایین و در قیمت به روش بانکداری گرد خواهند شد.<br>[مشاهده جدول دقت‌ها](https://nobitex.ir/policies/markets/ "بازارهای رمزارزی نوبیتکس")
+1. **clientOrderId**: دقت کنید که این پارامتر برای هر کاربر در میان سفارش های open/active/inactive یکتاست.
 1. **سفارش تکراری:** برای جلوگیری از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور، در صورتی که دو یا چند سفارش با پارامترهای ورودی کاملاً مشابه از جمله نوع و قیمت و مقدار، در بازه‌ی زمانی کمتر از ده ثانیه ارسال نمایید، تنها سفارش اول پذیرفته می‌شود و باقی درخواست‌های مشابه تا ده ثانیه پیام خطای `DuplicateOrder` دریافت می‌کنند. (غیرفعال در حالت Pro)
+توصیه می‌شود در صورت استفاده از این حالت Pro حتما از پارامتر `clientOrderId` استفاده نمایید تا از ثبت سفارش تکراری ناشی از اختلالات شبکه و سرور جلوگیری نماید.
 
 ## مشاهده وضعیت سفارش
 
@@ -265,6 +273,7 @@ http POST https://api.nobitex.ir/market/orders/status \
         "isMyOrder": false,
         "status": "Active",
         "amount": "3.0000000000",
+        "clientOrderId": "order1"
     }
 }
 ```
@@ -278,8 +287,16 @@ http POST https://api.nobitex.ir/market/orders/status \
 
 پارامتر     | نوع    | پیش‌فرض   |   توضیحات     |  نمونه
 -----------   | ----   | ------   |   ---------   | -----
-id            | int    |  الزامی  |     شناسه سفارش | `5684`
+id            | int    |  اختیاری  |     شناسه سفارش | `5684`
+clientOrderId | string |   اختیاری  |     شناسه سفارش کاربر (آزمایشی) | `order1`
 
+
+### نکات و ملاحظات
+
+1. حتما باید حداقل یکی از دو پارامتر ‍`order` و `clientOrderId` ارسال شوند.
+2. اگر هر دو پارامتر ‍`order` و `clientOrderId`  ارسال شوند، اولویت با `id` است.
+3. `clientOrderId` فقط در میان سفارشات open/active/inactive جستجو میشود.
+4. `clientOrderId` .در حالت آزمایشی است و ممکن است در آینده تغییر کند
 
 **انواع مقادیر `status`:**
 
@@ -291,6 +308,22 @@ id            | int    |  الزامی  |     شناسه سفارش | `5684`
   * مقدار سفارش کافی در بازار در بازه ۱٪ قیمت تعیین شده برای پر کردن سفارش وجود نداشته است.
   * موجودی کیف پول کاربر از طریق سایر تراکنش‌ها کاهش یافته است و از موجودی لازم برای پر شدن معامله کمتر شده است.
 
+
+### حالت‌های خطا
+
+> در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ErrorCode",
+  "message": "Human readable error message"
+}
+```
+
+کد خطا  |  توضیحات
+-------- | ---------
+NullIdAndClientOrderId |  باید یکی از دو پارامتر `id` و `clientOrderId`  ارسال شود
 
 ## فهرست سفارش‌های کاربر
 
@@ -323,6 +356,7 @@ http GET https://api.nobitex.ir/market/orders/list \
       "matchedAmount": "0E-10",
       "averagePrice": "0",
       "fee": "0E-10",
+      "clientOrderId": "order1"
     }
   ]
 }
@@ -420,16 +454,40 @@ http POST https://api.nobitex.ir/market/orders/update-status \
 
 ###پارامترهای ورودی
 
-پارامتر     | نوع    | پیش‌فرض   |   توضیحات     | نمونه
------------ | ----   | ------   |   ---------   | -----
-order       | int    |  الزامی  |     شناسه سفارش | `5684`
-status      | string |  الزامی  |    وضعیت جدید   | `canceled`
+پارامتر     | نوع    | پیش‌فرض   |   توضیحات     |         نمونه
+-----------   |  -----------  | ------   |   ---------   | -----
+order         | int           |  اختیاری  |     شناسه سفارش | `5684`
+clientOrderId | string        |  اختیاری  |     شناسه سفارش کاربر (آزمایشی) | `order1`
+status        | string        |  الزامی  |    وضعیت جدید   | `canceled`
+
 
 ### نکات و ملاحظات
 
-1. مقدار status میتواند از 'new' به 'active' و یا از 'active'/'inactive' به 'cancel' تغییر کند.
+1. حتما باید حداقل یکی از دو پارامتر ‍`order` و `clientOrderId` ارسال شوند.
+2. اگر هر دو پارامتر ‍`order` و `clientOrderId`  ارسال شوند، اولویت با `id` است.
+3. `clientOrderId` فقط در میان سفارشات open/active/inactive جستجو میشود.
+4. `clientOrderId` .در حالت آزمایشی است و ممکن است در آینده تغییر کند
+5. مقدار status میتواند از 'new' به 'active' و یا از 'active'/'inactive' به 'cancel' تغییر کند.
 در غیر اینصورت، درخواست رد میشود.
-1. در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.
+6. در صورتی که سفارش درخواست شده جزئی از یک سفارش OCO انجام نشده باشد، هر دو سفارش مرتبط لغو خواهند شد.
+
+### حالت‌های خطا
+
+> در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ErrorCode",
+  "message": "Human readable error message"
+}
+```
+
+کد خطا  |  توضیحات
+-------- | ---------
+NullIdAndClientOrderId |  باید یکی از دو پارامتر `id` و `clientOrderId`  ارسال شود
+
+
 
 ##لغو جمعی سفارشات
 
@@ -475,6 +533,18 @@ dstCurrency | string | اختیاری  |    ارز مقصد   | `rls`
 3. سفارشات حد ضرر غیرفعال غیر OCO مشمول این نوع لغو نخواهند شد.
 4. در بعضی شرایط امکان دارد به شما خطا پاسخ داده شود. این خطاها در فیلد error برگردانده میشوند.
 
+
+### حالت‌های خطا
+
+> در صورت عدم پذیرش سفارش، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "status": "failed",
+  "code": "ErrorCode",
+  "message": "Human readable error message"
+}
+```
 
 ## فهرست معاملات کاربر
 
