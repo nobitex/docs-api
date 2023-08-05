@@ -12,7 +12,6 @@ includes:
   - internal/notifications
   - internal/wallet_invoice
   - internal/price_alerts
-  - internal/exchange
   - internal/transactions
   - internal/gift
   - internal/ticketing
