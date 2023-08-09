@@ -22,14 +22,21 @@ https GET https://api.nobitex.ir/address_book
 ```json
 {
   "status": "ok",
-  "result": [
+  "data": [
     {
+      "id": 3,
       "title": "TetherBinance",
-      "address": "000000xxxxxxx111111111zzzzzzz"
+      "network": "BSC",
+      "address": "000000xxxxxxx111111111zzzzzzz",
+      "createdAt": "2023-08-09T10:12:37+00:00"
     },
     {
+      "id": 4,
       "title": "BinanceCoinOKX",
-      "address": "000000xxxxxxx222222222zzzzzzz"
+      "network": "BNB",
+      "address": "000000xxxxxxx222222222zzzzzzz",
+      "tag": "test17280992",
+      "createdAt": "2023-08-09T10:26:12+00:00"
     }
   ]
 }
@@ -40,14 +47,20 @@ https GET https://api.nobitex.ir/address_book
 - **درخواست:**: `GET /address_book`
 - **محدودیت فراخوانی:** 20 درخواست در هر دقیقه
 
+### پارامترهای ورودی
+
+| پارامتر | نوع    | پیش‌فرض     | توضیحات    | نمونه |
+|---------|--------|-------------|------------|-------|
+| network | string | همه شبکه‌ها | فیلتر شبکه | `BSC` |
+
 ## اضافه کردن آدرس جدید به دفتر آدرس
 
 ```shell
 curl -X POST 'https://api.nobitex.ir/address_book' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"address": "000000xxxxxxx111111111zzzzzzz", "title": "test", "otpCode": "1234",
-   "tfaCode": "123"}'
+  --data '{"title": "test", "network": "BSC", "address": "000000xxxxxxx111111111zzzzzzz",
+    "otpCode": "123456", "tfaCode": "654321"}'
   
 ```
 
@@ -61,27 +74,44 @@ http POST https://api.nobitex.ir/address_book
 {
   "status": "ok",
   "data": {
+    "id": 5,
     "title": "test",
-    "address": "000000xxxxxxx111111111zzzzzzz"
+    "network": "BSC",
+    "address": "000000xxxxxxx111111111zzzzzzz",
+    "createdAt": "2023-08-09T10:22:37+00:00"
   }
 }
 ```
+
+
+> برای دریافت رمزیکبارمصرف otpCode از درخواست زیر استفاده نمایید:
+
+```shell
+curl -X POST 'https://api.nobitex.ir/otp/request' \
+  -H 'Authorization: Token yourTOKENhereHEX0000000000' \
+  --data '{"type": "email", "usage": "address_book"}'
+```
+
 
 - **درخواست:**: `POST /address_book`
 - **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
 
-| پارامتر | نوع    | پیش‌فرض | توضیحات                | نمونه                           |
-|---------|--------|---------|------------------------|---------------------------------|
-| title   | string | الزامی  | عنوان آدرس             | `test`                          |
-| address | string | الزامی  | آدرس                   | `000000xxxxxxx111111111zzzzzzz` |
-| otpCode | string | الزامی  | کد تأیید ایمیل و پیامک | `1234`                          |
-| tfaCode | string | الزامی  | کد تأیید دوعاملی       | `123`                           |
+| پارامتر | نوع    | پیش‌فرض                      | توضیحات                | نمونه                           |
+|---------|--------|------------------------------|------------------------|---------------------------------|
+| title   | string | الزامی                       | عنوان آدرس             | `test`                          |
+| network | string | الزامی                       | شبکه                   | `BSC`                           |
+| address | string | الزامی                       | آدرس                   | `000000xxxxxxx111111111zzzzzzz` |
+| tag     | string | الزامی در شبکه‌های تگ‌اجباری | تگ                     | `test17280992`                  |
+| otpCode | string | الزامی                       | کد تأیید ایمیل و پیامک | `123456`                        |
+| tfaCode | string | الزامی                       | کد تأیید دوعاملی       | `654321`                        |
 
 ### نکات و ملاحظات
 
-1. مقدار آدرس نمی تواند تکراری باشد.
+1. مقدار آدرس در شبکه‌های بدون تگ نمی‌تواند تکراری باشد.
+2. مقدار تگ‌های یک آدرس در شبکه‌های تگ‌اجباری نمی‌تواند تکراری باشد. (زوج آدرس و تگ باید یکتا باشد.)
+3. برای دریافت کد تایید از طریق ایمیل (otpCode) از درخواست روبرو استفاده نمایید.
 
 ### حالت‌های خطا
 
@@ -101,7 +131,9 @@ http POST https://api.nobitex.ir/address_book
 | InvalidOTP        | مقدار tfa وارد شده نادرست است.                                 |
 | Invalid2FA        | مقدار otp وارد شده نادرست است.                                 |
 | Inactive2FA       | tfa فعال نیست                                                  |
+| InvalidAddress    | آدرس مربوط به شبکه مشخص شده نمی‌باشد.                          |
 | DuplicatedAddress | آدرس قبلا ثبت شده و تکراری می باشد.                            |
+| InvalidTag        | فرمت تگ مطابق شبکه مشخص شده نمی‌باشد.                          |
 
 
 ## حذف یک دفتر آدرس
