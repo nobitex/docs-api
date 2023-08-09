@@ -2997,7 +2997,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل یا پیامک می‌شود.</p>
+<p>در صورت فعال بودن حالت برداشت امن در دفتر آدرس، نیازی به ارسال X-TOTP در هدر درخواست نیست.</p>
+
+<p>در صورت فعال نبودن حالت برداشت امن، پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل یا پیامک می‌شود.</p>
 </blockquote>
 
 <p>برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
@@ -3155,12 +3157,21 @@
 <td>ShabaWithdrawCannotProceed</td>
 <td>امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد</td>
 </tr>
+<tr>
+<td>ShabaWithdrawCannotProceed</td>
+<td>امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد</td>
+</tr>
+<tr>
+<td>NotWhitelistedTargetAddress</td>
+<td>حالت برداشت امن روی حساب فعال است اما شبکه، آدرس (یا تگ) در دفتر آدرس شما وجود ندارد</td>
+</tr>
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
-<li>این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
+<li>در صورت فعال نبودن حالت برداشت امن، این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
 <li>کاربر درخواست دهنده بایستی اجازه برداشت از کیف پول خود را داشته باشد.
 (مثلا دارای حداقل سطح مجاز برای برداشت و شماره تماس تایید شده بوده و سقف برداشت مجاز روزانه و ماهانه خود را رد نکرده باشد و شرایط و پیشنیازات ذکر شده در مقررات نوبیتکس را رعایت کرده باشد.)</li>
+<li>در صورت فعال بودن حالت برداشت امن، شبکه، آدرس (و در صورت الزام شبکه، تگ) انتخاب شده باید در دفتر آدرس شما ثبت شده باشد.</li>
 </ol>
 
 <h2 id="withdraw-confirm">تایید درخواست برداشت</h2>
@@ -4787,14 +4798,21 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TetherBinance"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-09T10:12:37+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
       </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BinanceCoinOKX"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx222222222zzzzzzz"</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BNB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx222222222zzzzzzz"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test17280992"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-09T10:26:12+00:00"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4805,11 +4823,29 @@
 <li><strong>درخواست:</strong>: <code>GET /address_book</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 20 درخواست در هر دقیقه</li>
 </ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>همه شبکه‌ها</td>
+<td>فیلتر شبکه</td>
+<td><code>BSC</code></td>
+</tr>
+</tbody></table>
 <h2 id='24bc19da56'>اضافه کردن آدرس جدید به دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/address_book'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"address": "000000xxxxxxx111111111zzzzzzz", "title": "test", "otpCode": "1234",
-   "tfaCode": "123"}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"title": "test", "network": "BSC", "address": "000000xxxxxxx111111111zzzzzzz",
+    "otpCode": "123456", "tfaCode": "654321"}'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/address_book
 </code></pre></div>
@@ -4819,16 +4855,26 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BSC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000xxxxxxx111111111zzzzzzz"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-09T10:22:37+00:00"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>برای دریافت رمزیکبارمصرف otpCode از درخواست زیر استفاده نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/otp/request'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"type": "email", "usage": "address_book"}'</span>
+</code></pre></div>
 <ul>
 <li><strong>درخواست:</strong>: <code>POST /address_book</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
 </ul>
-<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -4846,6 +4892,13 @@
 <td><code>test</code></td>
 </tr>
 <tr>
+<td>network</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شبکه</td>
+<td><code>BSC</code></td>
+</tr>
+<tr>
 <td>address</td>
 <td>string</td>
 <td>الزامی</td>
@@ -4853,23 +4906,33 @@
 <td><code>000000xxxxxxx111111111zzzzzzz</code></td>
 </tr>
 <tr>
+<td>tag</td>
+<td>string</td>
+<td>الزامی در شبکه‌های تگ‌اجباری</td>
+<td>تگ</td>
+<td><code>test17280992</code></td>
+</tr>
+<tr>
 <td>otpCode</td>
 <td>string</td>
 <td>الزامی</td>
 <td>کد تأیید ایمیل و پیامک</td>
-<td><code>1234</code></td>
+<td><code>123456</code></td>
 </tr>
 <tr>
 <td>tfaCode</td>
 <td>string</td>
 <td>الزامی</td>
 <td>کد تأیید دوعاملی</td>
-<td><code>123</code></td>
+<td><code>654321</code></td>
 </tr>
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
-<li>مقدار آدرس نمی تواند تکراری باشد.</li>
+<li>مقدار آدرس در شبکه‌های بدون تگ نمی‌تواند تکراری باشد.</li>
+<li>در شبکه‌های <span class="tag-required-networks"></span> تگ اجباری است.</li>
+<li>مقدار تگ‌های یک آدرس در شبکه‌های تگ‌اجباری نمی‌تواند تکراری باشد. (زوج آدرس و تگ باید یکتا باشد.)</li>
+<li>برای دریافت کد تایید از طریق ایمیل (otpCode) از درخواست روبرو استفاده نمایید.</li>
 </ol>
 <h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
 <blockquote>
@@ -4904,8 +4967,16 @@
 <td>tfa فعال نیست</td>
 </tr>
 <tr>
+<td>InvalidAddress</td>
+<td>آدرس مربوط به شبکه مشخص شده نمی‌باشد.</td>
+</tr>
+<tr>
 <td>DuplicatedAddress</td>
 <td>آدرس قبلا ثبت شده و تکراری می باشد.</td>
+</tr>
+<tr>
+<td>InvalidTag</td>
+<td>فرمت تگ مطابق شبکه مشخص شده نمی‌باشد.</td>
 </tr>
 </tbody></table>
 <h2 id='a15902df35'>حذف یک دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book/&lt;address_id&gt;/delete
@@ -4977,7 +5048,7 @@
 <li><strong>درخواست:</strong>: <code>POST /address_book/address_book/whitelist/deactivate</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
 </ul>
-<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
