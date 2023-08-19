@@ -2997,9 +2997,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>در صورت فعال بودن حالت برداشت امن در دفتر آدرس، نیازی به ارسال X-TOTP در هدر درخواست نیست.</p>
+<p>در صورت وجود داشتن آدرس مقصد در دفتر آدرس، نیازی به ارسال X-TOTP در هدر درخواست نیست.</p>
 
-<p>در صورت فعال نبودن حالت برداشت امن، پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل یا پیامک می‌شود.</p>
+<p>در صورت نبودن آدرس مقصد در دفتر آدرس، پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل و پیامک می‌شود.</p>
 </blockquote>
 
 <p>برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
@@ -3168,7 +3168,7 @@
 </tbody></table>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
-<li>در صورت فعال نبودن حالت برداشت امن، این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
+<li>در صورت موجود نبودن آدرس مقصد در دفتر آدرس، این درخواست نیاز به <a href="/#dbf936619c">شناسایی دوعاملی</a> دارد. </li>
 <li>کاربر درخواست دهنده بایستی اجازه برداشت از کیف پول خود را داشته باشد.
 (مثلا دارای حداقل سطح مجاز برای برداشت و شماره تماس تایید شده بوده و سقف برداشت مجاز روزانه و ماهانه خود را رد نکرده باشد و شرایط و پیشنیازات ذکر شده در مقررات نوبیتکس را رعایت کرده باشد.)</li>
 <li>در صورت فعال بودن حالت برداشت امن، شبکه، آدرس (و در صورت الزام شبکه، تگ) انتخاب شده باید در دفتر آدرس شما ثبت شده باشد.</li>
@@ -4786,9 +4786,8 @@
 <h1 id='81680ab360'>دفتر آدرس و حالت برداشت امن</h1>
 <p>دفتر آدرس (address book) و حالت برداشت امن (whitelist mode)
 به منظور ارتقاء امنیت و سرعت برداشت رمزارز کاربران پیاده سازی می شود و امکان تعریف آدرس‌های برداشت از پیش تعیین
-و تأیید شده را در دفتر آدرس برای کاربر فراهم می آورد. در صورتی که حالت برداشت امن فعال باشد امکان برداشت به آدرس‌های غیر
-وجود
-نخواهد داشت.</p>
+و تأیید شده را در دفتر آدرس برای کاربر فراهم می آورد. برداشت به آدرس‌های امن دفتر آدرس به رمز دوعاملی یا کد تایید
+یکبار مصرف نیازی ندارد.</p>
 <h2 id='0622709577'>مشاهده لیست آدرس‌های دفتر آدرس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https GET https://api.nobitex.ir/address_book
@@ -5016,7 +5015,10 @@
 <td>آدرسی با این شناسه وجود ندارد.</td>
 </tr>
 </tbody></table>
-<h2 id='de54f7f0fe'>فعال کردن برداشت امن</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/address_book/whitelist/activate'</span> <span class="se">\</span>
+<h2 id='de54f7f0fe'>فعال کردن برداشت امن</h2>
+<p>در صورتی که حالت برداشت امن فعال باشد مقصدهای برداشت رمزارزی به آدرس‌های موجود در دفتر آدرس محدود خواهد شد 
+و به استثنای برداشت در شبکه لایتنینگ، امکان برداشت رمزارزی به آدرس‌های غیر وجود نخواهد داشت.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/address_book/whitelist/activate'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>https POST https://api.nobitex.ir/address_book/whitelist/activate
 </code></pre></div>
@@ -5031,7 +5033,9 @@
 <li><strong>درخواست:</strong>: <code>POST /address_book/address_book/whitelist/activate</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 6 درخواست در هر دقیقه</li>
 </ul>
-<h2 id='352e9e780b'>غیرفعال کردن برداشت امن</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book/whitelist/deactivate'</span> <span class="se">\</span>
+<h2 id='352e9e780b'>غیرفعال کردن برداشت امن</h2>
+<p>با غیر فعال کردن برداشت امن، به جهت حفظ امنیت حساب امکان برداشت به مدت ۲۴ ساعت روی حساب کاربر محدود خواهد شد.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/address_book/whitelist/deactivate'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"otpCode": "1234", "tfaCode": "12345"}'</span>
