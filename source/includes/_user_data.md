@@ -54,7 +54,8 @@ http POST https://api.nobitex.ir/users/profile \
       "bankAccount": true,
       "bankCard": true,
       "address": true,
-      "city": true
+      "city": true,
+      "nationalSerialNumber": true
     },
     "pendingVerifications": {
       "email": false,
