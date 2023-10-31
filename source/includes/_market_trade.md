@@ -427,12 +427,12 @@ averagePrice | monetary | میانگین قیمت اجرا شده از سفار�
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/active-count' \
+curl 'https://api.nobitex.ir/market/orders/active-count?tradeType=margin' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/orders/active-count
+http GET https://api.nobitex.ir/market/orders/active-count?tradeType=margin
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -456,7 +456,6 @@ tradeType | string | تمام انواع سفارش          | نوع سفارش
 
 ### توضیحات تکمیلی پارامترهای ورودی
 
-* وضعیت سفارش یکی از مقادیر 'spot' یا 'margin' می‌تواند باشد که spot به صورت پیش‌فرض تنظیم شده است
 
 ### پارامترهای پاسخ
 پارامتر | نوع     | توضیحات                  | نمونه
