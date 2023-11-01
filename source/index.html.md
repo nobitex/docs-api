@@ -7,10 +7,10 @@ language_tabs:
 includes:
   - intro
   - market_data
-  - market_trade
   - user_data
-  - withdraw
+  - market_trade
   - position
+  - withdraw
   - address_book
   - security
   - referral
