@@ -16,6 +16,7 @@ includes:
   - internal/gift
   - internal/ticketing
   - internal/batch_actions
+  - internal/security
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
