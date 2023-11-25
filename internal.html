@@ -459,7 +459,7 @@
             <a href="#a74b7729ca" class="toc-h1 toc-link" data-title="معامله در بازار">معامله در بازار</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#ebf18420fd" class="toc-h2 toc-link" data-title="تعداد سفارش‌های فعال کاربر">تعداد سفارش‌های فعال کاربر</a>
+                    <a href="#169692bdf1" class="toc-h2 toc-link" data-title="تعداد سفارش‌های باز کاربر">تعداد سفارش‌های باز کاربر</a>
                   </li>
               </ul>
           </li>
@@ -4158,9 +4158,9 @@ Content-Type: application/json
 <li>پارامتر hour که باید به صورت عدد صحیح وارد شود به این معناست که سفارش‌های فعال کاربر در چند ساعت اخیر کنسل شوند، برای مثال اگر مقدار ۳ برای این پارامتر ارسال شود سفارش‌های فعال سه ساعت اخیر کاربر غیرفعال می‌شوند.</li>
 <li>پارامتر execution_type را می‌توان ارسال کرد که مقدار این پارامتر مشخص کننده‌ی نوع سفارشاتی است که نیاز به لغو شدند دارند. برای مثال اگر این پارامتر مقدار market داشته باشد‌، سفارشات از نوع market لغو خواهند شد.</li>
 </ol>
-<h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='ebf18420fd'>تعداد سفارش‌های فعال کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/active-count?tradeType=margin'</span> <span class="se">\</span>
+<h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='169692bdf1'>تعداد سفارش‌های باز کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/open-count?tradeType=margin'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/orders/active-count?tradeType=margin
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/orders/open-count?tradeType=margin
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -4170,10 +4170,10 @@ Content-Type: application/json
   </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای دریافت تعداد سفارش‌های فعال خود، از این درخواست استفاده نمایید.</p>
+<p>برای دریافت تعداد سفارش‌های باز خود، از این درخواست استفاده نمایید.</p>
 
 <ul>
-<li><strong>درخواست:</strong> <code>GET /market/orders/active-count</code></li>
+<li><strong>درخواست:</strong> <code>GET /market/orders/open-count</code></li>
 <li><strong>محدودیت فراخوانی:</strong> 15 درخواست در دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
@@ -4206,7 +4206,7 @@ Content-Type: application/json
 <tr>
 <td>count</td>
 <td>integer</td>
-<td>تعداد سفارشات فعال کاربر</td>
+<td>تعداد سفارشات باز کاربر</td>
 <td>2</td>
 </tr>
 </tbody></table>
