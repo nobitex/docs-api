@@ -1,15 +1,15 @@
 # معامله در بازار
 
-## تعداد سفارش‌های فعال کاربر
+## تعداد سفارش‌های باز کاربر
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/active-count?tradeType=margin' \
+curl 'https://api.nobitex.ir/market/orders/open-count?tradeType=margin' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/orders/active-count?tradeType=margin
+http GET https://api.nobitex.ir/market/orders/open-count?tradeType=margin
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -21,18 +21,17 @@ http GET https://api.nobitex.ir/market/orders/active-count?tradeType=margin
 }
 ```
 
-برای دریافت تعداد سفارش‌های فعال خود، از این درخواست استفاده نمایید.
+برای دریافت تعداد سفارش‌های باز خود، از این درخواست استفاده نمایید.
 
-- **درخواست:** `GET /market/orders/active-count`
+- **درخواست:** `GET /market/orders/open-count`
 - **محدودیت فراخوانی:** 15 درخواست در دقیقه
 
 ### پارامترهای ورودی
-پارامتر     | نوع    | پیش‌فرض                   | توضیحات                                                                                 | نمونه
------------ | ----   |---------------------------|-----------------------------------------------------------------------------------------| -----
-tradeType | string | تمام انواع سفارش          | نوع سفارش اسپات یا فروش تعهدی                                                           | `spot` یا `margin`
-
+| پارامتر   | نوع    | پیش‌فرض          | توضیحات                       | نمونه              |
+|-----------|--------|------------------|-------------------------------|--------------------|
+| tradeType | string | تمام انواع سفارش | نوع سفارش اسپات یا فروش تعهدی | `spot` یا `margin` |
 
 ### پارامترهای پاسخ
-پارامتر | نوع     | توضیحات                  | نمونه
----- |---------|--------------------------| ----
-count | integer | تعداد سفارشات فعال کاربر | 2
+| پارامتر | نوع     | توضیحات                 | نمونه |
+|---------|---------|-------------------------|-------|
+| count   | integer | تعداد سفارشات باز کاربر | 2     |
