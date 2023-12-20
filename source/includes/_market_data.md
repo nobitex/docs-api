@@ -208,22 +208,23 @@ http GET https://api.nobitex.ir/market/stats \
 
 ```json
 {
-    "stats": {
-        "btc-rls": {
-            "bestSell": "749976360.0000000000",
-            "isClosed": false,
-            "dayOpen": "686021860.0000000000",
-            "dayHigh": "750350000.0000000000",
-            "bestBuy": "733059600.0000000000",
-            "volumeSrc": "0.2929480000",
-            "dayLow": "686021860.0000000000",
-            "latest": "750350000.0000000000",
-            "volumeDst": "212724856.0678640000",
-            "dayChange": "9.38",
-            "dayClose": "750350000.0000000000"
-        }
-    },
-    "status": "ok"
+  "status": "ok",
+  "stats": {
+    "btc-rls": {
+      "isClosed": false,
+      "bestSell": "749976360",
+      "bestBuy": "733059600",
+      "volumeSrc": "0.2929480000",
+      "volumeDst": "212724856.0678640000",
+      "latest": "750350000",
+      "mark": "747461987",
+      "dayLow": "686021860",
+      "dayHigh": "750350000",
+      "dayOpen": "686021860",
+      "dayClose": "750350000",
+      "dayChange": "9.38"
+    }
+  }
 }
 ```
 
