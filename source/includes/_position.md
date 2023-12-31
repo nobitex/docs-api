@@ -459,7 +459,8 @@ http GET https://api.nobitex.ir/positions/list \
       "unrealizedPNL": "−576435",
       "unrealizedPNLPercent": "−0.09",
       "expirationDate": "2022-11-20",
-      "extensionFee": "320000"
+      "extensionFee": "320000",
+      "markPrice": "6430000000"
     },
     {
       "id": 32,
@@ -533,6 +534,7 @@ http GET https://api.nobitex.ir/positions/list \
 | unrealizedPNLPercent | decimal  | درصد سود و زیان محقق نشده/لحظه‌ای                 | `−0.09`                                         |
 | expirationDate       | string   | تاریخ انقضای نهایی موقعیت                         | `2022-11-20`                                    |
 | extensionFee         | monetary | مقدار کارمزد تمدید در انتهای روز (به رمزارز مقصد) | `320000`                                        |
+| markPrice            | monetary | قیمت معیار بازار در لحظه                          | `6430000000`                                    |
 | [ویژه موقعیت بسته:]  |          |                                                   |                                                 |
 | PNL                  | monetary | سود و زیان نهایی (به رمزارز مقصد)                 | `35584000`                                      |
 | PNLPercent           | decimal  | درصد سود و زیان نهایی                             | `5.56`                                          |
@@ -613,7 +615,8 @@ http GET https://api.nobitex.ir/positions/128/status
     "unrealizedPNL": "−576435",
     "unrealizedPNLPercent": "−0.09",
     "expirationDate": "2022-11-20",
-    "extensionFee": "320000"
+    "extensionFee": "320000",
+    "markPrice": "6430000000"
   }
 }
 ```
@@ -805,7 +808,8 @@ http POST https://api.nobitex.ir/positions/128/edit-collateral \
     "unrealizedPNL": "23423565",
     "unrealizedPNLPercent": "10.18",
     "expirationDate": "2022-11-20",
-    "extensionFee": "320000"
+    "extensionFee": "320000",
+    "markPrice": "6090000000"
   }
 }
 
