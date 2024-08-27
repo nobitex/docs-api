@@ -737,7 +737,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET /v2/orderbook/SYMBOL</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 300 درخواست در دقیقه</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
 
@@ -822,7 +822,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET /v2/depth/SYMBOL</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 300 درخواست در دقیقه</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
 
@@ -887,7 +887,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET v2/trades/SYMBOL</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 15 درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 60 درخواست در دقیقه</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
 <h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
@@ -945,7 +945,7 @@
 
 <ul>
 <li><strong>درخواست</strong> <code>GET /market/stats</code></li>
-<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 20 درخواست در دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
@@ -1645,7 +1645,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET /v2/wallets</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 12 درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 15 درخواست در دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9-6'>پارامترهای ورودی</h3>
 <table><thead>
@@ -1983,7 +1983,7 @@
 
 <ul>
 <li><strong>درخواست:</strong>: <code>POST /market/orders/add</code></li>
-<li><strong>محدودیت فراخوانی:</strong> ۲۰۰ درخواست در هر ۱۰ دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 300 درخواست در هر ۱۰ دقیقه</li>
 </ul>
 
 <p>ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «مشاهده وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.</p>
@@ -2482,7 +2482,7 @@
 <td><code>rls</code> یا <code>usdt</code></td>
 </tr>
 <tr>
-<td>details</td>
+<td><a href="#details">details</a></td>
 <td>int</td>
 <td><code>1</code></td>
 <td>میزان جزئیات پاسخ، اعداد بزرگ‌تر تعداد فیلدهای بیشتری را از وضعیت هر سفارش بازمی‌گرداند</td>
@@ -2495,6 +2495,13 @@
 <td>با مشخص کردن این پارامتر سفارشات با شناسه بزرگتر از این عدد لیست خواهند شد</td>
 <td><code>100</code></td>
 </tr>
+<tr>
+<td>order</td>
+<td>string</td>
+<td>متغیر براساس پارامترهای <code>fromId</code> و <code>type</code></td>
+<td>ترتیب دریافت سفارشات</td>
+<td><code>id</code> یا <code>created_at</code> یا <code>price</code> به صورت صعودی و یا به صورت نزولی با اضافه کردن<code>-</code> به ابتدای کلید</td>
+</tr>
 </tbody></table>
 <h3 id='ff0e6a1f27'>توضیحات تکمیلی پارامترهای ورودی</h3>
 <ul>
@@ -2506,7 +2513,21 @@
 <li><code>done</code>: سفارش‌هایی که بخشی یا تمام آن پر شده باشند بازگردانده می‌شوند.</li>
 <li><code>close</code>: سفارش‌هایی که وضعیت آن‌ها «انجام شده» یا «لغو شده» باشد بازگردانده می‌شوند.</li>
 </ul></li>
-<li>دو وضعیت <code>active</code> و <code>undone</code> از موارد قدیمی بوده و دیگر پشتیبانی نمی‌شوند.</li>
+<li><p>دو وضعیت <code>active</code> و <code>undone</code> از موارد قدیمی بوده و دیگر پشتیبانی نمی‌شوند.</p></li>
+<li><p>پارامتر ترتیب ارسال سفارشات می‌تواند یکی از مقادیر زیر را داشته باشد:</p>
+
+<ul>
+<li><code>id</code> یا <code>-id</code>: سفارش‌ها به ترتیب شناسه‌ی سفارش به صورت صعودی و یا نزولی (در صورت ارسال علامت <code>-</code>) بازگردانده می‌شوند.</li>
+<li><code>created_at</code> یا <code>-created_at</code>: سفارش‌ها در پاسخ براساس زمان سفارش‌گذاری به صورت صعودی/نزولی مرتب می‌شوند.</li>
+<li><code>price</code> یا <code>-price</code>: سفارش‌ها در پاسخ بر اساس قیمتشان به صورت صعودی/نزولی مرتب می‌شوند.</li>
+</ul></li>
+<li><p>در صورتیکه پارامتر ترتیب ارسال سفارشات در درخواست ارسال نشود:</p>
+
+<ul>
+<li>اگر پارامتر fromId در درخواست ارسال شده باشد سفارش‌ها در پاسخ براساس شناسه‌ی سفارش به صورت نزولی مرتب می‌شوند.</li>
+<li>اگر پارامتر نوع سفارش ارسال نشده باشد، سفارش‌ها در پاسخ به ترتیب زمان ایجاد سفارش به صورت نزولی بازگردانده می‌شوند.</li>
+<li>اگر نوع سفارش با مقدار <code>خرید</code> تعیین شده باشد سفارش‌ها به‌ترتیب قیمت به صورت نزولی و اگر نوع سفارش با مقدار <code>فروش</code> تعیین شده باشد سفارش‌هاس به ترتیب قیمت به صورت صعودی بازگردانده می‌شوند.</li>
+</ul></li>
 </ul>
 <h3 id='b5a1caf9af'>پارامترهای پاسخ</h3>
 <table><thead>
@@ -2589,7 +2610,7 @@
 </tr>
 </tbody></table>
 
-<p>همچنین در صورتی که پارامتر <code>details=2</code> باشد این فیلدها نیز برای هر سفارش بازگردانده می‌شود:</p>
+<p><br id="details">همچنین در صورتی که پارامتر <code>details=2</code> باشد این فیلدها نیز برای هر سفارش بازگردانده می‌شود:</p>
 
 <table><thead>
 <tr>
@@ -2740,7 +2761,7 @@
 
 <ul>
 <li><strong>درخواست:</strong> <code>POST /market/orders/cancel-old</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 10 درخواست در دقیقه</li>
+<li><strong>محدودیت فراخوانی:</strong> 30 درخواست در دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
@@ -3707,7 +3728,8 @@
       </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−576435"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−0.09"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+      </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6430000000"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
@@ -3952,6 +3974,12 @@
 <td><code>320000</code></td>
 </tr>
 <tr>
+<td>markPrice</td>
+<td>monetary</td>
+<td>قیمت معیار بازار در لحظه</td>
+<td><code>6430000000</code></td>
+</tr>
+<tr>
 <td>[ویژه موقعیت بسته:]</td>
 <td></td>
 <td></td>
@@ -4050,7 +4078,8 @@
     </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−576435"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"−0.09"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6430000000"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4394,7 +4423,8 @@
     </span><span class="nl">"unrealizedPNL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23423565"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"unrealizedPNLPercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.18"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-11-20"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="w">
+    </span><span class="nl">"extensionFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6090000000"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -6527,15 +6557,15 @@ https://en.wikipedia.org/wiki/Unix_time</p>
 <h2 id='api-2'>آیا برای apiها کدهای نمونه تهیه شده است؟</h2>
 <p>بله، collection کلیه api ها برای استفاده در برنامه postman تهیه و از <a target="_blank" rel="nofollow" href="https://documenter.getpostman.com/view/5722122/Szmcayjw?version=latest">اینجا</a> میتوانید به آن دسترسی داشته باشید. در این collection شما میتوانید نمونه فراخوانی هر کدام از این apiها را به زبان‌های مختلف برنامه نویسی نظیر پی اچ پی، پایتون، سی شارپ  و … در این مجموعه مشاهده کرده و آن را در سیستم خود اجرا نمائید.</p>
 <p><template id="market-symbols">
-BTCIRT, ETHIRT, LTCIRT, USDTIRT, XRPIRT, BCHIRT, BNBIRT, EOSIRT, XLMIRT, ETCIRT, TRXIRT, DOGEIRT, UNIIRT, DAIIRT, LINKIRT, DOTIRT, AAVEIRT, ADAIRT, SHIBIRT, FTMIRT, MATICIRT, AXSIRT, MANAIRT, SANDIRT, AVAXIRT, MKRIRT, GMTIRT, USDCIRT, BTCUSDT, ETHUSDT, LTCUSDT, XRPUSDT, BCHUSDT, BNBUSDT, EOSUSDT, XLMUSDT, ETCUSDT, TRXUSDT, PMNUSDT, DOGEUSDT, UNIUSDT, DAIUSDT, LINKUSDT, DOTUSDT, AAVEUSDT, ADAUSDT, SHIBUSDT, FTMUSDT, MATICUSDT, AXSUSDT, MANAUSDT, SANDUSDT, AVAXUSDT, MKRUSDT, GMTUSDT, USDCUSDT
+BTCIRT, ETHIRT, LTCIRT, USDTIRT, XRPIRT, BCHIRT, BNBIRT, EOSIRT, XLMIRT, ETCIRT, TRXIRT, DOGEIRT, UNIIRT, DAIIRT, LINKIRT, DOTIRT, AAVEIRT, ADAIRT, SHIBIRT, FTMIRT, MATICIRT, AXSIRT, MANAIRT, SANDIRT, AVAXIRT, MKRIRT, GMTIRT, USDCIRT, BTCUSDT, ETHUSDT, LTCUSDT, XRPUSDT, BCHUSDT, BNBUSDT, EOSUSDT, XLMUSDT, ETCUSDT, TRXUSDT, PMNUSDT, DOGEUSDT, UNIUSDT, DAIUSDT, LINKUSDT, DOTUSDT, AAVEUSDT, ADAUSDT, SHIBUSDT, FTMUSDT, MATICUSDT, AXSUSDT, MANAUSDT, SANDUSDT, AVAXUSDT, MKRUSDT, GMTUSDT, USDCUSDT, CHZIRT, GRTIRT, CRVIRT, BANDUSDT, COMPUSDT, EGLDIRT, HBARUSDT, GALIRT, HBARIRT, WBTCUSDT, IMXIRT, WBTCIRT, ONEIRT, GLMUSDT, ENSIRT, 1M_BTTIRT, SUSHIIRT, LDOIRT, ATOMUSDT, ZROIRT, STORJIRT, ANTIRT, AEVOUSDT, 100K_FLOKIIRT, RSRUSDT, API3USDT, GLMIRT, XMRIRT, ENSUSDT, OMIRT, RDNTIRT, MAGICUSDT, TIRT, ATOMIRT, NOTIRT, CVXIRT, XTZIRT, FILIRT, UMAIRT, 1B_BABYDOGEIRT, BANDIRT, SSVIRT, DAOIRT, BLURIRT, ONEUSDT, EGALAUSDT, GMXIRT, XTZUSDT, FLOWUSDT, GALUSDT, WIRT, CVCUSDT, NMRUSDT, SKLIRT, SNTIRT, BATUSDT, TRBUSDT, NMRIRT, RDNTUSDT, API3IRT, CVCIRT, WLDIRT, YFIUSDT, SOLIRT, TUSDT, QNTUSDT, IMXUSDT, AEVOIRT, GMXUSDT, ETHFIUSDT, QNTIRT, GRTUSDT, WLDUSDT, FETIRT, AGIXIRT, NOTUSDT, LPTIRT, SLPIRT, MEMEUSDT, SOLUSDT, BALUSDT, DAOUSDT, COMPIRT, MEMEIRT, TONUSDT, BATIRT, SNXIRT, TRBIRT, 1INCHUSDT, OMUSDT, RSRIRT, RNDRIRT, SLPUSDT, SSVUSDT, RNDRUSDT, AGLDIRT, NEARUSDT, WOOUSDT, YFIIRT, MDTIRT, CRVUSDT, MDTUSDT, EGLDUSDT, LRCIRT, LPTUSDT, BICOUSDT, 1M_PEPEIRT, BICOIRT, MAGICIRT, ETHFIIRT, ANTUSDT, 1INCHIRT, APEUSDT, 1M_NFTIRT, ARBIRT, LRCUSDT, WUSDT, BLURUSDT, CELRUSDT, DYDXIRT, CVXUSDT, BALIRT, TONIRT, 100K_FLOKIUSDT, JSTUSDT, ZROUSDT, ARBUSDT, APTIRT, 1M_NFTUSDT, CELRIRT, UMAUSDT, SKLUSDT, ZRXUSDT, AGLDUSDT, ALGOIRT, NEARIRT, APTUSDT, ZRXIRT, SUSHIUSDT, FETUSDT, ALGOUSDT, 1M_PEPEUSDT, MASKIRT, EGALAIRT, FLOWIRT, 1B_BABYDOGEUSDT, MASKUSDT, 1M_BTTUSDT, STORJUSDT, XMRUSDT, OMGIRT, SNTUSDT, APEIRT, FILUSDT, ENJUSDT, OMGUSDT, WOOIRT, CHZUSDT, ENJIRT, DYDXUSDT, AGIXUSDT, JSTIRT, LDOUSDT, SNXUSDT
 </template></p>
 
 <p><template id="currency-symbols">
-rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, xlm, etc, trx, pmn, doge, uni, dai, link, dot, aave, ada, shib, ftm, matic, axs, mana, sand, avax, mkr, gmt, usdc
+rls, btc, eth, ltc, usdt, xrp, bch, bnb, eos, xlm, etc, trx, pmn, doge, uni, dai, link, dot, aave, ada, shib, ftm, matic, axs, mana, sand, avax, mkr, gmt, atom, uma, w, rsr, wld, 1m_nft, flow, agld, ton, mask, snt, agix, algo, ssv, band, omg, comp, zrx, rdnt, imx, 1inch, mdt, sushi, bico, gmx, zro, bal, dao, gal, not, nmr, xmr, enj, apt, lrc, dydx, grt, near, cvx, 100k_floki, fil, sol, ldo, crv, aevo, qnt, om, woo, storj, ant, 1m_btt, magic, ape, rndr, hbar, lpt, glm, blur, wbtc, meme, ethfi, egala, arb, fet, skl, cvc, snx, jst, ens, trb, chz, xtz, api3, slp, t, bat, 1b_babydoge, celr, yfi, egld, one, 1m_pepe, usdc
 </template></p>
 
 <p><template id="network-symbols">
-FIAT_MONEY, ETH, BSC, ADA, BCH, BNB, BTC, BTCLN, DOGE, DOT, EOS, ETC, LTC, PMN, TRX, OMNI, ZTRX, XLM, XRP, FTM, MATIC, AVAX
+FIAT_MONEY, ETH, BSC, ADA, ALGO, APT, ARB, BCH, BNB, BTC, BTCLN, DOGE, DOT, EOS, ETC, LTC, PMN, TRX, OMNI, ZTRX, XLM, XMR, XRP, ATOM, EGLD, FIL, FLR, FLOW, FTM, MATIC, AVAX, HBAR, NEAR, TON, SOL, XTZ, ONE 
 </template></p>
 
 <p><template id="tag-required-networks">
