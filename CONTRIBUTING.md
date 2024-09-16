@@ -1,7 +1,7 @@
 # Contributing
 
 ## Development
-To install dependencies, after installing `ruby`, install bundle with `gem install bundle` and then
+To install dependencies, after installing `ruby`, install bundle with `gem install bundler` and then
 use `bundle install` to install dependencies.
 
 Now you can start editing files in `source` directory. Launch a server with `make serve` to view the
