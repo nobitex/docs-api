@@ -624,7 +624,7 @@ http GET https://api.nobitex.ir/positions/128/status
 برای مشاهده وضعیت یک موقعیت از این درخواست استفاده کنید.
 
 - **درخواست:**: `GET /positions/:positionId:/status`
-- **محدودیت فراخوانی:** ۱۰۰ درخواست در هر ۱۰ دقیقه (<a href="#order_ratelimit">محدودیت ویژه</a>)
+- **محدودیت فراخوانی:** ۱۰۰ درخواست در هر ۱۰ دقیقه (<a href="#order_ratelimit">محدودیت مشترک</a>)
 
 ### پارامترهای ورودی
 
