@@ -196,7 +196,7 @@ https POST https://api.nobitex.ir/address_book/whitelist/activate
 }
 ```
 
-- **درخواست:**: `POST /address_book/address_book/whitelist/activate`
+- **درخواست:**: `POST /address_book/whitelist/activate`
 - **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
 
 ## غیرفعال کردن برداشت امن
@@ -221,7 +221,7 @@ https POST https://api.nobitex.ir/address_book/whitelist/deactivate
 }
 ```
 
-- **درخواست:**: `POST /address_book/address_book/whitelist/deactivate`
+- **درخواست:**: `POST /address_book/whitelist/deactivate`
 - **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
