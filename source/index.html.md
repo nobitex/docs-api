@@ -11,6 +11,7 @@ includes:
   - market_trade
   - position
   - withdraw
+  - websocket
   - address_book
   - security
   - referral
