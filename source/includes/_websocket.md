@@ -83,7 +83,7 @@ client.connect();
 
 
 <aside class="notice">
-به‌جای <code>*</code> باید سمبل بازار مربوطه را به‌شکل بزرگ‌نویس (حروف بزرگ) قرار دهید. مثلاً <code>BTCIRT</code> و یا <code>ETHUSDT</code> و ...
+به‌جای <code>*</code> باید سمبل بازار مربوطه را به‌شکل UPPERCASE (حروف بزرگ) قرار دهید. مثلاً <code>BTCIRT</code> و یا <code>ETHUSDT</code> و ...
 </aside>
 
 
