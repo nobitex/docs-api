@@ -48,6 +48,10 @@ SYMBOL | string |   الزامی | نماد بازار | `BTCIRT`
 لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
 </aside>
 
+```shell
+curl 'https://api.nobitex.ir/v3/orderbook/all'
+```
+
 > نمونه پاسخ درخواست <code dir="ltr">/v3/orderbook/all</code>:
 
 ```json
