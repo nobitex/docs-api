@@ -781,7 +781,8 @@
 <aside class="notice">
 لیست نمادهای معتبر بازارها عبارتند از:<br/> <span class="market-symbols"></span>
 </aside>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v3/orderbook/all'</span>
+</code></pre></div>
 <blockquote>
 <p>نمونه پاسخ درخواست <code dir="ltr">/v3/orderbook/all</code>:</p>
 </blockquote>
@@ -5110,7 +5111,7 @@
 <p><strong>الگوی کانال‌های اردربوک:</strong> <code dir="ltr">public:orderbook-*</code></p>
 
 <aside class="notice">
-به‌جای <code>*</code> باید سمبل بازار مربوطه را به‌شکل بزرگ‌نویس (حروف بزرگ) قرار دهید. مثلاً <code>BTCIRT</code> و یا <code>ETHUSDT</code> و ...
+به‌جای <code>*</code> باید سمبل بازار مربوطه را به‌شکل UPPERCASE (حروف بزرگ) قرار دهید. مثلاً <code>BTCIRT</code> و یا <code>ETHUSDT</code> و ...
 </aside>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">newSubscription</span><span class="p">(</span><span class="dl">'</span><span class="s1">public:orderbook-BTCIRT</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">delta</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fossil</span><span class="dl">'</span> <span class="p">});</span>
 <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
