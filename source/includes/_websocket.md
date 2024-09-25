@@ -71,6 +71,32 @@ client.connect();
 مکانیزم پینگ‌پنگ به این شکل است که پیام خالی با محتوای <code>{}</code> به کلاینت ارسال شده و پیام پنگ نیز باید با همان محتوای <code>{}</code> باشد.
 </aside>
 
+### اتصال به چند کانال همزمان
+
+برای اتصال به چند کانال به‌صورت همزمان نیاز به کلاینت‌های مجزا نیست؛ بلکه می‌توانید با استفاده از یک کلاینت به چند کانال همزمان متصل شوید.
+
+* **محدودیت subscription به کانال‌ها:** حداکثر 300 کانال برای هر connection
+
+> اتصال به چند کانال با استفاده از یک کلاینت:
+
+```javascript
+const channels = ['public:orderbook-BTCIRT', 'public:orderbook-USDTIRT', 'public:orderbook-FTMIRT']
+const subs = channels.map(channel => {
+  const sub = client.newSubscription(channel, { delta: 'fossil' })
+  sub.subscribe()
+  sub.on('publication', (ctx) => {
+    console.log(channel, ctx.data);
+  })
+  return sub
+});
+```
+
+
+### توجه: اتصال به وب‌سوکت با استفاده از SDK زبان‌های دیگر
+
+برای مطالعه‌ی جزئیات و چگونگی اتصال به وب‌سوکت نوبیتکس با استفاده از SDK زبان‌های دیگر، لطفاً به مستنداتی که در ابتدای بخش قرار دادیم مراجعه فرمایید. در SDK ها و محیط‌های مختلف، تفاوت‌های جزئی وجود دارد. به‌طور مثال در **node.js**، نیاز به نصب و پاس دادن مستقیم ماژول `websocket` به کلاینت در هنگام اتصال می‌باشیم که در [مستندات آن SDK](https://github.com/centrifugal/centrifuge-js?tab=readme-ov-file#using-with-nodejs) به این موضوع اشاره شده.
+
+
 
 <h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
 
