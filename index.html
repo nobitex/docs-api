@@ -5103,6 +5103,27 @@
 <aside class="notice">
 مکانیزم پینگ‌پنگ به این شکل است که پیام خالی با محتوای <code>{}</code> به کلاینت ارسال شده و پیام پنگ نیز باید با همان محتوای <code>{}</code> باشد.
 </aside>
+<h3 id='9a5f064e5f'>اتصال به چند کانال همزمان</h3>
+<p>برای اتصال به چند کانال به‌صورت همزمان نیاز به کلاینت‌های مجزا نیست؛ بلکه می‌توانید با استفاده از یک کلاینت به چند کانال همزمان متصل شوید.</p>
+
+<ul>
+<li><strong>محدودیت subscription به کانال‌ها:</strong> حداکثر 300 کانال برای هر connection</li>
+</ul>
+
+<blockquote>
+<p>اتصال به چند کانال با استفاده از یک کلاینت:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">channels</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">public:orderbook-BTCIRT</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public:orderbook-USDTIRT</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public:orderbook-FTMIRT</span><span class="dl">'</span><span class="p">]</span>
+<span class="kd">const</span> <span class="nx">subs</span> <span class="o">=</span> <span class="nx">channels</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">channel</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">newSubscription</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="p">{</span> <span class="na">delta</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fossil</span><span class="dl">'</span> <span class="p">})</span>
+  <span class="nx">sub</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">()</span>
+  <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">publication</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="k">return</span> <span class="nx">sub</span>
+<span class="p">});</span>
+</code></pre></div><h3 id='sdk'>توجه: اتصال به وب‌سوکت با استفاده از SDK زبان‌های دیگر</h3>
+<p>برای مطالعه‌ی جزئیات و چگونگی اتصال به وب‌سوکت نوبیتکس با استفاده از SDK زبان‌های دیگر، لطفاً به مستنداتی که در ابتدای بخش قرار دادیم مراجعه فرمایید. در SDK ها و محیط‌های مختلف، تفاوت‌های جزئی وجود دارد. به‌طور مثال در <strong>node.js</strong>، نیاز به نصب و پاس دادن مستقیم ماژول <code>websocket</code> به کلاینت در هنگام اتصال می‌باشیم که در <a href="https://github.com/centrifugal/centrifuge-js?tab=readme-ov-file#using-with-nodejs">مستندات آن SDK</a> به این موضوع اشاره شده.</p>
 
 <h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
 
