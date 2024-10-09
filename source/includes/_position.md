@@ -106,18 +106,15 @@ http GET https://api.nobitex.ir/liquidity-pools/list
   "pools": {
     "btc": {
       "capacity": "30",
-      "filledCapacity": "28.082343",
-      "availableBalance": "15.879876"
+      "filledCapacity": "28.082343"
     },
     "ltc": {
       "capacity": "160",
-      "filledCapacity": "149.234",
-      "availableBalance": "63.987"
+      "filledCapacity": "149.234"
     },
     "doge": {
       "capacity": "5000000",
-      "filledCapacity": "5000000",
-      "availableBalance": "120890.34"
+      "filledCapacity": "5000000"
     }
   }
 }

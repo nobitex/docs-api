@@ -131,3 +131,9 @@ CoinDepositDisabled | CoinDepositDisabled
 * تفسیر صورت‌حساب (/users/wallets/invoice/decode)
 * ایجاد صورت‌حساب واریز (/users/wallets/invoice/generate)
 * لیست نوتیفیکیشن‌ها (/notifications/list)
+
+
+## تغییرات مهر ۱۴۰۳
+
+* حذف پارامتر availableBalance از پاسخ endpoint های زیر:
+  - /liquidity-pools/list
