@@ -209,7 +209,8 @@ http POST https://api.nobitex.ir/market/orders/add \
 {
   "status": "failed",
   "code": "ErrorCode",
-  "message": "Human readable error message"
+  "message": "Human readable error message",
+  "clientOrderId": "order1"
 }
 ```
 
