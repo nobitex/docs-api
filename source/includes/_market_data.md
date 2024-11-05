@@ -298,8 +298,7 @@ http GET https://api.nobitex.ir/market/stats \
  srcCurrency | string | اختیاری | ارزها مبدا | `btc,usdt` 
  dstCurrency | string | اختیاری | ارز مقصد   | `rls`      
 
-پارامترهای srcCurrency و dstCurrency اختیاری هستند و اگر این پارامترها را وارد نکنید، آمار مربوط به کل بازار نوبیتکس نمایش داده خواهد شد.
-
+پارامترهای srcCurrency و dstCurrency اختیاری هستند و در صورت وارد نکردن آن‌ها، آمار مربوط به کل بازار نوبیتکس نمایش داده می‌شود. همچنین، وارد کردن هر کدام از این پارامترها به‌تنهایی امکان‌پذیر است؛ برای مثال، اگر `dstCurrency=rls` را تنظیم کنید، تمام بازارهای ریالی را دریافت خواهید کرد.
 <aside class="notice">
 انواع ارز:<br>
 <span class="currency-symbols"></span>
