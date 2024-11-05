@@ -1045,29 +1045,29 @@
 <tr>
 <td>srcCurrency</td>
 <td>string</td>
-<td>الزامی</td>
+<td>اختیاری</td>
 <td>ارزها مبدا</td>
 <td><code>btc,usdt</code></td>
 </tr>
 <tr>
 <td>dstCurrency</td>
 <td>string</td>
-<td>الزامی</td>
+<td>اختیاری</td>
 <td>ارز مقصد</td>
 <td><code>rls</code></td>
 </tr>
 </tbody></table>
 
+<p>پارامترهای srcCurrency و dstCurrency اختیاری هستند و در صورت وارد نکردن آن‌ها، آمار مربوط به کل بازار نوبیتکس نمایش داده می‌شود. همچنین، وارد کردن هر کدام از این پارامترها به‌تنهایی امکان‌پذیر است؛ برای مثال، اگر <code>dstCurrency=rls</code> را تنظیم کنید، تمام بازارهای ریالی را دریافت خواهید کرد.
 <aside class="notice">
 انواع ارز:<br>
 <span class="currency-symbols"></span>
 </aside>
-
 <aside class="warning">
 در شی پاسخ جهت سازگاری با نسخه‌های پیشین، آمار بازار بایننس نیز برگردانده می‌شود.
 دقت کنید این قسمت از اطلاعات (متناظر با کلید global) منسوخ شده و در نسخه‌های آتی به طور کامل حذف خواهد شد.
 توصیه می‌شود جهت دریافت آمار بازار بایینس از <a href="#cdf265d0e6">آمار بازار جهانی</a> استفاده نمایید.
-</aside>
+</aside></p>
 <h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967
 </code></pre></div>
