@@ -66,7 +66,7 @@ Content-Type: application/json
 {
   "data": [
     {"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000},
-    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500},
+    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500, "clientOrderId": "order2"},
     {"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}
   ]
 }
@@ -103,7 +103,8 @@ Content-Type: application/json
     {
       "status": "failed",
       "code": "OverValueOrder",
-      "message": "Order validation failed"
+      "message": "Order validation failed",
+      "clientOrderId": "order2"
     },
     {
       "status": "ok",
@@ -191,7 +192,7 @@ Content-Type: application/json
 | پارامتر | نوع    | توضیحات                      | نمونه                                                                                |
 |---------|--------|------------------------------|--------------------------------------------------------------------------------------|
 | status  | string | وضعیت پاسخ                   | ok                                                                                   |
-| results | list   | لیست پاسخ‌های هر درخواست تکی | [{"status": "failed", "code":"OverValueOrder", "clientOrderId": "order1", ...}, ...] |
+| results | list   | لیست پاسخ‌های هر درخواست تکی | [{"status": "failed", "code":"OverValueOrder", "clientOrderId": "order2", ...}, ...] |
 
 ### حالت‌های خطا به به ازای هر سفارش
 حالت های خطا همانند درخواست سفارش تکی است.
