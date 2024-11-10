@@ -3786,7 +3786,7 @@ Content-Type: application/json
 {
   "data": [
     {"type":"buy","srcCurrency":"btc","dstCurrency":"rls","amount":"0.6","price":520000000},
-    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500},
+    {"type":"sell","srcCurrency":"doge","dstCurrency":"rls","amount":"64","execution":"stop_market","stopPrice":47500, "clientOrderId": "order2"},
     {"type":"buy","srcCurrency":"btc","dstCurrency":"usdt","amount":"0.01","mode":"oco","price":42390,"stopPrice":42700,"stopLimitPrice":42715}
   ]
 }
@@ -3822,7 +3822,8 @@ Content-Type: application/json
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OverValueOrder"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order validation failed"</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order validation failed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order2"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
@@ -3975,23 +3976,18 @@ Content-Type: application/json
 <td>status</td>
 <td>string</td>
 <td>وضعیت پاسخ</td>
-<td>failed</td>
+<td>ok</td>
 </tr>
 <tr>
-<td>code</td>
-<td>string</td>
-<td>کد خطا</td>
-<td>OverValueOrder</td>
-</tr>
-<tr>
-<td>message</td>
-<td>string</td>
-<td>پیغام خطا</td>
-<td>Order validation failed</td>
+<td>results</td>
+<td>list</td>
+<td>لیست پاسخ‌های هر درخواست تکی</td>
+<td>[{&quot;status&quot;: &quot;failed&quot;, &quot;code&quot;:&quot;OverValueOrder&quot;, &quot;clientOrderId&quot;: &quot;order2&quot;, ...}, ...]</td>
 </tr>
 </tbody></table>
-<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
-<p>خطاهای ساختاری در بدنه درخواست مانع از اجرای کل درخواست خواهد شد و وضعیت نهایی پاسخ ناموفق خواهد بود.</p>
+<h3 id='e2ae44c23a'>حالت‌های خطا به به ازای هر سفارش</h3>
+<p>حالت های خطا همانند درخواست سفارش تکی است.
+این خطاها برای هر سفارش به صورت جداگانه ایجاد می‌شوند و مانع اجرای کل درخواست نخواهند شد و هر سفارش به صورت جداگانه اعتبارسنجی می‌شود.</p>
 
 <table><thead>
 <tr>
@@ -4024,8 +4020,6 @@ Content-Type: application/json
 <td>سفارش تکراری است.</td>
 </tr>
 </tbody></table>
-
-<p>خطاهای خارج از این دسته، وضعیت نهایی کل درخواست را ناموفق نمی‌کند و برای هر ورودی جداگانه ایجاد می‌شود.</p>
 <h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
 <ol>
 <li><strong>حالت Pro:</strong> امکان فعال‌سازی <a href="/#pro">حالت Pro</a> و مجاز کردن سفارش تکراری در کمتر از ۱۰ ثانیه، برای کل درخواست وجود دارد.</li>
@@ -4127,7 +4121,7 @@ Content-Type: application/json
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
 <table><thead>
 <tr>
 <th>متن خطا</th>
