@@ -34,7 +34,7 @@ npm install centrifuge
 ```javascript
 import { Centrifuge } from 'centrifuge';
 
-const client = new Centrifuge('wss://ws.nobitex.ir/connection/websocket', {});
+const client = new Centrifuge('wss://wss.nobitex.ir/connection/websocket', {});
 client.on('connected', (ctx) => {
     console.log('connected', ctx);
 });
@@ -59,7 +59,7 @@ client.connect();
 
 برای اتصال به وب‌سوکت نوبیتکس، از آدرس زیر استفاده کنید:
 
-* **آدرس وب‌سوکت:** `wss://ws.nobitex.ir/connection/websocket`
+* **آدرس وب‌سوکت:** `wss://wss.nobitex.ir/connection/websocket`
 * **محدودیت نرخ:** حداکثر 100 اتصال همزمان برای هر IP
 * **نیاز به ارسال توکن:** ندارد
 
