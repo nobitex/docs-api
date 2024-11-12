@@ -5067,7 +5067,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Centrifuge</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">centrifuge</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Centrifuge</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://ws.nobitex.ir/connection/websocket</span><span class="dl">'</span><span class="p">,</span> <span class="p">{});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Centrifuge</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://wss.nobitex.ir/connection/websocket</span><span class="dl">'</span><span class="p">,</span> <span class="p">{});</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connected</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">connected</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
 <span class="p">});</span>
@@ -5089,7 +5089,7 @@
 <p>برای اتصال به وب‌سوکت نوبیتکس، از آدرس زیر استفاده کنید:</p>
 
 <ul>
-<li><strong>آدرس وب‌سوکت:</strong> <code>wss://ws.nobitex.ir/connection/websocket</code></li>
+<li><strong>آدرس وب‌سوکت:</strong> <code>wss://wss.nobitex.ir/connection/websocket</code></li>
 <li><strong>محدودیت نرخ:</strong> حداکثر 100 اتصال همزمان برای هر IP</li>
 <li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
 </ul>
