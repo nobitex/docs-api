@@ -461,10 +461,9 @@ sub.subscribe();
 
 ```json
 {
-    "srcCurrency": "Bitcoin",
-    "dstCurrency": "﷼",
+    "srcCurrency": "btc",
+    "dstCurrency": "rls",
     "timestamp": "2024-11-23T11:31:27.833332+00:00",
-    "market": "BTC-RLS",
     "price": "66683959340",
     "amount": "0.000404",
     "total": "26940319.57336",
@@ -482,7 +481,7 @@ sub.subscribe();
   "push": {
     "channel": "private:trades#1987577cdf7c7422dee369e188e276ee",
     "pub": {
-      "data": "{\"srcCurrency\":\"Bitcoin\",\"dstCurrency\":\"﷼\", \"timestamp\":\"2024-11-23T11:31:27.833332+00:00\",\"market\":\"BTC-RLS\", \"price\":\"66683959340\",\"amount\":\"0.000404\",\"total\":\"26940319.57336\",\"type\":\"sell\",\"fee\":\"47150.7989334\",\"id\":12942226,\"orderId\":520305923}",
+      "data": "{\"srcCurrency\":\"btc\",\"dstCurrency\":\"rls\", \"timestamp\":\"2024-11-23T11:31:27.833332+00:00\", \"price\":\"66683959340\",\"amount\":\"0.000404\",\"total\":\"26940319.57336\",\"type\":\"sell\",\"fee\":\"47150.7989334\",\"id\":12942226,\"orderId\":520305923}",
       "offset": 34575
     }
   }
@@ -491,16 +490,15 @@ sub.subscribe();
 
 ### پارامتر پیام
 
-| فیلد        | نوع      | توضیحات            | نمونه                                    |
-|-------------|----------|--------------------|------------------------------------------|
-| id          | int      | شناسه‌ی معامله     | 12942226                                 |
-| orderId     | int      | شناسه‌ی سفارش      | 520305923                                |
-| srcCurrency | string   | رمزارز مبدا معامله | `Bitcoin` یا `Ethereum` یا `TRON` یا ... |
-| dstCurrency | string   | ارز مقصد معامله    | `﷼` یا `Tether`                          |
-| market      | string   | نماد بازار معامله  | `BTC-RLS`                                |
-| timestamp   | string   | زمان انجام معامله  | `2024-11-23T11:31:27.833332+00:00`       |
-| type        | string   | نوع خرید یا فروش   | `buy` یا `sell`                          |
-| price       | monetary | قیمت انجام معامله  | `66683959340`                            |
-| amount      | monetary | مقدار معامله شده   | `0.000404`                               |
-| total       | monetary | قیمت کل معامله     | `26940319.57336`                         |
-| fee         | monetary | کارمزد معامله      | `47150.7989334`                          |
+| فیلد        | نوع      | توضیحات            | نمونه                              |
+|-------------|----------|--------------------|------------------------------------|
+| id          | int      | شناسه‌ی معامله     | 12942226                           |
+| orderId     | int      | شناسه‌ی سفارش      | 520305923                          |
+| srcCurrency | string   | رمزارز مبدا معامله | `btc` یا `eth` یا `xrp` یا ...     |
+| dstCurrency | string   | ارز مقصد معامله    | `rls` یا `usdt`                    |
+| timestamp   | string   | زمان انجام معامله  | `2024-11-23T11:31:27.833332+00:00` |
+| type        | string   | نوع خرید یا فروش   | `buy` یا `sell`                    |
+| price       | monetary | قیمت انجام معامله  | `66683959340`                      |
+| amount      | monetary | مقدار معامله شده   | `0.000404`                         |
+| total       | monetary | قیمت کل معامله     | `26940319.57336`                   |
+| fee         | monetary | کارمزد معامله      | `47150.7989334`                    |
