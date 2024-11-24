@@ -1,6 +1,6 @@
-# اطلاعات کاربر
+<h1 id="user-data">اطلاعات کاربر</h1>
 
-##  پروفایل
+<h2 id="user-profile">پروفایل</h2>
 
 ```shell
 curl 'https://api.nobitex.ir/users/profile' \
@@ -78,7 +78,8 @@ http POST https://api.nobitex.ir/users/profile \
   "tradeStats": {
     "monthTradesTotal": "10867181.5365000000",
     "monthTradesCount": 3
-  }
+  },
+  "websocketAuthParam": "1987577cdf7c7422dee369e188e276ee"
 }
 ```
 این api، اطلاعات پروفایل شما، کارت بانکی، حساب بانکی، موارد تایید شده(ایمیل، شماره تلفن، موبایل ...)، تنظمیات مربوط به پروفایل(فی تراکنش، فی مبادلات usdt و ...) و خلاصه آمار مبادلات شما را برمیگرداند.
