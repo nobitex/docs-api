@@ -180,9 +180,8 @@ client.connect();
 
 ```json
 {
-  "connect": {},
-  "id": 1,
-  "token": "<CONNECTION_TOKEN>"
+  "connect": {"token": "<CONNECTION_TOKEN>"},
+  "id": 1
 }
 ```
 
