@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      ruby-version: 3.0
+      ruby-version: 3.1
 
     steps:
     - uses: actions/checkout@v4
@@ -18,7 +18,17 @@ jobs:
         ruby-version: ${{ env.ruby-version }}
 
     - name: Update Bundler
-      run: gem install bundler
+      run: gem install bundler --force
+
+    - name: Update DidYouMean Gem
+      run: gem install did_you_mean
+
+    - name: Debug Ruby Environment
+      run: |
+        ruby --version
+        gem --version
+        bundler --version
+        gem list | grep did_you_mean
 
     - uses: actions/cache@v4
       with:
