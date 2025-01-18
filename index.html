@@ -472,6 +472,9 @@
                   <li>
                     <a href="#websocket-orderbook" class="toc-h2 toc-link" data-title="استریم لیست سفارش‌ها: اردربوک">استریم لیست سفارش‌ها: اردربوک</a>
                   </li>
+                  <li>
+                    <a href="#websocket-candle" class="toc-h2 toc-link" data-title="استریم آمار OHLC بازار نوبیتکس">استریم آمار OHLC بازار نوبیتکس</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5221,6 +5224,177 @@
 <td>int</td>
 <td>زمان آخرین به‌روزرسانی به فرمت یونیکس</td>
 <td><code dir="ltr">1726651067347</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="websocket-candle">استریم آمار OHLC بازار نوبیتکس</h2>
+
+<p>برای توضیحات بیشتر در مورد  OHLC به <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">این لینک</a> مراجعه کنید.<br><br></p>
+
+<p>کانال‌هایی با الگوی زیر شامل اطلاعات کندل بازار مورد نظر است.</p>
+
+<p><strong>الگوی کانال‌های کندل ohlc:</strong> <code dir="ltr">public:candle-{marketSymbol}-{resolution}</code></p>
+
+<aside class="notice">
+اطلاعات کندل ها به صورت دوره‌ای (حدودا هر ۱۰ ثانیه) پابلیش میشوند.
+</aside>
+
+<aside class="notice">
+به‌جای <code>{marketSymbol}</code> باید سمبل بازار مربوطه را به‌شکل UPPERCASE (حروف بزرگ) قرار دهید. مثلاً <code>BTCIRT</code> و یا <code>ETHUSDT</code> و ...
+</aside>
+
+<aside class="notice">
+به‌جای <code>{resolution}</code> باید رزولوشن مورد نظر را از جدول ذیل قرار دهید. مثلاً <code>5</code> و یا <code>2D</code> و ...
+</aside>
+
+<ul>
+<li>پارامتر {resolution} بازه زمانی  کندل‌های خروجی می‌باشد و مقدار آن می‌تواند یکی از مقادیر زیر باشد:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>دقیقه‌ای</th>
+<th>توضیح</th>
+<th>ساعتی</th>
+<th>توضیح</th>
+<th>روزانه</th>
+<th>توضیح</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>1</code></td>
+<td>یک دقیقه</td>
+<td><code>60</code></td>
+<td>یک ساعت</td>
+<td><code>D</code></td>
+<td>یک روز</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td>پنج دقیقه</td>
+<td><code>180</code></td>
+<td>سه ساعت</td>
+<td><code>2D</code></td>
+<td>دو روز</td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td>یک ربع</td>
+<td><code>240</code></td>
+<td>چهار ساعت</td>
+<td><code>3D</code></td>
+<td>سه روز</td>
+</tr>
+<tr>
+<td><code>30</code></td>
+<td>نیم ساعت</td>
+<td><code>360</code></td>
+<td>شش ساعت</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><code>720</code></td>
+<td>دوازده ساعت</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">newSubscription</span><span class="p">(</span><span class="dl">'</span><span class="s1">public:candle-BTCIRT-15</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">delta</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fossil</span><span class="dl">'</span> <span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">publication</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>در صورتی که از SDK استفاده نمی‌کنید پیام زیر را ارسال نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subscribe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public:candle-BTCIRT-15"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>که در کنسول، پیامی که <code>console.log</code> نموده‌اید به شکل زیر خواهد بود که همان مقدار <code>data</code> می‌باشد:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1731852900</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="mf">6240000001.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="mf">6250000000.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="mf">6238000000.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="mf">6238031033.0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.26</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>همچنین اگر از SDK رسمی استفاده نمی‌کنید، در صورت اتصال و اشتراک صحیح، پیام‌های دریافتی از کانال به شکل زیر خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"push"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public:candle-BTCUSDT-15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pub"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">t</span><span class="se">\"</span><span class="s2">:1731852900,</span><span class="se">\"</span><span class="s2">o</span><span class="se">\"</span><span class="s2">:6240000001.0,</span><span class="se">\"</span><span class="s2">h</span><span class="se">\"</span><span class="s2">:6250000000.0,</span><span class="se">\"</span><span class="s2">l</span><span class="se">\"</span><span class="s2">:6238000000.0,</span><span class="se">\"</span><span class="s2">c</span><span class="se">\"</span><span class="s2">:6238031033.0,</span><span class="se">\"</span><span class="s2">v</span><span class="se">\"</span><span class="s2">:1.26}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">34575</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>مثال:</strong> برای دریافت کندل های 15 دقیقه ای بازار بیت‌کوین تومان، کافیست به کانال <code>public:candle-BTCIRT-15</code> متصل شوید.</p>
+
+<p><strong>توجه:</strong> استفاده از فلگ <code dir="ltr">{ delta: &#39;fossil&#39; }</code> در تابع <code>newSubscription</code> اختیاری است. با استفاده از این فلگ، اطلاعات اردربوک به صورت diff به کلاینت ارسال می‌شود. اگر از کلاینت‌های رسمی Centrifugo استفاده می‌کنید، متوجه تغییری نخواهید شد و صرفاً استفاده از پهنای باند شبکه‌ی شما کاهش چشم‌گیری در حدود ۶۰٪ خواهد کرد. اما در صورتی که از کلاینت رسمی استفاده نمی‌کنید، یا باید از استفاده از این فلگ خودداری کنید و یا باید حتماً الگوریتم بازیابی داده‌ها از حالت فشرده شده به حالت اصلی را پیاده‌سازی کنید. برای این کار از <a href="https://fossil-scm.org/">الگوریتم فسیل</a> استفاده کرده‌ایم.</p>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<p>ساختار پیام‌های وبسوکت این کانال به این صورت می باشد.</p>
+
+<table><thead>
+<tr>
+<th>پارامتر پاسخ</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>t</code></td>
+<td>int</td>
+<td>شروع زمان</td>
+<td><code dir="ltr">1731852900</code></td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>float</td>
+<td>قیمت شروع</td>
+<td><code dir="ltr">6240000001.0</code></td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>float</td>
+<td>بیشترین قیمت</td>
+<td><code dir="ltr">6250000000.0</code></td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>float</td>
+<td>کمترین قیمت</td>
+<td><code dir="ltr">6238000000.0</code></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>float</td>
+<td>قیمت پایانی</td>
+<td><code dir="ltr">6238031033.0</code></td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>float</td>
+<td>حجم معاملات</td>
+<td><code dir="ltr">1.26</code></td>
 </tr>
 </tbody></table>
 <h1 id='81680ab360'>دفتر آدرس و حالت برداشت امن</h1>
