@@ -18,17 +18,16 @@ jobs:
         ruby-version: ${{ env.ruby-version }}
 
     - name: Update Bundler
-      run: gem install bundler --force
-
-    - name: Update DidYouMean Gem
-      run: gem install did_you_mean
+      run: |
+        gem uninstall bundler -a -x
+        gem install bundler --version '~> 2.4'
 
     - name: Debug Ruby Environment
       run: |
         ruby --version
         gem --version
         bundler --version
-        gem list | grep did_you_mean
+        gem list
 
     - uses: actions/cache@v4
       with:
