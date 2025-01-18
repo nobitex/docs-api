@@ -141,7 +141,7 @@ DEPENDENCIES
   webrick
 
 RUBY VERSION
-   ruby 3.0.0
+   ruby 3.1.0
 
 BUNDLED WITH
    2.2.26
