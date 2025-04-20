@@ -97,9 +97,117 @@ const subs = channels.map(channel => {
 برای مطالعه‌ی جزئیات و چگونگی اتصال به وب‌سوکت نوبیتکس با استفاده از SDK زبان‌های دیگر، لطفاً به مستنداتی که در ابتدای بخش قرار دادیم مراجعه فرمایید. در SDK ها و محیط‌های مختلف، تفاوت‌های جزئی وجود دارد. به‌طور مثال در **node.js**، نیاز به نصب و پاس دادن مستقیم ماژول `websocket` به کلاینت در هنگام اتصال می‌باشیم که در [مستندات آن SDK](https://github.com/centrifugal/centrifuge-js?tab=readme-ov-file#using-with-nodejs) به این موضوع اشاره شده.
 
 
+<h2 id="websocket-token">دریافت توکن</h2>
+
+
+
+```shell
+curl 'https://api.nobitex.ir/auth/ws/token/' \
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
+```
+
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+  "token": "yJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjMiLCJleHAiOjE3MzE5Mzk0NDIsImlhdCI6MTczMTkzODI0MiwibWV0YSI6e319.AFZjNC0ugUcfchUKjjunNDl1kfemJkA0Y5IYRi1c0mSvIa_XxzQIeVeqg6qnTBzE-HG6zEqXXyCENJtAz7xc7wqcABWbpcHdH0fPtjG4pwDZco9O065RcXacXo7qpCN-IuC0te0qG2_2bAhc-aR7vWgHsTm6GXfrQQh_6uwVHShSarU7",
+  "status": "ok"
+}
+```
+
+
+دریافت توکن وبسوکت با ارسال درخواست `GET` به `auth/ws/token/` صورت می‌گیرد. 
+
+- **درخواست:** `GET /auth/ws/token`
+
+<aside class="notice">
+برای سابسکرایب کردن و دریافت اطلاعات از کانال های که با پشوند <code dir="ltr">private:</code> آغاز می شوند نیاز به ارائه توکن قبل از سابسکرایب کردن می باشد.
+</aside>
+
+
+<h2 id="websocket-auth">احراز هویت</h2>
+
+```javascript
+const centrifuge = new Centrifuge('wss://wss.nobitex.ir/connection/websocket', {
+    token: '<CONNECTION_TOKEN>'
+});
+```
+
+> برای احراز هویت به صورت خودکار می توان از قطعه کد زیر استفاده کرد.
+
+```javascript
+import { Centrifuge, UnauthorizedError } from 'centrifuge';
+
+async function getToken() {
+    if (!loggedIn) {
+        return "";
+    }
+    const res = await fetch('https://api.nobitex.ir/auth/ws/token/', {
+    method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ApiToken`
+      }
+    });
+    if (!res.ok) {
+        if (res.status === 403) {
+            // Return special error to not proceed with token refreshes, client will be disconnected.
+            throw new UnauthorizedError();
+        }
+        // Any other error thrown will result into token refresh re-attempts.
+        throw new Error(`Unexpected status code ${res.status}`);
+    }
+    const data = await res.json();
+    return data.token;
+}
+
+const client = new Centrifuge(
+    'wss://wss.nobitex.ir/connection/websocket',
+    {
+        token: '<CONNECTION_TOKEN>',
+        getToken: getToken
+    }
+);
+
+client.on('connected', (ctx) => {
+    console.log('connected', ctx);
+});
+client.connect();
+```
+
+> در صورتی که از این SDK استفاده نمی‌کنید، برای اتصال به وب‌سوکت پیام زیر را ارسال نمایید:
+
+```json
+{
+  "connect": {"token": "<CONNECTION_TOKEN>"},
+  "id": 1
+}
+```
+
+کانال‌هایی که با پیشوند <code dir="ltr">private:</code> آغاز میشوند حاوی اطلاعات اختصاصی برای هر کاربر هستند و دسترسی به آن‌ها مستلزم احراز هویت با استفاده از توکن و پارامتر `{websocket_auth_token}` است.
+
+**انواع کانال ها:**
+
+| نوع کانال | الگو                                         | توضیحات                                                                                                                                                          | نمونه                                           |
+|-----------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| **عمومی** | `public:channelName`                         | کانال‌های عمومی حاوی اطلاعاتی هستند که برای همه کاربران قابل دسترسی‌اند و نیازی به احراز هویت ندارند.                                                            | `public:orderbook-BTCIRT`                         |
+| **خصوصی** | `private:channelName#{websocketAuthParam}` | کانال‌های خصوصی شامل اطلاعات مرتبط با کاربر خاص هستند و دسترسی به آن‌ها نیازمند احراز هویت با استفاده از پارامتر <code>{websocketAuthParam}</code> و توکن است. | `private:trades#1987577cdf7c7422dee369e188e276ee` |
+
+
+
+پارامتر <code>{websocketAuthParam}</code> را میبایست از بخش [پروفایل](#user-profile) دریافت کنید.
+
+**مثال:** کاربر با `websocketAuthParam=1987577cdf7c7422dee369e188e276ee`برای دریافت آخرین معاملاتش میبایست به کانال `private:trades#1987577cdf7c7422dee369e188e276ee` سابسکرایب کند.
+ 
+
+
+<aside class="notice">
+پارامتر <code dir="ltr">{websocketAuthParam}</code> یک مقدار ثابت و منحصر به فرد برای هر کاربر است که در طول زمان تغییر نمی‌کند. بنابراین، نیازی به به‌روزرسانی و رفرش کردن ندارد.
+</aside>
+
 
 <h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
-
 
 
 کانال‌هایی با پیشوند زیر شامل اطلاعات **اردربوک** هستند و با هر تغییری در اردربوک، به مشترکین پیام ارسال می‌کنند:
@@ -298,3 +406,98 @@ sub.subscribe();
 | `l`          | float | کمترین قیمت  | <code dir="ltr">6238000000.0</code> |
 | `c`          | float | قیمت پایانی  | <code dir="ltr">6238031033.0</code> |
 | `v`          | float | حجم معاملات  | <code dir="ltr">1.26</code>         |
+
+
+<h2 id="private-trades">معاملات کاربر</h2>
+
+
+الگوی کانال معاملات کاربر به این صورت می باشد.
+
+**الگوی کانال معاملات کاربر:** <code dir="ltr">private:trades#{websocketAuthParam}</code>
+
+به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر پابلیش می شود.
+
+
+**توجه:پارامتر
+<code>{websocketAuthParam}</code>
+را می توانید از بخش [پروفایل](#user-profile) دریافت کنید.**
+
+
+
+<aside class="notice">
+پارامتر <code>{websocketAuthParam}</code> مقداری ثابت است و در طول زمان تغییر نمی کند، نیازی بروز رسانی و رفرش کردن آن نیست.
+</aside>
+
+<aside class="notice">
+سابسکرایب کردن به این کانال نیاز به احراز هویت از طریق token دارد.
+</aside>
+
+
+
+```javascript
+const sub = client.newSubscription('private:trades#1987577cdf7c7422dee369e188e276ee',  { delta: 'fossil' });
+sub.on('subscribed', (ctx) => {
+    console.log('subscribed');
+});
+sub.on('publication', (ctx) => {
+    console.log(ctx.data);
+});
+sub.subscribe();
+```
+
+> در صورتی که از SDK استفاده نمی‌کنید پیام زیر را ارسال نمایید:
+
+```json
+{
+  "id": 2,
+  "subscribe": {
+    "channel": "private:trades#1987577cdf7c7422dee369e188e276ee"
+  }
+}
+```
+
+> که در کنسول، پیامی که `console.log` نموده‌اید به شکل زیر خواهد بود که همان مقدار `data` می‌باشد:
+
+```json
+{
+    "srcCurrency": "btc",
+    "dstCurrency": "rls",
+    "timestamp": "2024-11-23T11:31:27.833332+00:00",
+    "price": "66683959340",
+    "amount": "0.000404",
+    "total": "26940319.57336",
+    "type": "sell",
+    "fee": "47150.7989334",
+    "id": 12942226,
+    "orderId": 520305923
+}
+```
+
+> همچنین اگر از SDK رسمی استفاده نمی‌کنید، در صورت اتصال و اشتراک صحیح، پیام‌های دریافتی از کانال به شکل زیر خواهد بود:
+
+```json
+{
+  "push": {
+    "channel": "private:trades#1987577cdf7c7422dee369e188e276ee",
+    "pub": {
+      "data": "{\"srcCurrency\":\"btc\",\"dstCurrency\":\"rls\", \"timestamp\":\"2024-11-23T11:31:27.833332+00:00\", \"price\":\"66683959340\",\"amount\":\"0.000404\",\"total\":\"26940319.57336\",\"type\":\"sell\",\"fee\":\"47150.7989334\",\"id\":12942226,\"orderId\":520305923}",
+      "offset": 34575
+    }
+  }
+}
+```
+
+### پارامتر پیام
+
+| فیلد        | نوع      | توضیحات            | نمونه                              |
+|-------------|----------|--------------------|------------------------------------|
+| id          | int      | شناسه‌ی معامله     | 12942226                           |
+| orderId     | int      | شناسه‌ی سفارش      | 520305923                          |
+| srcCurrency | string   | رمزارز مبدا معامله | `btc` یا `eth` یا `xrp` یا ...     |
+| dstCurrency | string   | ارز مقصد معامله    | `rls` یا `usdt`                    |
+| timestamp   | string   | زمان انجام معامله  | `2024-11-23T11:31:27.833332+00:00` |
+| type        | string   | نوع خرید یا فروش   | `buy` یا `sell`                    |
+| price       | monetary | قیمت انجام معامله  | `66683959340`                      |
+| amount      | monetary | مقدار معامله شده   | `0.000404`                         |
+| total       | monetary | قیمت کل معامله     | `26940319.57336`                   |
+| fee         | monetary | کارمزد معامله      | `47150.7989334`                    |
