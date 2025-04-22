@@ -354,10 +354,10 @@
               </ul>
           </li>
           <li>
-            <a href="#0d2655f072" class="toc-h1 toc-link" data-title="اطلاعات کاربر">اطلاعات کاربر</a>
+            <a href="#user-data" class="toc-h1 toc-link" data-title="اطلاعات کاربر">اطلاعات کاربر</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#88cb25e727" class="toc-h2 toc-link" data-title="پروفایل">پروفایل</a>
+                    <a href="#user-profile" class="toc-h2 toc-link" data-title="پروفایل">پروفایل</a>
                   </li>
                   <li>
                     <a href="#87af031464" class="toc-h2 toc-link" data-title="تولید آدرس بلاکچین">تولید آدرس بلاکچین</a>
@@ -470,10 +470,19 @@
                     <a href="#websocket-connection" class="toc-h2 toc-link" data-title="اتصال به وب‌سوکت">اتصال به وب‌سوکت</a>
                   </li>
                   <li>
+                    <a href="#websocket-token" class="toc-h2 toc-link" data-title="دریافت توکن">دریافت توکن</a>
+                  </li>
+                  <li>
+                    <a href="#websocket-auth" class="toc-h2 toc-link" data-title="احراز هویت">احراز هویت</a>
+                  </li>
+                  <li>
                     <a href="#websocket-orderbook" class="toc-h2 toc-link" data-title="استریم لیست سفارش‌ها: اردربوک">استریم لیست سفارش‌ها: اردربوک</a>
                   </li>
                   <li>
                     <a href="#websocket-candle" class="toc-h2 toc-link" data-title="استریم آمار OHLC بازار نوبیتکس">استریم آمار OHLC بازار نوبیتکس</a>
+                  </li>
+                  <li>
+                    <a href="#private-trades" class="toc-h2 toc-link" data-title="معاملات کاربر">معاملات کاربر</a>
                   </li>
               </ul>
           </li>
@@ -1322,7 +1331,10 @@
 <aside class="notice">
 این آمارها مربوط به بازارهای Kraken و Binance می باشد
 </aside>
-<h1 id='0d2655f072'>اطلاعات کاربر</h1><h2 id='88cb25e727'>پروفایل</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
+<h1 id="user-data">اطلاعات کاربر</h1>
+
+<h2 id="user-profile">پروفایل</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/profile'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/profile \
 </code></pre></div>
@@ -1393,7 +1405,8 @@
   </span><span class="nl">"tradeStats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"monthTradesTotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10867181.5365000000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"monthTradesCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"websocketAuthParam"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1987577cdf7c7422dee369e188e276ee"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>این api، اطلاعات پروفایل شما، کارت بانکی، حساب بانکی، موارد تایید شده(ایمیل، شماره تلفن، موبایل ...)، تنظمیات مربوط به پروفایل(فی تراکنش، فی مبادلات usdt و ...) و خلاصه آمار مبادلات شما را برمیگرداند.</p>
@@ -5126,6 +5139,116 @@
 </code></pre></div><h3 id='sdk'>توجه: اتصال به وب‌سوکت با استفاده از SDK زبان‌های دیگر</h3>
 <p>برای مطالعه‌ی جزئیات و چگونگی اتصال به وب‌سوکت نوبیتکس با استفاده از SDK زبان‌های دیگر، لطفاً به مستنداتی که در ابتدای بخش قرار دادیم مراجعه فرمایید. در SDK ها و محیط‌های مختلف، تفاوت‌های جزئی وجود دارد. به‌طور مثال در <strong>node.js</strong>، نیاز به نصب و پاس دادن مستقیم ماژول <code>websocket</code> به کلاینت در هنگام اتصال می‌باشیم که در <a href="https://github.com/centrifugal/centrifuge-js?tab=readme-ov-file#using-with-nodejs">مستندات آن SDK</a> به این موضوع اشاره شده.</p>
 
+<h2 id="websocket-token">دریافت توکن</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/auth/ws/token/'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjMiLCJleHAiOjE3MzE5Mzk0NDIsImlhdCI6MTczMTkzODI0MiwibWV0YSI6e319.AFZjNC0ugUcfchUKjjunNDl1kfemJkA0Y5IYRi1c0mSvIa_XxzQIeVeqg6qnTBzE-HG6zEqXXyCENJtAz7xc7wqcABWbpcHdH0fPtjG4pwDZco9O065RcXacXo7qpCN-IuC0te0qG2_2bAhc-aR7vWgHsTm6GXfrQQh_6uwVHShSarU7"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>دریافت توکن وبسوکت با ارسال درخواست <code>GET</code> به <code>auth/ws/token/</code> صورت می‌گیرد. </p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /auth/ws/token</code></li>
+</ul>
+
+<aside class="notice">
+برای سابسکرایب کردن و دریافت اطلاعات از کانال های که با پشوند <code dir="ltr">private:</code> آغاز می شوند نیاز به ارائه توکن قبل از سابسکرایب کردن می باشد.
+</aside>
+
+<h2 id="websocket-auth">احراز هویت</h2>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">centrifuge</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Centrifuge</span><span class="p">(</span><span class="dl">'</span><span class="s1">wss://wss.nobitex.ir/connection/websocket</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;CONNECTION_TOKEN&gt;</span><span class="dl">'</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>برای احراز هویت به صورت خودکار می توان از قطعه کد زیر استفاده کرد.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Centrifuge</span><span class="p">,</span> <span class="nx">UnauthorizedError</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">centrifuge</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getToken</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">loggedIn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.nobitex.ir/auth/ws/token/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`Token ApiToken`</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">403</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Return special error to not proceed with token refreshes, client will be disconnected.</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">UnauthorizedError</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="c1">// Any other error thrown will result into token refresh re-attempts.</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`Unexpected status code </span><span class="p">${</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Centrifuge</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">wss://wss.nobitex.ir/connection/websocket</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="na">token</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;CONNECTION_TOKEN&gt;</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">getToken</span><span class="p">:</span> <span class="nx">getToken</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connected</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">connected</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>در صورتی که از این SDK استفاده نمی‌کنید، برای اتصال به وب‌سوکت پیام زیر را ارسال نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"connect"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CONNECTION_TOKEN&gt;"</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>کانال‌هایی که با پیشوند <code dir="ltr">private:</code> آغاز میشوند حاوی اطلاعات اختصاصی برای هر کاربر هستند و دسترسی به آن‌ها مستلزم احراز هویت با استفاده از توکن و پارامتر <code>{websocket_auth_token}</code> است.</p>
+
+<p><strong>انواع کانال ها:</strong></p>
+
+<table><thead>
+<tr>
+<th>نوع کانال</th>
+<th>الگو</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>عمومی</strong></td>
+<td><code>public:channelName</code></td>
+<td>کانال‌های عمومی حاوی اطلاعاتی هستند که برای همه کاربران قابل دسترسی‌اند و نیازی به احراز هویت ندارند.</td>
+<td><code>public:orderbook-BTCIRT</code></td>
+</tr>
+<tr>
+<td><strong>خصوصی</strong></td>
+<td><code>private:channelName#{websocketAuthParam}</code></td>
+<td>کانال‌های خصوصی شامل اطلاعات مرتبط با کاربر خاص هستند و دسترسی به آن‌ها نیازمند احراز هویت با استفاده از پارامتر <code>{websocketAuthParam}</code> و توکن است.</td>
+<td><code>private:trades#1987577cdf7c7422dee369e188e276ee</code></td>
+</tr>
+</tbody></table>
+
+<p>پارامتر <code>{websocketAuthParam}</code> را میبایست از بخش <a href="#user-profile">پروفایل</a> دریافت کنید.</p>
+
+<p><strong>مثال:</strong> کاربر با <code>websocketAuthParam=1987577cdf7c7422dee369e188e276ee</code>برای دریافت آخرین معاملاتش میبایست به کانال <code>private:trades#1987577cdf7c7422dee369e188e276ee</code> سابسکرایب کند.</p>
+
+<aside class="notice">
+پارامتر <code dir="ltr">{websocketAuthParam}</code> یک مقدار ثابت و منحصر به فرد برای هر کاربر است که در طول زمان تغییر نمی‌کند. بنابراین، نیازی به به‌روزرسانی و رفرش کردن ندارد.
+</aside>
+
 <h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
 
 <p>کانال‌هایی با پیشوند زیر شامل اطلاعات <strong>اردربوک</strong> هستند و با هر تغییری در اردربوک، به مشترکین پیام ارسال می‌کنند:</p>
@@ -5395,6 +5518,143 @@
 <td>float</td>
 <td>حجم معاملات</td>
 <td><code dir="ltr">1.26</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="private-trades">معاملات کاربر</h2>
+
+<p>الگوی کانال معاملات کاربر به این صورت می باشد.</p>
+
+<p><strong>الگوی کانال معاملات کاربر:</strong> <code dir="ltr">private:trades#{websocketAuthParam}</code></p>
+
+<p>به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر پابلیش می شود.</p>
+
+<p><strong>توجه:پارامتر
+<code>{websocketAuthParam}</code>
+را می توانید از بخش <a href="#user-profile">پروفایل</a> دریافت کنید.</strong></p>
+
+<aside class="notice">
+پارامتر <code>{websocketAuthParam}</code> مقداری ثابت است و در طول زمان تغییر نمی کند، نیازی بروز رسانی و رفرش کردن آن نیست.
+</aside>
+
+<aside class="notice">
+سابسکرایب کردن به این کانال نیاز به احراز هویت از طریق token دارد.
+</aside>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">newSubscription</span><span class="p">(</span><span class="dl">'</span><span class="s1">private:trades#1987577cdf7c7422dee369e188e276ee</span><span class="dl">'</span><span class="p">,</span>  <span class="p">{</span> <span class="na">delta</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fossil</span><span class="dl">'</span> <span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">publication</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">sub</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>در صورتی که از SDK استفاده نمی‌کنید پیام زیر را ارسال نمایید:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"subscribe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private:trades#1987577cdf7c7422dee369e188e276ee"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>که در کنسول، پیامی که <code>console.log</code> نموده‌اید به شکل زیر خواهد بود که همان مقدار <code>data</code> می‌باشد:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-11-23T11:31:27.833332+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66683959340"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000404"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26940319.57336"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47150.7989334"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12942226</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">520305923</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>همچنین اگر از SDK رسمی استفاده نمی‌کنید، در صورت اتصال و اشتراک صحیح، پیام‌های دریافتی از کانال به شکل زیر خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"push"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private:trades#1987577cdf7c7422dee369e188e276ee"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pub"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">srcCurrency</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">btc</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">dstCurrency</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rls</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">timestamp</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2024-11-23T11:31:27.833332+00:00</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">price</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">66683959340</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">amount</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.000404</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">total</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">26940319.57336</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">sell</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">fee</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">47150.7989334</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:12942226,</span><span class="se">\"</span><span class="s2">orderId</span><span class="se">\"</span><span class="s2">:520305923}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">34575</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='9954d59416'>پارامتر پیام</h3>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه‌ی معامله</td>
+<td>12942226</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>int</td>
+<td>شناسه‌ی سفارش</td>
+<td>520305923</td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>string</td>
+<td>رمزارز مبدا معامله</td>
+<td><code>btc</code> یا <code>eth</code> یا <code>xrp</code> یا ...</td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>ارز مقصد معامله</td>
+<td><code>rls</code> یا <code>usdt</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>string</td>
+<td>زمان انجام معامله</td>
+<td><code>2024-11-23T11:31:27.833332+00:00</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>نوع خرید یا فروش</td>
+<td><code>buy</code> یا <code>sell</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>قیمت انجام معامله</td>
+<td><code>66683959340</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار معامله شده</td>
+<td><code>0.000404</code></td>
+</tr>
+<tr>
+<td>total</td>
+<td>monetary</td>
+<td>قیمت کل معامله</td>
+<td><code>26940319.57336</code></td>
+</tr>
+<tr>
+<td>fee</td>
+<td>monetary</td>
+<td>کارمزد معامله</td>
+<td><code>47150.7989334</code></td>
 </tr>
 </tbody></table>
 <h1 id='81680ab360'>دفتر آدرس و حالت برداشت امن</h1>
