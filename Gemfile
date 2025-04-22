@@ -1,6 +1,9 @@
 ruby '>= 2.5'
 source 'https://rubygems.org'
 
+
+gem "rack", ">= 2.2.13", "< 3.0"
+
 # Middleman
 gem 'middleman', '~> 4.4'
 gem 'middleman-syntax', '~> 3.2'
