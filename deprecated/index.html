@@ -327,9 +327,9 @@
       <div class="content">
         <h1 id='api'>موارد قدیمی API</h1>
 <p>برخی از APIها به دلیل تغییرات ساختاری یا کارکردی، قدیمی و deprecated محسوب می‌شوند و نباید دیگر از آن‌ها استفاده شود. این موارد صرفاً جهت ثبت در ادامه خواهند آمد، ولی ممکن است در حال حاضر یا هر یک از نسخه‌های آتی نوبیتکس این APIها غیرفعال شوند یا دیگر پاسخگو نباشند.</p>
-<h2 id='40dbf5eeb5'>کد دعوت پیش‌فرض</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/get-referral-code'</span> <span class="se">\</span>
+<h2 id='40dbf5eeb5'>کد دعوت پیش‌فرض</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/users/get-referral-code'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/users/get-referral-code \
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/users/get-referral-code \
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
@@ -347,10 +347,10 @@
 <ul>
 <li>آدرس : <code>GET /users/get-referral-code</code></li>
 </ul>
-<h2 id='76f8b4c4a0'>لیست سفارشـات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/orderbook'</span>
+<h2 id='76f8b4c4a0'>لیست سفارشـات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/orderbook'</span>
      <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
      <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/orderbook \
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/v2/orderbook \
   symbol=USDTIRT
 </code></pre></div>
 <blockquote>
@@ -385,10 +385,10 @@
 <ul>
 <li>آدرس : <code>POST /v2/orderbook</code></li>
 </ul>
-<h2 id='4874d0c1a2'>لیست معامـلات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/trades'</span>
+<h2 id='4874d0c1a2'>لیست معامـلات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/trades'</span>
      <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
      <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://api.nobitex.ir/v2/trades \
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/v2/trades \
   symbol=USDTIRT
 </code></pre></div>
 <blockquote>

@@ -478,7 +478,7 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">sudo </span>apt <span class="nb">install </span>curl
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="na">baseURL</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.nobitex.ir</span><span class="dl">"</span><span class="p">});</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="na">baseURL</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://apiv2.nobitex.ir</span><span class="dl">"</span><span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.google.gson.JsonObject</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">retrofit2.Call</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">retrofit2.http.GET</span><span class="o">;</span>
@@ -490,7 +490,7 @@
 <span class="kn">import</span> <span class="nn">retrofit2.converter.gson.GsonConverterFactory</span><span class="o">;</span>
 
 <span class="nc">Retrofit</span> <span class="n">retrofit</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Retrofit</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-  <span class="o">.</span><span class="na">baseUrl</span><span class="o">(</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//api.nobitex.ir')</span>
+  <span class="o">.</span><span class="na">baseUrl</span><span class="o">(</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//apiv2.nobitex.ir')</span>
   <span class="o">.</span><span class="na">addConverterFactory</span><span class="o">(</span><span class="nc">GsonConverterFactory</span><span class="o">.</span><span class="na">create</span><span class="o">())</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight swift tab-swift"><code><span class="c1">// Contact us</span>
@@ -509,7 +509,7 @@
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/tfa/request'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/users/tfa/request'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/tfa/request</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Token yourTOKENhereHEX0000000000</span><span class="dl">"</span><span class="p">},</span>
@@ -526,7 +526,7 @@
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">request2FA</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /users/tfa/request HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -635,7 +635,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/tfa/confirm'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/tfa/confirm'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"device": 1, "otp": 123456, "sms_otp": 987654}'</span>
@@ -655,7 +655,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">confirm2FA</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">123456</span><span class="o">,</span> <span class="mi">987654</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/tfa/confirm HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 {"device": 1, "otp": 123456, "sms_otp": 987654}
 </code></pre></div>
@@ -749,7 +749,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/tfa/disable'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/tfa/disable'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"otp": 123456}'</span>
@@ -769,7 +769,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">disable2FA</span><span class="o">(</span><span class="mi">123456</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/tfa/disable HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 {"otp": 123456}
 </code></pre></div>
@@ -849,7 +849,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست: </p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/notifications/list'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/notifications/list'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/notifications/list</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
@@ -866,7 +866,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listNotifications</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /notifications/list HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -963,7 +963,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://api.nobitex.ir/notifications/read'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://apiv2.nobitex.ir/notifications/read'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{"id":"234,345"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">APIService</span> <span class="o">{</span>
@@ -977,7 +977,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">readNotifications</span><span class="o">(</span><span class="s">"234,345"</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /notifications/read HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"id": "234,345"}
@@ -1050,7 +1050,7 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/invoice/generate'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/wallets/invoice/generate'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"wallet": 1, "amount": 100}'</span>
@@ -1070,7 +1070,7 @@ Content-Type: application/json
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">generateWalletInvoice</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/wallets/invoice/generate HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"wallet": 1, "amount": 100}
@@ -1360,7 +1360,7 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/invoice/decode'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/wallets/invoice/decode'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"wallet": 1,"invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}'</span>
@@ -1384,7 +1384,7 @@ Content-Type: application/json
 <span class="nc">String</span> <span class="n">invoice</span> <span class="o">=</span> <span class="s">"lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"</span><span class="o">;</span>
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">decodeWalletInvoice</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">invoice</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /users/wallets/invoice/decode HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"wallet": 1, "invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}
@@ -1500,7 +1500,7 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/v2/price-alerts</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
@@ -1517,7 +1517,7 @@ Content-Type: application/json
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listPriceAlerts</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -1645,7 +1645,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}'</span>
@@ -1677,7 +1677,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">createPriceAlert</span><span class="o">(</span><span class="s">"price"</span><span class="o">,</span> <span class="s">"btcusdt"</span><span class="o">,</span> <span class="s">"-"</span><span class="o">,</span> <span class="s">"63000"</span><span class="o">,</span> <span class="s">"email,notif"</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}
@@ -1810,7 +1810,7 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/v2/price-alerts'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"pk": 3, "tp": "price", "market": "btcusdt", "direction": "+", "price": "64000", "channel": "notif"}'</span>
@@ -1844,7 +1844,7 @@ Content-Type: application/json
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">updatePriceAlert</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">"price"</span><span class="o">,</span> <span class="s">"btcusdt"</span><span class="o">,</span> <span class="s">"+"</span><span class="o">,</span> <span class="s">"64000"</span><span class="o">,</span> <span class="s">"notif"</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"pk": 3, tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}
@@ -1921,7 +1921,7 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s1">'https://api.nobitex.ir/v2/price-alerts?delete_item=1,3'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s1">'https://apiv2.nobitex.ir/v2/price-alerts?delete_item=1,3'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">/v2/price-alerts?delete_item=1,3</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
@@ -1938,7 +1938,7 @@ Content-Type: application/json
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">deletePriceAlerts</span><span class="o">(</span><span class="s">"1,3"</span><span class="o">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>DELETE /v2/price-alerts?delete_item=1,3 HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -2008,7 +2008,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/users/transactions-history'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/users/transactions-history'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/transactions-history</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Token yourTOKENhereHEX0000000000</span><span class="dl">'</span><span class="p">},</span>
@@ -2025,7 +2025,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 
 <span class="nc">Call</span><span class="o">&lt;</span><span class="nc">JsonObject</span><span class="o">&gt;</span> <span class="n">call</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">listTransactions</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>GET /users/transactions-history HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 </code></pre></div>
 <blockquote>
@@ -2191,7 +2191,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/create-gift'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/gift/create-gift'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'X-TOTP: 2568148'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -2466,7 +2466,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 </ol>
 <h2 id='1ecce8f7b9'>تایید برداشت</h2>
 <p>برای این منظور باید از APIی تایید درخواست برداشت در قسمت برداشت استفاده کرد.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"withdraw": 432, "otp": 623005}'</span>
@@ -2554,7 +2554,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/gift/redeem'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
@@ -2737,7 +2737,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/redeem-lightning'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/gift/redeem-lightning'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "redeem_code": "8AFA1DF3",
@@ -3045,7 +3045,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/gift/resend-gift-otp'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/gift/resend-gift-otp'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "redeem_code": "07DB85D7210E4D29AEFF112FF53B2C74"
@@ -3130,7 +3130,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/topics'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://apiv2.nobitex.ir/ticketing/topics'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3162,7 +3162,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/tickets'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://apiv2.nobitex.ir/ticketing/tickets'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3216,7 +3216,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/tickets/2546'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://apiv2.nobitex.ir/ticketing/tickets/2546'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3277,7 +3277,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/create'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://apiv2.nobitex.ir/ticketing/tickets/create'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
 <table><thead>
@@ -3387,7 +3387,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/comments/create'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://apiv2.nobitex.ir/ticketing/comments/create'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
 <table><thead>
@@ -3522,7 +3522,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/close'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://apiv2.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/close'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <p>نیاز نیست.</p>
@@ -3582,7 +3582,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://api.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/rate'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s1">'https://apiv2.nobitex.ir/ticketing/tickets/&lt;id:int&gt;/rate'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
 <table><thead>
@@ -3692,7 +3692,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://api.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s1">'https://apiv2.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div>
 <blockquote>
@@ -3736,7 +3736,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/market/orders/batch-add'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/market/orders/batch-add'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> @- <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
@@ -3780,7 +3780,7 @@ Authorization: Token yourTOKENhereHEX0000000000
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /market/orders/batch-add HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {
@@ -4033,12 +4033,12 @@ Content-Type: application/json
 <blockquote>
 <p>نمونه درخواست:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://api.nobitex.ir/market/orders/cancel-batch'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/market/orders/cancel-batch'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"orderIds":[1,2]}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>POST /market/orders/cancel-batch HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {
@@ -4138,9 +4138,9 @@ Content-Type: application/json
 <li>پارامتر hour که باید به صورت عدد صحیح وارد شود به این معناست که سفارش‌های فعال کاربر در چند ساعت اخیر کنسل شوند، برای مثال اگر مقدار ۳ برای این پارامتر ارسال شود سفارش‌های فعال سه ساعت اخیر کاربر غیرفعال می‌شوند.</li>
 <li>پارامتر execution_type را می‌توان ارسال کرد که مقدار این پارامتر مشخص کننده‌ی نوع سفارشاتی است که نیاز به لغو شدند دارند. برای مثال اگر این پارامتر مقدار market داشته باشد‌، سفارشات از نوع market لغو خواهند شد.</li>
 </ol>
-<h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='169692bdf1'>تعداد سفارش‌های باز کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://api.nobitex.ir/market/orders/open-count?tradeType=margin'</span> <span class="se">\</span>
+<h1 id='a74b7729ca'>معامله در بازار</h1><h2 id='169692bdf1'>تعداد سفارش‌های باز کاربر</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/market/orders/open-count?tradeType=margin'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://api.nobitex.ir/market/orders/open-count?tradeType=margin
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/market/orders/open-count?tradeType=margin
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
