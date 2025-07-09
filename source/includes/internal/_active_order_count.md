@@ -4,12 +4,12 @@
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/open-count?tradeType=margin' \
+curl 'https://apiv2.nobitex.ir/market/orders/open-count?tradeType=margin' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/orders/open-count?tradeType=margin
+http GET https://apiv2.nobitex.ir/market/orders/open-count?tradeType=margin
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

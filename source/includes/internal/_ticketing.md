@@ -13,7 +13,7 @@
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/ticketing/topics' \
+curl GET 'https://apiv2.nobitex.ir/ticketing/topics' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -47,7 +47,7 @@ curl GET 'https://api.nobitex.ir/ticketing/topics' \
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/ticketing/tickets' \
+curl GET 'https://apiv2.nobitex.ir/ticketing/tickets' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -101,7 +101,7 @@ curl GET 'https://api.nobitex.ir/ticketing/tickets' \
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/ticketing/tickets/2546' \
+curl GET 'https://apiv2.nobitex.ir/ticketing/tickets/2546' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -165,7 +165,7 @@ curl GET 'https://api.nobitex.ir/ticketing/tickets/2546' \
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/ticketing/tickets/create' \
+curl POST 'https://apiv2.nobitex.ir/ticketing/tickets/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -260,7 +260,7 @@ files | list[file] | اختیاری | عکس‌های پیوست                
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/ticketing/comments/create' \
+curl POST 'https://apiv2.nobitex.ir/ticketing/comments/create' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -382,7 +382,7 @@ files | list[file] | اختیاری | عکسهای پیوست                  |
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
+curl POST 'https://apiv2.nobitex.ir/ticketing/tickets/<id:int>/close' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -447,7 +447,7 @@ curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/close' \
 >نمونه درخواست:
 
 ```shell
-curl POST 'https://api.nobitex.ir/ticketing/tickets/<id:int>/rate' \
+curl POST 'https://apiv2.nobitex.ir/ticketing/tickets/<id:int>/rate' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -546,7 +546,7 @@ rating | number     | الزامی  | امتیاز ۱ تا ۵ | 5
 >نمونه درخواست:
 
 ```shell
-curl GET 'https://api.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
+curl GET 'https://apiv2.nobitex.ir/ticketing/attachments/8a9759e4cedc49bda0856204499fd3de' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

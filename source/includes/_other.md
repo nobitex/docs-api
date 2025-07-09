@@ -3,11 +3,11 @@
 <h2 id="options">تنظیمات سیستم</h2>
 
 ```shell
-curl 'https://api.nobitex.ir/v2/options'
+curl 'https://apiv2.nobitex.ir/v2/options'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/options
+http GET https://apiv2.nobitex.ir/v2/options
 ```
 
 > ساختار کلی پاسخ به صورت زیر خواهد بود. کلیدهای موجود در هر بخش در مستندات توضیح داده شده‌اند.

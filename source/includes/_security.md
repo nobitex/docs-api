@@ -3,12 +3,12 @@
 ##  سابقه ورود
 
 ```shell
-curl 'https://api.nobitex.ir/users/login-attempts' \
+curl 'https://apiv2.nobitex.ir/users/login-attempts' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/login-attempts \
+http POST https://apiv2.nobitex.ir/users/login-attempts \
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -36,13 +36,13 @@ http POST https://api.nobitex.ir/users/login-attempts \
 ## فعالسازی لغو اضطراری
 
 ```shell
-curl 'https://api.nobitex.ir/security/emergency-cancel/activate' \
+curl 'https://apiv2.nobitex.ir/security/emergency-cancel/activate' \
   -X GET \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/security/emergency-cancel/activate \
+http GET https://apiv2.nobitex.ir/security/emergency-cancel/activate \
   Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -81,7 +81,7 @@ http GET https://api.nobitex.ir/security/emergency-cancel/activate \
 >نمونه درخواست:
 
 ```shell
-curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
+curl --location --request POST 'https://apiv2.nobitex.ir/security/anti-phishing' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000' \
 --form 'code="sample_anti_phishing"' \
 --form 'otpCode="123456"'
@@ -99,7 +99,7 @@ curl --location --request POST 'https://api.nobitex.ir/security/anti-phishing' \
 > برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:
 
 ```shell
-curl --location --request GET 'https://api.nobitex.ir/otp/request?type=email&usage=anti_phishing_code' \
+curl --location --request GET 'https://apiv2.nobitex.ir/otp/request?type=email&usage=anti_phishing_code' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -160,7 +160,7 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 >نمونه درخواست:
 
 ```shell
-curl --location --request GET 'https://api.nobitex.ir/security/anti-phishing' \
+curl --location --request GET 'https://apiv2.nobitex.ir/security/anti-phishing' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000' 
 ```
 

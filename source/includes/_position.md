@@ -9,12 +9,12 @@
 ## مشاهده بازارهای معاملات تعهدی
 
 ```shell
-curl 'https://api.nobitex.ir/margin/markets/list' \
+curl 'https://apiv2.nobitex.ir/margin/markets/list' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/margin/markets/list
+http GET https://apiv2.nobitex.ir/margin/markets/list
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -90,12 +90,12 @@ http GET https://api.nobitex.ir/margin/markets/list
 ## مشاهده استخرهای مشارکت ارزی فعال
 
 ```shell
-curl 'https://api.nobitex.ir/liquidity-pools/list' \
+curl 'https://apiv2.nobitex.ir/liquidity-pools/list' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/liquidity-pools/list
+http GET https://apiv2.nobitex.ir/liquidity-pools/list
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -132,7 +132,7 @@ http GET https://api.nobitex.ir/liquidity-pools/list
 ## انتقال پول به کیف‌پول تعهدی
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/wallets/transfer' \
+curl -X POST 'https://apiv2.nobitex.ir/wallets/transfer' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"currency": "rls", "amount": "2500000000", "src": "spot", "dst": "margin"}'
@@ -140,7 +140,7 @@ curl -X POST 'https://api.nobitex.ir/wallets/transfer' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/liquidity-pools/list \
+http POST https://apiv2.nobitex.ir/liquidity-pools/list \
   currency=rls&amount=2500000000&src=spot&dst=margin
 ```
 
@@ -223,13 +223,13 @@ http POST https://api.nobitex.ir/liquidity-pools/list \
 ## دریافت محدودیت کاربری در مقدار وکالت
 
 ```shell
-curl 'https://api.nobitex.ir/margin/delegation-limit?currency=btc' \
+curl 'https://apiv2.nobitex.ir/margin/delegation-limit?currency=btc' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" 
   
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/margin/delegation-limit \
+http GET https://apiv2.nobitex.ir/margin/delegation-limit \
   currency=btc
 ```
 
@@ -284,14 +284,14 @@ http GET https://api.nobitex.ir/margin/delegation-limit \
 ## درج سفارش تعهدی
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/margin/orders/add' \
+curl -X POST 'https://apiv2.nobitex.ir/margin/orders/add' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"srcCurrency": "btc", "dstCurrency": "rls", "leverage": "2", "amount": "0.01", "price": "6400000000"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/margin/orders/add \
+http POST https://apiv2.nobitex.ir/margin/orders/add \
   srcCurrency=btc&dstCurrency=rls&amount=0.01&price=6400000000
 ```
 
@@ -416,13 +416,13 @@ http POST https://api.nobitex.ir/margin/orders/add \
 ## مشاهده لیست موقعیت‌ها
 
 ```shell
-curl 'https://api.nobitex.ir/positions/list?srcCurrency=btc&status=active' \
+curl 'https://apiv2.nobitex.ir/positions/list?srcCurrency=btc&status=active' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" 
   
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/positions/list \
+http GET https://apiv2.nobitex.ir/positions/list \
   srcCurrency=btc&status=active
 ```
 
@@ -574,13 +574,13 @@ http GET https://api.nobitex.ir/positions/list \
 ## مشاهده یک موقعیت
 
 ```shell
-curl 'https://api.nobitex.ir/positions/128/status' \
+curl 'https://apiv2.nobitex.ir/positions/128/status' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" 
   
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/positions/128/status
+http GET https://apiv2.nobitex.ir/positions/128/status
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -638,14 +638,14 @@ http GET https://api.nobitex.ir/positions/128/status
 ## بستن موقعیت
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/positions/128/close' \
+curl -X POST 'https://apiv2.nobitex.ir/positions/128/close' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"amount": "0.0100150225", "price": "6200000000"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/positions/128/close \
+http POST https://apiv2.nobitex.ir/positions/128/close \
   amount=0.0100150225&price=6200000000
 ```
 
@@ -764,14 +764,14 @@ http POST https://api.nobitex.ir/positions/128/close \
 ## ویرایش وجه تضمین موقعیت باز
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/positions/128/edit-collateral' \
+curl -X POST 'https://apiv2.nobitex.ir/positions/128/edit-collateral' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"collateral": "230000000"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/positions/128/edit-collateral \
+http POST https://apiv2.nobitex.ir/positions/128/edit-collateral \
   collateral=230000000
 ```
 

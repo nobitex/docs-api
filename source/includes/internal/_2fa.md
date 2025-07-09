@@ -11,7 +11,7 @@
 >نمونه درخواست:
 
 ```shell
-curl 'https://api.nobitex.ir/users/tfa/request' \
+curl 'https://apiv2.nobitex.ir/users/tfa/request' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -37,7 +37,7 @@ Call<JsonObject> call = api.request2FA();
 
 ```plaintext
 GET /users/tfa/request HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -105,7 +105,7 @@ IPRestricted |‌ فراخوانی فقط از داخل ایران امکان‌
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/tfa/confirm' \
+curl -X POST 'https://apiv2.nobitex.ir/users/tfa/confirm' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"device": 1, "otp": 123456, "sms_otp": 987654}'
@@ -136,7 +136,7 @@ Call<JsonObject> call = api.confirm2FA(1, 123456, 987654);
 
 ```plaintext
 POST /users/tfa/confirm HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 {"device": 1, "otp": 123456, "sms_otp": 987654}
 ```
@@ -188,7 +188,7 @@ InvalidSmsOTP | کد تایید پیامک شده منقضی یا نامعتبر
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/tfa/disable' \
+curl -X POST 'https://apiv2.nobitex.ir/users/tfa/disable' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"otp": 123456}'
@@ -219,7 +219,7 @@ Call<JsonObject> call = api.disable2FA(123456);
 
 ```plaintext
 POST /users/tfa/disable HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 {"otp": 123456}
 ```

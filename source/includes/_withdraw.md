@@ -3,7 +3,7 @@
 <h2 id="withdraw-request">ثبت درخواست برداشت</h2>
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/wallets/withdraw' \
+curl -X POST 'https://apiv2.nobitex.ir/users/wallets/withdraw' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'X-TOTP: 123456' \
   -H 'Content-Type: application/json' \
@@ -11,7 +11,7 @@ curl -X POST 'https://api.nobitex.ir/users/wallets/withdraw' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/withdraw \
+http POST https://apiv2.nobitex.ir/users/wallets/withdraw \
   wallet=3456 invoice=lnbc123m1pskcu80pp5qqqsyqcyq5rqwz...
 ```
 
@@ -105,14 +105,14 @@ NotWhitelistedTargetAddress | حالت برداشت امن روی حساب فع�
 <h2 id="withdraw-confirm">تایید درخواست برداشت</h2>
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/wallets/withdraw-confirm' \
+curl -X POST 'https://apiv2.nobitex.ir/users/wallets/withdraw-confirm' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"withdraw": 432, "otp": 623005}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/withdraw-confirm \
+http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
   withdraw=432 otp=623005
 ```
 
@@ -160,13 +160,13 @@ http POST https://api.nobitex.ir/users/wallets/withdraw-confirm \
 <h2 id="withdraw-list">فهرست برداشت‌ها</h2>
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/withdraws/list' \
+curl 'https://apiv2.nobitex.ir/users/wallets/withdraws/list' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 
 ```plaintext
-http GET https://api.nobitex.ir/users/wallets/withdraws/list
+http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -239,13 +239,13 @@ http GET https://api.nobitex.ir/users/wallets/withdraws/list
 <h2 id="withdraw-view">مشاهده برداشت</h2>
 
 ```shell
-curl 'https://api.nobitex.ir/withdraws/433' \
+curl 'https://apiv2.nobitex.ir/withdraws/433' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 
 ```plaintext
-http GET https://api.nobitex.ir/withdraws/433
+http GET https://apiv2.nobitex.ir/withdraws/433
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

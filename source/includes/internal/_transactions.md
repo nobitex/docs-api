@@ -11,7 +11,7 @@
 >نمونه درخواست:
 
 ```shell
-curl 'https://api.nobitex.ir/users/transactions-history' \
+curl 'https://apiv2.nobitex.ir/users/transactions-history' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -37,7 +37,7 @@ Call<JsonObject> call = api.listTransactions();
 
 ```plaintext
 GET /users/transactions-history HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 

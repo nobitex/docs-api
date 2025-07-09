@@ -10,7 +10,7 @@
 > نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/market/orders/batch-add' \
+curl -X POST 'https://apiv2.nobitex.ir/market/orders/batch-add' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data @- << EOF
@@ -60,7 +60,7 @@ api.post('/market/orders/batch-add', {
 
 ```plaintext
 POST /market/orders/batch-add HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {
@@ -223,7 +223,7 @@ Content-Type: application/json
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/market/orders/cancel-batch' \
+curl -X POST 'https://apiv2.nobitex.ir/market/orders/cancel-batch' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"orderIds":[1,2]}'
@@ -231,7 +231,7 @@ curl -X POST 'https://api.nobitex.ir/market/orders/cancel-batch' \
 
 ```plaintext
 POST /market/orders/cancel-batch HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {

@@ -3,12 +3,12 @@
 <h2 id="user-profile">پروفایل</h2>
 
 ```shell
-curl 'https://api.nobitex.ir/users/profile' \
+curl 'https://apiv2.nobitex.ir/users/profile' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/profile \
+http POST https://apiv2.nobitex.ir/users/profile \
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -94,7 +94,7 @@ http POST https://api.nobitex.ir/users/profile \
 ## تولید آدرس بلاکچین
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/generate-address' \
+curl 'https://apiv2.nobitex.ir/users/wallets/generate-address' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -102,7 +102,7 @@ curl 'https://api.nobitex.ir/users/wallets/generate-address' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/generate-address \
+http POST https://apiv2.nobitex.ir/users/wallets/generate-address \
   currency=btc
 ```
 
@@ -136,7 +136,7 @@ http POST https://api.nobitex.ir/users/wallets/generate-address \
 ## افزودن کارت بانکی
 
 ```shell
-curl 'https://api.nobitex.ir/users/cards-add' \
+curl 'https://apiv2.nobitex.ir/users/cards-add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -144,7 +144,7 @@ curl 'https://api.nobitex.ir/users/cards-add' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/cards-add \
+http POST https://apiv2.nobitex.ir/users/cards-add \
   number=5041721011111111 bank=رسالت
 ```
 
@@ -171,7 +171,7 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 ## افزودن حساب بانکی
 
 ```shell
-curl 'https://api.nobitex.ir/users/accounts-add' \
+curl 'https://apiv2.nobitex.ir/users/accounts-add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -179,7 +179,7 @@ curl 'https://api.nobitex.ir/users/accounts-add' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/accounts-add \
+http POST https://apiv2.nobitex.ir/users/accounts-add \
   number=5041721011111111 shaba=IR111111111111111111111111 bank=رسالت
 ```
 
@@ -210,14 +210,14 @@ bank        | string |  الزامی  |    نام بانک   | `رسالت`
 ##محدودیت های کاربر
 
 ```shell
-curl 'https://api.nobitex.ir/users/limitations' \
+curl 'https://apiv2.nobitex.ir/users/limitations' \
   -X GET \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/users/limitations
+http GET https://apiv2.nobitex.ir/users/limitations
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -292,12 +292,12 @@ http GET https://api.nobitex.ir/users/limitations
 ## لیست کیف پول ها
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/list' \
+curl 'https://apiv2.nobitex.ir/users/wallets/list' \
   --header "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/users/wallets/list \
+http GET https://apiv2.nobitex.ir/users/wallets/list \
   Authorization=Token yourTOKENhereHEX0000000000
 ```
 
@@ -372,12 +372,12 @@ http GET https://api.nobitex.ir/users/wallets/list \
 ## لیست کیف پول ها (انتخابی)
 
 ```shell
-curl 'https://api.nobitex.ir/v2/wallets?currencies=rls,btc' \
+curl 'https://apiv2.nobitex.ir/v2/wallets?currencies=rls,btc' \
   --header "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/wallets \
+http GET https://apiv2.nobitex.ir/v2/wallets \
   Authorization=Token yourTOKENhereHEX0000000000
   currencies=rls,btc
 ```
@@ -423,14 +423,14 @@ type | string | `spot` | نوع کیف پول (اسپات یا فروش تعهد
 ##موجودی
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/balance' \
+curl 'https://apiv2.nobitex.ir/users/wallets/balance' \
   -X POST \
   --header "Authorization: Token yourTOKENhereHEX0000000000" \
   --data '{"currency":"ltc"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/wallets/balance \
+http POST https://apiv2.nobitex.ir/users/wallets/balance \
   currency=ltc
 ```
 
@@ -461,12 +461,12 @@ currency    | string |   الزامی | نوع کیف پول(ارز) | `ltc`
 ## لیست تراکنش‌ها
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/transactions/list?wallet=4159' \
+curl 'https://apiv2.nobitex.ir/users/wallets/transactions/list?wallet=4159' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/users/wallets/transactions/list \
+http GET https://apiv2.nobitex.ir/users/wallets/transactions/list \
   wallet=4159
 ```
 
@@ -513,12 +513,12 @@ wallet      | int    |   الزامی | شناسه کیف پول(id) | `4159`
 ## لیست واریزها
 
 ```shell
-curl 'https://api.nobitex.ir/users/wallets/deposits/list?wallet=4159' \
+curl 'https://apiv2.nobitex.ir/users/wallets/deposits/list?wallet=4159' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/users/wallets/deposits/list \
+http GET https://apiv2.nobitex.ir/users/wallets/deposits/list \
   wallet=4159
 ```
 
@@ -577,13 +577,13 @@ wallet      | string     | all     | شناسه کیف پول | `4159`
 ### دریافت لیست بازارهای مورد علاقه
 
 ```shell
-curl 'https://api.nobitex.ir/users/markets/favorite' \
+curl 'https://apiv2.nobitex.ir/users/markets/favorite' \
   -X GET
 
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/users/markets/favorite
+http GET https://apiv2.nobitex.ir/users/markets/favorite
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -607,13 +607,13 @@ http GET https://api.nobitex.ir/users/markets/favorite
 ### ثبت بازار(های) مورد علاقه
 
 ```shell
-curl 'https://api.nobitex.ir/users/markets/favorite' \
+curl 'https://apiv2.nobitex.ir/users/markets/favorite' \
   -X POST
 
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/markets/favorite
+http POST https://apiv2.nobitex.ir/users/markets/favorite
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -650,13 +650,13 @@ market | string |   الزامی | نماد بازار comma-separated | `BTCIRT
 ### حذف بازار مورد علاقه
 
 ```shell
-curl 'https://api.nobitex.ir/users/markets/favorite' \
+curl 'https://apiv2.nobitex.ir/users/markets/favorite' \
   -X DELETE
 
 ```
 
 ```plaintext
-http DELETE https://api.nobitex.ir/users/markets/favorite
+http DELETE https://apiv2.nobitex.ir/users/markets/favorite
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

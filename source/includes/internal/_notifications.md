@@ -8,7 +8,7 @@
 >نمونه درخواست: 
 
 ```shell
-curl 'https://api.nobitex.ir/notifications/list' \
+curl 'https://apiv2.nobitex.ir/notifications/list' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -34,7 +34,7 @@ Call<JsonObject> call = api.listNotifications();
 
 ```plaintext
 GET /notifications/list HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -93,7 +93,7 @@ read | boolean | خوانده شده | false
 >نمونه درخواست:
 
 ```shell
-curl --location 'https://api.nobitex.ir/notifications/read' \
+curl --location 'https://apiv2.nobitex.ir/notifications/read' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000' \
 --data '{"id":"234,345"}'
 ```
@@ -114,7 +114,7 @@ Call<JsonObject> call = api.readNotifications("234,345");
 
 ```plaintext
 POST /notifications/read HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"id": "234,345"}

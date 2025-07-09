@@ -8,12 +8,12 @@
 ## مشاهده لیست آدرس‌های دفتر آدرس
 
 ```shell
-curl 'https://api.nobitex.ir/address_book' \
+curl 'https://apiv2.nobitex.ir/address_book' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-https GET https://api.nobitex.ir/address_book
+https GET https://apiv2.nobitex.ir/address_book
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -55,7 +55,7 @@ https GET https://api.nobitex.ir/address_book
 ## اضافه کردن آدرس جدید به دفتر آدرس
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/address_book' \
+curl -X POST 'https://apiv2.nobitex.ir/address_book' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
   --data '{"title": "test", "network": "BSC", "address": "000000xxxxxxx111111111zzzzzzz",
@@ -64,7 +64,7 @@ curl -X POST 'https://api.nobitex.ir/address_book' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/address_book
+http POST https://apiv2.nobitex.ir/address_book
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -86,7 +86,7 @@ http POST https://api.nobitex.ir/address_book
 > برای دریافت رمزیکبارمصرف otpCode از درخواست زیر استفاده نمایید:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/otp/request' \
+curl -X POST 'https://apiv2.nobitex.ir/otp/request' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   --data '{"type": "email", "usage": "address_book"}'
 ```
@@ -139,7 +139,7 @@ curl -X POST 'https://api.nobitex.ir/otp/request' \
 ## حذف یک دفتر آدرس
 
 ```shell
-curl 'https://api.nobitex.ir/address_book/<address_id>/delete
+curl 'https://apiv2.nobitex.ir/address_book/<address_id>/delete
   -H "Authorization: Token yourTOKENhereHEX000000ook'" 
   
 ```
@@ -180,12 +180,12 @@ https DELETE /address_book/<address_id>/delete
 و به استثنای برداشت در شبکه لایتنینگ، امکان برداشت رمزارزی به آدرس‌های غیر وجود نخواهد داشت.
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/address_book/whitelist/activate' \
+curl -X POST 'https://apiv2.nobitex.ir/address_book/whitelist/activate' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-https POST https://api.nobitex.ir/address_book/whitelist/activate
+https POST https://apiv2.nobitex.ir/address_book/whitelist/activate
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -203,14 +203,14 @@ https POST https://api.nobitex.ir/address_book/whitelist/activate
 با غیر فعال کردن برداشت امن، به جهت حفظ امنیت حساب امکان برداشت به مدت ۲۴ ساعت روی حساب کاربر محدود خواهد شد.
 
 ```shell
-curl 'https://api.nobitex.ir/address_book/whitelist/deactivate' \
+curl 'https://apiv2.nobitex.ir/address_book/whitelist/deactivate' \
   -H "Authorization: Token yourTOKENhereHEX0000000000" 
   -H "content-type: application/json" \
   --data '{"otpCode": "1234", "tfaCode": "12345"}'
 ```
 
 ```plaintext
-https POST https://api.nobitex.ir/address_book/whitelist/deactivate
+https POST https://apiv2.nobitex.ir/address_book/whitelist/deactivate
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

@@ -12,14 +12,14 @@
 > برای دریافت توکن، از این کد استفاده کنید:
 
 ```shell
-curl 'https://api.nobitex.ir/auth/login/' \
+curl 'https://apiv2.nobitex.ir/auth/login/' \
   -X POST \
   -H "Content-Type: application/json" \
   --data $'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/auth/login/ \
+http POST https://apiv2.nobitex.ir/auth/login/ \
   username=name@example.com password=secret-password-1234 captcha=api
 ```
 
@@ -81,13 +81,13 @@ captcha | string | الزامی | کپچا | `api`
 > برای خروج یا سوزاندن توکن، از این کد استفاده کنید:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/auth/logout/' \
+curl -X POST 'https://apiv2.nobitex.ir/auth/logout/' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
 POST /auth/logout/ HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 

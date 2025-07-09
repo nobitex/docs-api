@@ -13,7 +13,7 @@
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/wallets/invoice/generate' \
+curl -X POST 'https://apiv2.nobitex.ir/users/wallets/invoice/generate' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"wallet": 1, "amount": 100}'
@@ -43,7 +43,7 @@ Call<JsonObject> call = api.generateWalletInvoice(1, 100);
 
 ```plaintext
 POST /users/wallets/invoice/generate HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"wallet": 1, "amount": 100}
@@ -162,7 +162,7 @@ ParseError |نوع یا شرط الزامی بودن یکی از پارامتر�
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/wallets/invoice/decode' \
+curl -X POST 'https://apiv2.nobitex.ir/users/wallets/invoice/decode' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"wallet": 1,"invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}'
@@ -196,7 +196,7 @@ Call<JsonObject> call = api.decodeWalletInvoice(1, invoice);
 
 ```plaintext
 POST /users/wallets/invoice/decode HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"wallet": 1, "invoice": "lnbc1u1pskcu80pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdqcfehky6t5v4uzqer9wphhx6t5z7jut6xdcvpnye3suzk448rqex822kr788q8hxrgtw8muxmnnj4jfj074lgh7czwf8k3wdx3u8y46znnxeqg0e6gqmc57rpw3qnyl7gpnaaqru"}

@@ -14,12 +14,12 @@
 <h2 id="last-week-daily-profit">سود و زیان روزانه هفته گذشته</h2>
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/portfolio/last-week-daily-profit' \
+curl -X POST 'https://apiv2.nobitex.ir/users/portfolio/last-week-daily-profit' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/portfolio/last-week-daily-profit \
+http POST https://apiv2.nobitex.ir/users/portfolio/last-week-daily-profit \
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -106,12 +106,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <h2 id="last-week-daily-total-profit">سود زیان کل به صورت روزانه در هفته گذشته</h2>
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/portfolio/last-week-daily-total-profit' \
+curl -X POST 'https://apiv2.nobitex.ir/users/portfolio/last-week-daily-total-profit' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/portfolio/last-week-daily-total-profit \
+http POST https://apiv2.nobitex.ir/users/portfolio/last-week-daily-total-profit \
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -190,12 +190,12 @@ Authorization: Token yourTOKENhereHEX0000000000
 <h2 id="last-month-total-profit">سود و زیان کل ماه گذشته</h2>
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/portfolio/last-month-total-profit' \
+curl -X POST 'https://apiv2.nobitex.ir/users/portfolio/last-month-total-profit' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/portfolio/last-month-total-profit \
+http POST https://apiv2.nobitex.ir/users/portfolio/last-month-total-profit \
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 

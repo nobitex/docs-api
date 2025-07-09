@@ -15,12 +15,12 @@
 ## فهرست کدهای دعوت
 
 ```shell
-curl -X GET 'https://api.nobitex.ir/users/referral/links-list' \
+curl -X GET 'https://apiv2.nobitex.ir/users/referral/links-list' \
   --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/links-list \
+http --follow --timeout 3600 GET https://apiv2.nobitex.ir/users/referral/links-list \
  Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 
@@ -49,12 +49,12 @@ statsProfit | monetary: IRR | آمار: مجموع ریالی درآمد کار�
 ## ایجاد کد دعوت
 
 ```shell
-curl -X GET 'https://api.nobitex.ir/users/get-referral-code' \
+curl -X GET 'https://apiv2.nobitex.ir/users/get-referral-code' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http --follow --timeout 3600 GET https://api.nobitex.ir/users/get-referral-code \
+http --follow --timeout 3600 GET https://apiv2.nobitex.ir/users/get-referral-code \
  Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 برای ایجاد یک کد دعوت جدید برای کاربر، از «ایجاد کد دعوت» استفاده نمایید.
@@ -80,12 +80,12 @@ ReferralCodeExists | خطایی در ثبت کد دعوت رخ داده است.
 
 
 ```shell
-curl -X GET 'https://api.nobitex.ir/users/referral/referral-status' \
+curl -X GET 'https://apiv2.nobitex.ir/users/referral/referral-status' \
 --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/referral-status \
+http --follow --timeout 3600 GET https://apiv2.nobitex.ir/users/referral/referral-status \
  Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 
@@ -103,12 +103,12 @@ hasReferrer | boolean | آیا کاربر توسط کاربر دیگری دعو�
 ## ثبت معرف کاربر
 
 ```shell
-curl -X GET 'https://api.nobitex.ir/users/referral/set-referrer' \
+curl -X GET 'https://apiv2.nobitex.ir/users/referral/set-referrer' \
   --header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
-http --follow --timeout 3600 GET https://api.nobitex.ir/users/referral/set-referrer \
+http --follow --timeout 3600 GET https://apiv2.nobitex.ir/users/referral/set-referrer \
  Authorization:'Token yourTOKENhereHEX0000000000'
 ```
 

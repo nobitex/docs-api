@@ -12,7 +12,7 @@
 >نمونه درخواست:
 
 ```shell
-curl 'https://api.nobitex.ir/v2/price-alerts' \
+curl 'https://apiv2.nobitex.ir/v2/price-alerts' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -38,7 +38,7 @@ Call<JsonObject> call = api.listPriceAlerts();
 
 ```plaintext
 GET /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -109,7 +109,7 @@ channel | string | کانال اطلاع‌رسانی<sup>3</sup> | "Email/Notif
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/v2/price-alerts' \
+curl -X POST 'https://apiv2.nobitex.ir/v2/price-alerts' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}'
@@ -150,7 +150,7 @@ Call<JsonObject> call = api.createPriceAlert("price", "btcusdt", "-", "63000", "
 
 ```plaintext
 POST /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}
@@ -220,7 +220,7 @@ ValidationError | ورودی‌های الزامی ارسال نشده است.
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/v2/price-alerts' \
+curl -X POST 'https://apiv2.nobitex.ir/v2/price-alerts' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"pk": 3, "tp": "price", "market": "btcusdt", "direction": "+", "price": "64000", "channel": "notif"}'
@@ -263,7 +263,7 @@ Call<JsonObject> call = api.updatePriceAlert(3, "price", "btcusdt", "+", "64000"
 
 ```plaintext
 POST /v2/price-alerts HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 Content-Type: application/json
 {"pk": 3, tp": "price", "market": "btcusdt", "direction": "-", "price": "63000", "channel": "email,notif"}
@@ -317,7 +317,7 @@ alert | PriceAlert | اعلان قیمت به‌روز شده | {"id": 3, ...}
 >نمونه درخواست:
 
 ```shell
-curl -X DELETE 'https://api.nobitex.ir/v2/price-alerts?delete_item=1,3' \
+curl -X DELETE 'https://apiv2.nobitex.ir/v2/price-alerts?delete_item=1,3' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
@@ -343,7 +343,7 @@ Call<JsonObject> call = api.deletePriceAlerts("1,3");
 
 ```plaintext
 DELETE /v2/price-alerts?delete_item=1,3 HTTP/1.1
-Host: api.nobitex.ir
+Host: apiv2.nobitex.ir
 Authorization: Token yourTOKENhereHEX0000000000
 ```
 

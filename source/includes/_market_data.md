@@ -3,11 +3,11 @@
 <h2 id="orderbook-v3">لیست سفارش‌ها: اردربوک</h2>
 
 ```shell
-curl 'https://api.nobitex.ir/v3/orderbook/BTCIRT'
+curl 'https://apiv2.nobitex.ir/v3/orderbook/BTCIRT'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v3/orderbook/BTCIRT
+http GET https://apiv2.nobitex.ir/v3/orderbook/BTCIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -49,7 +49,7 @@ SYMBOL | string |   الزامی | نماد بازار | `BTCIRT`
 </aside>
 
 ```shell
-curl 'https://api.nobitex.ir/v3/orderbook/all'
+curl 'https://apiv2.nobitex.ir/v3/orderbook/all'
 ```
 
 > نمونه پاسخ درخواست <code dir="ltr">/v3/orderbook/all</code>:
@@ -110,11 +110,11 @@ curl 'https://api.nobitex.ir/v3/orderbook/all'
 
 
 ```shell
-curl 'https://api.nobitex.ir/v2/orderbook/BTCIRT'
+curl 'https://apiv2.nobitex.ir/v2/orderbook/BTCIRT'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/orderbook/BTCIRT
+http GET https://apiv2.nobitex.ir/v2/orderbook/BTCIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -150,11 +150,11 @@ http GET https://api.nobitex.ir/v2/orderbook/BTCIRT
 ## نمودار عمق (آزمایشی)
 
 ```shell
-curl 'https://api.nobitex.ir/v2/depth/BTCIRT'
+curl 'https://apiv2.nobitex.ir/v2/depth/BTCIRT'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/depth/BTCIRT
+http GET https://apiv2.nobitex.ir/v2/depth/BTCIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -201,11 +201,11 @@ SYMBOL | string |   الزامی | نماد بازار | `BTCIRT`
 ## لیست معاملات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/trades/BCHIRT'
+curl 'https://apiv2.nobitex.ir/v2/trades/BCHIRT'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/v2/trades/BCHIRT
+http GET https://apiv2.nobitex.ir/v2/trades/BCHIRT
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -253,11 +253,11 @@ symbol | string |   الزامی | نماد | `BTCIRT`
 ## آمار بازار نوبیتکس
 
 ```shell
-curl 'https://api.nobitex.ir/market/stats?srcCurrency=btc&dstCurrency=rls'
+curl 'https://apiv2.nobitex.ir/market/stats?srcCurrency=btc&dstCurrency=rls'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/stats \
+http GET https://apiv2.nobitex.ir/market/stats \
   srcCurrency=btc dstCurrency=rls
 ```
 
@@ -312,11 +312,11 @@ http GET https://api.nobitex.ir/market/stats \
 ## آمار OHLC بازار نوبیتکس
 
 ```shell
-curl 'https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967'
+curl 'https://apiv2.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967'
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967
+http GET https://apiv2.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&from=1562058167&to=1562230967
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -407,13 +407,13 @@ http GET https://api.nobitex.ir/market/udf/history?symbol=BTCIRT&resolution=D&fr
 ## آمار بازار جهانی
 
 ```shell
-curl 'https://api.nobitex.ir/market/global-stats' \
+curl 'https://apiv2.nobitex.ir/market/global-stats' \
   -X POST
 
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/global-stats
+http POST https://apiv2.nobitex.ir/market/global-stats
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:

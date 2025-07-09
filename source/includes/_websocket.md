@@ -102,7 +102,7 @@ const subs = channels.map(channel => {
 
 
 ```shell
-curl 'https://api.nobitex.ir/auth/ws/token/' \
+curl 'https://apiv2.nobitex.ir/auth/ws/token/' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
@@ -143,7 +143,7 @@ async function getToken() {
     if (!loggedIn) {
         return "";
     }
-    const res = await fetch('https://api.nobitex.ir/auth/ws/token/', {
+    const res = await fetch('https://apiv2.nobitex.ir/auth/ws/token/', {
     method: 'GET',
       headers: {
         'Content-Type': 'application/json',

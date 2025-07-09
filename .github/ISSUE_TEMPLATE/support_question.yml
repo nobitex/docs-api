@@ -47,7 +47,7 @@ body:
         مثلا:
         ```python
         import requests
-        url = 'https://api.nobitex.ir/market/orders/add'
+        url = 'https://apiv2.nobitex.ir/market/orders/add'
         headers = {'Authorization': 'Token abt*********************xz'}
         data = {'srcCurrency': 'doge', 'type': 'buy', 'execution': 'market', ...}
         response = requests.post(url, json=data, headers=headers)

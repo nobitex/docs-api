@@ -32,7 +32,7 @@ sudo apt install curl
 ```javascript
 const axios = require("axios");
 
-const api = axios.create({baseURL: "https://api.nobitex.ir"});
+const api = axios.create({baseURL: "https://apiv2.nobitex.ir"});
 ```
 
 ```java
@@ -47,7 +47,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 Retrofit retrofit = new Retrofit.Builder()
-  .baseUrl('https://api.nobitex.ir')
+  .baseUrl('https://apiv2.nobitex.ir')
   .addConverterFactory(GsonConverterFactory.create())
   .build();
 ```

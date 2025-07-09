@@ -14,12 +14,12 @@ toc_footers:
 ##  کد دعوت پیش‌فرض
 
 ```shell
-curl 'https://api.nobitex.ir/users/get-referral-code' \
+curl 'https://apiv2.nobitex.ir/users/get-referral-code' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/users/get-referral-code \
+http POST https://apiv2.nobitex.ir/users/get-referral-code \
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
@@ -43,13 +43,13 @@ http POST https://api.nobitex.ir/users/get-referral-code \
 ##  لیست سفارشـات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/orderbook'
+curl 'https://apiv2.nobitex.ir/v2/orderbook'
      -X POST -H "content-type: application/json"
      --data '{"symbol": "USDTIRT"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/orderbook \
+http POST https://apiv2.nobitex.ir/v2/orderbook \
   symbol=USDTIRT
 ```
 
@@ -89,13 +89,13 @@ http POST https://api.nobitex.ir/v2/orderbook \
 ##لیست معامـلات
 
 ```shell
-curl 'https://api.nobitex.ir/v2/trades'
+curl 'https://apiv2.nobitex.ir/v2/trades'
      -X POST -H "content-type: application/json"
      --data '{"symbol": "USDTIRT"}'
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/v2/trades \
+http POST https://apiv2.nobitex.ir/v2/trades \
   symbol=USDTIRT
 ```
 

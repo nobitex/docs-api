@@ -9,7 +9,7 @@
 
 آدرس نوبیتکس آزمایشی : https://testnet.nobitex.ir
 
-آدرس api آزمایشی : https://testnetapi.nobitex.ir
+آدرس api آزمایشی : https://testnetapiv2.nobitex.ir
 
 
 ## آیا برای استفاده از apiها محدودیتی وجود دارد؟

@@ -17,7 +17,7 @@
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/gift/create-gift' \
+curl -X POST 'https://apiv2.nobitex.ir/gift/create-gift' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000' \
 -H 'X-TOTP: 2568148' \
 -H 'Content-Type: application/json' \
@@ -127,7 +127,7 @@ cost | monetary | هزینه‌ی ایجاد هدیه‌ | "100"
 برای این منظور باید از APIی تایید درخواست برداشت در قسمت برداشت استفاده کرد.
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/users/wallets/withdraw-confirm' \
+curl -X POST 'https://apiv2.nobitex.ir/users/wallets/withdraw-confirm' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   -H 'Content-Type: application/json' \
   --data '{"withdraw": 432, "otp": 623005}'
@@ -169,7 +169,7 @@ redeem_type | string   | نوع دریافت هدیه                           
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/gift/redeem' \
+curl -X POST 'https://apiv2.nobitex.ir/gift/redeem' \
 -H 'Authorization: Token yourTOKENhereHEX0000000000' \
 -H 'Content-Type: application/json' \
 --data '{
@@ -260,7 +260,7 @@ lnUrl | string   | هدیه lnurl | "lnurlZX6N..."
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/gift/redeem-lightning' \
+curl -X POST 'https://apiv2.nobitex.ir/gift/redeem-lightning' \
 -H 'Content-Type: application/json' \
 --data '{
     "redeem_code": "8AFA1DF3",
@@ -456,7 +456,7 @@ status | string  | وضعیت پاسخ              | "ok"
 >نمونه درخواست:
 
 ```shell
-curl -X POST 'https://api.nobitex.ir/gift/resend-gift-otp' \
+curl -X POST 'https://apiv2.nobitex.ir/gift/resend-gift-otp' \
 -H 'Content-Type: application/json' \
 --data '{
     "redeem_code": "07DB85D7210E4D29AEFF112FF53B2C74"

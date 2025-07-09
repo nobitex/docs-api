@@ -3,7 +3,7 @@
 ## ثبت سفارش جدید
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/add' \
+curl 'https://apiv2.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -11,7 +11,7 @@ curl 'https://api.nobitex.ir/market/orders/add' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/add \
+http POST https://apiv2.nobitex.ir/market/orders/add \
   type=buy srcCurrency=btc dstCurrency=rls amount=0.6 price=520000000 clientOrderId=order1
 ```
 
@@ -64,7 +64,7 @@ http POST https://api.nobitex.ir/market/orders/add \
 > نمونه سفارش حد ضرر:
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/add' \
+curl 'https://apiv2.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -72,7 +72,7 @@ curl 'https://api.nobitex.ir/market/orders/add' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/add \
+http POST https://apiv2.nobitex.ir/market/orders/add \
   type=sell srcCurrency=doge dstCurrency=rls amount=64 execution=stop_market stopPrice=47500 clientOrderId=order1
 ```
 
@@ -118,7 +118,7 @@ http POST https://api.nobitex.ir/market/orders/add \
 > نمونه سفارش OCO:
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/add' \
+curl 'https://apiv2.nobitex.ir/market/orders/add' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -126,7 +126,7 @@ curl 'https://api.nobitex.ir/market/orders/add' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/add \
+http POST https://apiv2.nobitex.ir/market/orders/add \
   type=buy srcCurrency=btc dstCurrency=usdt amount=0.01 mode=oco price=42390 stopPrice=42700 stopLimitPrice=42715 clientOrderId=order1
 ```
 
@@ -242,7 +242,7 @@ DuplicateClientOrderId | شناسه سفارش کاربر تکراری است (�
 ## مشاهده وضعیت سفارش
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/status' \
+curl 'https://apiv2.nobitex.ir/market/orders/status' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -250,7 +250,7 @@ curl 'https://api.nobitex.ir/market/orders/status' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/status \
+http POST https://apiv2.nobitex.ir/market/orders/status \
   id=5684
 ```
 
@@ -330,12 +330,12 @@ NullIdAndClientOrderId |  باید یکی از دو پارامتر `id` و `clie
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/list?srcCurrency=btc&dstCurrency=usdt&details=2' \
+curl 'https://apiv2.nobitex.ir/market/orders/list?srcCurrency=btc&dstCurrency=usdt&details=2' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/orders/list \
+http GET https://apiv2.nobitex.ir/market/orders/list \
   srcCurrency=btc dstCurrency=usdt details=2
 ```
 
@@ -438,7 +438,7 @@ averagePrice | monetary | میانگین قیمت اجرا شده از سفار�
 ## تغییر وضعیت سفارش
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/update-status' \
+curl 'https://apiv2.nobitex.ir/market/orders/update-status' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -446,7 +446,7 @@ curl 'https://api.nobitex.ir/market/orders/update-status' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/update-status \
+http POST https://apiv2.nobitex.ir/market/orders/update-status \
   order=5684 status=canceled
 ```
 
@@ -504,7 +504,7 @@ NullIdAndClientOrderId |  باید یکی از دو پارامتر `id` و `clie
 ##لغو جمعی سفارشات
 
 ```shell
-curl 'https://api.nobitex.ir/market/orders/cancel-old' \
+curl 'https://apiv2.nobitex.ir/market/orders/cancel-old' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
@@ -512,7 +512,7 @@ curl 'https://api.nobitex.ir/market/orders/cancel-old' \
 ```
 
 ```plaintext
-http POST https://api.nobitex.ir/market/orders/cancel-old \
+http POST https://apiv2.nobitex.ir/market/orders/cancel-old \
   execution=limit srcCurrency=btc dstCurrency=rls hours=2.4
 ```
 
@@ -562,12 +562,12 @@ http POST https://api.nobitex.ir/market/orders/cancel-old \
 
 
 ```shell
-curl 'https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=rls' \
+curl 'https://apiv2.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=rls' \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://api.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=rls
+http GET https://apiv2.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrency=rls
 ```
 
 > در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
