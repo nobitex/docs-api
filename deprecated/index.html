@@ -306,12 +306,6 @@
                   <li>
                     <a href="#40dbf5eeb5" class="toc-h2 toc-link" data-title="کد دعوت پیش‌فرض">کد دعوت پیش‌فرض</a>
                   </li>
-                  <li>
-                    <a href="#76f8b4c4a0" class="toc-h2 toc-link" data-title="لیست سفارشـات">لیست سفارشـات</a>
-                  </li>
-                  <li>
-                    <a href="#4874d0c1a2" class="toc-h2 toc-link" data-title="لیست معامـلات">لیست معامـلات</a>
-                  </li>
               </ul>
           </li>
       </ul>
@@ -346,76 +340,6 @@
 
 <ul>
 <li>آدرس : <code>GET /users/get-referral-code</code></li>
-</ul>
-<h2 id='76f8b4c4a0'>لیست سفارشـات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/orderbook'</span>
-     <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
-     <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/v2/orderbook \
-  symbol=USDTIRT
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"1.016"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.2561"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.126571"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.818994"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای دریافت لیست سفارشات از این نوع درخواست استفاده نمایید:</p>
-
-<ul>
-<li>آدرس : <code>POST /v2/orderbook</code></li>
-</ul>
-<h2 id='4874d0c1a2'>لیست معامـلات</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/trades'</span>
-     <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span>
-     <span class="nt">--data</span> <span class="s1">'{"symbol": "USDTIRT"}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/v2/trades \
-  symbol=USDTIRT
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689375067</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1588689360464</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1470000110"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای دریافت لیست معاملات از این نوع درخواست استفاده نمایید:</p>
-
-<ul>
-<li>آدرس : <code>POST /v2/trades</code></li>
 </ul>
 
       </div>

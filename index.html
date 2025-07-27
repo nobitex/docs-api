@@ -334,9 +334,6 @@
                     <a href="#orderbook-v3" class="toc-h2 toc-link" data-title="لیست سفارش‌ها: اردربوک">لیست سفارش‌ها: اردربوک</a>
                   </li>
                   <li>
-                    <a href="#orderbook" class="toc-h2 toc-link" data-title="لیست سفارش‌ها (Deprecated)">لیست سفارش‌ها (Deprecated)</a>
-                  </li>
-                  <li>
                     <a href="#54977c5fca" class="toc-h2 toc-link" data-title="نمودار عمق (آزمایشی)">نمودار عمق (آزمایشی)</a>
                   </li>
                   <li>
@@ -347,9 +344,6 @@
                   </li>
                   <li>
                     <a href="#ohlc" class="toc-h2 toc-link" data-title="آمار OHLC بازار نوبیتکس">آمار OHLC بازار نوبیتکس</a>
-                  </li>
-                  <li>
-                    <a href="#cdf265d0e6" class="toc-h2 toc-link" data-title="آمار بازار جهانی">آمار بازار جهانی</a>
                   </li>
               </ul>
           </li>
@@ -874,39 +868,6 @@
 <p>به این منظور از وب‌سوکت استفاده نمایید. برای اطلاعات بیشتر به <a href="#websocket">مستندات وب‌سوکت نوبیتکس</a> مراجعه فرمایید.</p>
 
 <p>در صورتی‌که نمی‌توانید از وب‌سوکت استفاده کنید و در پروژه‌ی خود نیاز به نگهداری آخرین وضعیت اردربوک نوبیتکس هستید، در یک حلقه اقدام به دریافت اردربوک نوبیتکس نمایید. حتماً در میان هر دو بار اجرای حلقه حداقل یک تا ده ثانیه صبر نمایید و از فراخوانی پیاپی و بی‌مکث اردربوک خودداری کنید. به دلیل وجود لایه‌های کش، در صورت فراخوانی در بازه‌های زیر یک ثانیه، همان داده فراخوانی قبلی را دریافت خواهید نمود. اگر در اغلب بازارهای نوبیتکس فعال هستید، می‌توانید در هر فراخوانی کل اردربوک را دریافت نمایید تا نیازی به فراخوانی همزمان چند اردربوک نداشته باشید. اگر کد خود را در چند رشته (ترد) یا پردازه یا سرور اجرا می‌کنید، حتماً اردربوک را در یک مرجع واحد دریافت نمایید و آن را در میان نمونه‌های برنامه خود به اشتراک بگذارید.</p>
-
-<h2 id="orderbook">لیست سفارش‌ها (Deprecated)</h2>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/orderbook/BTCIRT'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/v2/orderbook/BTCIRT
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1644991756704</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lastTradePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35450560000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="s2">"1476091000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.016"</span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="s2">"1479700000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2561"</span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">[</span><span class="s2">"1470001120"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.126571"</span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="s2">"1470000000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.818994"</span><span class="p">]</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<ul>
-<li><strong>درخواست:</strong> <code>GET /v2/orderbook/SYMBOL</code></li>
-<li><strong>محدودیت فراخوانی:</strong> 300 درخواست در دقیقه</li>
-<li><strong>نیاز به ارسال توکن:</strong> ندارد</li>
-</ul>
-
-<p>این اندپوینت، به جز یک مورد، کاملاً مشابه <a href="#orderbook-v3">API ورژن ۳</a> می‌باشد با این تفاوت که جای کلید‌های <code>asks</code> و <code>bids</code> جابه‌جا می‌باشد. بنابراین سفارش‌های <strong>فروش</strong> در <strong><code>bids</code></strong> و سفارش‌های <strong>خرید</strong> در <strong><code>asks</code></strong> بازگردانده می‌شوند. از آن‌جایی که این اندپوینت منسوخ و deprecate شده و ممکن است در آینده نگهداری نشود، ترجیح اکید بر این است که از اندپوینت ورژن ۳ استفاده شود.</p>
-
-<aside class="warning">
-برای دریافت اردربوک حتماً از متد <code>GET</code> و با ارسال نماد در آدرس url استفاده نمایید. روش قدیمی مبتنی بر <code>POST</code> دیگر پشتیبانی نمی‌شود.
-</aside>
 <h2 id='54977c5fca'>نمودار عمق (آزمایشی)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/v2/depth/BTCIRT'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/v2/depth/BTCIRT
 </code></pre></div>
@@ -1083,7 +1044,6 @@
 <aside class="warning">
 در شی پاسخ جهت سازگاری با نسخه‌های پیشین، آمار بازار بایننس نیز برگردانده می‌شود.
 دقت کنید این قسمت از اطلاعات (متناظر با کلید global) منسوخ شده و در نسخه‌های آتی به طور کامل حذف خواهد شد.
-توصیه می‌شود جهت دریافت آمار بازار بایینس از <a href="#cdf265d0e6">آمار بازار جهانی</a> استفاده نمایید.
 </aside></p>
 <h2 id='ohlc'>آمار OHLC بازار نوبیتکس</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/market/udf/history?symbol=BTCIRT&amp;resolution=D&amp;from=1562058167&amp;to=1562230967
@@ -1302,40 +1262,6 @@
 <ul>
 <li>در هر درخواست حداکثر 500 کندل بازگردانده می‌شود. برای بازیابی همه کندل‌های یک بازه با بیش از 500 کندل، از پارامتر page برای صفحه‌بندی استفاده نمایید.</li>
 </ul>
-<h2 id='cdf265d0e6'>آمار بازار جهانی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/market/global-stats'</span> <span class="se">\</span>
-  <span class="nt">-X</span> POST
-
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/market/global-stats
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"ltc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41.69"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"btc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"kraken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5517.2"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای دریافت آمار بازارهای جهانی از این نوع درخواست استفاده نمایید:</p>
-
-<ul>
-<li><strong>درخواست:</strong> <code>POST /market/global-stats</code></li>
-<li><strong>محدودیت فراخوانی:</strong> ۱۰۰ درخواست در ۱۰ دقیقه</li>
-</ul>
-
-<aside class="notice">
-این آمارها مربوط به بازارهای Kraken و Binance می باشد
-</aside>
 <h1 id="user-data">اطلاعات کاربر</h1>
 
 <h2 id="user-profile">پروفایل</h2>
