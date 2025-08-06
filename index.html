@@ -1353,7 +1353,7 @@
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"content-type: application/json"</span> <span class="se">\</span>
-  <span class="nt">--data</span> <span class="s1">'{"currency":"btc"}'</span>
+  <span class="nt">--data</span> <span class="s1">'{"currency":"btc", "network": "BSC"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/users/wallets/generate-address \
   currency=btc
 </code></pre></div>
@@ -1394,6 +1394,13 @@
 <td>(در نبود currency الزامی)</td>
 <td>شناسه کیف پول</td>
 <td><code>4159</code></td>
+</tr>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>اختیاری</td>
+<td>شبکه</td>
+<td><code>BSC</code></td>
 </tr>
 </tbody></table>
 
