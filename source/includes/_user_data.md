@@ -98,7 +98,7 @@ curl 'https://apiv2.nobitex.ir/users/wallets/generate-address' \
   -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000" \
   -H "content-type: application/json" \
-  --data '{"currency":"btc"}'
+  --data '{"currency":"btc", "network": "BSC"}'
 ```
 
 ```plaintext
@@ -127,6 +127,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/generate-address \
 |----------------------------------------|--------|---------------------------|---------------|--------|
 | currency <sup class="badge">ارجح</sup> | string | الزامی (جایگزین wallet)   | رمزارز کیف    | `btc`  |
 | wallet <sup class="badge">قدیمی</sup>  | string | (در نبود currency الزامی) | شناسه کیف پول | `4159` |
+| network                                | string | اختیاری                   | شبکه          | `BSC`  |
 
 
 <aside class="notice">
