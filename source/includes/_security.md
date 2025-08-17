@@ -138,7 +138,7 @@ curl --location --request GET 'https://apiv2.nobitex.ir/otp/request?type=email&u
 
 
 * **درخواست:** `POST /security/anti-phishing`
-* **محدودیت فراخوانی:** ۱۰ درخواست در هر دقیقه
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۱۰ درخواست در هر دقیقه
 
 
 * پارامترهای ورودی
@@ -154,7 +154,7 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 ### دریافت کد آنتی فیشینگ
 
 * **درخواست:** `GET /security/anti-phishing`
-* **محدودیت فراخوانی:** ۱۰ درخواست در هر دقیقه
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۱۰ درخواست در هر دقیقه
 
 
 >نمونه درخواست:

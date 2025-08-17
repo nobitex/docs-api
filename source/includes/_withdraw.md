@@ -44,7 +44,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw \
 برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `POST /users/wallets/withdraw`
-* **محدودیت فراخوانی:** 10 درخواست در 3 دقیقه
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
 
 ### پارامترهای ورودی
 
@@ -141,7 +141,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
 برای تایید درخواست برداشت از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `POST /users/wallets/withdraw-confirm`
-* **محدودیت فراخوانی:** 30 درخواست در ساعت
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در ساعت
 
 ### پارامترهای ورودی
 
@@ -224,7 +224,7 @@ http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
 برای دریافت لیست آخرین برداشت‌ها از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `GET /users/wallets/withdraws/list`
-* **محدودیت فراخوانی:** ۶۰ درخواست در ۲ دقیقه
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
 * **<a href="#pagination">صفحه بندی:</a>** دارد (پیش فرض 20)
 * **<a href="#date-filter">فیلترزمانی:</a>** دارد
 
@@ -273,7 +273,7 @@ http GET https://apiv2.nobitex.ir/withdraws/433
 برای مشاهده وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `GET /withdraws/WITHDRAW`
-* **محدودیت فراخوانی:** ۶۰ درخواست در ۲ دقیقه
+* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
 
 
 ### پارامترهای ورودی

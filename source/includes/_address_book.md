@@ -44,7 +44,7 @@ https GET https://apiv2.nobitex.ir/address_book
 برای دریافت دفتر آدرس از این درخواست استفاده نمایید.
 
 - **درخواست:**: `GET /address_book`
-- **محدودیت فراخوانی:** 20 درخواست در هر دقیقه
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 20 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
 
@@ -93,7 +93,7 @@ curl -X POST 'https://apiv2.nobitex.ir/otp/request' \
 
 
 - **درخواست:**: `POST /address_book`
-- **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
 
@@ -157,7 +157,7 @@ https DELETE /address_book/<address_id>/delete
 ```
 
 - **درخواست:**: `DELETE /address_book/<address_id>/delete`
-- **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
 ### حالت‌های خطا
 
@@ -197,7 +197,7 @@ https POST https://apiv2.nobitex.ir/address_book/whitelist/activate
 ```
 
 - **درخواست:**: `POST /address_book/whitelist/activate`
-- **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
 ## غیرفعال کردن برداشت امن
 با غیر فعال کردن برداشت امن، به جهت حفظ امنیت حساب امکان برداشت به مدت ۲۴ ساعت روی حساب کاربر محدود خواهد شد.
@@ -222,7 +222,7 @@ https POST https://apiv2.nobitex.ir/address_book/whitelist/deactivate
 ```
 
 - **درخواست:**: `POST /address_book/whitelist/deactivate`
-- **محدودیت فراخوانی:** 6 درخواست در هر دقیقه
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
 ### پارامترهای ورودی
 
