@@ -37,7 +37,6 @@ curl -X POST 'https://apiv2.nobitex.ir/gift/create-gift' \
     "redeem_date": "2023-11-12",
     "receiver_full_name": "ali karimi",
     "otp_enabled": true,
-    "is_sealed": false
 }'
 ```
 
@@ -80,7 +79,6 @@ redeem_date | iso-string | اختیاری | تاریخ دریافت             
 redeem_type | string     | الزامی  | نوع دریافت                  | "lightning", "internal"
 password | string     | الزامی  | گذرواژه‌ی گیرنده            | "testpass123"
 otp_enabled | boolean    | الزامی  | دومرحله‌ای بودن دریافت هدیه | true
-is_sealed | boolean    | اختیاری | مهر و موم داشتن بسته‌بندی   | false
 
 
 
@@ -120,7 +118,6 @@ cost | monetary | هزینه‌ی ایجاد هدیه‌ | "100"
 ### نکات و ملاحظات
 1. آرگومان مورد نیاز برای فراخوانی APIی تایید برداشت در پاسخ این APIی موجود است و مقدار gift_withdraw_id است.
 2. در صورتی که نوع هدیه دیجیتال باشد ارسال ایمیل گیرنده الزامی خواهد بود. 
-3. ارسال پارامتر is_sealed زمانی که هدیه فیزیکی است الزامی خواهد بود.
 
 
 ## تایید برداشت
