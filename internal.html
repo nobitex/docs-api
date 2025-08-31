@@ -2211,7 +2211,6 @@ Authorization: Token yourTOKENhereHEX0000000000
     "redeem_date": "2023-11-12",
     "receiver_full_name": "ali karimi",
     "otp_enabled": true,
-    "is_sealed": false
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -2346,13 +2345,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <td>دومرحله‌ای بودن دریافت هدیه</td>
 <td>true</td>
 </tr>
-<tr>
-<td>is_sealed</td>
-<td>boolean</td>
-<td>اختیاری</td>
-<td>مهر و موم داشتن بسته‌بندی</td>
-<td>false</td>
-</tr>
 </tbody></table>
 <h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
 <table><thead>
@@ -2462,7 +2454,6 @@ Authorization: Token yourTOKENhereHEX0000000000
 <ol>
 <li>آرگومان مورد نیاز برای فراخوانی APIی تایید برداشت در پاسخ این APIی موجود است و مقدار gift_withdraw_id است.</li>
 <li>در صورتی که نوع هدیه دیجیتال باشد ارسال ایمیل گیرنده الزامی خواهد بود. </li>
-<li>ارسال پارامتر is_sealed زمانی که هدیه فیزیکی است الزامی خواهد بود.</li>
 </ol>
 <h2 id='1ecce8f7b9'>تایید برداشت</h2>
 <p>برای این منظور باید از APIی تایید درخواست برداشت در قسمت برداشت استفاده کرد.</p>
