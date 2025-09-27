@@ -459,7 +459,7 @@ currency    | string |   الزامی | نوع کیف پول(ارز) | `ltc`
 1. مقدار بازگشتی برای موجودی، یک عدد است که به صورت string برگردانده میشود. این مقدار می‌تواند اعداد اعشاری زیادی داشته باشد.
 2. اگر قصد محاسبات مهمی بر روی این اعداد را دارید، پیشنهاد ما این است که از انواع fixed precision برای نگهداری این اعداد استفاده کنید.
 
-## لیست تراکنش‌ها
+## لیست تراکنش‌های کیف‌پول
 
 ```shell
 curl 'https://apiv2.nobitex.ir/users/wallets/transactions/list?wallet=4159' \
@@ -499,7 +499,7 @@ http GET https://apiv2.nobitex.ir/users/wallets/transactions/list \
 }
 ```
 
-برای دریافت آخرین آمار بازار نوبیتکس از این نوع درخواست استفاده نمایید:
+برای دریافت لیست آخرین تراکنش‌های یک کیف پول از این نوع درخواست استفاده نمایید:
 
 - **درخواست:** `GET /users/wallets/transactions/list`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
@@ -510,6 +510,85 @@ http GET https://apiv2.nobitex.ir/users/wallets/transactions/list \
 پارامتر     | نوع    | پیش‌فرض   |       توضیحات     | نمونه
 ----------- | ----   | ------   |   ---------       | -----
 wallet      | int    |   الزامی | شناسه کیف پول(id) | `4159`
+
+## تاریخچه تراکنش‌ها (انتخابی)
+
+```shell
+curl 'https://apiv2.nobitex.ir/users/transactions-history?currency=ltc' \
+  -H "Authorization: Token yourTOKENhereHEX0000000000"
+```
+
+```plaintext
+http GET https://apiv2.nobitex.ir/users/transactions-history \
+  currency=ltc
+```
+
+> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
+
+```json
+{
+    "status": "ok",
+    "transactions": [
+        {
+          "id": 99050,
+          "amount": "4.3802000000",
+          "description": "خرید 4.400 LTC به قیمت واحد ﷼7450000",
+          "created_at": "2018-10-17T09:41:08.519151+00:00",
+          "balance": "21.2502000000",
+          "tp": "buy",
+          "calculatedFee": null,
+          "type": "معامله",
+          "currency": "ltc"
+        },
+        {
+          "id": 96541,
+          "amount": "-1.0000000000",
+          "description": "Withdraw to \"Lgn1zc77mEjk72KvXPqyXq8K1mAfcDE6YR\"",
+          "created_at": "2018-10-04T13:05:01.384902+00:00",
+          "balance": "16.8700000000",
+          "tp": "withdraw",
+          "calculatedFee": null,
+          "type": "برداشت",
+          "currency": "ltc"
+        }
+    ],
+    "hasNext": false
+}
+```
+
+برای دریافت تاریخچه تراکنش‌ها از این نوع درخواست استفاده نمایید:
+
+- **درخواست:** `GET /users/transactions-history`
+- **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ساعت
+- **<a href="#pagination">صفحه بندی:</a>** دارد (پیشفرض ۵۰)
+
+### پارامترهای ورودی
+
+| پارامتر  | نوع      | پیش‌فرض | توضیحات                  | نمونه                              |
+|----------|----------|---------|--------------------------|------------------------------------|
+| currency | string   | اختیاری | ارز/رمزارز تراکنش        | `rls` یا `usdt` یا `btc` یا ...    |
+| tp       | string   | اختیاری | نوع تراکنش               | `deposit` یا `withdraw` یا ...     |
+| from     | datetime | اختیاری | شروع بازه زمانی تراکنش   | `2018-10-01T00:00:00.000000+00:00` |
+| to       | datetime | اختیاری | پایان بازه زمانی تراکنش  | `2018-10-20T00:00:00.000000+00:00` |
+| from_id  | datetime | اختیاری | شناسه‌های بیشتر از ورودی | `96124`                            |
+
+### نکات و ملاحظات
+
+1. لازم است پارامتر `from` در صورت وجود از پارامتر `to` عقب‌تر باشد.
+2. بازه زمانی انتخاب شده بین `from` و `to` حداکثر می‌تواند ۹۰ روز باشد.
+3. انواع مقادیر `tp`:
+  * `deposit`: واریز
+  * `withdraw`: برداشت
+  * `buy`: دریافتی معامله
+  * `sell`: پرداختی معامله
+  * `manual`: سیستمی
+  * `referral`: ریفرال
+  * `transfer`: انتقال
+  * `pnl`: سود/زیان تعهدی
+  * `delegate`: استخر مشارکت
+  * `staking`: استیکینگ
+  * `yield_farming`: ییلد فارمینگ
+  * `discount`: تخفیف
 
 ## لیست واریزها
 
