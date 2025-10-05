@@ -234,3 +234,40 @@ POST /apikeys/update/<public_key>
 * `users/wallets/withdraw-confirm`
 * `users/wallets/withdraw-cancel`
 * 
+
+## استفاده از کلید API
+
+برای استفاده از API باید سه هدر زیر در هر درخواست ارسال شوند:
+
+| Header                | توضیح                                                                 |
+|------------------------|----------------------------------------------------------------------|
+| `Nobitex-Key`          | کلید عمومی تولید شده توسط کاربر                                      |
+| `Nobitex-Signature`    | امضای محاسبه‌شده با الگوریتم `Ed25519`                              |
+| `Nobitex-Timestamp`    | زمان جاری به ثانیه (Unix timestamp) در منطقه زمانی UTC               |
+
+### نحوه محاسبه امضا (Signature)
+
+امضا به صورت زیر محاسبه می‌شود:
+
+```shell
+   signature = base64(Ed25519(timestamp + method + url + body))
+```
+
+- **timestamp**: عدد ثانیه‌ای (Unix time) بر اساس UTC  
+- **method**: متد HTTP درخواست (مانند `GET`, `POST`)  
+- **url**: مسیر کامل درخواست (endpoint) مانند `/market/orders/list?fromId=123`
+- **body**: محتوای خام بدنه درخواست (برای متدهای `POST`، `PUT` و …)  
+
+> توجه: مقدار `Nobitex-Key` همان کلید عمومی شماست و باید به صورت ثابت در هدر ارسال شود.
+
+```bash
+curl -X POST "https://apiv2.nobitex.ir/orders/cancel-old" \
+  -H "Content-Type: application/json" \
+  -H "Nobitex-Key: <Your-Public-Key>" \
+  -H "Nobitex-Signature: <Generated-Signature>" \
+  -H "Nobitex-Timestamp: <Unix-Timestamp>" \
+  -d '{
+        "order": 27032,
+        "status": "canceled"
+      }'
+```
