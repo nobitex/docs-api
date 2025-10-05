@@ -487,6 +487,9 @@
                   <li>
                     <a href="#withdraw" class="toc-h2 toc-link" data-title="Withdraw">Withdraw</a>
                   </li>
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="استفاده از کلید API">استفاده از کلید API</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -4496,7 +4499,52 @@ Content-Type: application/json
 <li><code>users/wallets/withdraw-cancel</code></li>
 <li></li>
 </ul>
+<h2 id='api'>استفاده از کلید API</h2>
+<p>برای استفاده از API باید سه هدر زیر در هر درخواست ارسال شوند:</p>
 
+<table><thead>
+<tr>
+<th>Header</th>
+<th>توضیح</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Nobitex-Key</code></td>
+<td>کلید عمومی تولید شده توسط کاربر</td>
+</tr>
+<tr>
+<td><code>Nobitex-Signature</code></td>
+<td>امضای محاسبه‌شده با الگوریتم <code>Ed25519</code></td>
+</tr>
+<tr>
+<td><code>Nobitex-Timestamp</code></td>
+<td>زمان جاری به ثانیه (Unix timestamp) در منطقه زمانی UTC</td>
+</tr>
+</tbody></table>
+<h3 id='signature'>نحوه محاسبه امضا (Signature)</h3>
+<p>امضا به صورت زیر محاسبه می‌شود:</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>   signature <span class="o">=</span> <span class="nb">base64</span><span class="o">(</span>Ed25519<span class="o">(</span>timestamp + method + url + body<span class="o">))</span>
+</code></pre></div>
+<ul>
+<li><strong>timestamp</strong>: عدد ثانیه‌ای (Unix time) بر اساس UTC<br></li>
+<li><strong>method</strong>: متد HTTP درخواست (مانند <code>GET</code>, <code>POST</code>)<br></li>
+<li><strong>url</strong>: مسیر کامل درخواست (endpoint) مانند <code>/market/orders/list?fromId=123</code></li>
+<li><strong>body</strong>: محتوای خام بدنه درخواست (برای متدهای <code>POST</code>، <code>PUT</code> و …)<br></li>
+</ul>
+
+<blockquote>
+<p>توجه: مقدار <code>Nobitex-Key</code> همان کلید عمومی شماست و باید به صورت ثابت در هدر ارسال شود.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://apiv2.nobitex.ir/orders/cancel-old"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Nobitex-Key: &lt;Your-Public-Key&gt;"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Nobitex-Signature: &lt;Generated-Signature&gt;"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Nobitex-Timestamp: &lt;Unix-Timestamp&gt;"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "order": 27032,
+        "status": "canceled"
+      }'</span>
+</code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
