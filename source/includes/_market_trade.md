@@ -454,8 +454,29 @@ http POST https://apiv2.nobitex.ir/market/orders/update-status \
 
 ```json
 {
-    "status": "ok",
-    "updatedStatus": "Canceled"
+  "status": "ok",
+  "updatedStatus": "Canceled",
+  "order": {
+    "amount": "60",
+    "averagePrice": "0",
+    "clientOrderId": null,
+    "created_at": "2025-10-28T09:25:17.774332+00:00",
+    "dstCurrency": "﷼",
+    "execution": "Market",
+    "fee": "0",
+    "id": 5684,
+    "market": "USDT-RLS",
+    "matchedAmount": "0",
+    "partial": false,
+    "price": "market",
+    "srcCurrency": "Tether",
+    "status": "Canceled",
+    "totalOrderPrice": "2550000",
+    "totalPrice": "0",
+    "tradeType": "Spot",
+    "type": "sell",
+    "unmatchedAmount": "60"
+  }
 }
 ```
 

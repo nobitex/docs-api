@@ -92,7 +92,7 @@ GET /apikeys/list
 
 ### حذف کلید
 
-GET /apikeys/delete/<public_key>
+POST /apikeys/delete/<public_key>
 
 ورودی: public_key در آدرس 
 خروجی:
