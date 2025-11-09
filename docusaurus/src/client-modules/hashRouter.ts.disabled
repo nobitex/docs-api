@@ -1,0 +1,224 @@
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+
+/**
+ * Hash-based routing module for Docusaurus
+ * This module enables hash-based navigation (e.g., /#page) for ALL paths in the site
+ * Converts paths like /withdraw to /#withdraw and /address-book to /#address-book
+ */
+
+if (ExecutionEnvironment.canUseDOM) {
+  // Store the original pushState and replaceState
+  const originalPushState = window.history.pushState;
+  const originalReplaceState = window.history.replaceState;
+
+  // Function to convert path to hash
+  const pathToHash = (path: string): string => {
+    // Handle root path
+    if (path === '/' || path === '' || path === '#/') {
+      return '#/general-notes';
+    }
+    
+    // Parse URL to handle query strings and existing hashes
+    let cleanPath = path;
+    let queryString = '';
+    let fragment = '';
+    
+    // Extract query string
+    const queryIndex = path.indexOf('?');
+    if (queryIndex !== -1) {
+      queryString = path.substring(queryIndex);
+      cleanPath = path.substring(0, queryIndex);
+    }
+    
+    // Extract fragment (existing hash)
+    const hashIndex = cleanPath.indexOf('#');
+    if (hashIndex !== -1) {
+      fragment = cleanPath.substring(hashIndex + 1);
+      cleanPath = cleanPath.substring(0, hashIndex);
+    }
+    
+    // Remove leading and trailing slashes
+    cleanPath = cleanPath.replace(/^\/+|\/+$/g, '');
+    
+    // If there's a fragment, use it as the path
+    if (fragment) {
+      // If fragment already has a slash, use it directly
+      if (fragment.startsWith('/')) {
+        return `#${fragment}${queryString}`;
+      }
+      return `#/${fragment}${queryString}`;
+    }
+    
+    // Convert path to hash format
+    if (cleanPath === '') {
+      return '#/general-notes';
+    }
+    
+    return `#/${cleanPath}${queryString}`;
+  };
+
+  // Function to convert hash to path
+  const hashToPath = (hash: string): string => {
+    if (!hash || hash === '#' || hash === '#/') {
+      return '/general-notes';
+    }
+    
+    // Remove # and ensure leading slash
+    let cleanHash = hash.substring(1);
+    
+    // Handle hash that already starts with /
+    if (cleanHash.startsWith('/')) {
+      return cleanHash;
+    }
+    
+    return `/${cleanHash}`;
+  };
+
+  // Override pushState to maintain hash in URL
+  window.history.pushState = function(state: any, title: string, url?: string | URL | null) {
+    if (url) {
+      const urlString = typeof url === 'string' ? url : url.toString();
+      
+      // Only process relative URLs
+      if (!urlString.startsWith('http://') && !urlString.startsWith('https://')) {
+        const hash = pathToHash(urlString);
+        const result = originalPushState.call(this, state, title, url);
+        
+        // Update hash in URL without triggering hashchange
+        if (window.location.hash !== hash) {
+          window.history.replaceState(state, title, `/${hash}`);
+        }
+        
+        return result;
+      }
+    }
+    return originalPushState.call(this, state, title, url);
+  };
+
+  // Override replaceState to maintain hash in URL
+  window.history.replaceState = function(state: any, title: string, url?: string | URL | null) {
+    if (url) {
+      const urlString = typeof url === 'string' ? url : url.toString();
+      
+      // Only process relative URLs
+      if (!urlString.startsWith('http://') && !urlString.startsWith('https://')) {
+        const hash = pathToHash(urlString);
+        const result = originalReplaceState.call(this, state, title, url);
+        
+        // Update hash in URL without triggering hashchange
+        if (window.location.hash !== hash) {
+          window.history.replaceState(state, title, `/${hash}`);
+        }
+        
+        return result;
+      }
+    }
+    return originalReplaceState.call(this, state, title, url);
+  };
+
+  // Handle initial load
+  const handleInitialLoad = () => {
+    const hash = window.location.hash;
+    const pathname = window.location.pathname;
+    
+    if (hash && hash !== '#' && hash !== '#/') {
+      // We have a hash, convert it to path for internal routing
+      const path = hashToPath(hash);
+      if (path !== pathname) {
+        originalReplaceState.call(window.history, null, '', path);
+        // Trigger navigation
+        window.dispatchEvent(new PopStateEvent('popstate', { state: null }));
+      }
+    } else if (pathname !== '/') {
+      // We have a path but no hash, convert path to hash
+      const hash = pathToHash(pathname);
+      originalReplaceState.call(window.history, null, '', pathname);
+      // Update URL to show hash
+      window.history.replaceState(null, '', `/${hash}`);
+    } else {
+      // Default to general-notes page
+      const hash = '#/general-notes';
+      originalReplaceState.call(window.history, null, '', '/general-notes');
+      window.history.replaceState(null, '', `/${hash}`);
+      window.dispatchEvent(new PopStateEvent('popstate', { state: null }));
+    }
+  };
+
+  // Handle hash changes
+  const handleHashChange = () => {
+    const hash = window.location.hash;
+    const path = hashToPath(hash);
+    const currentPath = window.location.pathname;
+    
+    if (path !== currentPath) {
+      // Navigate to the new path internally
+      originalReplaceState.call(window.history, null, '', path);
+      // Trigger a popstate event to notify React Router
+      window.dispatchEvent(new PopStateEvent('popstate', { state: null }));
+      
+      // Update URL to maintain hash format
+      window.history.replaceState(null, '', `/${hash}`);
+    }
+  };
+
+  // Listen for hash changes
+  window.addEventListener('hashchange', handleHashChange);
+
+  // Handle initial load after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleInitialLoad);
+  } else {
+    handleInitialLoad();
+  }
+
+  // Intercept all anchor clicks to convert them to hash-based navigation
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const anchor = target.closest('a');
+    
+    if (anchor && anchor.href) {
+      try {
+        const url = new URL(anchor.href);
+        
+        // Only handle internal links (same origin)
+        if (url.origin === window.location.origin) {
+          const href = anchor.getAttribute('href');
+          
+          // Don't intercept if it's already a hash link
+          if (href && href.startsWith('#')) {
+            // Let it navigate naturally
+            return;
+          }
+          
+          // Convert path to hash for internal links
+          event.preventDefault();
+          const path = url.pathname + url.search + url.hash;
+          const hash = pathToHash(path);
+          window.location.hash = hash;
+        }
+      } catch (e) {
+        // Invalid URL, let it navigate naturally
+        console.error('Invalid URL:', e);
+      }
+    }
+  }, true);
+  
+  // Monitor URL changes and ensure hash format is maintained
+  const observer = new MutationObserver(() => {
+    const currentUrl = window.location.href;
+    const currentHash = window.location.hash;
+    const currentPath = window.location.pathname;
+    
+    // If we have a path but no hash, add the hash
+    if (currentPath !== '/' && (!currentHash || currentHash === '#' || currentHash === '#/')) {
+      const hash = pathToHash(currentPath);
+      window.history.replaceState(null, '', `/${hash}`);
+    }
+  });
+  
+  // Observe changes to the document that might trigger navigation
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
+}
