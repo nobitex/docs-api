@@ -5807,7 +5807,7 @@
 <blockquote>
 <p>برای دریافت رمزیکبارمصرف otpCode از درخواست زیر استفاده نمایید:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/otp/request'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/v2/otp/request'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{"type": "email", "usage": "address_book"}'</span>
 </code></pre></div>
@@ -6125,8 +6125,9 @@
 <blockquote>
 <p>برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://apiv2.nobitex.ir/otp/request?type=email&amp;usage=anti_phishing_code'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/v2/otp/request'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"type": "email", "usage": "anti_phishing_code"}'</span>
 </code></pre></div>
 <blockquote>
 <p><strong>حالت های خطا</strong></p>
@@ -6455,7 +6456,9 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/auth/login/'</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"X-TOTP: &lt;Your TOTP value&gt;"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"X-TOTP: TraderBot/&lt;Your bot version and name&gt;"</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/auth/login/ \
   username=name@example.com password=secret-password-1234 captcha=api
