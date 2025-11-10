@@ -86,7 +86,7 @@ http POST https://apiv2.nobitex.ir/address_book
 > برای دریافت رمزیکبارمصرف otpCode از درخواست زیر استفاده نمایید:
 
 ```shell
-curl -X POST 'https://apiv2.nobitex.ir/otp/request' \
+curl -X POST 'https://apiv2.nobitex.ir/v2/otp/request' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
   --data '{"type": "email", "usage": "address_book"}'
 ```
