@@ -1,4 +1,4 @@
-<h1 id="websocket">وب‌سوکت (آزمایشی)</h1>
+<h1 id="websocket">وب‌سوکت</h1>
 
 
 نوبیتکس برای ارائه اطلاعات لحظه‌ای به کاربران، از وب‌سوکت استفاده می‌کند. این سرویس با استفاده از سرور **Centrifugo** پیاده‌سازی شده است که برای زبان‌های مختلف، **SDK**های متنوعی ارائه می‌دهد تا بتوانید به راحتی در کلاینت‌های خود به وب‌سوکت متصل شوید.
@@ -207,7 +207,7 @@ client.connect();
 </aside>
 
 
-<h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
+<h2 id="websocket-orderbook">کانال لیست سفارش‌ها: اردربوک</h2>
 
 
 کانال‌هایی با پیشوند زیر شامل اطلاعات **اردربوک** هستند و با هر تغییری در اردربوک، به مشترکین پیام ارسال می‌کنند:
@@ -304,7 +304,7 @@ sub.subscribe();
 
 
 
-<h2 id="websocket-candle">استریم آمار OHLC بازار نوبیتکس</h2>
+<h2 id="websocket-candle">کانال آمار OHLC بازار نوبیتکس</h2>
 
 برای توضیحات بیشتر در مورد  OHLC به [این لینک](https://en.wikipedia.org/wiki/Open-high-low-close_chart) مراجعه کنید.<br><br>
 
@@ -407,30 +407,179 @@ sub.subscribe();
 | `c`          | float | قیمت پایانی  | <code dir="ltr">6238031033.0</code> |
 | `v`          | float | حجم معاملات  | <code dir="ltr">1.26</code>         |
 
+<h2 id="public-trades">کانال‌ عمومی معاملات</h2>
+در این کانال تمامی معاملات صورت گرفته در یک بازار منتشر می‌شود.
 
-<h2 id="private-trades">معاملات کاربر</h2>
+**الگوی کانال‌های عمومی معاملات :** <code dir="ltr">public:trades-{marketSymbol}</code>
+
+> نمونه پیام ارسالی در کانال‌های عمومی معاملات:
+
+```json
+{
+  "price": "120000000000",
+  "time": 1762781164192, 
+  "type": "sell", 
+  "volume": "0.000003"
+}
+```
+
+###  پارامترهای پاسخ
+| پارامتر پاسخ | نوع      | توضیحات     | نمونه                                                   |
+|--------------|----------|-------------|---------------------------------------------------------|
+| price        | monetary | قیمت معامله | <code dir="ltr">12000.129</code>                        |
+| time         | int      | زمان معامله | <code dir="ltr">1762781164192</code>                    |
+| type         | string   | نوع معامله  | <code dir="ltr">sell</code>, <code dir="ltr">buy</code> |
+| volume       | monetary    | حجم معامله  | <code dir="ltr">13.002</code>                           |
 
 
-الگوی کانال معاملات کاربر به این صورت می باشد.
+<h2 id="public-market-stats">کانال‌ وضعیت بازارها</h2>
+در این کانال‌ها اطلاعات کلی مربوط به وضعیت بازارها طی ۲۴ ساعت اخیر منتشر می‌شود. 
+
+**الگوی کانال‌های‌ وضعیت تک بازار :** <code dir="ltr">public:market-stats-{marketSymbol}</code>
+
+**کانال‌ وضعیت تمامی بازارها :** <code dir="ltr">public:market-stats-all</code>
+
+> نمونه پیام ارسالی در کانال‌های وضعیت تک بازار:
+
+``` json 
+{
+  "isClosed": false, 
+  "bestSell": "121073861950", 
+  "bestBuy": "120000000000", 
+  "volumeSrc": "0.000185131782", 
+  "volumeDst": "21590044.0170869949", 
+  "latest": "114879999920", 
+  "mark": "123288285750", 
+  "dayLow": "110850000360", 
+  "dayHigh": "121073861950", 
+  "dayOpen": "121073861910", 
+  "dayClose": "114879999920", 
+  "dayChange": "-5.12"
+}
+```
+
+###  پارامترهای پاسخ
+
+| پارامتر پاسخ | نوع      | توضیحات                         | نمونه                         |
+|--------------|----------|---------------------------------|-------------------------------|
+| isClosed        | bool     | باز یا بسته بودن بازار          | <code dir="ltr">true</code>   |
+| bestSell         | monetary | بهترین قیمت فروش فعلی           | <code dir="ltr">1000</code>   |
+| bestBuy         | monetary | بهترین قیمت خرید فعلی           | <code dir="ltr">1000</code>   |
+| volumeSrc       | monetary | حجم معاملات ۲۴ ساعت اخیر        | <code dir="ltr">13.002</code> |
+| volumeDst       | monetary | ارزش معاملات ۲۴ ساعت اخیر       | <code dir="ltr">13002</code>  |
+| latest       | monetary | آخرین قیمت معامله شده           | <code dir="ltr">1002</code>   |
+| mark       | monetary | قیمت معیار فعلی                 | <code dir="ltr">1002</code>   |
+| dayLow       | monetary | کمترین قیمت ۲۴ ساعت اخیر        | <code dir="ltr">800</code>    |
+| dayHigh       | monetary | بیشترین قیمت ۲۴ ساعت اخیر       | <code dir="ltr">1200</code>   |
+| dayOpen       | monetary | نخستین قیمت ۲۴ ساعت اخیر        | <code dir="ltr">800</code>    |
+| dayClose       | monetary | آخرین قیمت ۲۴ ساعت اخیر         | <code dir="ltr">1200</code>   |
+| dayChange       | float    | درصد تغییر قیمت طی ۲۴ ساعت اخیر | <code dir="ltr">-2.12</code>  |
+
+
+> نمونه پیام ارسالی در کانال‌ وضعیت تمامی بازارها:
+
+```json
+{
+  "btc-irt": {
+    "isClosed": false, 
+    "bestSell": "121073861950", 
+    "bestBuy": "120000000000", 
+    "volumeSrc": "0.000185131782", 
+    "volumeDst": "21590044.0170869949", 
+    "latest": "114879999920", 
+    "mark": "123288285750", 
+    "dayLow": "110850000360", 
+    "dayHigh": "121073861950", 
+    "dayOpen": "121073861910", 
+    "dayClose": "114879999920", 
+    "dayChange": "-5.12"
+  },
+  "usdt-irt": {
+    "isClosed": false, 
+    "bestSell": "121073861950", 
+    "bestBuy": "120000000000", 
+    "volumeSrc": "0.000185131782", 
+    "volumeDst": "21590044.0170869949", 
+    "latest": "114879999920", 
+    "mark": "123288285750", 
+    "dayLow": "110850000360", 
+    "dayHigh": "121073861950", 
+    "dayOpen": "121073861910", 
+    "dayClose": "114879999920", 
+    "dayChange": "-5.12"
+  }
+}
+```
+
+<h2 id="private-orders">کانال خصوصی سفارشات کاربر</h2>
+در این کانال تمامی رخدادهای مربوط به سفارشات کاربر منتشر می‌شود.
+
+**الگوی کانال سفارشات کاربر:** <code dir="ltr">private:orders#{websocketAuthParam}</code>
+
+سابسکرایب به این کانال نیازمند احراز هویت از طریق [توکن](#websocket-token) است.
+
+
+###  پارامترهای پیام
+
+> پیام‌های ارسالی کانال به این صورت خواهد بود:
+
+```json
+{
+  "amount": "0.0002", 
+  "avgFilledPrice": "114879999920", 
+  "clientOrderId": null, 
+  "dstCurrency": "rls",
+  "eventTime": 1762779011366, 
+  "fee": "0.00000031", 
+  "filledAmount": "0.0002",
+  "lastFillTime": 1762779011258,
+  "marketType": "Spot", 
+  "orderId": 278339,
+  "orderType": "Market",
+  "param1": null, 
+  "price": null, 
+  "side": "Buy", 
+  "srcCurrency": "btc",
+  "status": "Done",
+  "tradeAmount": "0.0002", 
+  "tradeId": 92547, 
+  "tradePrice": "114879999920"
+}
+```
+
+| فیلد        | نوع      | توضیحات                            | نمونه             |
+|-------------|----------|------------------------------------|-------------------|
+| amount          | monetary | حجم سفارش                          | `3.002`           |
+| avgFilledPrice     | monetary | ارزش پر شده‌ سفارش (ریالی یا تتری) | `520305923`       |
+| clientOrderId | string   | شناسه پیگیری کاربر                 | `1032`            |
+| dstCurrency | string   | ارز مقصد سفارش                     | `rls`, `usdt`     |
+| eventTime   | int      | زمان انجام رخداد                   | `1762779011258`   |
+| fee        | monetary | کارمزد سفارش                       | `1.02`            |
+| filledAmount       | monetary | حجم پر شده سفارش                   | `2.7812`          |
+| lastFillTime      | int      | زمان آخرین ترید (nullable)         | `1762779011258`   |
+| marketType       | string   | نوع بازار سفارش‌گذاری              | `Spot`, `Margin`  |
+| orderId         | int      | شناسه سفارش                        | `47150`           |
+| orderType         | string   | نوع سفارش                          | `Market`, `Limit` |
+| param1         | monetary |                                    | `47150.7989334`   |
+| price         | monetary | قیمت سفارش  (nullable)             | `47150.7989334`   |
+| side         | string   | جهت سفارش                          | `Buy`, `Sell`     |
+| srcCurrency         | monetary | ارز مبدا سفارش                     | `btc`             |
+| status         | string       | وضعیت سفارش                        | `Done`            |
+| tradeAmount         | monetary | حجم آخرین ترید (nullable)          | `0.002`           |
+| tradeId         | int      | شناسه آخرین ترید  (nullable)       | `65451`           |
+| tradePrice         | monetary | قیمت آخرین ترید    (nullable)      | `47150.7989334`   |
+
+
+
+<h2 id="private-trades">کانال خصوصی معاملات کاربر</h2>
+به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر منتشر می شود.
+
 
 **الگوی کانال معاملات کاربر:** <code dir="ltr">private:trades#{websocketAuthParam}</code>
 
-به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر پابلیش می شود.
 
+سابسکرایب به این کانال نیازمند احراز هویت از طریق [توکن](#websocket-token) است.
 
-**توجه:پارامتر
-<code>{websocketAuthParam}</code>
-را می توانید از بخش [پروفایل](#user-profile) دریافت کنید.**
-
-
-
-<aside class="notice">
-پارامتر <code>{websocketAuthParam}</code> مقداری ثابت است و در طول زمان تغییر نمی کند، نیازی بروز رسانی و رفرش کردن آن نیست.
-</aside>
-
-<aside class="notice">
-سابسکرایب کردن به این کانال نیاز به احراز هویت از طریق token دارد.
-</aside>
 
 
 
@@ -487,7 +636,7 @@ sub.subscribe();
 }
 ```
 
-### پارامتر پیام
+### پارامترهای پیام
 
 | فیلد        | نوع      | توضیحات            | نمونه                              |
 |-------------|----------|--------------------|------------------------------------|
