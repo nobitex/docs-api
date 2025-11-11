@@ -16,7 +16,7 @@ curl 'https://apiv2.nobitex.ir/auth/login/' \
   -X POST \
   --header "Content-Type: application/json" \
   --header "X-TOTP: <Your TOTP value>" \
-  --header "X-TOTP: TraderBot/<Your bot version and name>" \
+  --header "User-Agent: TraderBot/<Your bot version and name>" \
   --data $'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'
 ```
 
