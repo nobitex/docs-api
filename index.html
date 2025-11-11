@@ -6458,7 +6458,7 @@
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"X-TOTP: &lt;Your TOTP value&gt;"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"X-TOTP: TraderBot/&lt;Your bot version and name&gt;"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"User-Agent: TraderBot/&lt;Your bot version and name&gt;"</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">$'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/auth/login/ \
   username=name@example.com password=secret-password-1234 captcha=api
