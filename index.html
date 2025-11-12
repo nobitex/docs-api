@@ -461,7 +461,7 @@
               </ul>
           </li>
           <li>
-            <a href="#websocket" class="toc-h1 toc-link" data-title="وب‌سوکت (آزمایشی)">وب‌سوکت (آزمایشی)</a>
+            <a href="#websocket" class="toc-h1 toc-link" data-title="وب‌سوکت">وب‌سوکت</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#websocket-connection" class="toc-h2 toc-link" data-title="اتصال به وب‌سوکت">اتصال به وب‌سوکت</a>
@@ -473,13 +473,22 @@
                     <a href="#websocket-auth" class="toc-h2 toc-link" data-title="احراز هویت">احراز هویت</a>
                   </li>
                   <li>
-                    <a href="#websocket-orderbook" class="toc-h2 toc-link" data-title="استریم لیست سفارش‌ها: اردربوک">استریم لیست سفارش‌ها: اردربوک</a>
+                    <a href="#websocket-orderbook" class="toc-h2 toc-link" data-title="کانال لیست سفارش‌ها: اردربوک">کانال لیست سفارش‌ها: اردربوک</a>
                   </li>
                   <li>
-                    <a href="#websocket-candle" class="toc-h2 toc-link" data-title="استریم آمار OHLC بازار نوبیتکس">استریم آمار OHLC بازار نوبیتکس</a>
+                    <a href="#websocket-candle" class="toc-h2 toc-link" data-title="کانال آمار OHLC بازار نوبیتکس">کانال آمار OHLC بازار نوبیتکس</a>
                   </li>
                   <li>
-                    <a href="#private-trades" class="toc-h2 toc-link" data-title="معاملات کاربر">معاملات کاربر</a>
+                    <a href="#public-trades" class="toc-h2 toc-link" data-title="کانال‌ عمومی معاملات">کانال‌ عمومی معاملات</a>
+                  </li>
+                  <li>
+                    <a href="#public-market-stats" class="toc-h2 toc-link" data-title="کانال‌ وضعیت بازارها">کانال‌ وضعیت بازارها</a>
+                  </li>
+                  <li>
+                    <a href="#private-orders" class="toc-h2 toc-link" data-title="کانال خصوصی سفارشات کاربر">کانال خصوصی سفارشات کاربر</a>
+                  </li>
+                  <li>
+                    <a href="#private-trades" class="toc-h2 toc-link" data-title="کانال خصوصی معاملات کاربر">کانال خصوصی معاملات کاربر</a>
                   </li>
               </ul>
           </li>
@@ -5095,7 +5104,7 @@
 <td>433</td>
 </tr>
 </tbody></table>
-<h1 id="websocket">وب‌سوکت (آزمایشی)</h1>
+<h1 id="websocket">وب‌سوکت</h1>
 
 <p>نوبیتکس برای ارائه اطلاعات لحظه‌ای به کاربران، از وب‌سوکت استفاده می‌کند. این سرویس با استفاده از سرور <strong>Centrifugo</strong> پیاده‌سازی شده است که برای زبان‌های مختلف، <strong>SDK</strong>های متنوعی ارائه می‌دهد تا بتوانید به راحتی در کلاینت‌های خود به وب‌سوکت متصل شوید.</p>
 
@@ -5317,7 +5326,7 @@
 پارامتر <code dir="ltr">{websocketAuthParam}</code> یک مقدار ثابت و منحصر به فرد برای هر کاربر است که در طول زمان تغییر نمی‌کند. بنابراین، نیازی به به‌روزرسانی و رفرش کردن ندارد.
 </aside>
 
-<h2 id="websocket-orderbook">استریم لیست سفارش‌ها: اردربوک</h2>
+<h2 id="websocket-orderbook">کانال لیست سفارش‌ها: اردربوک</h2>
 
 <p>کانال‌هایی با پیشوند زیر شامل اطلاعات <strong>اردربوک</strong> هستند و با هر تغییری در اردربوک، به مشترکین پیام ارسال می‌کنند:</p>
 
@@ -5418,7 +5427,7 @@
 </tr>
 </tbody></table>
 
-<h2 id="websocket-candle">استریم آمار OHLC بازار نوبیتکس</h2>
+<h2 id="websocket-candle">کانال آمار OHLC بازار نوبیتکس</h2>
 
 <p>برای توضیحات بیشتر در مورد  OHLC به <a href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">این لینک</a> مراجعه کنید.<br><br></p>
 
@@ -5589,25 +5598,362 @@
 </tr>
 </tbody></table>
 
-<h2 id="private-trades">معاملات کاربر</h2>
+<h2 id="public-trades">کانال‌ عمومی معاملات</h2>
 
-<p>الگوی کانال معاملات کاربر به این صورت می باشد.</p>
+<p>در این کانال تمامی معاملات صورت گرفته در یک بازار منتشر می‌شود.</p>
+
+<p><strong>الگوی کانال‌های عمومی معاملات :</strong> <code dir="ltr">public:trades-{marketSymbol}</code></p>
+
+<blockquote>
+<p>نمونه پیام ارسالی در کانال‌های عمومی معاملات:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120000000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1762781164192</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000003"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='b5a1caf9af-3'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر پاسخ</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>قیمت معامله</td>
+<td><code dir="ltr">12000.129</code></td>
+</tr>
+<tr>
+<td>time</td>
+<td>int</td>
+<td>زمان معامله</td>
+<td><code dir="ltr">1762781164192</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>نوع معامله</td>
+<td><code dir="ltr">sell</code>, <code dir="ltr">buy</code></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>monetary</td>
+<td>حجم معامله</td>
+<td><code dir="ltr">13.002</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="public-market-stats">کانال‌ وضعیت بازارها</h2>
+
+<p>در این کانال‌ها اطلاعات کلی مربوط به وضعیت بازارها طی ۲۴ ساعت اخیر منتشر می‌شود. </p>
+
+<p><strong>الگوی کانال‌های‌ وضعیت تک بازار :</strong> <code dir="ltr">public:market-stats-{marketSymbol}</code></p>
+
+<p><strong>کانال‌ وضعیت تمامی بازارها :</strong> <code dir="ltr">public:market-stats-all</code></p>
+
+<blockquote>
+<p>نمونه پیام ارسالی در کانال‌های وضعیت تک بازار:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"isClosed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"bestSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"bestBuy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120000000000"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"volumeSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000185131782"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"volumeDst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21590044.0170869949"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"latest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"mark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123288285750"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dayLow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110850000360"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dayHigh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dayOpen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861910"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dayClose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5.12"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='b5a1caf9af-4'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر پاسخ</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isClosed</td>
+<td>bool</td>
+<td>باز یا بسته بودن بازار</td>
+<td><code dir="ltr">true</code></td>
+</tr>
+<tr>
+<td>bestSell</td>
+<td>monetary</td>
+<td>بهترین قیمت فروش فعلی</td>
+<td><code dir="ltr">1000</code></td>
+</tr>
+<tr>
+<td>bestBuy</td>
+<td>monetary</td>
+<td>بهترین قیمت خرید فعلی</td>
+<td><code dir="ltr">1000</code></td>
+</tr>
+<tr>
+<td>volumeSrc</td>
+<td>monetary</td>
+<td>حجم معاملات ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">13.002</code></td>
+</tr>
+<tr>
+<td>volumeDst</td>
+<td>monetary</td>
+<td>ارزش معاملات ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">13002</code></td>
+</tr>
+<tr>
+<td>latest</td>
+<td>monetary</td>
+<td>آخرین قیمت معامله شده</td>
+<td><code dir="ltr">1002</code></td>
+</tr>
+<tr>
+<td>mark</td>
+<td>monetary</td>
+<td>قیمت معیار فعلی</td>
+<td><code dir="ltr">1002</code></td>
+</tr>
+<tr>
+<td>dayLow</td>
+<td>monetary</td>
+<td>کمترین قیمت ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">800</code></td>
+</tr>
+<tr>
+<td>dayHigh</td>
+<td>monetary</td>
+<td>بیشترین قیمت ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">1200</code></td>
+</tr>
+<tr>
+<td>dayOpen</td>
+<td>monetary</td>
+<td>نخستین قیمت ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">800</code></td>
+</tr>
+<tr>
+<td>dayClose</td>
+<td>monetary</td>
+<td>آخرین قیمت ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">1200</code></td>
+</tr>
+<tr>
+<td>dayChange</td>
+<td>float</td>
+<td>درصد تغییر قیمت طی ۲۴ ساعت اخیر</td>
+<td><code dir="ltr">-2.12</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>نمونه پیام ارسالی در کانال‌ وضعیت تمامی بازارها:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"btc-irt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"isClosed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"bestSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"bestBuy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120000000000"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"volumeSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000185131782"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"volumeDst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21590044.0170869949"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"latest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"mark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123288285750"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayLow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110850000360"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayHigh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayOpen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861910"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayClose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5.12"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"usdt-irt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"isClosed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"bestSell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"bestBuy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120000000000"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"volumeSrc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000185131782"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"volumeDst"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21590044.0170869949"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"latest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"mark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123288285750"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayLow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110850000360"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayHigh"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861950"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayOpen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"121073861910"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayClose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"dayChange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-5.12"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h2 id="private-orders">کانال خصوصی سفارشات کاربر</h2>
+
+<p>در این کانال تمامی رخدادهای مربوط به سفارشات کاربر منتشر می‌شود.</p>
+
+<p><strong>الگوی کانال سفارشات کاربر:</strong> <code dir="ltr">private:orders#{websocketAuthParam}</code></p>
+
+<p>سابسکرایب به این کانال نیازمند احراز هویت از طریق <a href="#websocket-token">توکن</a> است.</p>
+<h3 id='ad220a3e30'>پارامترهای پیام</h3>
+<blockquote>
+<p>پیام‌های ارسالی کانال به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"avgFilledPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"dstCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"eventTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1762779011366</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000031"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastFillTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1762779011258</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marketType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spot"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">278339</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Market"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"param1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"srcCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">92547</span><span class="p">,</span><span class="w"> 
+  </span><span class="nl">"tradePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"114879999920"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>فیلد</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>حجم سفارش</td>
+<td><code>3.002</code></td>
+</tr>
+<tr>
+<td>avgFilledPrice</td>
+<td>monetary</td>
+<td>ارزش پر شده‌ سفارش (ریالی یا تتری)</td>
+<td><code>520305923</code></td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>string</td>
+<td>شناسه پیگیری کاربر</td>
+<td><code>1032</code></td>
+</tr>
+<tr>
+<td>dstCurrency</td>
+<td>string</td>
+<td>ارز مقصد سفارش</td>
+<td><code>rls</code>, <code>usdt</code></td>
+</tr>
+<tr>
+<td>eventTime</td>
+<td>int</td>
+<td>زمان انجام رخداد</td>
+<td><code>1762779011258</code></td>
+</tr>
+<tr>
+<td>fee</td>
+<td>monetary</td>
+<td>کارمزد سفارش</td>
+<td><code>1.02</code></td>
+</tr>
+<tr>
+<td>filledAmount</td>
+<td>monetary</td>
+<td>حجم پر شده سفارش</td>
+<td><code>2.7812</code></td>
+</tr>
+<tr>
+<td>lastFillTime</td>
+<td>int</td>
+<td>زمان آخرین ترید (nullable)</td>
+<td><code>1762779011258</code></td>
+</tr>
+<tr>
+<td>marketType</td>
+<td>string</td>
+<td>نوع بازار سفارش‌گذاری</td>
+<td><code>Spot</code>, <code>Margin</code></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>int</td>
+<td>شناسه سفارش</td>
+<td><code>47150</code></td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>string</td>
+<td>نوع سفارش</td>
+<td><code>Market</code>, <code>Limit</code></td>
+</tr>
+<tr>
+<td>param1</td>
+<td>monetary</td>
+<td></td>
+<td><code>47150.7989334</code></td>
+</tr>
+<tr>
+<td>price</td>
+<td>monetary</td>
+<td>قیمت سفارش  (nullable)</td>
+<td><code>47150.7989334</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>جهت سفارش</td>
+<td><code>Buy</code>, <code>Sell</code></td>
+</tr>
+<tr>
+<td>srcCurrency</td>
+<td>monetary</td>
+<td>ارز مبدا سفارش</td>
+<td><code>btc</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت سفارش</td>
+<td><code>Done</code></td>
+</tr>
+<tr>
+<td>tradeAmount</td>
+<td>monetary</td>
+<td>حجم آخرین ترید (nullable)</td>
+<td><code>0.002</code></td>
+</tr>
+<tr>
+<td>tradeId</td>
+<td>int</td>
+<td>شناسه آخرین ترید  (nullable)</td>
+<td><code>65451</code></td>
+</tr>
+<tr>
+<td>tradePrice</td>
+<td>monetary</td>
+<td>قیمت آخرین ترید    (nullable)</td>
+<td><code>47150.7989334</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="private-trades">کانال خصوصی معاملات کاربر</h2>
+
+<p>به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر منتشر می شود.</p>
 
 <p><strong>الگوی کانال معاملات کاربر:</strong> <code dir="ltr">private:trades#{websocketAuthParam}</code></p>
 
-<p>به محض انجام شدن هر معامله‌ای برای کاربر، اطلاعات معامله در این کانال برای کاربر پابلیش می شود.</p>
-
-<p><strong>توجه:پارامتر
-<code>{websocketAuthParam}</code>
-را می توانید از بخش <a href="#user-profile">پروفایل</a> دریافت کنید.</strong></p>
-
-<aside class="notice">
-پارامتر <code>{websocketAuthParam}</code> مقداری ثابت است و در طول زمان تغییر نمی کند، نیازی بروز رسانی و رفرش کردن آن نیست.
-</aside>
-
-<aside class="notice">
-سابسکرایب کردن به این کانال نیاز به احراز هویت از طریق token دارد.
-</aside>
+<p>سابسکرایب به این کانال نیازمند احراز هویت از طریق <a href="#websocket-token">توکن</a> است.</p>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">newSubscription</span><span class="p">(</span><span class="dl">'</span><span class="s1">private:trades#1987577cdf7c7422dee369e188e276ee</span><span class="dl">'</span><span class="p">,</span>  <span class="p">{</span> <span class="na">delta</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fossil</span><span class="dl">'</span> <span class="p">});</span>
 <span class="nx">sub</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">subscribed</span><span class="dl">'</span><span class="p">);</span>
@@ -5655,7 +6001,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='9954d59416'>پارامتر پیام</h3>
+</span></code></pre></div><h3 id='ad220a3e30-2'>پارامترهای پیام</h3>
 <table><thead>
 <tr>
 <th>فیلد</th>
