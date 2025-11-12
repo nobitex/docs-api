@@ -17,7 +17,6 @@ includes:
   - internal/ticketing
   - internal/batch_actions
   - internal/active_order_count
-  - internal/apikey
 toc_footers:
   - <a href='https://nobitex.ir/'>سایت نوبیتکس</a>
 ---
