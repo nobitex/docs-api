@@ -82,7 +82,7 @@ http GET https://apiv2.nobitex.ir/security/emergency-cancel/activate \
 
 ```shell
 curl --location --request POST 'https://apiv2.nobitex.ir/security/anti-phishing' \
---header 'Authorization: Token yourTOKENhereHEX0000000000' \
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000' \
 --form 'code="sample_anti_phishing"' \
 --form 'otpCode="123456"'
 ```
@@ -162,7 +162,7 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 
 ```shell
 curl --location --request GET 'https://apiv2.nobitex.ir/security/anti-phishing' \
---header 'Authorization: Token yourTOKENhereHEX0000000000' 
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000' 
 ```
 
 

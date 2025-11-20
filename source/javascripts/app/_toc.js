@@ -47,8 +47,8 @@
       var currentTop = $(document).scrollTop() + scrollOffset;
 
       if (currentTop + windowHeight >= pageHeight) {
-        // at bottom of page, so just select last header by making currentTop very large
-        // this fixes the problem where the last header won't ever show as active if its content
+        // at bottom of page, so just select last Navbar by making currentTop very large
+        // this fixes the problem where the last Navbar won't ever show as active if its content
         // is shorter than the window height
         currentTop = pageHeight + 1000;
       }

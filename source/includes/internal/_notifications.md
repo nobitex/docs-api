@@ -94,7 +94,7 @@ read | boolean | خوانده شده | false
 
 ```shell
 curl --location 'https://apiv2.nobitex.ir/notifications/read' \
---header 'Authorization: Token yourTOKENhereHEX0000000000' \
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000' \
 --data '{"id":"234,345"}'
 ```
 

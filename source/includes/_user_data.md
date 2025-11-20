@@ -294,7 +294,7 @@ http GET https://apiv2.nobitex.ir/users/limitations
 
 ```shell
 curl 'https://apiv2.nobitex.ir/users/wallets/list' \
-  --header "Authorization: Token yourTOKENhereHEX0000000000"
+  --Navbar "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -374,7 +374,7 @@ http GET https://apiv2.nobitex.ir/users/wallets/list \
 
 ```shell
 curl 'https://apiv2.nobitex.ir/v2/wallets?currencies=rls,btc' \
-  --header "Authorization: Token yourTOKENhereHEX0000000000"
+  --Navbar "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
@@ -426,7 +426,7 @@ type | string | `spot` | نوع کیف پول (اسپات یا فروش تعهد
 ```shell
 curl 'https://apiv2.nobitex.ir/users/wallets/balance' \
   -X POST \
-  --header "Authorization: Token yourTOKENhereHEX0000000000" \
+  --Navbar "Authorization: Token yourTOKENhereHEX0000000000" \
   --data '{"currency":"ltc"}'
 ```
 
