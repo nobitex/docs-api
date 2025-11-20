@@ -1,0 +1,393 @@
+openapi: 3.0.3
+info:
+  title: Example Shop API
+  version: 2.0.0
+  description: |
+    Example Shop API (v2). Adds fields, token pagination, and more error types.
+
+    > ℹ️ **Info**
+    > This API uses cursor-based pagination and a shared `Error` schema for all error responses.
+
+    Below is a small example table so you can test table rendering in your documentation:
+
+    | Object        | Description                          |
+    |---------------|--------------------------------------|
+    | `User`        | Represents a customer in the system. |
+    | `TokenResponse` | OAuth 2.0 access token payload.    |
+
+servers:
+  - url: http://localhost:5500/v2
+
+tags:
+  - name: Users
+  - name: Orders
+  - name: Auth
+
+paths:
+  /users:
+    get:
+      tags: [Users]
+      summary: List users (cursor pagination)
+      description: |
+        Returns a paginated list of users.
+
+        > 💡 **Hint**
+        > Use either the `next_cursor` field in the response body **or** the `X-Next-Cursor`
+        > response header to fetch the next page of results.
+
+        You can also test **table rendering** for parameters here:
+
+        | Parameter | In    | Type    | Required | Description                         |
+        |-----------|-------|---------|----------|-------------------------------------|
+        | `cursor`  | query | string  | no       | Opaque cursor for next page.       |
+        | `limit`   | query | integer | no       | Max items per page (1–200, default 50). |
+      parameters:
+        - in: query
+          name: cursor
+          schema: { type: string }
+          description: Opaque cursor for next page.
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 200, default: 50 }
+          description: Maximum number of users to return per page.
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Next-Cursor:
+              schema: { type: string, example: "eyJvZmZzZXQiOjEwMH0" }
+              description: |
+                Cursor for the next page.
+
+                > ℹ️ **Info**
+                > If this header is missing or empty, there are no more pages.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: "#/components/schemas/User" }
+                  next_cursor: { type: string, nullable: true, example: "eyJvZmZzZXQiOjEwMH0" }
+              examples:
+                sample:
+                  value:
+                    data:
+                      - id: "u_123"
+                        email: "ada@example.com"
+                        name: "Ada Lovelace"
+                        phone: "+44 20 7946 0000"
+                      - id: "u_456"
+                        email: "grace@example.com"
+                        name: "Grace Hopper"
+                        phone: null
+                    next_cursor: null
+        "429":
+          description: Too Many Requests
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+              examples:
+                rate_limited:
+                  value:
+                    type: "https://example.com/errors/rate-limit"
+                    title: "Rate limit exceeded"
+                    status: 429
+                    code: "too_many_requests"
+                    detail: "Reduce request rate and retry after the 'Retry-After' interval."
+                    traceId: "req_rl429"
+          headers:
+            Retry-After:
+              schema: { type: integer, example: 30 }
+              description: |
+                Number of seconds to wait before retrying.
+
+                > ⏱️ **Hint**
+                > Your client should respect this value to avoid further rate limiting.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+              examples:
+                server_error:
+                  value:
+                    type: "https://example.com/errors/internal"
+                    title: "Internal Server Error"
+                    status: 500
+                    code: "internal_error"
+                    detail: "Unexpected error. Try again later."
+                    traceId: "req_srv500"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /users/{id}:
+    patch:
+      tags: [Users]
+      summary: Update user (partial)
+      description: |
+        Partially update an existing user by ID.
+
+        > ℹ️ **Info**
+        > Only the fields you send in the request body will be updated.
+        > This is a *partial* update, not a full replace.
+
+        | Field  | Type   | Nullable | Description          |
+        |--------|--------|----------|----------------------|
+        | `name` | string | no       | Full name of a user. |
+        | `phone`| string | yes      | Phone in E.164 format. |
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+          description: Unique ID of the user (e.g. `u_123`).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                phone: { type: string }
+            examples:
+              update_name:
+                value: { name: "Countess Ada" }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/User" }
+        "422":
+          $ref: "#/components/responses/UnprocessableEntity"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /orders/{id}/refunds:
+    post:
+      tags: [Orders]
+      summary: Create a refund for an order
+      description: |
+        Create a new refund for the specified order.
+
+        > ⚠️ **Warning**
+        > Only **paid** orders can be refunded. Attempting to refund an unpaid
+        > order will return a `403` error.
+
+        | Parameter | In   | Type   | Required | Description                     |
+        |-----------|------|--------|----------|---------------------------------|
+        | `id`      | path | string | yes      | The ID of the order to refund. |
+
+        | Body field | Type   | Required | Description                    |
+        |------------|--------|----------|--------------------------------|
+        | `amount`   | number | yes      | Refund amount (min `0.01`).   |
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [amount]
+              properties:
+                amount: { type: number, format: float, minimum: 0.01 }
+            examples:
+              full_refund: { value: { amount: 129.99 } }
+      responses:
+        "201":
+          description: Refund created
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [refund_id, order_id, amount]
+                properties:
+                  refund_id: { type: string, example: "re_123" }
+                  order_id: { type: string, example: "ord_1" }
+                  amount: { type: number, example: 129.99 }
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+              examples:
+                not_paid:
+                  value:
+                    type: "https://example.com/errors/forbidden"
+                    title: "Forbidden"
+                    status: 403
+                    code: "order_not_paid"
+                    detail: "Only paid orders can be refunded."
+                    traceId: "req_ref403"
+        "409":
+          description: Conflict (already refunded)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+              examples:
+                already_refunded:
+                  value:
+                    type: "https://example.com/errors/conflict"
+                    title: "Conflict"
+                    status: 409
+                    code: "already_refunded"
+                    detail: "This order already has a refund."
+                    traceId: "req_conf409"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /auth/token:
+    post:
+      tags: [Auth]
+      summary: OAuth 2.0 token endpoint
+      description: |
+        Exchange credentials for an OAuth 2.0 access token.
+
+        > 💡 **Hint**
+        > Use `grant_type=refresh_token` to obtain a new access token without asking
+        > the user for credentials again.
+
+        | Grant type           | Required fields                                           |
+        |----------------------|-----------------------------------------------------------|
+        | `password`           | `username`, `password`, `client_id`, `client_secret`     |
+        | `refresh_token`      | `refresh_token`, `client_id`, `client_secret`            |
+        | `client_credentials` | `client_id`, `client_secret`                             |
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/TokenRequest" }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TokenResponse" }
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+components:
+  schemas:
+    User:
+      type: object
+      required: [id, email, name]
+      properties:
+        id: { type: string, example: "u_123" }
+        email: { type: string, format: email }
+        name: { type: string }
+        phone: { type: string, nullable: true }
+
+    TokenRequest:
+      type: object
+      required: [grant_type]
+      properties:
+        grant_type:
+          type: string
+          enum: [password, refresh_token, client_credentials]
+        username: { type: string, format: email }
+        password: { type: string, format: password }
+        refresh_token: { type: string }
+        client_id: { type: string }
+        client_secret: { type: string }
+
+    TokenResponse:
+      type: object
+      required: [access_token, token_type, expires_in]
+      properties:
+        access_token: { type: string }
+        token_type: { type: string, example: "Bearer" }
+        expires_in: { type: integer, example: 3600 }
+        scope: { type: string, example: "read:orders write:refunds" }
+
+    Error:
+      type: object
+      required: [type, title, status, traceId]
+      properties:
+        type: { type: string, format: uri }
+        title: { type: string }
+        status: { type: integer }
+        code: { type: string }
+        detail: { type: string }
+        instance: { type: string }
+        traceId: { type: string }
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field: { type: string }
+              message: { type: string }
+
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+          examples:
+            invalid_json:
+              value:
+                type: "https://example.com/errors/bad-request"
+                title: "Bad Request"
+                status: 400
+                code: "invalid_json"
+                detail: "Malformed JSON body."
+                traceId: "req_bad400_v2"
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+          examples:
+            invalid_token:
+              value:
+                type: "https://example.com/errors/unauthorized"
+                title: "Unauthorized"
+                status: 401
+                code: "invalid_token"
+                detail: "The access token is invalid or expired."
+                traceId: "req_auth401_v2"
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+          examples:
+            not_found:
+              value:
+                type: "https://example.com/errors/not-found"
+                title: "Not Found"
+                status: 404
+                code: "not_found"
+                detail: "The requested resource does not exist."
+                traceId: "req_nf404_v2"
+    UnprocessableEntity:
+      description: Validation failed
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+          examples:
+            invalid_phone:
+              value:
+                type: "https://example.com/errors/validation"
+                title: "Unprocessable Entity"
+                status: 422
+                code: "invalid_phone"
+                detail: "Phone number format is invalid."
+                errors:
+                  - field: "phone"
+                    message: "Use E.164 format"
+                traceId: "req_422_v2"
+
