@@ -16,7 +16,7 @@
 
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/users/referral/links-list' \
-  --header 'Authorization: Token yourTOKENhereHEX0000000000'
+  --Navbar 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
@@ -50,7 +50,7 @@ statsProfit | monetary: IRR | آمار: مجموع ریالی درآمد کار�
 
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/users/get-referral-code' \
---header 'Authorization: Token yourTOKENhereHEX0000000000'
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
@@ -81,7 +81,7 @@ ReferralCodeExists | خطایی در ثبت کد دعوت رخ داده است.
 
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/users/referral/referral-status' \
---header 'Authorization: Token yourTOKENhereHEX0000000000'
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
@@ -104,7 +104,7 @@ hasReferrer | boolean | آیا کاربر توسط کاربر دیگری دعو�
 
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/users/referral/set-referrer' \
-  --header 'Authorization: Token yourTOKENhereHEX0000000000'
+  --Navbar 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
