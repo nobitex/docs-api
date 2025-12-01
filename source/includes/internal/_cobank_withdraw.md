@@ -1,6 +1,7 @@
 <h1 id="cobank-withdraw">برداشت کوبنک</h1>
 
-برداشت کوبنک (یا برداشت حساب‌به‌حساب) در حال حاضر صرفاً برای انجام برداشت‌های ریالی طراحی و پیاده‌سازی شده است. این فرایند امکان انتقال وجه ریالی میان حساب‌های بانکی کاربر و حساب کاربری او را فراهم می‌کند و تمامی کنترل‌ها، محدودیت‌ها و الزامات مربوط به عملیات ریالی در آن لحاظ شده است.
+برداشت کوبنک فقط برای انجام برداشت‌های ریالی طراحی و پیاده‌سازی شده است. این فرایند امکان انتقال وجه ریالی میان حساب‌های بانکی کاربر و حساب کاربری او را فراهم می‌کند و تمامی کنترل‌ها، محدودیت‌ها و الزامات مربوط به عملیات ریالی در آن لحاظ شده است.
+
 
 <h2 id="cobank-withdraw-request">ثبت درخواست برداشت کوبنک</h2>
 
@@ -134,7 +135,7 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 ----------------------------------------------------------------------------------------------------| ---------
 UnAcceptedDisclaimerError |                                            برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.
 FeatureUnavailable |                                                                    این امکان فعلا در دسترس شما نیست.
-ParseError |                                                                                      مشکلی پیش آمد.
+ParseError |                                                                                      مشکلی در پارامتر ورودی وجود دارد.
 BankAccountNotFound |                                                                       حساب بانکی مورد نظر پیدا نشد.
 TooManyRequests |                                                             قبلا درخواست داده‌اید، لطفا کمی صبر کنید.
 WithdrawUnavailable |                                                                برداشت تومان برای شما محدود شده است.
@@ -161,7 +162,7 @@ ShabaWithdrawCannotProceed | سقف واریز به هر شماره شبا ۲۰�
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/cobank/withdraw/<id>' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json'
 ```
 
 ```plaintext
@@ -244,7 +245,7 @@ http GET https://apiv2.nobitex.ir/cobank/withdraw/<id>
 
 کد خطا  |                                                   توضیحات
 --------------------------------------------------------- | ---------
-WithdrawRequestNotFound |                                            مشکلی پیش آمد.
+WithdrawRequestNotFound |                                  درخواست برداشت پیدا نشد.
 UnAcceptedDisclaimerError |  برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.
 
 
@@ -257,7 +258,7 @@ UnAcceptedDisclaimerError |  برای برداشت، لازم است موجود�
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/cobank/withdraw/<id>/cancel' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json'
 ```
 
 ```plaintext
@@ -334,14 +335,14 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw/<id>/cancel
 
 
 ### نکات و ملاحظات
-امکان لغو درخواست برداشت تا زمانی ممکن است که وضعیت درخواست در حالت New باشد و بیش از ۳ دقیقه نگذشته باشد.
+امکان لغو درخواست برداشت تا زمانی ممکن است که وضعیت درخواست در حالت New باشد و بیش از ۳ دقیقه از زمان ثبت آن نگذشته باشد.
 
 
 ### حالت‌های خطا
 
 کد خطا  |                                                   توضیحات
 --------------------------------------------------------- | ---------
-WithdrawRequestNotFound |                                            مشکلی پیش آمد.
+WithdrawRequestNotFound |                                  درخواست برداشت پیدا نشد.
 UnAcceptedDisclaimerError |  برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.
 CancellationFailed |                             لغو درخواست برداشت ناموفق شد.
 NotCancellable |                        لغو درخواست برداشت امکان‌پذیر نیست.
