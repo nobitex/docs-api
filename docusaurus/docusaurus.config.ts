@@ -44,9 +44,6 @@ const config: Config = {
             'https://github.com/nobitex/docs-api/',
         },
         blog: false,
-        theme: {
-          customCss: './src/css/custom.css',
-        },
       } satisfies Preset.Options,
     ],
   ],
@@ -60,6 +57,32 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    algolia: {
+      appId: 'J94PZFE7PE', //todo: change
+      apiKey: '3b5d958be02dbae4275deb43ee0382ce', //todo: change
+      indexName: 'nobitex docs',
+      contextualSearch: true,
+      placeholder: 'جستجو',
+    },
+    metadata: [
+      {
+        name: 'algolia-site-verification',
+        content: '2A56AF10726B9883' //todo: change
+      }
+      // },
+    ],
+    navbar: {
+      logo: {
+        alt: 'Nobitex Logo',
+        src: 'img/logo-light.svg', // logo for light mode
+        srcDark: 'img/logo-dark.svg',
+      },
+      items: [
+        { href: 'https://github.com/nobitex/docs-api', label: 'GitHub', position: 'right' },
+        { to: '/', label: 'مستندات', position: 'left' },
+        { to: '/changelog', label: 'سابقه‌ی تغییرات', position: 'left' },
+      ],
+    },
   } satisfies Preset.ThemeConfig,
   plugins: [
     [
@@ -69,7 +92,7 @@ const config: Config = {
         docsPluginId: "classic",
         config: {
           apiDocs: {
-            specPath: "yaml/openapi33.yaml",
+            specPath: "yaml/openapi1.yaml",
             outputDir: "docs",
             sidebarOptions: {
               groupPathsBy: "tag",

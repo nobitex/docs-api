@@ -2,14 +2,14 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 import apiSidebar from './docs/sidebar';
 
 const sidebars: SidebarsConfig = {
-  tutorialSidebar: [
+  mainSidebar: [
     {
       type: 'category',
-      label: 'API Documentation',
+      label: 'مستندات API نوبیتکس',
       link: {
         type: 'generated-index',
-        title: 'API Documentation',
-        description: 'API endpoints documentation generated from OpenAPI specification',
+        title: 'API نوبیتکس',
+        description: 'مستندات API نوبیتکس',
         slug: '/',
       },
       items: apiSidebar,
