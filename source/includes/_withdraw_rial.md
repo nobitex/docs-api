@@ -31,6 +31,7 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
     "fulfilledAmount": "499500000",
     "bankAccountId": 13568,
     "bankAccountInfo": "صادرات: IR670190123456789001234567",
+    "isCancelable": true,
     "records": [
       {
         "amount": "1000000000",
@@ -100,7 +101,8 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 | fulfilledAmount         | monetary | مقدار برداشت انجام شده. (در ابتدا صفر است)                                                             | 1500000000                         |
 | bankAccountId           | int      | شناسه حساب‌بانکی کاربر                                                                                  | 13568                              |
 | bankAccountInfo         | string   | اطلاعات حساب‌بانکی شامل نام بانک و شماره حساب                                                            | صادرات: IR670190123456789001234567 |
-| records                 | array    | لیست رکوردهای صفحه جزییات.                           |                                    |
+| isCancelable            | bool     | امکان لغو درخواست وجود دارد یا خیر.                                                                    | true, false                        |
+| records                 | array    | لیست رکوردهای صفحه جزییات.                                                                             |                                    |
 
 ### پارامترهای فیلد records
 
@@ -182,6 +184,7 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw/<id>/cancel
     "fulfilledAmount": "499500000",
     "bankAccountId": 13568,
     "bankAccountInfo": "صادرات: IR670190123456789001234567",
+    "isCancelable": false,
     "records": [
       {
         "amount": "1000000000",
@@ -282,6 +285,7 @@ http GET https://apiv2.nobitex.ir/cobank/withdraw/<id>
     "fulfilledAmount": "499500000",
     "bankAccountId": 13568,
     "bankAccountInfo": "صادرات: IR670190123456789001234567",
+    "isCancelable": true,
     "records": [
       {
         "amount": "1000000000",
