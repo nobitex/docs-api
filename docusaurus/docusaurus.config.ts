@@ -91,11 +91,20 @@ const config: Config = {
         id: "api",
         docsPluginId: "classic",
         config: {
-          apiDocs: {
+          orders: {
             specPath: "yaml/openapi1.yaml",
-            outputDir: "docs",
+            outputDir: "docs/orders",
             sidebarOptions: {
               groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          users: {
+            specPath: "yaml/openapi33.yaml",
+            outputDir: "docs/users",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
             },
           } satisfies OpenApiPlugin.Options,
         }

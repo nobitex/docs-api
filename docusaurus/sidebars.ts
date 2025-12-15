@@ -1,5 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
-import apiSidebar from './docs/sidebar';
+import api1Sidebar from './docs/orders/sidebar';
+import api2Sidebar from './docs/users/sidebar';
 
 const sidebars: SidebarsConfig = {
   mainSidebar: [
@@ -12,7 +13,7 @@ const sidebars: SidebarsConfig = {
         description: 'مستندات API نوبیتکس',
         slug: '/',
       },
-      items: apiSidebar,
+      items: [...api1Sidebar.slice(1), ...api2Sidebar.slice(1)],
     },
   ],
 };
