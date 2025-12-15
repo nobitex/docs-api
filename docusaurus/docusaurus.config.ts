@@ -57,34 +57,26 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    algolia: {
-      appId: 'J94PZFE7PE', //todo: change
-      apiKey: '3b5d958be02dbae4275deb43ee0382ce', //todo: change
-      indexName: 'nobitex docs',
-      contextualSearch: true,
-      placeholder: 'جستجو',
-    },
-    metadata: [
-      {
-        name: 'algolia-site-verification',
-        content: '2A56AF10726B9883' //todo: change
-      }
-      // },
-    ],
     navbar: {
       logo: {
         alt: 'Nobitex Logo',
-        src: 'img/logo-light.svg', // logo for light mode
+        src: 'img/logo-light.svg',
         srcDark: 'img/logo-dark.svg',
       },
       items: [
         { href: 'https://github.com/nobitex/docs-api', label: 'GitHub', position: 'right' },
+        {
+          type: 'custom-searchNavbarItem',
+          position: 'right',
+        },
         { to: '/', label: 'مستندات', position: 'left' },
         { to: '/changelog', label: 'سابقه‌ی تغییرات', position: 'left' },
       ],
     },
   } satisfies Preset.ThemeConfig,
+
   plugins: [
+    './plugins/docusaurus-plugin-custom-search',
     [
       'docusaurus-plugin-openapi-docs',
       {
