@@ -101,12 +101,8 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 | fulfilledAmount         | monetary | مقدار برداشت انجام شده. (در ابتدا صفر است)                                                             | 1500000000                         |
 | bankAccountId           | int      | شناسه حساب‌بانکی کاربر                                                                                  | 13568                              |
 | bankAccountInfo         | string   | اطلاعات حساب‌بانکی شامل نام بانک و شماره حساب                                                            | صادرات: IR670190123456789001234567 |
-<<<<<<< Updated upstream
 | isCancelable            | bool     | امکان لغو درخواست وجود دارد یا خیر.                                                                    | true, false                        |
-| records                 | array    | لیست رکوردهای صفحه جزییات.                                                                             |                                    |
-=======
-| records                 | array    | لیست ریزتراکنش‌ها در صورت وجود                           |                                    |
->>>>>>> Stashed changes
+| records                 | array    | لیست ریزتراکنش‌ها در صورت وجود                                                                          |                                    |
 
 ### پارامترهای فیلد records
 
@@ -145,21 +141,19 @@ FeatureUnavailable |                                                            
 ParseError |                                                                   مشکلی در پارامتر ورودی وجود دارد.
 BankAccountNotFound |                                                                       حساب بانکی مورد نظر پیدا نشد.
 TooManyRequests |                                                             قبلا درخواست داده‌اید، لطفا کمی صبر کنید.
-WithdrawUnavailable |                                                                برداشت تومان برای شما محدود شده است.
+WithdrawUnavailable |                                                                برداشت ریالی برای شما محدود شده است.
 WithdrawAmountLimitation |                                          مقدار برداشت نباید از حداکثر مقدار قابل برداشت بیشتر باشد.
 InsufficientBalance |                                                                                   موجودی کافی نیست.
 AmountTooLow |                                            مقدار برداشت نباید از حداقل مقدار قابل برداشت کمتر باشد.
 InsufficientBalanceOrInactiveWallet |                                                                                   موجودی کافی نیست.
-WithdrawLimitReached |                                در هر ۲۴ ساعت فقط ۳ برداشت تومانی و ۱۰ برداشت رمزارزی امکان‌پذیر است.
+WithdrawLimitReached |                                 در هر ۲۴ ساعت فقط ۳ برداشت ریالی و ۱۰ برداشت رمزارزی امکان‌پذیر است.
 AmountTooHigh |                                          مقدار برداشت نباید از حداکثر مقدار قابل برداشت بیشتر باشد.
-ShabaWithdrawCannotProceed | سقف واریز به هر شماره شبا ۲۰۰ میلیون تومان است. می‌توانید مبلغ را به دو یا چند شماره شبا واریز کنید.
+ShabaWithdrawCannotProceed |   سقف واریز به هر شماره شبا ۲ میلیارد ریال است. می‌توانید مبلغ را به دو یا چند شماره شبا واریز کنید.
 
 
 
 ### نکات و ملاحظات
 مقدار estimatedSettleAt و bankReferenceNumber در ابتدای ثبت درخواست خالی می‌باشد و پس از دریافت اطلاعات از سمت بانک، این فیلدها مقداردهی خواهد شد.
-
-
 
 
 <h2 id="rial-withdraw-cancel">لغو درخواست برداشت ریالی</h2>
