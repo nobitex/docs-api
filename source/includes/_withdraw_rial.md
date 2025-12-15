@@ -1,9 +1,9 @@
-<h1 id="cobank-withdraw">برداشت ریالی</h1>
+<h1 id="rial-withdraw">برداشت ریالی</h1>
 
-این سرویس‌ها فقط برای انجام برداشت‌های ریالی طراحی و پیاده‌سازی شده است. این فرایند امکان انتقال وجه ریالی میان حساب‌های بانکی کاربر و حساب کاربری او را فراهم می‌کند و تمامی کنترل‌ها، محدودیت‌ها و الزامات مربوط به عملیات ریالی در آن لحاظ شده است.
+این سرویس‌ها فقط برای انجام برداشت‌های ریالی طراحی و پیاده‌سازی شده است. این فرایند امکان انتقال وجه ریالی میان حساب‌های بانکی کاربر و حساب کاربری او را فراهم می‌کند.
 
 
-<h2 id="cobank-withdraw-request">ثبت درخواست برداشت ریالی</h2>
+<h2 id="rial-withdraw-request">ثبت درخواست برداشت ریالی</h2>
 
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/cobank/withdraw' \
@@ -81,10 +81,10 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 
 ### پارامترهای ورودی
 
-| پارامتر                 | نوع      | پیش‌فرض  | توضیحات                  | نمونه                               |
+| پارامتر                 | نوع      | پیش‌فرض  | توضیحات                 | نمونه                                |
 |-------------------------|----------|---------|-------------------------|--------------------------------------|
 | destinationBankAccountId| int      | الزامی  | شناسه حساب‌بانکی کاربر   | 13568                                |
-| amount                  | monetary | الزامی  | مقدار                   | 2500000000                           |
+| amount                  | monetary | الزامی  | مقدار (ریال)            | 2500000000                           |
 
 * **destinationBankAccountId**: [شناسه حساب بانکی](/#88cb25e727 "دریافت از پروفایل") تایید شده کاربر جهت دریافت وجه 
 
@@ -101,8 +101,12 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 | fulfilledAmount         | monetary | مقدار برداشت انجام شده. (در ابتدا صفر است)                                                             | 1500000000                         |
 | bankAccountId           | int      | شناسه حساب‌بانکی کاربر                                                                                  | 13568                              |
 | bankAccountInfo         | string   | اطلاعات حساب‌بانکی شامل نام بانک و شماره حساب                                                            | صادرات: IR670190123456789001234567 |
+<<<<<<< Updated upstream
 | isCancelable            | bool     | امکان لغو درخواست وجود دارد یا خیر.                                                                    | true, false                        |
 | records                 | array    | لیست رکوردهای صفحه جزییات.                                                                             |                                    |
+=======
+| records                 | array    | لیست ریزتراکنش‌ها در صورت وجود                           |                                    |
+>>>>>>> Stashed changes
 
 ### پارامترهای فیلد records
 
@@ -110,10 +114,10 @@ http POST https://apiv2.nobitex.ir/cobank/withdraw \
 |-------------------------|-----------|-------------------------------------------------|-----------------------------------|
 | amount                  | monetary  | مقدار درخواست برداشت ارسال شده به بانک (ریال)   | 1000000000                        |
 | bankReferenceNumber     | string    | کد پیگیری بانک                                  | 123f345345g34634                  |
-| status                  | string    | وضعیت ریز تراکنش‌ها                              | Pending, Failed, Transferred      |
+| status                  | string    | وضعیت ریز تراکنش‌                                | Pending, Failed, Transferred      |
 | estimatedSettleAt       | string    | زمان تخمینی واریز وجه به حساب کاربر             | 2021-12-11T10:13:42.957103+00:00  |
-| providerUpdatedAt       | string    | زمان بروزرسانی وضعیت رکورد از سمت پروایدر       | 2021-12-11T10:13:42.957103+00:00  |
-| transferType            | string    | نوع انتقال وجه                                  | normal, paya, satana              |
+| providerUpdatedAt       | string    | زمان بروزرسانی وضعیت ریزتراکنش از سمت پروایدر   | 2021-12-11T10:13:42.957103+00:00  |
+| transferType            | string    | نوع انتقال وجه                                  | normal, paya, satna               |
 
 
 ###  وضعیت‌های درخواست برداشت
@@ -153,12 +157,12 @@ ShabaWithdrawCannotProceed | سقف واریز به هر شماره شبا ۲۰�
 
 
 ### نکات و ملاحظات
-مقدار estimatedSettleAt و bankReferenceNumber در ابتدای ثبت درخواست خالی می‌باشد و پس از محاسبه و تخمین این فیلدها مقداردهی خواهد شد.
+مقدار estimatedSettleAt و bankReferenceNumber در ابتدای ثبت درخواست خالی می‌باشد و پس از دریافت اطلاعات از سمت بانک، این فیلدها مقداردهی خواهد شد.
 
 
 
 
-<h2 id="cobank-withdraw-cancel">لغو درخواست برداشت ریالی</h2>
+<h2 id="rial-withdraw-cancel">لغو درخواست برداشت ریالی</h2>
 
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/cobank/withdraw/<id>/cancel' \
@@ -259,7 +263,7 @@ NotCancellable |                        لغو درخواست برداشت ام�
 
 
 
-<h2 id="cobank-withdraw-details">جزئیات برداشت ریالی</h2>
+<h2 id="rial-withdraw-details">مشاهده جزئیات برداشت ریالی</h2>
 
 ```shell
 curl -X GET 'https://apiv2.nobitex.ir/cobank/withdraw/<id>' \
@@ -339,9 +343,6 @@ http GET https://apiv2.nobitex.ir/cobank/withdraw/<id>
 |----------|--------|-------------------------- |-------------------------|-------------|
 | id       | string | الزامی                    | شناسه درخواست برداشت    | CW256854    |
 
-
-### نکات و ملاحظات
-در صورتی که شناسه درخواست برداشت شما با WJ شروع شده باشد به این معنی است که این درخواست از فلوی قدیمی درخواست برداشت ریالی پردازش شده است. پیشوند درخواست برداشت ریالی CW است.
 
 
 ### حالت‌های خطا

@@ -155,7 +155,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
 2. امکان استفاده از آی‌پی اختصاصی به زودی فراهم خواهد شد.
 
 
-<h2 id="withdraw-view">جزئیات برداشت رمزارزی</h2>
+<h2 id="withdraw-view">مشاهده جزئیات برداشت رمزارزی</h2>
 
 ```shell
 curl 'https://apiv2.nobitex.ir/withdraws/433' \
