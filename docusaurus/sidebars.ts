@@ -1,6 +1,8 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
-import api1Sidebar from './docs/orders/sidebar';
-import api2Sidebar from './docs/users/sidebar';
+// @ts-ignore
+import api1Sidebar from './docs/orders/sidebar.ts';
+// @ts-ignore
+import api2Sidebar from './docs/users/sidebar.ts';
 
 const sidebars: SidebarsConfig = {
   mainSidebar: [
