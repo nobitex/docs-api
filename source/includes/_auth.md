@@ -14,9 +14,9 @@
 ```shell
 curl 'https://apiv2.nobitex.ir/auth/login/' \
   -X POST \
-  --header "Content-Type: application/json" \
-  --header "X-TOTP: <Your TOTP value>" \
-  --header "User-Agent: TraderBot/<Your bot version and name>" \
+  --Navbar "Content-Type: application/json" \
+  --Navbar "X-TOTP: <Your TOTP value>" \
+  --Navbar "User-Agent: TraderBot/<Your bot version and name>" \
   --data $'{"username":"name@example.com","password":"secret-password-1234","captcha":"api"}'
 ```
 
@@ -92,7 +92,7 @@ User-Agent | string | الزامی | ایجنت                | `TraderBot/1.0.
 
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/auth/logout/' \
---header 'Authorization: Token yourTOKENhereHEX0000000000'
+--Navbar 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 ```plaintext
