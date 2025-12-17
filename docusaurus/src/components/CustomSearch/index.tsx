@@ -17,6 +17,7 @@ interface CustomSearchProps {
   isOpen: boolean
   onClose: () => void
 }
+
 const normalizeText = (text: string): string => {
   if (!text) return ''
 
@@ -35,6 +36,7 @@ const textToTokens = (text: string): string[] =>
   normalizeText(text)
     .split(' ')
     .filter(Boolean)
+
 const entryMatchesQuery = (entry: SearchEntry, rawQuery: string): boolean => {
   const queryTokens = textToTokens(rawQuery)
   if (!queryTokens.length) return false

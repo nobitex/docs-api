@@ -267,4 +267,20 @@
   }
 }
 
+.openapi-explorer__details-outer-container {
+  direction: rtl;
+}
+
+.openapi-explorer__request-header-container {
+  direction: rtl;
+}
+
+.openapi-tabs__code-container {
+  direction: rtl;
+}
+
+.openapi-explorer__response-container {
+  direction: rtl;
+}
+
 

@@ -15,6 +15,20 @@ function cleanMarkdownText(text) {
   return text.trim()
 }
 
+function extractTextFromJSX(line) {
+  if (!line) return ''
+  // Simple heuristic: capture text inside double or single quotes
+  // children={"OAuth 2.0 token endpoint"}  -> OAuth 2.0 token endpoint
+  // children='Something' -> Something
+  const matches = []
+  const regex = /["']([^"']+)["']/g
+  let m
+  while ((m = regex.exec(line)) !== null) {
+    matches.push(m[1])
+  }
+  return matches.join(' ')
+}
+
 function extractContentFromMarkdown(content) {
   const sections = []
   const lines = content.split('\n')
@@ -46,6 +60,33 @@ function extractContentFromMarkdown(content) {
 
     if (inCodeBlock) {
       codeBlockContent.push(cleanMarkdownText(line))
+      continue
+    }
+
+    // Check for <Heading> JSX component (MDX)
+    const headingJSXMatch = line.match(
+      /^<Heading[^>]*children=\{["']([^"']+)["']\}[^>]*>/
+    )
+    if (headingJSXMatch) {
+      // push previous section
+      if (currentHeading && currentContent.length > 0) {
+        sections.push({
+          level: currentLevel,
+          headingText: currentHeading,
+          headingSlug: currentHeadingSlug,
+          content: currentContent.join(' ').trim(),
+        })
+      }
+
+      const text = cleanMarkdownText(headingJSXMatch[1])
+      const slug = githubSlug(text)
+
+      currentHeading = text
+      currentHeadingSlug = slug
+      currentLevel = 1 // or derive from as={"h2"} if you want
+      currentContent = []
+      inTable = false
+      tableContent = []
       continue
     }
 
@@ -106,6 +147,20 @@ function extractContentFromMarkdown(content) {
     const numberedListMatch = line.match(/^[\s]*\d+\.\s+(.+)$/)
     if (numberedListMatch) {
       currentContent.push(cleanMarkdownText(numberedListMatch[1]))
+      continue
+    }
+
+    // Try to pull out JSX text (MDX)
+    if (line.trim().startsWith('<')) {
+      const jsxText = extractTextFromJSX(line)
+      const cleaned = cleanMarkdownText(jsxText)
+      if (cleaned) {
+        if (currentHeading === null) {
+          beforeFirstHeading.push(cleaned)
+        } else {
+          currentContent.push(cleaned)
+        }
+      }
       continue
     }
 
@@ -176,9 +231,14 @@ function extractFrontMatter(content) {
     const frontMatterContent = frontMatterMatch[1]
     const titleMatch = frontMatterContent.match(/title:\s*(.+)/)
     const slugMatch = frontMatterContent.match(/slug:\s*(.+)/)
+    const descriptionMatch = frontMatterContent.match(/description:\s*(.+)/)
+
     return {
-      title: titleMatch ? titleMatch[1].trim() : null,
-      slug: slugMatch ? slugMatch[1].trim() : null,
+      title: titleMatch ? titleMatch[1].trim().replace(/^"|"$/g, '') : null,
+      slug: slugMatch ? slugMatch[1].trim().replace(/^"|"$/g, '') : null,
+      description: descriptionMatch
+        ? descriptionMatch[1].trim().replace(/^"|"$/g, '')
+        : null,
       contentWithoutFrontMatter: content
         .replace(frontMatterMatch[0], '')
         .trim(),
@@ -187,6 +247,7 @@ function extractFrontMatter(content) {
   return {
     title: null,
     slug: null,
+    description: null,
     contentWithoutFrontMatter: content,
   }
 }
@@ -206,12 +267,15 @@ function buildSearchIndex(siteDir) {
 
   allFiles.forEach(({ file, type }) => {
     const content = fs.readFileSync(file, 'utf-8')
-    const { title, slug, contentWithoutFrontMatter } =
+    const { title, slug, description, contentWithoutFrontMatter } =
       extractFrontMatter(content)
 
     const sections = extractContentFromMarkdown(contentWithoutFrontMatter)
 
-    const fullPageText = cleanMarkdownText(contentWithoutFrontMatter)
+    // Include description in the full page text
+    const fullPageText = cleanMarkdownText(
+      (description ? description + '\n\n' : '') + contentWithoutFrontMatter
+    )
 
     if (!sections.length && fullPageText) {
       sections.push({
@@ -261,13 +325,16 @@ function buildSearchIndex(siteDir) {
         headingSlug: section.headingSlug,
         level: section.level,
         content: section.content,
-        url: `${pageUrl}#${section.headingSlug}`,
+        url: section.headingSlug
+          ? `${pageUrl}#${section.headingSlug}`
+          : pageUrl,
       })
     })
   })
 
   return searchIndex
 }
+
 module.exports = function pluginCustomSearch(context, options) {
   return {
     name: 'docusaurus-plugin-custom-search',
@@ -279,7 +346,7 @@ module.exports = function pluginCustomSearch(context, options) {
       const searchIndexPath = path.join(outDir, 'search-index.json')
       fs.writeFileSync(searchIndexPath, JSON.stringify(searchIndex, null, 2))
 
-      console.log(`✅ Custom search index created with ${searchIndex.length} entries`)
+      console.log(`indexed for custom search entries`)
     },
 
     async contentLoaded({ actions }) {
