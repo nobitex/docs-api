@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: API برداشت نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای ثبت، تایید، مشاهده و لیست برداشت‌ها.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: برداشت
+    description: مدیریت درخواست‌های برداشت رمزارزی و ریالی
+
+paths:
+  /users/wallets/withdraw:
+    post:
+      tags:
+        - برداشت
+      summary: ثبت درخواست برداشت
+      description: |
+        ثبت درخواست برداشت از یک کیف‌پول کاربر.
+
+        - محدودیت فراخوانی: ۱۰ درخواست در ۳ دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - in: header
+          name: X-TOTP
+          schema:
+            type: string
+          description: کد دوعاملی (الزامی اگر آدرس در دفتر آدرس نیست)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WithdrawRequest"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/WithdrawResponse"
+                  - $ref: "#/components/schemas/WithdrawFailedResponse"
+
+  /users/wallets/withdraw-confirm:
+    post:
+      tags:
+        - برداشت
+      summary: تایید درخواست برداشت
+      description: |
+        تایید نهایی یک درخواست برداشت با استفاده از کد یکبارمصرف.
+
+        - محدودیت فراخوانی: ۳۰ درخواست در ساعت
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - withdraw
+                - otp
+              properties:
+                withdraw:
+                  type: integer
+                  description: شناسه درخواست برداشت
+                  example: 432
+                otp:
+                  type: integer
+                  description: کد یکبارمصرف ارسال شده
+                  example: 623005
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/WithdrawResponse"
+                  - $ref: "#/components/schemas/WithdrawFailedResponse"
+
+  /users/wallets/withdraws/list:
+    get:
+      tags:
+        - برداشت
+      summary: فهرست برداشت‌ها
+      description: |
+        لیست آخرین برداشت‌های کاربر.
+
+        - محدودیت فراخوانی: ۶۰ درخواست در ۲ دقیقه
+        - صفحه‌بندی: دارد (پیش‌فرض ۲۰)
+        - فیلتر زمانی: دارد
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: wallet
+          in: query
+          schema:
+            type: string
+            default: all
+          description: شناسه کیف‌پول یا all
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  withdraws:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Withdraw"
+                  hasNext:
+                    type: boolean
+                    example: true
+
+  /withdraws/{withdrawId}:
+    get:
+      tags:
+        - برداشت
+      summary: مشاهده برداشت
+      description: |
+        مشاهده وضعیت یک درخواست برداشت.
+
+        - محدودیت فراخوانی: ۶۰ درخواست در ۲ دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: withdrawId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: شناسه درخواست برداشت
+          example: 433
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  withdraw:
+                    $ref: "#/components/schemas/Withdraw"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    WithdrawRequest:
+      type: object
+      properties:
+        wallet:
+          type: integer
+          description: شناسه کیف‌پول
+          example: 3456
+        network:
+          type: string
+          description: شبکه انتقال
+          example: BTCLN
+        invoice:
+          type: string
+          description: صورت‌حساب (برای BTCLN الزامی)
+        amount:
+          type: string
+          description: مقدار برداشت
+        address:
+          type: string
+          description: آدرس مقصد یا شبا
+        explanations:
+          type: string
+          description: توضیحات
+        noTag:
+          type: boolean
+          default: false
+        tag:
+          type: string
+          description: تگ انتقال
+
+    Withdraw:
+      type: object
+      properties:
+        id:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+        amount:
+          type: string
+        currency:
+          type: string
+        network:
+          type: string
+        invoice:
+          type: string
+          nullable: true
+        address:
+          type: string
+        tag:
+          type: string
+          nullable: true
+        wallet_id:
+          type: integer
+        blockchain_url:
+          type: string
+          nullable: true
+        is_cancelable:
+          type: boolean
+
+    WithdrawResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        withdraw:
+          $ref: "#/components/schemas/Withdraw"
+
+    WithdrawFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+          example: InsufficientBalance
+        message:
+          type: string

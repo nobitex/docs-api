@@ -1,0 +1,299 @@
+openapi: 3.0.3
+info:
+  title: API اطلاعات بازار نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای عمومی بازار نوبیتکس شامل دفتر سفارشات، عمق بازار، معاملات اخیر،
+    آمار بازار و داده‌های OHLC.
+
+servers:
+  - url: https://api.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: اطلاعات بازار
+    description: تمامی متدهای عمومی مربوط به داده‌های بازار
+
+paths:
+  /v2/orderbook:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: دریافت دفتر سفارشات
+      description: دفتر سفارشات (صف خرید و فروش) یک بازار مشخص را برمی‌گرداند.
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          description: نماد بازار (BTCIRT).
+          schema:
+            type: string
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderBookResponse"
+
+  /v2/orderbook/depth:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: دریافت عمق بازار
+      description: عمق بازار (تجمیع سفارشات در سطوح قیمتی) را برمی‌گرداند.
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 50
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DepthResponse"
+
+  /v2/trades:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: دریافت معاملات اخیر
+      description: لیست آخرین معاملات انجام‌شده برای یک بازار مشخص را برمی‌گرداند.
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 50
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TradesResponse"
+
+  /v2/statistics/market:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: آمار بازار (تک نماد)
+      description: آمار بازار مانند آخرین قیمت، کمترین/بیشترین قیمت و حجم برای یک نماد را برمی‌گرداند.
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketStatsResponse"
+
+  /v2/statistics/markets:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: آمار بازار (چند نماد)
+      description: آمار چند بازار را به صورت همزمان برمی‌گرداند.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: لیست نمادها به صورت جداشده با کاما (BTCIRT,ETHUSDT).
+          schema:
+            type: string
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MarketsStatsResponse"
+
+  /v2/ohlc:
+    get:
+      tags:
+        - اطلاعات بازار
+      summary: دریافت داده‌های OHLC
+      description: داده‌های کندل (Open, High, Low, Close) برای یک بازار در بازه‌های زمانی مختلف.
+      parameters:
+        - name: symbol
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: resolution
+          in: query
+          required: true
+          description: تایم‌فریم (مثال:1, 5, 15, 60, 240, 1D و ...).
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: true
+          description: زمان شروع به صورت timestamp (ثانیه).
+          schema:
+            type: integer
+        - name: to
+          in: query
+          required: true
+          description: زمان پایان به صورت timestamp (ثانیه).
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OHLCResponse"
+
+components:
+  schemas:
+    OrderBookResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        bids:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+        asks:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+
+    DepthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        bids:
+          type: array
+          items:
+            type: object
+            properties:
+              price:
+                type: string
+              volume:
+                type: string
+        asks:
+          type: array
+          items:
+            type: object
+            properties:
+              price:
+                type: string
+              volume:
+                type: string
+
+    TradesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        trades:
+          type: array
+          items:
+            type: object
+            properties:
+              time:
+                type: integer
+              price:
+                type: string
+              volume:
+                type: string
+              side:
+                type: string
+
+    MarketStatsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        stats:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              latest:
+                type: string
+              dayLow:
+                type: string
+              dayHigh:
+                type: string
+              dayVolume:
+                type: string
+
+    MarketsStatsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        stats:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              latest:
+                type: string
+              dayLow:
+                type: string
+              dayHigh:
+                type: string
+              dayVolume:
+                type: string
+
+    OHLCResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        t:
+          type: array
+          items:
+            type: integer
+        o:
+          type: array
+          items:
+            type: string
+        h:
+          type: array
+          items:
+            type: string
+        l:
+          type: array
+          items:
+            type: string
+        c:
+          type: array
+          items:
+            type: string
+        v:
+          type: array
+          items:
+            type: string

@@ -1,0 +1,500 @@
+openapi: 3.0.3
+info:
+  title: API اطلاعات کاربر نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به پروفایل کاربر، کیف‌پول‌ها، کارت و حساب بانکی،
+    محدودیت‌ها، تراکنش‌ها، و بازارهای مورد علاقه در نوبیتکس.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: اطلاعات کاربر
+    description: تمام متدهای مربوط به اطلاعات و عملیات کاربر
+
+paths:
+  /users/profile:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: دریافت پروفایل کاربر
+      description: پروفایل کامل کاربر شامل اطلاعات هویتی، بانکی، وضعیت احراز هویت و گزینه‌ها را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfileResponse"
+
+  /users/wallets/generate-address:
+    post:
+      tags:
+        - اطلاعات کاربر
+      summary: تولید آدرس بلاکچین
+      description: تولید آدرس واریز بلاکچین برای یک کیف‌پول کاربر بر اساس ارز و شبکه.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateAddressRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateAddressResponse"
+
+  /users/cards-add:
+    post:
+      tags:
+        - اطلاعات کاربر
+      summary: افزودن کارت بانکی
+      description: یک کارت بانکی جدید به حساب کاربر اضافه می‌کند.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddCardRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusOnlyResponse"
+
+  /users/accounts-add:
+    post:
+      tags:
+        - اطلاعات کاربر
+      summary: افزودن حساب بانکی
+      description: یک حساب بانکی جدید به حساب کاربر اضافه می‌کند.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddAccountRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusOnlyResponse"
+
+  /users/limitations:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: دریافت محدودیت‌های کاربر
+      description: محدودیت‌ها و سطح کاربری حساب کاربر (سقف برداشت/واریز و ...) را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserLimitationsResponse"
+
+  /users/wallets/list:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: لیست کیف‌پول‌های کاربر
+      description: لیست کیف‌پول‌های کاربر را (برای نوع اسپات یا مارجین) برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: type
+          in: query
+          required: false
+          description: نوع کیف‌پول (اسپات یا مارجین/فروش تعهدی).
+          schema:
+            type: string
+            default: spot
+            enum: [spot, margin]
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WalletsListResponse"
+
+  /v2/wallets:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: لیست انتخابی کیف‌پول‌ها
+      description: لیست کیف‌پول‌ها برای ارزهای مشخص یا نوع مشخص‌شده را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: currencies
+          in: query
+          required: false
+          description: لیست ارزها به صورت رشتهٔ جداشده با کاما (btc, rls, usdt).
+          schema:
+            type: string
+        - name: type
+          in: query
+          required: false
+          description: نوع کیف‌پول.
+          schema:
+            type: string
+            default: spot
+            enum: [spot, margin]
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V2WalletsResponse"
+
+  /users/wallets/balance:
+    post:
+      tags:
+        - اطلاعات کاربر
+      summary: دریافت موجودی یک کیف‌پول
+      description: موجودی کیف‌پول یک ارز مشخص را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WalletBalanceRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WalletBalanceResponse"
+
+  /users/wallets/transactions/list:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: لیست تراکنش‌های یک کیف‌پول
+      description: لیست تراکنش‌های کیف‌پول مشخص را با صفحه‌بندی برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: wallet
+          in: query
+          required: true
+          description: شناسهٔ کیف‌پول.
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          description: شماره صفحه.
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WalletTransactionsListResponse"
+
+  /users/transactions-history:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: تاریخچهٔ تراکنش‌ها (انتخابی)
+      description: تاریخچهٔ تراکنش‌های کاربر با فیلترهای اختیاری (ارز، نوع، بازهٔ زمانی و ...) را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: currency
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: tp
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: from_id
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserTransactionsHistoryResponse"
+
+  /users/wallets/deposits/list:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: لیست واریزها
+      description: لیست واریزهای انجام‌شده به کیف‌پول‌های کاربر را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: wallet
+          in: query
+          required: false
+          description: شناسهٔ کیف‌پول؛ در صورت عدم ارسال، همه در نظر گرفته می‌شود.
+          schema:
+            type: string
+            default: all
+        - name: page
+          in: query
+          required: false
+          description: شماره صفحه.
+          schema:
+            type: integer
+            default: 1
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WalletDepositsListResponse"
+
+  /users/markets/favorite:
+    get:
+      tags:
+        - اطلاعات کاربر
+      summary: دریافت لیست بازارهای مورد علاقه
+      description: لیست بازارهای مورد علاقه انتخاب‌شده توسط کاربر را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FavoriteMarketsResponse"
+
+    post:
+      tags:
+        - اطلاعات کاربر
+      summary: ثبت/به‌روزرسانی بازارهای مورد علاقه
+      description: بازارهای مورد علاقه کاربر را ثبت یا به‌روزرسانی می‌کند.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/FavoriteMarketsRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FavoriteMarketsResponse"
+
+    delete:
+      tags:
+        - اطلاعات کاربر
+      summary: حذف بازارهای مورد علاقه
+      description: بازارهای مورد علاقه کاربر را حذف می‌کند؛ در صورت ارسال مقدار `All` همه حذف می‌شوند.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/FavoriteMarketsDeleteRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FavoriteMarketsResponse"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: توکن احراز هویت به صورت `Token yourTOKENhereHEX0000` در هدر ارسال می‌شود.
+
+  schemas:
+    UserProfileResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        profile:
+          type: object
+    GenerateAddressRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+        network:
+          type: string
+    GenerateAddressResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        address:
+          type: string
+    AddCardRequest:
+      type: object
+      properties:
+        number:
+          type: string
+        bank:
+          type: string
+    AddAccountRequest:
+      type: object
+      properties:
+        number:
+          type: string
+        shaba:
+          type: string
+        bank:
+          type: string
+    StatusOnlyResponse:
+      type: object
+      properties:
+        status:
+          type: string
+    UserLimitationsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        limitations:
+          type: object
+    WalletsListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        wallets:
+          type: array
+          items:
+            type: object
+    V2WalletsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        wallets:
+          type: object
+    WalletBalanceRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+    WalletBalanceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        balance:
+          type: string
+    WalletTransactionsListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        transactions:
+          type: array
+          items:
+            type: object
+        hasNext:
+          type: boolean
+    UserTransactionsHistoryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        transactions:
+          type: array
+          items:
+            type: object
+        hasNext:
+          type: boolean
+    WalletDepositsListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        deposits:
+          type: array
+          items:
+            type: object
+        hasNext:
+          type: boolean
+    FavoriteMarketsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        favoriteMarkets:
+          type: array
+          items:
+            type: string
+    FavoriteMarketsRequest:
+      type: object
+      properties:
+        market:
+          type: string
+    FavoriteMarketsDeleteRequest:
+      type: object
+      properties:
+        market:
+          type: string

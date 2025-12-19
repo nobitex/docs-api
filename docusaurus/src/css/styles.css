@@ -83,6 +83,7 @@
   --ifm-font-family-base: 'vazirmatn', 'roboto-regular', 'Roboto', 'Helvetica', 'Arial', sans-serif;
   --text-primary: #000000;
   --bg-neutral-default-rest: rgba(111, 129, 148, 0.08);
+  --theme-bg: #F7FAFC;
 }
 
 [data-theme='dark'] {
@@ -102,6 +103,7 @@
   --ifm-menu-color-background-hover: rgba(97,117,138,0.24);
   --text-primary: #FFFFFF;
   --bg-neutral-default-rest: rgba(97, 117, 138, 0.24);
+  --theme-bg: #000000;
 }
 
 [class^="docRoot_"],
@@ -281,6 +283,10 @@
 
 .openapi-explorer__response-container {
   direction: rtl;
+}
+
+.theme-layout-main {
+    background: var(--theme-bg);
 }
 
 

@@ -1,0 +1,220 @@
+openapi: 3.0.3
+info:
+  title: API طرح معرفی دوستان نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به کد دعوت، لینک‌های دعوت و وضعیت معرفی دوستان.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: معرفی دوستان
+    description: مدیریت کدها و وضعیت طرح معرفی دوستان
+
+paths:
+  /users/referral/links-list:
+    post:
+      tags:
+        - معرفی دوستان
+      summary: فهرست کدهای دعوت
+      description: |
+        لیست کدهای دعوت (Referral Links) کاربر و آمار مربوط به هر کدام را برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۵۰ درخواست در هر ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  links:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ReferralLink"
+
+  /users/referral/links-add:
+    post:
+      tags:
+        - معرفی دوستان
+      summary: ایجاد کد دعوت
+      description: |
+        ایجاد یک کد دعوت جدید برای کاربر.
+
+        - محدودیت فراخوانی: ۵ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                friendShare:
+                  type: integer
+                  description: سهم کارمزد اهدایی به دوست دعوت‌شده
+                  default: 0
+                  example: 10
+      responses:
+        "200":
+          description: موفق (کد دعوت ایجاد شد)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  link:
+                    $ref: "#/components/schemas/ReferralLink"
+        "200_failure":
+          description: پاسخ ناموفق (status=failed)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReferralFailedResponse"
+
+  /users/referral/referral-status:
+    post:
+      tags:
+        - معرفی دوستان
+      summary: وضعیت دعوت کاربر
+      description: |
+        بررسی می‌کند آیا کاربر فعلی توسط کاربر دیگری دعوت شده است یا خیر.
+
+        - محدودیت فراخوانی: ۵۰ درخواست در هر ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  hasReferrer:
+                    type: boolean
+                    example: true
+
+  /users/referral/set-referrer:
+    post:
+      tags:
+        - معرفی دوستان
+      summary: ثبت معرف کاربر
+      description: |
+        ثبت کد معرف برای کاربر فعلی (تا ۲۴ ساعت پس از ثبت‌نام).
+
+        - محدودیت فراخوانی: ۵۰ درخواست در هر ۱۰ دقیقه
+        - در صورت گذشت بیش از ۲۴ ساعت، خطای `ReferrerChangeUnavailable` برمی‌گردد.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - referrerCode
+              properties:
+                referrerCode:
+                  type: string
+                  description: کد دعوت کاربر دعوت‌کننده
+                  example: "40404"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+        "200_failure":
+          description: پاسخ ناموفق (status=failed)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReferralFailedResponse"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    ReferralLink:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1001
+        referralCode:
+          type: string
+          example: "40404"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2020-07-15T11:32:38.326809+00:00"
+        userShare:
+          type: integer
+          example: 20
+        friendShare:
+          type: integer
+          example: 10
+        description:
+          type: string
+          example: "Shared on Instagram page X"
+        statsRegisters:
+          type: integer
+          example: 20
+        statsTrades:
+          type: integer
+          example: 240
+        statsProfit:
+          type: string
+          description: درآمد ریالی از این کد دعوت
+          example: "320000"
+
+    ReferralFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+          example: InvalidGivebackShare
+        message:
+          type: string
+          example: "Human readable error message"

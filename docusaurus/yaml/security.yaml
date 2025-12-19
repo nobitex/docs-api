@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: API امنیت نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای امنیتی شامل سابقه ورود، لغو اضطراری برداشت و کد آنتی‌فیشینگ.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: امنیت
+    description: سابقه ورود، لغو اضطراری، آنتی‌فیشینگ
+
+paths:
+  /users/login-attempts:
+    get:
+      tags:
+        - امنیت
+      summary: سابقه ورود
+      description: |
+        لیست تلاش‌های ورود اخیر کاربر را برمی‌گرداند.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  attempts:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/LoginAttempt"
+
+  /security/emergency-cancel/activate:
+    get:
+      tags:
+        - امنیت
+      summary: فعال‌سازی لغو اضطراری برداشت
+      description: |
+        امکان لغو اضطراری برداشت را فعال می‌کند.
+
+        پس از فعال‌سازی، لینک لغو در ایمیل/پیامک برداشت‌ها ارسال می‌شود.
+        در صورت لغو برداشت از این طریق، تا ۷۲ ساعت امکان ثبت برداشت غیرفعال می‌شود.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  cancelCode:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: seJlef35L3
+
+  /security/anti-phishing:
+    post:
+      tags:
+        - امنیت
+      summary: ایجاد/ویرایش کد آنتی‌فیشینگ
+      description: |
+        ایجاد یا تغییر کد آنتی‌فیشینگ کاربر.
+
+        - برای استفاده، نیاز به OTP دارد.
+        - محدودیت فراخوانی: ۱۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - code
+                - otpCode
+              properties:
+                code:
+                  type: string
+                  description: کد آنتی‌فیشینگ انتخابی کاربر
+                  example: sample_anti_phishing
+                otpCode:
+                  type: string
+                  description: کد یکبارمصرف ارسال‌شده
+                  example: "123456"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+        "200_failure":
+          description: پاسخ ناموفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityFailedResponse"
+
+    get:
+      tags:
+        - امنیت
+      summary: دریافت کد آنتی‌فیشینگ
+      description: |
+        کد آنتی‌فیشینگ کاربر (در صورت تنظیم) را برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۱۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                      antiPhishingCode:
+                        type: string
+                        example: "s****g"
+                  - $ref: "#/components/schemas/SecurityFailedResponse"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    LoginAttempt:
+      type: object
+      properties:
+        ip:
+          type: string
+          example: "46.209.130.106"
+        username:
+          type: string
+          example: "name@example.com"
+        status:
+          type: string
+          example: Successful
+        createdAt:
+          type: string
+          format: date-time
+
+    SecurityFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+          example: InvalidOTPCode
+        message:
+          type: string
+          example: "Code length must be between 4 and 15 characters"

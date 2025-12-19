@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: API تنظیمات سیستم نوبیتکس
+  version: "1.0.0"
+  description: |
+    API تنظیمات عمومی سیستم نوبیتکس شامل رمزارزها، شبکه‌ها، حداقل سفارش‌ها،
+    دقت قیمت و مقدار، سقف برداشت و سایر گزینه‌ها.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: تنظیمات سیستم
+    description: مشاهده تنظیمات عمومی بازار و رمزارزها
+
+paths:
+  /v2/options:
+    get:
+      tags:
+        - تنظیمات سیستم
+      summary: تنظیمات سیستم
+      description: |
+        تنظیمات کلی سیستم نوبیتکس را برمی‌گرداند.
+
+        - شامل:
+          - لیست رمزارزها و شبکه‌های آن‌ها
+          - حداقل سفارش‌ها
+          - دقت قیمت و مقدار در بازارها
+          - سقف‌های برداشت در سطوح مختلف
+          - لیست رمزارزهای فعال، برتر، در حال تست و ...
+        - نیاز به توکن: ندارد
+        - پارامتر ورودی: ندارد
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  features:
+                    $ref: "#/components/schemas/Features"
+                  coins:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CoinOptions"
+                  nobitex:
+                    $ref: "#/components/schemas/NobitexOptions"
+
+components:
+  schemas:
+    Features:
+      type: object
+      properties:
+        fcmEnabled:
+          type: boolean
+        chat:
+          type: string
+        walletsToNet:
+          type: boolean
+        autoKYC:
+          type: boolean
+        enabledFeatures:
+          type: array
+          items:
+            type: string
+        betaFeatures:
+          type: array
+          items:
+            type: string
+
+    CoinOptions:
+      type: object
+      properties:
+        coin:
+          type: string
+          example: rls
+        name:
+          type: string
+          example: Rial
+        defaultNetwork:
+          type: string
+          example: FIAT_MONEY
+        displayPrecision:
+          type: string
+          example: "10"
+        stdName:
+          type: string
+          example: "﷼"
+        networkList:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/NetworkOptions"
+
+    NetworkOptions:
+      type: object
+      properties:
+        network:
+          type: string
+          example: FIAT_MONEY
+        name:
+          type: string
+          example: FIAT
+        isDefault:
+          type: boolean
+        beta:
+          type: boolean
+        addressRegex:
+          type: string
+        memoRequired:
+          type: boolean
+        memoRegex:
+          type: string
+        depositEnable:
+          type: boolean
+        minConfirm:
+          type: integer
+        depositInfo:
+          type: object
+          additionalProperties:
+            type: object
+        withdrawEnable:
+          type: boolean
+        withdrawIntegerMultiple:
+          type: string
+        withdrawFee:
+          type: string
+        withdrawMin:
+          type: string
+        withdrawMax:
+          type: string
+
+    NobitexOptions:
+      type: object
+      properties:
+        allCurrencies:
+          type: array
+          items:
+            type: string
+        activeCurrencies:
+          type: array
+          items:
+            type: string
+        xchangeCurrencies:
+          type: array
+          items:
+            type: string
+        topCurrencies:
+          type: array
+          items:
+            type: string
+        testingCurrencies:
+          type: array
+          items:
+            type: string
+        withdrawLimits:
+          type: object
+          additionalProperties:
+            type: object
+        minOrders:
+          type: object
+          additionalProperties:
+            type: string
+        amountPrecisions:
+          type: object
+          additionalProperties:
+            type: string
+        pricePrecisions:
+          type: object
+          additionalProperties:
+            type: string
+        giftCard:
+          type: object
+          properties:
+            physicalFee:
+              type: string

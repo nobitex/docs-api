@@ -1,0 +1,559 @@
+openapi: 3.0.3
+info:
+  title: API معاملات تعهدی نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به معاملات تعهدی (Margin)، استخرهای مشارکت، انتقال به کیف‌پول تعهدی،
+    سفارش‌گذاری تعهدی و مدیریت موقعیت‌ها.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: معاملات تعهدی
+    description: بازار تعهدی، استخرها، سفارش‌ها و موقعیت‌ها
+
+paths:
+  /margin/markets/list:
+    get:
+      tags:
+        - معاملات تعهدی
+      summary: مشاهده بازارهای معاملات تعهدی
+      description: |
+        لیست بازارهای پشتیبانی‌شده برای معاملات تعهدی (Margin) را برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۳۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  markets:
+                    type: object
+                    additionalProperties:
+                      $ref: "#/components/schemas/MarginMarketSetting"
+
+  /liquidity-pools/list:
+    get:
+      tags:
+        - معاملات تعهدی
+      summary: مشاهده استخرهای مشارکت ارزی فعال
+      description: |
+        استخرهای مشارکت موجود برای معاملات تعهدی و ظرفیت آن‌ها.
+
+        - محدودیت فراخوانی: ۱۲ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  pools:
+                    type: object
+                    additionalProperties:
+                      $ref: "#/components/schemas/LiquidityPool"
+
+  /wallets/transfer:
+    post:
+      tags:
+        - معاملات تعهدی
+      summary: انتقال پول به/از کیف‌پول تعهدی
+      description: |
+        انتقال وجه بین کیف‌پول اسپات و کیف‌پول تعهدی.
+
+        - محدودیت فراخوانی: ۱۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WalletTransferRequest"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/WalletTransferResponse"
+                  - $ref: "#/components/schemas/MarginFailedResponse"
+
+  /margin/delegation-limit:
+    get:
+      tags:
+        - معاملات تعهدی
+      summary: دریافت محدودیت کاربری در مقدار وکالت
+      description: |
+        حداکثر مقدار وکالت مجاز برای رمزارز مشخص را برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۱۲ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: currency
+          in: query
+          required: true
+          schema:
+            type: string
+          description: رمزارز مبدا بازار
+          example: btc
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                      limit:
+                        type: string
+                        example: "0.039062"
+                  - $ref: "#/components/schemas/MarginFailedResponse"
+
+  /margin/orders/add:
+    post:
+      tags:
+        - معاملات تعهدی
+      summary: درج سفارش تعهدی
+      description: |
+        ثبت سفارش در بازار تعهدی (شامل OCO).
+
+        - محدودیت فراخوانی: ۳۰۰ درخواست در ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MarginOrderAddRequest"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/MarginOrderAddResponseSingle"
+                  - $ref: "#/components/schemas/MarginOrderAddResponseOCO"
+                  - $ref: "#/components/schemas/MarginFailedResponse"
+
+  /positions/list:
+    get:
+      tags:
+        - معاملات تعهدی
+      summary: مشاهده لیست موقعیت‌ها
+      description: |
+        لیست موقعیت‌های باز (`active`) و تاریخچه موقعیت‌های بسته (`past`).
+
+        - محدودیت فراخوانی: ۳۰ درخواست در دقیقه
+        - صفحه‌بندی: دارد (پیش‌فرض ۵۰)
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: srcCurrency
+          in: query
+          schema:
+            type: string
+        - name: dstCurrency
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            default: active
+            enum: [active, past]
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  positions:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Position"
+                  hasNext:
+                    type: boolean
+
+  /positions/{positionId}/status:
+    get:
+      tags:
+        - معاملات تعهدی
+      summary: مشاهده یک موقعیت
+      description: |
+        وضعیت یک موقعیت تعهدی خاص را برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۱۰۰ درخواست در ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 128
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  position:
+                    $ref: "#/components/schemas/Position"
+
+  /positions/{positionId}/close:
+    post:
+      tags:
+        - معاملات تعهدی
+      summary: بستن موقعیت
+      description: |
+        ثبت سفارش در جهت عکس برای تسویه تعهد و بستن موقعیت.
+
+        - محدودیت فراخوانی: ۳۰۰ درخواست در ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PositionCloseRequest"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/MarginOrder"
+                  - $ref: "#/components/schemas/MarginFailedResponse"
+
+  /positions/{positionId}/edit-collateral:
+    post:
+      tags:
+        - معاملات تعهدی
+      summary: ویرایش وجه تضمین موقعیت باز
+      description: |
+        افزایش یا کاهش وجه تضمین یک موقعیت باز.
+
+        - محدودیت فراخوانی: ۶۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - collateral
+              properties:
+                collateral:
+                  type: string
+                  description: وجه تضمین جدید
+                  example: "230000"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                      position:
+                        $ref: "#/components/schemas/Position"
+                  - $ref: "#/components/schemas/MarginFailedResponse"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    MarginMarketSetting:
+      type: object
+      properties:
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        positionFeeRate:
+          type: string
+        maxLeverage:
+          type: string
+        sellEnabled:
+          type: boolean
+        buyEnabled:
+          type: boolean
+
+    LiquidityPool:
+      type: object
+      properties:
+        capacity:
+          type: string
+        filledCapacity:
+          type: string
+
+    WalletTransferRequest:
+      type: object
+      required:
+        - currency
+        - amount
+        - src
+        - dst
+      properties:
+        currency:
+          type: string
+        amount:
+          type: string
+        src:
+          type: string
+          enum: [spot, margin]
+        dst:
+          type: string
+          enum: [spot, margin]
+
+    WalletTransferResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        srcWallet:
+          type: object
+        dstWallet:
+          type: object
+
+    MarginOrderAddRequest:
+      type: object
+      properties:
+        execution:
+          type: string
+          default: limit
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        type:
+          type: string
+          default: sell
+        leverage:
+          type: string
+          default: "1"
+        amount:
+          type: string
+        price:
+          type: string
+        stopPrice:
+          type: string
+        mode:
+          type: string
+        stopLimitPrice:
+          type: string
+
+    MarginOrder:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        execution:
+          type: string
+        tradeType:
+          type: string
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        price:
+          type: string
+        amount:
+          type: string
+        status:
+          type: string
+        totalOrderPrice:
+          type: string
+        matchedAmount:
+          type: string
+        unmatchedAmount:
+          type: string
+        leverage:
+          type: string
+        side:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    MarginOrderAddResponseSingle:
+      type: object
+      properties:
+        status:
+          type: string
+        order:
+          $ref: "#/components/schemas/MarginOrder"
+
+    MarginOrderAddResponseOCO:
+      type: object
+      properties:
+        status:
+          type: string
+        orders:
+          type: array
+          items:
+            $ref: "#/components/schemas/MarginOrder"
+
+    Position:
+      type: object
+      properties:
+        id:
+          type: integer
+        createdAt:
+          type: string
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        side:
+          type: string
+        status:
+          type: string
+        marginType:
+          type: string
+        collateral:
+          type: string
+        leverage:
+          type: string
+        openedAt:
+          type: string
+        closedAt:
+          type: string
+          nullable: true
+        liquidationPrice:
+          type: string
+        entryPrice:
+          type: string
+        exitPrice:
+          type: string
+          nullable: true
+        delegatedAmount:
+          type: string
+          nullable: true
+        liability:
+          type: string
+          nullable: true
+        totalAsset:
+          type: string
+          nullable: true
+        marginRatio:
+          type: string
+          nullable: true
+        liabilityInOrder:
+          type: string
+          nullable: true
+        assetInOrder:
+          type: string
+          nullable: true
+        unrealizedPNL:
+          type: string
+          nullable: true
+        unrealizedPNLPercent:
+          type: string
+          nullable: true
+        expirationDate:
+          type: string
+          nullable: true
+        extensionFee:
+          type: string
+          nullable: true
+        markPrice:
+          type: string
+          nullable: true
+        PNL:
+          type: string
+          nullable: true
+        PNLPercent:
+          type: string
+          nullable: true
+
+    PositionCloseRequest:
+      type: object
+      properties:
+        execution:
+          type: string
+          default: limit
+        amount:
+          type: string
+        price:
+          type: string
+        stopPrice:
+          type: string
+        mode:
+          type: string
+        stopLimitPrice:
+          type: string
+
+    MarginFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+        message:
+          type: string

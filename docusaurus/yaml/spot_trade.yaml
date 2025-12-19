@@ -1,0 +1,454 @@
+openapi: 3.0.3
+info:
+  title: API معاملات اسپات نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای سفارش‌گذاری، مشاهده و لغو سفارشات و لیست معاملات کاربر در بازار اسپات.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: معاملات اسپات
+    description: سفارش‌گذاری و معاملات بازار اسپات
+
+paths:
+  /market/orders/add:
+    post:
+      tags:
+        - معاملات اسپات
+      summary: ثبت سفارش جدید اسپات
+      description: |
+        ثبت سفارش خرید/فروش در بازار اسپات (Limit, Market, Stop, OCO).
+
+        - محدودیت مشترک سفارش‌گذاری: ۳۰۰ درخواست در ۱۰ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SpotOrderAddRequest"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/SpotOrderAddResponseSingle"
+                  - $ref: "#/components/schemas/SpotOrderAddResponseOCO"
+        "200_failure":
+          description: پاسخ ناموفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpotOrderFailedResponse"
+
+  /market/orders/status:
+    post:
+      tags:
+        - معاملات اسپات
+      summary: مشاهده وضعیت سفارش
+      description: |
+        وضعیت یک سفارش را بر اساس `id` یا `clientOrderId` برمی‌گرداند.
+
+        - محدودیت فراخوانی: ۳۰۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: شناسه سفارش
+                  example: 5684
+                clientOrderId:
+                  type: string
+                  description: شناسه سفارشی که کاربر تعیین کرده است
+                  example: "order1"
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                      order:
+                        $ref: "#/components/schemas/SpotOrder"
+                  - $ref: "#/components/schemas/SpotOrderFailedResponse"
+
+  /market/orders/list:
+    get:
+      tags:
+        - معاملات اسپات
+      summary: فهرست سفارش‌های کاربر
+      description: |
+        فهرست سفارش‌های کاربر با فیلترها و صفحه‌بندی.
+
+        - محدودیت فراخوانی: ۳۰ درخواست در دقیقه
+        - صفحه‌بندی: دارد (پیش‌فرض ۱۰۰)
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            default: open
+            enum: [all, open, done, close]
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [buy, sell]
+        - name: execution
+          in: query
+          schema:
+            type: string
+            enum: [limit, market, stop_limit, stop_market]
+        - name: tradeType
+          in: query
+          schema:
+            type: string
+            enum: [spot, margin]
+        - name: srcCurrency
+          in: query
+          schema:
+            type: string
+        - name: dstCurrency
+          in: query
+          schema:
+            type: string
+        - name: details
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: fromId
+          in: query
+          schema:
+            type: integer
+        - name: order
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  orders:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SpotOrder"
+
+  /market/orders/update-status:
+    post:
+      tags:
+        - معاملات اسپات
+      summary: تغییر وضعیت سفارش (لغو/فعال‌سازی)
+      description: |
+        تغییر وضعیت یک سفارش (مثلاً لغو کردن).
+
+        - محدودیت فراخوانی: ۹۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                order:
+                  type: integer
+                  description: شناسه سفارش
+                  example: 5684
+                clientOrderId:
+                  type: string
+                  description: شناسه سفارشی کاربر
+                  example: "order1"
+                status:
+                  type: string
+                  description: وضعیت جدید
+                  example: canceled
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                      updatedStatus:
+                        type: string
+                        example: Canceled
+                      order:
+                        $ref: "#/components/schemas/SpotOrder"
+                  - $ref: "#/components/schemas/SpotOrderFailedResponse"
+
+  /market/orders/cancel-old:
+    post:
+      tags:
+        - معاملات اسپات
+      summary: لغو جمعی سفارشات قدیمی
+      description: |
+        لغو دسته‌جمعی سفارشات فعال با فیلترهای زمانی و بازار.
+
+        - محدودیت فراخوانی: ۳۰ درخواست در دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hours:
+                  type: number
+                  description: سفارش‌های قدیمی‌تر از این تعداد ساعت لغو می‌شوند
+                  example: 2.4
+                execution:
+                  type: string
+                  enum: [market, limit, stop_market, stop_limit]
+                tradeType:
+                  type: string
+                  enum: [spot, margin]
+                srcCurrency:
+                  type: string
+                dstCurrency:
+                  type: string
+      responses:
+        "200":
+          description: موفق یا ناموفق
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status:
+                        type: string
+                        example: ok
+                  - $ref: "#/components/schemas/SpotOrderFailedResponse"
+
+  /market/trades/list:
+    get:
+      tags:
+        - معاملات اسپات
+      summary: فهرست معاملات کاربر
+      description: |
+        فهرست معاملات ۳ روز اخیر کاربر در بازار اسپات.
+
+        - محدودیت فراخوانی: ۳۰ درخواست در دقیقه
+        - صفحه‌بندی: دارد (پیش‌فرض ۳۰)
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: srcCurrency
+          in: query
+          schema:
+            type: string
+        - name: dstCurrency
+          in: query
+          schema:
+            type: string
+        - name: fromId
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  trades:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Trade"
+                  hasNext:
+                    type: boolean
+                    example: false
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+
+  schemas:
+    SpotOrderAddRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          description: نوع سفارش
+          example: buy
+        execution:
+          type: string
+          description: نوع اجرا (limit/market/stop_limit/stop_market)
+          example: limit
+        srcCurrency:
+          type: string
+          example: btc
+        dstCurrency:
+          type: string
+          example: rls
+        amount:
+          type: string
+          example: "0.6"
+        price:
+          type: string
+          example: "520000"
+        clientOrderId:
+          type: string
+          maxLength: 32
+        mode:
+          type: string
+          description: برای سفارش OCO مقدار `oco`
+        stopPrice:
+          type: string
+        stopLimitPrice:
+          type: string
+
+    SpotOrder:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        execution:
+          type: string
+        tradeType:
+          type: string
+        market:
+          type: string
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        price:
+          type: string
+        amount:
+          type: string
+        totalPrice:
+          type: string
+        totalOrderPrice:
+          type: string
+        matchedAmount:
+          type: string
+        unmatchedAmount:
+          type: string
+        status:
+          type: string
+        partial:
+          type: boolean
+        fee:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        averagePrice:
+          type: string
+        clientOrderId:
+          type: string
+        pairId:
+          type: integer
+          nullable: true
+        param1:
+          type: string
+          description: قیمت توقف در سفارش‌های حد ضرر
+
+    SpotOrderAddResponseSingle:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        order:
+          $ref: "#/components/schemas/SpotOrder"
+
+    SpotOrderAddResponseOCO:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        orders:
+          type: array
+          items:
+            $ref: "#/components/schemas/SpotOrder"
+
+    SpotOrderFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+          example: InvalidOrderPrice
+        message:
+          type: string
+        clientOrderId:
+          type: string
+
+    Trade:
+      type: object
+      properties:
+        id:
+          type: integer
+        orderId:
+          type: integer
+        srcCurrency:
+          type: string
+        dstCurrency:
+          type: string
+        market:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        type:
+          type: string
+        price:
+          type: string
+        amount:
+          type: string
+        total:
+          type: string
+        fee:
+          type: string

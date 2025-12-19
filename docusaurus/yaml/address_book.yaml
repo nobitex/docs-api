@@ -1,0 +1,308 @@
+openapi: 3.0.3
+info:
+  title: API دفتر آدرس نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به دفتر آدرس (Address Book) و حالت برداشت امن در نوبیتکس.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: دفتر آدرس
+    description: مدیریت دفتر آدرس و حالت برداشت امن
+
+paths:
+  /address_book:
+    get:
+      tags:
+        - دفتر آدرس
+      summary: مشاهده لیست آدرس‌های دفتر آدرس
+      description: |
+        لیست آدرس‌های ثبت‌شده در دفتر آدرس کاربر را برمی‌گرداند.
+
+        **محدودیت فراخوانی:** ۲۰ درخواست در هر دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: network
+          in: query
+          required: false
+          description: فیلتر بر اساس شبکه (مثلاً BSC)
+          schema:
+            type: string
+          example: BSC
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/AddressBookEntry"
+              example:
+                status: ok
+                data:
+                  - id: 3
+                    title: TetherBinance
+                    network: BSC
+                    address: 0000xxxx1111zzzz
+                    createdAt: "2023-08-09T10:12:37+00:00"
+                  - id: 4
+                    title: BinanceCoinOKX
+                    network: BNB
+                    address: 0000xxxx2222zzzz
+                    tag: test17280992
+                    createdAt: "2023-08-09T10:26:12+00:00"
+
+    post:
+      tags:
+        - دفتر آدرس
+      summary: اضافه کردن آدرس جدید به دفتر آدرس
+      description: |
+        یک آدرس جدید به دفتر آدرس کاربر اضافه می‌کند.
+
+        **محدودیت فراخوانی:** ۶ درخواست در هر دقیقه
+
+        برای دریافت `otpCode` باید ابتدا از `/v2/otp/request` با
+        `usage=address_book` استفاده شود.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddAddressRequest"
+            example:
+              title: test
+              network: BSC
+              address: 0000xxxx1111zzzz
+              tag: test17280992
+              otpCode: "123456"
+              tfaCode: "654321"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    $ref: "#/components/schemas/AddressBookEntry"
+              example:
+                status: ok
+                data:
+                  id: 5
+                  title: test
+                  network: BSC
+                  address: 0000xxxx1111zzzz
+                  createdAt: "2023-08-09T10:22:37+00:00"
+        "200_failed":
+          description: خطای منطقی با status=failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FailedResponse"
+              example:
+                status: failed
+                code: DuplicatedAddress
+                message: "آدرس قبلا ثبت شده و تکراری می باشد."
+
+  /address_book/{address_id}/delete:
+    delete:
+      tags:
+        - دفتر آدرس
+      summary: حذف یک دفتر آدرس
+      description: |
+        یک آدرس ثبت‌شده در دفتر آدرس را با استفاده از شناسه آن حذف می‌کند.
+
+        **محدودیت فراخوانی:** ۶ درخواست در هر دقیقه
+      security:
+        - TokenAuth: []
+      parameters:
+        - name: address_id
+          in: path
+          required: true
+          description: شناسه آدرس در دفتر آدرس
+          schema:
+            type: integer
+          example: 5
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+              example:
+                status: ok
+        "200_failed":
+          description: خطای منطقی با status=failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FailedResponse"
+              example:
+                status: failed
+                code: NotFound
+                message: "آدرسی با این شناسه وجود ندارد."
+
+  /address_book/whitelist/activate:
+    post:
+      tags:
+        - دفتر آدرس
+      summary: فعال کردن برداشت امن
+      description: |
+        حالت برداشت امن (Whitelist Mode) را فعال می‌کند.
+        در این حالت برداشت رمزارزی فقط به آدرس‌های موجود در دفتر آدرس مجاز است
+        (به جز برداشت در شبکه لایتنینگ).
+
+        **محدودیت فراخوانی:** ۶ درخواست در هر دقیقه
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+              example:
+                status: ok
+
+  /address_book/whitelist/deactivate:
+    post:
+      tags:
+        - دفتر آدرس
+      summary: غیرفعال کردن برداشت امن
+      description: |
+        حالت برداشت امن را غیرفعال می‌کند.  
+        پس از غیرفعال‌سازی، برای حفظ امنیت حساب، امکان برداشت به مدت ۲۴ ساعت
+        روی حساب کاربر محدود می‌شود.
+
+        **محدودیت فراخوانی:** ۶ درخواست در هر دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeactivateWhitelistRequest"
+            example:
+              otpCode: "1234"
+              tfaCode: "12345"
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+              example:
+                status: ok
+        "200_failed":
+          description: خطای منطقی با status=failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FailedResponse"
+              example:
+                status: failed
+                code: InvalidOTP
+                message: "مقدار otp وارد شده نادرست است."
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: توکن احراز هویت به صورت `Token yourTOKENhereHEX0000` در هدر ارسال می‌شود.
+
+  schemas:
+    AddressBookEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        network:
+          type: string
+        address:
+          type: string
+        tag:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+
+    AddAddressRequest:
+      type: object
+      required:
+        - title
+        - network
+        - address
+        - otpCode
+        - tfaCode
+      properties:
+        title:
+          type: string
+        network:
+          type: string
+        address:
+          type: string
+        tag:
+          type: string
+          description: تگ (در شبکه‌های تگ‌اجباری الزامی است)
+        otpCode:
+          type: string
+          description: کد تأیید ایمیل/پیامک
+        tfaCode:
+          type: string
+          description: کد تأیید دوعاملی (TOTP)
+
+    DeactivateWhitelistRequest:
+      type: object
+      required:
+        - otpCode
+        - tfaCode
+      properties:
+        otpCode:
+          type: string
+        tfaCode:
+          type: string
+
+    FailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+        message:
+          type: string

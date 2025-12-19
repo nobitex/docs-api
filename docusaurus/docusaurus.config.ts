@@ -54,8 +54,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
     },
     navbar: {
       logo: {
@@ -69,8 +69,11 @@ const config: Config = {
           type: 'custom-searchNavbarItem',
           position: 'right',
         },
-        { to: '/', label: 'مستندات', position: 'left' },
+        { to: '/', label: 'مستندات', position: 'left', activeBaseRegex: '^/$' },
+        { to: '/websocket', label: 'وب‌سوکت', position: 'left' },
         { to: '/changelog', label: 'سابقه‌ی تغییرات', position: 'left' },
+        { to: '/faq', label: 'سوالات متداول', position: 'left' },
+        { to: '/general_notes', label: 'ملاحظات عمومی', position: 'left' },
       ],
     },
   } satisfies Preset.ThemeConfig,
@@ -83,17 +86,89 @@ const config: Config = {
         id: "api",
         docsPluginId: "classic",
         config: {
-          orders: {
-            specPath: "yaml/openapi1.yaml",
-            outputDir: "docs/orders",
+          market_data: {
+            specPath: "yaml/market_data.yaml",
+            outputDir: "docs/market_data",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
           } satisfies OpenApiPlugin.Options,
-          users: {
-            specPath: "yaml/openapi33.yaml",
-            outputDir: "docs/users",
+          user_data: {
+            specPath: "yaml/user_data.yaml",
+            outputDir: "docs/user_data",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          spot_trade: {
+            specPath: "yaml/spot_trade.yaml",
+            outputDir: "docs/spot_trade",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          margin_trade: {
+            specPath: "yaml/margin_trade.yaml",
+            outputDir: "docs/margin_trade",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          withdraw: {
+            specPath: "yaml/withdraw.yaml",
+            outputDir: "docs/withdraw",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          address_book: {
+            specPath: "yaml/address_book.yaml",
+            outputDir: "docs/address_book",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          security: {
+            specPath: "yaml/security.yaml",
+            outputDir: "docs/security",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          referral: {
+            specPath: "yaml/referral.yaml",
+            outputDir: "docs/referral",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          auth: {
+            specPath: "yaml/auth.yaml",
+            outputDir: "docs/auth",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          portfolio: {
+            specPath: "yaml/portfolio.yaml",
+            outputDir: "docs/portfolio",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          options: {
+            specPath: "yaml/options.yaml",
+            outputDir: "docs/options",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

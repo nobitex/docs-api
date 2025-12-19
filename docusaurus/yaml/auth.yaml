@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: API احراز هویت نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به احراز هویت (دریافت توکن و خروج/سوزاندن توکن) در نوبیتکس.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: احراز هویت
+    description: لاگین، دریافت توکن و خروج از حساب
+
+paths:
+  /auth/login/:
+    post:
+      tags:
+        - احراز هویت
+      summary: ورود - دریافت توکن
+      description: |
+        با ارسال نام کاربری، گذرواژه، کپچا و کد دوعاملی، توکن احراز هویت برمی‌گرداند.
+
+        - تنها API‌ای است که لازم است یوزرنیم/پسورد به آن ارسال شود.
+        - توکن معمولی ۴ ساعت اعتبار دارد.
+        - با `remember=yes` می‌توان توکن ۳۰ روزه دریافت کرد.
+        - برای استفاده بدون کپچای تصویری، `captcha=api` و ارسال `X-TOTP` در هدر الزامی است.
+        - هدر `User-Agent` باید از الگوی `TraderBot/<نام نسخه و بات>` پیروی کند.
+
+        **محدودیت فراخوانی:** ۳۰ درخواست در هر ۱۰ دقیقه  
+        **نکته:** انتهای URL باید حتماً `/` داشته باشد.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+            example:
+              username: name@example.com
+              password: secret-password-1234
+              captcha: api
+              remember: yes
+      parameters:
+        - name: X-TOTP
+          in: header
+          required: true
+          description: کد دوعاملی
+          schema:
+            type: string
+          example: "123456"
+        - name: User-Agent
+          in: header
+          required: true
+          description: ایجنت بات، به‌صورت `TraderBot/<version-name>`
+          schema:
+            type: string
+          example: TraderBot/1.0.0
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+              example:
+                status: success
+                key: db2055f743c1ac8c30d23278a496283b1e2dd46f
+                device: AlRyansW
+
+  /auth/logout/:
+    post:
+      tags:
+        - احراز هویت
+      summary: خروج - سوزاندن توکن
+      description: |
+        توکن فعلی را باطل کرده و کاربر را از سیستم خارج می‌کند.
+
+        پس از خروج، توکن دیگر معتبر نخواهد بود.
+      security:
+        - TokenAuth: []
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoutResponse"
+              example:
+                detail: "خروج با موفقیت انجام شد."
+                message: "خروج با موفقیت انجام شد."
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: توکن احراز هویت به صورت `Token yourTOKENhereHEX0000` در هدر ارسال می‌شود.
+
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+        - captcha
+      properties:
+        username:
+          type: string
+          description: ایمیل کاربر
+          example: name@example.com
+        password:
+          type: string
+          description: گذرواژه کاربر
+          example: secret-password-1234
+        captcha:
+          type: string
+          description: مقدار کپچا (برای استفاده از API مقدار `api`)
+          example: api
+        remember:
+          type: string
+          description: آیا توکن بلندمدت (۳۰ روزه) صادر شود؟ (`yes`/`no`)
+          default: no
+          example: yes
+
+    LoginResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        key:
+          type: string
+          description: توکن احراز هویت
+        device:
+          type: string
+          description: شناسه دستگاه
+
+    LogoutResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+        message:
+          type: string

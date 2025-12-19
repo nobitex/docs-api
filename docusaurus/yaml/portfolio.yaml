@@ -1,0 +1,211 @@
+openapi: 3.0.3
+info:
+  title: API سود و زیان نوبیتکس
+  version: "1.0.0"
+  description: |
+    APIهای مربوط به پرتفو و گزارش سود و زیان کاربر در نوبیتکس.
+
+servers:
+  - url: https://apiv2.nobitex.ir
+  - url: https://testnetapiv2.nobitex.ir
+
+tags:
+  - name: سود و زیان
+    description: گزارش‌های پرتفو و سود و زیان کاربر
+
+paths:
+  /users/portfolio/last-week-daily-profit:
+    post:
+      tags:
+        - سود و زیان
+      summary: سود و زیان روزانه هفته گذشته
+      description: |
+        گزارش سود و زیان روزانه هفته گذشته (یا ۳۰ روز گذشته در صورت monthly=true).
+
+        - محدودیت فراخوانی: ۱۰ درخواست در ۳ دقیقه
+        - در صورت غیرفعال بودن پرتفو، خطای `PortfolioDisabled` برمی‌گردد.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                monthly:
+                  type: boolean
+                  description: اگر true باشد، گزارش ۳۰ روز گذشته برمی‌گردد.
+                  default: false
+                  example: true
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DailyProfit"
+              example:
+                status: ok
+                data:
+                  - report_date: "2021-07-05"
+                    total_profit: "0E-10"
+                    total_profit_percentage: "0E-10"
+                    total_balance: "4516559.920590000"
+        "200_failure":
+          description: پاسخ ناموفق (status=failed)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioFailedResponse"
+              examples:
+                disabled:
+                  summary: پرتفو غیرفعال
+                  value:
+                    status: failed
+                    code: PortfolioDisabled
+                    message: "Portfolio feature is not available for your user."
+                no_data:
+                  summary: بدون داده
+                  value:
+                    status: failed
+                    code: LastWeekDailyProfitFail
+                    message: "اطلاعاتی جهت نمایش وجود ندارد"
+
+  /users/portfolio/last-week-daily-total-profit:
+    post:
+      tags:
+        - سود و زیان
+      summary: سود و زیان کل به صورت روزانه در هفته گذشته
+      description: |
+        سود و زیان کل پرتفو به تفکیک روز، برای هفته گذشته.
+
+        - محدودیت فراخوانی: ۱۰ درخواست در ۳ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DailyTotalProfit"
+        "200_failure":
+          description: پاسخ ناموفق (status=failed)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioFailedResponse"
+
+  /users/portfolio/last-month-total-profit:
+    post:
+      tags:
+        - سود و زیان
+      summary: سود و زیان کل ماه گذشته
+      description: |
+        سود و زیان کل پرتفو در ماه گذشته.
+
+        - محدودیت فراخوانی: ۱۰ درخواست در ۳ دقیقه
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: موفق
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  data:
+                    $ref: "#/components/schemas/MonthlyTotalProfit"
+        "200_failure":
+          description: پاسخ ناموفق (status=failed)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioFailedResponse"
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: توکن احراز هویت به صورت `Token yourTOKENhereHEX0000`.
+
+  schemas:
+    DailyProfit:
+      type: object
+      properties:
+        report_date:
+          type: string
+          format: date
+        total_profit:
+          type: string
+        total_profit_percentage:
+          type: string
+        total_balance:
+          type: string
+
+    DailyTotalProfit:
+      type: object
+      properties:
+        report_date:
+          type: string
+          format: date
+        total_profit:
+          type: string
+        total_profit_percentage:
+          type: string
+
+    MonthlyTotalProfit:
+      type: object
+      properties:
+        total_profit:
+          type: string
+        total_profit_percentage:
+          type: string
+
+    PortfolioFailedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: failed
+        code:
+          type: string
+          example: PortfolioDisabled
+        message:
+          type: string
+          example: "Portfolio feature is not available for your user."
