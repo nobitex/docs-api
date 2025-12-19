@@ -70,7 +70,7 @@ const config: Config = {
           position: 'right',
         },
         { to: '/', label: 'مستندات', position: 'left', activeBaseRegex: '^/$' },
-        { to: '/websocket', label: 'وب‌سوکت', position: 'left' },
+        { to: '/websocket', label: 'وبسوکت', position: 'left' },
         { to: '/changelog', label: 'سابقه‌ی تغییرات', position: 'left' },
         { to: '/faq', label: 'سوالات متداول', position: 'left' },
         { to: '/general_notes', label: 'ملاحظات عمومی', position: 'left' },

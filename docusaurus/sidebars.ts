@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
       label: 'مستندات API نوبیتکس',
       link: {
         type: 'generated-index',
-        title: 'API نوبیتکس',
+        title: 'مستندات API نوبیتکس',
         description: 'مستندات API نوبیتکس',
         slug: '/',
       },
