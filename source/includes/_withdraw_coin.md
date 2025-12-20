@@ -1,6 +1,7 @@
-<h1 id="withdraw">برداشت</h1>
+<h1 id="withdraw">برداشت رمزارزی</h1>
 
-<h2 id="withdraw-request">ثبت درخواست برداشت</h2>
+
+<h2 id="withdraw-request">ثبت درخواست برداشت رمزارزی</h2>
 
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/users/wallets/withdraw' \
@@ -41,7 +42,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw \
 
 > در صورت نبودن آدرس مقصد در دفتر آدرس، پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل و پیامک می‌شود.
 
-برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:
+برای ثبت درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `POST /users/wallets/withdraw`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
@@ -62,7 +63,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw \
 1. **شبکه انتقال:** مقادیر <span class="network-symbols"></span> قابل قبول است. در مواردی که چند شبکه برداشت برای رمزارز درخواستی پشتیبانی می‌شود، می‌توان شبکه انتقال را تعیین نمود.
 2. **صورت‌حساب:** در انتقال‌های شبکه `BTCLN` الزامی است. در صورت وجود invoice پارامترهای amount و  address از آن استخراج شده و در بدنه درخواست بلااستفاده خواهند شد. شبکه صورت‌حساب باید با network در صورت مشخص شدن در درخواست مطابقت داشته باشد.
 3. **مقدار:** در صورتی که بدون invoice درخواست برداشت ثبت می‌کنید، الزامی می‌شود.
-4. **آدرس مقصد:** برای برداشت‌های ریالی [شناسه حساب بانکی](/#88cb25e727 "دریافت از پروفایل") تایید شده کاربر جهت دریافت وجه و برای برداشت‌های رمزارزی آدرس کیف پول مقصد می‌باشد. در صورتی که از invoice برای برداشت استفاده می‌کنید، بلااستفاده خواهد شد.
+4. **آدرس مقصد:** آدرس کیف پول مقصد می‌باشد. در صورتی که از invoice برای برداشت استفاده می‌کنید، بلااستفاده خواهد شد.
 5. **بدون تگ:** برای برداشت از شبکه‌های <span class="tag-required-networks"></span> که نیاز به تگ انتقال دارند، **اگر می خواهید تگ انتقال را وارد نکنید، مقدار گزینه‌ی مربوط به آن (noTag) را "true" وارد کنید.**
 6. **تگ انتقال:** در شبکه‌هایی <span class="tag-required-networks"></span> که استفاده از تگ ضروری است این پارامتر الزامی است، مگر اینکه noTag فعال شده باشد.    [ممو، تگ یا کامنت چیست؟](https://nobitex.ir/mag/what-is-memo/)
 
@@ -88,8 +89,6 @@ WithdrawLimitReached | امکان ثبت درخواست به دلیل «محدو
 AmountTooLow | مقدار درخواستی از حداقل مقدار مجاز این بازار(شبکه) کمتر می باشد
 AmountTooHigh | مقدار درخواستی از حداکثر مقدار مجاز این بازار(شبکه) بیشتر می باشد
 InvalidMobileNumber | کاربر موبایل تایید شده ندارد
-ShabaWithdrawCannotProceed | امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد
-ShabaWithdrawCannotProceed | امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد
 NotWhitelistedTargetAddress | حالت برداشت امن روی حساب فعال است اما شبکه، آدرس (یا تگ) در دفتر آدرس شما وجود ندارد
 
 
@@ -102,7 +101,7 @@ NotWhitelistedTargetAddress | حالت برداشت امن روی حساب فع�
 3. در صورت فعال بودن حالت برداشت امن، شبکه، آدرس (و در صورت الزام شبکه، تگ) انتخاب شده باید در دفتر آدرس شما ثبت شده باشد.
 4. درخواست برداشت ثبت شده در این مرحله  نیاز به تایید توسط کاربر دارد.
 
-<h2 id="withdraw-confirm">تایید درخواست برداشت</h2>
+<h2 id="withdraw-confirm">تایید درخواست برداشت رمزارزی</h2>
 
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/users/wallets/withdraw-confirm' \
@@ -138,7 +137,7 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
 }
 ```
 
-برای تایید درخواست برداشت از این نوع درخواست استفاده نمایید:
+برای تایید درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `POST /users/wallets/withdraw-confirm`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در ساعت
@@ -152,91 +151,12 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
 
 
 ### نکات و ملاحظات
-1. در برداشت‌های ریالی به شبای تایید شده کاربر و برداشت رمزارزی به آدرس‌های امن دفتر آدرس، نیازی به ارسال رمز یکبارمصرف نیست.
+1. در برداشت رمزارزی به آدرس‌های امن دفتر آدرس، نیازی به ارسال رمز یکبارمصرف نیست.
 2. برای تایید برداشت به آدرس‌های تایید نشده باید کد یکبارمصرف ارسال شده به شماره تلفن همراه یا ایمیل حساب کاربری خود را استخراج و به این API ارسال نمایید.
 3. امکان استفاده از آی‌پی اختصاصی به زودی فراهم خواهد شد.
 
 
-<h2 id="withdraw-list">فهرست برداشت‌ها</h2>
-
-```shell
-curl 'https://apiv2.nobitex.ir/users/wallets/withdraws/list' \
-  -H 'Authorization: Token yourTOKENhereHEX0000000000'
-```
-
-
-```plaintext
-http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
-```
-
-> در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:
-
-```json
-{
-  "status": "ok",
-  "withdraws": [
-    {
-      "id": 432,
-      "createdAt": "2021-12-11T10:13:42.957103+00:00",
-      "status": "Canceled",
-      "amount": "0.0123",
-      "currency": "btc",
-      "network": "BTCLN",
-      "invoice": "lnbc123m1pskcu80pp5qqqsyqcyq5rqwz...",
-      "address": "SaMpLeWaLlEtAdDrEsS",
-      "tag": "123456",
-      "wallet_id": 3456,
-      "blockchain_url": "https://nobitex.ir/receipt/Bitcoin/ewd23d...",
-      "is_cancelable": true
-    },
-    {
-      "id": 238,
-      "createdAt": "2020-09-19T14:17:23.441723+00:00",
-      "status": "Done",
-      "amount": "1000000",
-      "currency": "rls",
-      "network": "FIAT_MONEY",
-      "invoice": null,
-      "address": "\u062a\u062c\u0627\u0631\u062a: IR140180000000003333333333",
-      "tag": null,
-      "wallet_id": 3451,
-      "blockchain_url": null,
-      "is_cancelable": true
-    },
-    {
-      "id": 239,
-      "createdAt": "2018-10-04T12:59:38.196935+00:00",
-      "status": "Done",
-      "amount": "1",
-      "currency": "ltc",
-      "network": "LTC",
-      "address": "Lgn1zc77mEjk72KvX...",
-      "tag": null,
-      "wallet_id": 3454,
-      "blockchain_url": "https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf...",
-      "is_cancelable": false
-    }
-  ],
-  "hasNext": true
-}
-```
-
-برای دریافت لیست آخرین برداشت‌ها از این نوع درخواست استفاده نمایید:
-
-* **درخواست:** `GET /users/wallets/withdraws/list`
-* **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
-* **<a href="#pagination">صفحه بندی:</a>** دارد (پیش فرض 20)
-* **<a href="#date-filter">فیلترزمانی:</a>** دارد
-
-### پارامترهای ورودی
-
-| پارامتر | نوع    | پیش‌فرض | توضیحات             | نمونه |
-|---------|--------|---------|---------------------|-------|
-| wallet  | string | all     | شناسه کیف پول کاربر | 3456  |
-
-
-
-<h2 id="withdraw-view">مشاهده برداشت</h2>
+<h2 id="withdraw-view">مشاهده جزئیات برداشت رمزارزی</h2>
 
 ```shell
 curl 'https://apiv2.nobitex.ir/withdraws/433' \
@@ -270,7 +190,7 @@ http GET https://apiv2.nobitex.ir/withdraws/433
 }
 ```
 
-برای مشاهده وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:
+برای مشاهده وضعیت یک درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:
 
 * **درخواست:** `GET /withdraws/WITHDRAW`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
@@ -281,3 +201,4 @@ http GET https://apiv2.nobitex.ir/withdraws/433
 | پارامتر     | نوع | پیش‌فرض | توضیحات              | نمونه |
 |-------------|-----|---------|----------------------|-------|
 | WITHDRAW | int | الزامی  | شناسه درخواست برداشت | 433   |
+

@@ -10,7 +10,9 @@ includes:
   - user_data
   - market_trade
   - position
-  - withdraw
+  - withdraw_coin
+  - withdraw_rial
+  - withdraw_list
   - websocket
   - address_book
   - security
