@@ -447,19 +447,38 @@
               </ul>
           </li>
           <li>
-            <a href="#withdraw" class="toc-h1 toc-link" data-title="برداشت">برداشت</a>
+            <a href="#withdraw" class="toc-h1 toc-link" data-title="برداشت رمزارزی">برداشت رمزارزی</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#withdraw-request" class="toc-h2 toc-link" data-title="ثبت درخواست برداشت">ثبت درخواست برداشت</a>
+                    <a href="#withdraw-request" class="toc-h2 toc-link" data-title="ثبت درخواست برداشت رمزارزی">ثبت درخواست برداشت رمزارزی</a>
                   </li>
                   <li>
-                    <a href="#withdraw-confirm" class="toc-h2 toc-link" data-title="تایید درخواست برداشت">تایید درخواست برداشت</a>
+                    <a href="#withdraw-confirm" class="toc-h2 toc-link" data-title="تایید درخواست برداشت رمزارزی">تایید درخواست برداشت رمزارزی</a>
                   </li>
                   <li>
-                    <a href="#withdraw-list" class="toc-h2 toc-link" data-title="فهرست برداشت‌ها">فهرست برداشت‌ها</a>
+                    <a href="#withdraw-view" class="toc-h2 toc-link" data-title="مشاهده جزئیات برداشت رمزارزی">مشاهده جزئیات برداشت رمزارزی</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#rial-withdraw" class="toc-h1 toc-link" data-title="برداشت ریالی">برداشت ریالی</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#rial-withdraw-request" class="toc-h2 toc-link" data-title="ثبت درخواست برداشت ریالی">ثبت درخواست برداشت ریالی</a>
                   </li>
                   <li>
-                    <a href="#withdraw-view" class="toc-h2 toc-link" data-title="مشاهده برداشت">مشاهده برداشت</a>
+                    <a href="#rial-withdraw-cancel" class="toc-h2 toc-link" data-title="لغو درخواست برداشت ریالی">لغو درخواست برداشت ریالی</a>
+                  </li>
+                  <li>
+                    <a href="#rial-withdraw-details" class="toc-h2 toc-link" data-title="مشاهده جزئیات برداشت ریالی">مشاهده جزئیات برداشت ریالی</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#withdraw-list" class="toc-h1 toc-link" data-title="فهرست برداشت‌ها">فهرست برداشت‌ها</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#withdraw-list-section" class="toc-h2 toc-link" data-title="فهرست برداشت‌ها">فهرست برداشت‌ها</a>
                   </li>
               </ul>
           </li>
@@ -5036,9 +5055,9 @@
 <td>افزایش وجه تضمین بیشتر از موجودی أزاد کیف‌پول تعهدی است.</td>
 </tr>
 </tbody></table>
-<h1 id="withdraw">برداشت</h1>
+<h1 id="withdraw">برداشت رمزارزی</h1>
 
-<h2 id="withdraw-request">ثبت درخواست برداشت</h2>
+<h2 id="withdraw-request">ثبت درخواست برداشت رمزارزی</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/wallets/withdraw'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'X-TOTP: 123456'</span> <span class="se">\</span>
@@ -5074,7 +5093,7 @@
 <p>در صورت نبودن آدرس مقصد در دفتر آدرس، پس از ثبت درخواست برداشت، یک کد تایید یکبارمصرف به کاربر ایمیل و پیامک می‌شود.</p>
 </blockquote>
 
-<p>برای ثبت درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+<p>برای ثبت درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><strong>درخواست:</strong> <code>POST /users/wallets/withdraw</code></li>
@@ -5152,7 +5171,7 @@
 <li><strong>شبکه انتقال:</strong> مقادیر <span class="network-symbols"></span> قابل قبول است. در مواردی که چند شبکه برداشت برای رمزارز درخواستی پشتیبانی می‌شود، می‌توان شبکه انتقال را تعیین نمود.</li>
 <li><strong>صورت‌حساب:</strong> در انتقال‌های شبکه <code>BTCLN</code> الزامی است. در صورت وجود invoice پارامترهای amount و  address از آن استخراج شده و در بدنه درخواست بلااستفاده خواهند شد. شبکه صورت‌حساب باید با network در صورت مشخص شدن در درخواست مطابقت داشته باشد.</li>
 <li><strong>مقدار:</strong> در صورتی که بدون invoice درخواست برداشت ثبت می‌کنید، الزامی می‌شود.</li>
-<li><strong>آدرس مقصد:</strong> برای برداشت‌های ریالی <a href="/#88cb25e727" title="دریافت از پروفایل">شناسه حساب بانکی</a> تایید شده کاربر جهت دریافت وجه و برای برداشت‌های رمزارزی آدرس کیف پول مقصد می‌باشد. در صورتی که از invoice برای برداشت استفاده می‌کنید، بلااستفاده خواهد شد.</li>
+<li><strong>آدرس مقصد:</strong> آدرس کیف پول مقصد می‌باشد. در صورتی که از invoice برای برداشت استفاده می‌کنید، بلااستفاده خواهد شد.</li>
 <li><strong>بدون تگ:</strong> برای برداشت از شبکه‌های <span class="tag-required-networks"></span> که نیاز به تگ انتقال دارند، <strong>اگر می خواهید تگ انتقال را وارد نکنید، مقدار گزینه‌ی مربوط به آن (noTag) را &quot;true&quot; وارد کنید.</strong></li>
 <li><strong>تگ انتقال:</strong> در شبکه‌هایی <span class="tag-required-networks"></span> که استفاده از تگ ضروری است این پارامتر الزامی است، مگر اینکه noTag فعال شده باشد.    <a href="https://nobitex.ir/mag/what-is-memo/">ممو، تگ یا کامنت چیست؟</a></li>
 </ol>
@@ -5226,14 +5245,6 @@
 <td>کاربر موبایل تایید شده ندارد</td>
 </tr>
 <tr>
-<td>ShabaWithdrawCannotProceed</td>
-<td>امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد</td>
-</tr>
-<tr>
-<td>ShabaWithdrawCannotProceed</td>
-<td>امکان ثبت درخواست برداشت ریالی بیشتر از حدمجاز روزانه وجود ندارد</td>
-</tr>
-<tr>
 <td>NotWhitelistedTargetAddress</td>
 <td>حالت برداشت امن روی حساب فعال است اما شبکه، آدرس (یا تگ) در دفتر آدرس شما وجود ندارد</td>
 </tr>
@@ -5247,7 +5258,7 @@
 <li>درخواست برداشت ثبت شده در این مرحله  نیاز به تایید توسط کاربر دارد.</li>
 </ol>
 
-<h2 id="withdraw-confirm">تایید درخواست برداشت</h2>
+<h2 id="withdraw-confirm">تایید درخواست برداشت رمزارزی</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/users/wallets/withdraw-confirm'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -5276,7 +5287,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای تایید درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+<p>برای تایید درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><strong>درخواست:</strong> <code>POST /users/wallets/withdraw-confirm</code></li>
@@ -5309,95 +5320,12 @@
 </tbody></table>
 <h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
 <ol>
-<li>در برداشت‌های ریالی به شبای تایید شده کاربر و برداشت رمزارزی به آدرس‌های امن دفتر آدرس، نیازی به ارسال رمز یکبارمصرف نیست.</li>
+<li>در برداشت رمزارزی به آدرس‌های امن دفتر آدرس، نیازی به ارسال رمز یکبارمصرف نیست.</li>
 <li>برای تایید برداشت به آدرس‌های تایید نشده باید کد یکبارمصرف ارسال شده به شماره تلفن همراه یا ایمیل حساب کاربری خود را استخراج و به این API ارسال نمایید.</li>
 <li>امکان استفاده از آی‌پی اختصاصی به زودی فراهم خواهد شد.</li>
 </ol>
 
-<h2 id="withdraw-list">فهرست برداشت‌ها</h2>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/users/wallets/withdraws/list'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
-</code></pre></div>
-<blockquote>
-<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"withdraws"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">238</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-19T14:17:23.441723+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">062a</span><span class="se">\u</span><span class="s2">062c</span><span class="se">\u</span><span class="s2">0627</span><span class="se">\u</span><span class="s2">0631</span><span class="se">\u</span><span class="s2">062a: IR140180000000003333333333"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3451</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-04T12:59:38.196935+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lgn1zc77mEjk72KvX..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3454</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf..."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>برای دریافت لیست آخرین برداشت‌ها از این نوع درخواست استفاده نمایید:</p>
-
-<ul>
-<li><strong>درخواست:</strong> <code>GET /users/wallets/withdraws/list</code></li>
-<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> ۶۰ درخواست در ۲ دقیقه</li>
-<li><strong><a href="#pagination">صفحه بندی:</a></strong> دارد (پیش فرض 20)</li>
-<li><strong><a href="#date-filter">فیلترزمانی:</a></strong> دارد</li>
-</ul>
-<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
-<table><thead>
-<tr>
-<th>پارامتر</th>
-<th>نوع</th>
-<th>پیش‌فرض</th>
-<th>توضیحات</th>
-<th>نمونه</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>wallet</td>
-<td>string</td>
-<td>all</td>
-<td>شناسه کیف پول کاربر</td>
-<td>3456</td>
-</tr>
-</tbody></table>
-
-<h2 id="withdraw-view">مشاهده برداشت</h2>
+<h2 id="withdraw-view">مشاهده جزئیات برداشت رمزارزی</h2>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/withdraws/433'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
 </code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/withdraws/433
@@ -5423,13 +5351,13 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای مشاهده وضعیت یک درخواست برداشت از این نوع درخواست استفاده نمایید:</p>
+<p>برای مشاهده وضعیت یک درخواست برداشت رمزارزی از این نوع درخواست استفاده نمایید:</p>
 
 <ul>
 <li><strong>درخواست:</strong> <code>GET /withdraws/WITHDRAW</code></li>
 <li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> ۶۰ درخواست در ۲ دقیقه</li>
 </ul>
-<h3 id='f9f1b685f9-4'>پارامترهای ورودی</h3>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -5445,6 +5373,635 @@
 <td>الزامی</td>
 <td>شناسه درخواست برداشت</td>
 <td>433</td>
+</tr>
+</tbody></table>
+<h1 id="rial-withdraw">برداشت ریالی</h1>
+
+<p>این سرویس‌ها فقط برای انجام برداشت‌های ریالی طراحی و پیاده‌سازی شده است. این فرایند امکان انتقال وجه ریالی میان حساب‌های بانکی کاربر و حساب کاربری او را فراهم می‌کند.</p>
+
+<h2 id="rial-withdraw-request">ثبت درخواست برداشت ریالی</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/cobank/withdraw'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"destinationBankAccountId": 13568, "amount": "2500000000"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/cobank/withdraw \
+  destinationBankAccountId=13568 amount=2500000000
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CW430542"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fulfilledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">13568</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"صادرات: IR670190123456789001234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isCancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pending"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35413545"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paya"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35415784546"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferred"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satna"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورتی که درخواست با خطا مواجه شود، پاسخ به این شکل خواهد بود</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WithdrawUnavailable"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WithdrawUnavailable"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای ثبت درخواست برداشت ریالی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /cobank/withdraw</code></li>
+<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> 10 درخواست در 3 دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>destinationBankAccountId</td>
+<td>int</td>
+<td>الزامی</td>
+<td>شناسه حساب‌بانکی کاربر</td>
+<td>13568</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>الزامی</td>
+<td>مقدار (ریال)</td>
+<td>2500000000</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><strong>destinationBankAccountId</strong>: <a href="/#88cb25e727" title="دریافت از پروفایل">شناسه حساب بانکی</a> تایید شده کاربر جهت دریافت وجه </li>
+</ul>
+<h3 id='8c43ac4221'>پارامترهای خروجی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>شناسه درخواست برداشت ریالی که یک رشته خواهد بود و با WJ یا CW آغاز میشود و به دنبال آن عدد خواهد آمد.</td>
+<td>CW13568</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>زمان ایجاد درخواست برداشت</td>
+<td>2021-12-11T10:13:42.957103+00:00</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت درخواست برداشت</td>
+<td>New</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار درخواست برداشت (ریال)</td>
+<td>2500000000</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>monetary</td>
+<td>مقدار کارمزد درخواست برداشت (ریال)</td>
+<td>20000</td>
+</tr>
+<tr>
+<td>fulfilledAmount</td>
+<td>monetary</td>
+<td>مقدار برداشت انجام شده. (در ابتدا صفر است)</td>
+<td>1500000000</td>
+</tr>
+<tr>
+<td>bankAccountId</td>
+<td>int</td>
+<td>شناسه حساب‌بانکی کاربر</td>
+<td>13568</td>
+</tr>
+<tr>
+<td>bankAccountInfo</td>
+<td>string</td>
+<td>اطلاعات حساب‌بانکی شامل نام بانک و شماره حساب</td>
+<td>صادرات: IR670190123456789001234567</td>
+</tr>
+<tr>
+<td>isCancelable</td>
+<td>bool</td>
+<td>امکان لغو درخواست وجود دارد یا خیر.</td>
+<td>true, false</td>
+</tr>
+<tr>
+<td>records</td>
+<td>array</td>
+<td>لیست ریزتراکنش‌ها در صورت وجود</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='records'>پارامترهای فیلد records</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>monetary</td>
+<td>مقدار درخواست برداشت ارسال شده به بانک (ریال)</td>
+<td>1000000000</td>
+</tr>
+<tr>
+<td>bankReferenceNumber</td>
+<td>string</td>
+<td>کد پیگیری بانک</td>
+<td>123f345345g34634</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت ریز تراکنش‌</td>
+<td>Pending, Failed, Transferred</td>
+</tr>
+<tr>
+<td>estimatedSettleAt</td>
+<td>string</td>
+<td>زمان تخمینی واریز وجه به حساب کاربر</td>
+<td>2021-12-11T10:13:42.957103+00:00</td>
+</tr>
+<tr>
+<td>providerUpdatedAt</td>
+<td>string</td>
+<td>زمان بروزرسانی وضعیت ریزتراکنش از سمت پروایدر</td>
+<td>2021-12-11T10:13:42.957103+00:00</td>
+</tr>
+<tr>
+<td>transferType</td>
+<td>string</td>
+<td>نوع انتقال وجه</td>
+<td>normal, paya, satna</td>
+</tr>
+</tbody></table>
+<h3 id='97fac729f4'>وضعیت‌های درخواست برداشت</h3>
+<table><thead>
+<tr>
+<th>وضعیت</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>New</td>
+<td>ثبت درخواست توسط کاربر</td>
+</tr>
+<tr>
+<td>Sent</td>
+<td>ارسال درخواست به پروایدر</td>
+</tr>
+<tr>
+<td>Bank processing</td>
+<td>پردازش درخواست توسط بانک</td>
+</tr>
+<tr>
+<td>Partially Done</td>
+<td>بخشی از درخواست موفق</td>
+</tr>
+<tr>
+<td>Done</td>
+<td>درخواست کاملا موفق</td>
+</tr>
+<tr>
+<td>Failed</td>
+<td>درخواست کاملا ناموفق</td>
+</tr>
+<tr>
+<td>Rejected</td>
+<td>رد درخواست (توسط نوبیتکس، پروایدر یا بانک)</td>
+</tr>
+<tr>
+<td>Canceled</td>
+<td>لغو درخواست توسط کاربر</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4'>حالت‌های خطا</h3>
+<p>در صورتی که درخواست برداشت معتبر نباشد، ممکن است یکی از این خطاها برگردانده شود. در صورت دریافت هر یک از این خطاها، درخواست شما ثبت نشده است و در صورت تمایل باید درخواست را دوباره ارسال کنید.</p>
+
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UnAcceptedDisclaimerError</td>
+<td>برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.</td>
+</tr>
+<tr>
+<td>FeatureUnavailable</td>
+<td>این امکان فعلا در دسترس شما نیست.</td>
+</tr>
+<tr>
+<td>ParseError</td>
+<td>مشکلی در پارامتر ورودی وجود دارد.</td>
+</tr>
+<tr>
+<td>BankAccountNotFound</td>
+<td>حساب بانکی مورد نظر پیدا نشد.</td>
+</tr>
+<tr>
+<td>TooManyRequests</td>
+<td>قبلا درخواست داده‌اید، لطفا کمی صبر کنید.</td>
+</tr>
+<tr>
+<td>WithdrawUnavailable</td>
+<td>برداشت ریالی برای شما محدود شده است.</td>
+</tr>
+<tr>
+<td>WithdrawAmountLimitation</td>
+<td>مقدار برداشت نباید از حداکثر مقدار قابل برداشت بیشتر باشد.</td>
+</tr>
+<tr>
+<td>InsufficientBalance</td>
+<td>موجودی کافی نیست.</td>
+</tr>
+<tr>
+<td>AmountTooLow</td>
+<td>مقدار برداشت نباید از حداقل مقدار قابل برداشت کمتر باشد.</td>
+</tr>
+<tr>
+<td>InsufficientBalanceOrInactiveWallet</td>
+<td>موجودی کافی نیست.</td>
+</tr>
+<tr>
+<td>WithdrawLimitReached</td>
+<td>در هر ۲۴ ساعت فقط ۳ برداشت ریالی و ۱۰ برداشت رمزارزی امکان‌پذیر است.</td>
+</tr>
+<tr>
+<td>AmountTooHigh</td>
+<td>مقدار برداشت نباید از حداکثر مقدار قابل برداشت بیشتر باشد.</td>
+</tr>
+<tr>
+<td>ShabaWithdrawCannotProceed</td>
+<td>سقف واریز به هر شماره شبا ۲ میلیارد ریال است. می‌توانید مبلغ را به دو یا چند شماره شبا واریز کنید.</td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e'>نکات و ملاحظات</h3>
+<p>مقدار estimatedSettleAt و bankReferenceNumber در ابتدای ثبت درخواست خالی می‌باشد و پس از دریافت اطلاعات از سمت بانک، این فیلدها مقداردهی خواهد شد.</p>
+
+<h2 id="rial-withdraw-cancel">لغو درخواست برداشت ریالی</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/cobank/withdraw/&lt;id&gt;/cancel'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http POST https://apiv2.nobitex.ir/cobank/withdraw/&lt;id&gt;/cancel 
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CW430542"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fulfilledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">13568</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"صادرات: IR670190123456789001234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isCancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pending"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35413545"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paya"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35415784546"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferred"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satna"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت مواجه با خطا چنین پاسخی خواهید داشت</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WithdrawRequestNotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Withdraw Request Not Found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای لغو درخواست برداشت ریالی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /cobank/withdraw/&lt;id&gt;/cancel</code></li>
+<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> 60 درخواست در 1 ساعت</li>
+<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> 10 درخواست در 1 دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>CW256854</td>
+</tr>
+</tbody></table>
+<h3 id='2f74b9d52e-2'>نکات و ملاحظات</h3>
+<p>امکان لغو درخواست برداشت تا زمانی ممکن است که وضعیت درخواست در حالت New باشد و بیش از ۳ دقیقه از زمان ثبت آن نگذشته باشد.</p>
+<h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WithdrawRequestNotFound</td>
+<td>درخواست برداشت پیدا نشد.</td>
+</tr>
+<tr>
+<td>UnAcceptedDisclaimerError</td>
+<td>برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.</td>
+</tr>
+<tr>
+<td>CancellationFailed</td>
+<td>لغو درخواست برداشت ناموفق شد.</td>
+</tr>
+<tr>
+<td>NotCancellable</td>
+<td>لغو درخواست برداشت امکان‌پذیر نیست.</td>
+</tr>
+</tbody></table>
+
+<h2 id="rial-withdraw-details">مشاهده جزئیات برداشت ریالی</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://apiv2.nobitex.ir/cobank/withdraw/&lt;id&gt;'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/cobank/withdraw/&lt;id&gt; 
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CW430542"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fulfilledAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">13568</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankAccountInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"صادرات: IR670190123456789001234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isCancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pending"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35413545"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paya"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499500000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankReferenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35415784546"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferred"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"estimatedSettleAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerUpdatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"satna"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>در صورت مواجه با خطا چنین پاسخی خواهید داشت</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WithdrawRequestNotFound"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Withdraw Request Not Found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای مشاهده جزئیات درخواست برداشت ریالی از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>POST /cobank/withdraw/&lt;id&gt;</code></li>
+<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> 60 درخواست در 2 دقیقه</li>
+</ul>
+<h3 id='f9f1b685f9-3'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>الزامی</td>
+<td>شناسه درخواست برداشت</td>
+<td>CW256854</td>
+</tr>
+</tbody></table>
+<h3 id='eec2b3e8e4-3'>حالت‌های خطا</h3>
+<table><thead>
+<tr>
+<th>کد خطا</th>
+<th>توضیحات</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WithdrawRequestNotFound</td>
+<td>درخواست برداشت پیدا نشد.</td>
+</tr>
+<tr>
+<td>UnAcceptedDisclaimerError</td>
+<td>برای برداشت، لازم است موجودی کیف اسپات خود را تایید کنید.</td>
+</tr>
+</tbody></table>
+<h1 id="withdraw-list">فهرست برداشت‌ها</h1>
+
+<h2 id="withdraw-list-section">فهرست برداشت‌ها</h2>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/users/wallets/withdraws/list'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token yourTOKENhereHEX0000000000'</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
+</code></pre></div>
+<blockquote>
+<p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"withdraws"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-11T10:13:42.957103+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canceled"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCLN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lnbc123m1pskcu80pp5qqqsyqcyq5rqwz..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SaMpLeWaLlEtAdDrEsS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3456</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nobitex.ir/receipt/Bitcoin/ewd23d..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">238</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-07-01T22:00:15.256089+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\u</span><span class="s2">062a</span><span class="se">\u</span><span class="s2">062c</span><span class="se">\u</span><span class="s2">0627</span><span class="se">\u</span><span class="s2">0631</span><span class="se">\u</span><span class="s2">062a: IR140180000000003333333333"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3451</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nobitex://app/wallet/rls/transaction/CW238"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-07-01T22:05:15.256089+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سامان: IR030560080180001896427001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">341</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nobitex://app/wallet/rls/transaction/WJ239"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIAT_MONEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"invoice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-07-02T22:05:15.256089+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Done"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lgn1zc77mEjk72KvX..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"wallet_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3454</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockchain_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://live.blockcypher.com/ltc/tx/c1ed4229e598d4cf..."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"is_cancelable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"hasNext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>برای دریافت لیست آخرین برداشت‌ها اعم از ریالی و رمزارزی میتوانید از این نوع درخواست استفاده نمایید:</p>
+
+<ul>
+<li><strong>درخواست:</strong> <code>GET /users/wallets/withdraws/list</code></li>
+<li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> ۶۰ درخواست در ۲ دقیقه</li>
+<li><strong><a href="#pagination">صفحه بندی:</a></strong> دارد (پیش فرض 20)</li>
+<li><strong><a href="#date-filter">فیلترزمانی:</a></strong> دارد</li>
+</ul>
+<h3 id='f9f1b685f9'>پارامترهای ورودی</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>پیش‌فرض</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>wallet</td>
+<td>string</td>
+<td>all</td>
+<td>شناسه کیف پول کاربر</td>
+<td>3456</td>
 </tr>
 </tbody></table>
 <h1 id="websocket">وب‌سوکت</h1>
