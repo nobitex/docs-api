@@ -23,7 +23,7 @@ http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
   "status": "ok",
   "withdraws": [
     {
-      "id": 432,
+      "id": 10,
       "createdAt": "2021-12-11T10:13:42.957103+00:00",
       "status": "Canceled",
       "amount": "0.0123",
@@ -38,7 +38,7 @@ http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
     },
     {
       "id": 238,
-      "createdAt": "2020-09-19T14:17:23.441723+00:00",
+      "createdAt": "2025-07-01T22:00:15.256089+00:00",
       "status": "Done",
       "amount": "1000000",
       "currency": "rls",
@@ -47,12 +47,26 @@ http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
       "address": "\u062a\u062c\u0627\u0631\u062a: IR140180000000003333333333",
       "tag": null,
       "wallet_id": 3451,
-      "blockchain_url": null,
-      "is_cancelable": true
+      "blockchain_url": "nobitex://app/wallet/rls/transaction/CW238",
+      "is_cancelable": false
     },
     {
       "id": 239,
-      "createdAt": "2018-10-04T12:59:38.196935+00:00",
+      "createdAt": "2025-07-01T22:05:15.256089+00:00",
+      "status": "Done",
+      "amount": "5000000",
+      "currency": "rls",
+      "address": "سامان: IR030560080180001896427001",
+      "tag": null,
+      "wallet_id": 341,
+      "blockchain_url": "nobitex://app/wallet/rls/transaction/WJ239",
+      "is_cancelable": false,
+      "network": "FIAT_MONEY",
+      "invoice": null
+    },
+    {
+      "id": 240,
+      "createdAt": "2025-07-02T22:05:15.256089+00:00",
       "status": "Done",
       "amount": "1",
       "currency": "ltc",
