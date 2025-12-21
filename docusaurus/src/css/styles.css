@@ -84,6 +84,7 @@
   --text-primary: #000000;
   --bg-neutral-default-rest: rgba(111, 129, 148, 0.08);
   --theme-bg: #F7FAFC;
+  --theme-bg-reverse: #000000;
 }
 
 [data-theme='dark'] {
@@ -104,6 +105,7 @@
   --text-primary: #FFFFFF;
   --bg-neutral-default-rest: rgba(97, 117, 138, 0.24);
   --theme-bg: #000000;
+    --theme-bg-reverse: #F7FAFC;
 }
 
 [class^="docRoot_"],
@@ -277,6 +279,10 @@
   direction: rtl;
 }
 
+.openapi-security__details {
+  direction: rtl;
+}
+
 .openapi-tabs__code-container {
   direction: rtl;
 }
@@ -287,6 +293,41 @@
 
 .theme-layout-main {
     background: var(--theme-bg);
+}
+
+.openapi-explorer__floating-btn {
+    button {
+        margin-right: 400px;
+        position-area: y-end;
+        place-self: anchor-center;
+        text-align: center;
+        font-family: 'vazirmatn', 'roboto-regular', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+
+        display: inline-flex;
+        height: 26px;
+        min-height: 32px;
+        max-height: 32px;
+        padding: 0 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        background: var(--theme-bg-reverse);
+        border-radius: 6px;
+        border: 1px solid transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.openapi-explorer__select-input {
+    margin-top: 0 !important;
+    background-image: none !important;
 }
 
 

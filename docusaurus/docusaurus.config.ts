@@ -69,7 +69,7 @@ const config: Config = {
           type: 'custom-searchNavbarItem',
           position: 'right',
         },
-        { to: '/', label: 'مستندات', position: 'left', activeBaseRegex: '^/$' },
+        { to: '/', label: 'مستندات', position: 'left', activeBaseRegex: '^(?!/(websocket|changelog|faq|general_notes|download)(/|$)).*' },
         { to: '/websocket', label: 'وبسوکت', position: 'left' },
         { to: '/changelog', label: 'سابقه‌ی تغییرات', position: 'left' },
         { to: '/faq', label: 'سوالات متداول', position: 'left' },

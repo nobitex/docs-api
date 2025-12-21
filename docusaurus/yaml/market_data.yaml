@@ -7,7 +7,7 @@ info:
     آمار بازار و داده‌های OHLC.
 
 servers:
-  - url: https://api.nobitex.ir
+  - url: https://apiv2.nobitex.ir
   - url: https://testnetapiv2.nobitex.ir
 
 tags:

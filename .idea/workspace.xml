@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/docusaurus/plugins/docusaurus-plugin-custom-search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/plugins/docusaurus-plugin-custom-search/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/sidebars.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus/src/components/CustomSearch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/src/components/CustomSearch/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docusaurus/src/pages/download.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/market_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/yaml/market_data.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +61,11 @@
       <recent name="$PROJECT_DIR$/docusaurus/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docusaurus/src/pages" />
       <recent name="$PROJECT_DIR$/docusaurus/scripts" />
       <recent name="$PROJECT_DIR$/docusaurus/static/img" />
       <recent name="$PROJECT_DIR$/docusaurus/src/css" />
       <recent name="$PROJECT_DIR$/docusaurus" />
-      <recent name="$PROJECT_DIR$/docusaurus/docs/yaml-src" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -88,7 +90,11 @@
       <workItem from="1765820296166" duration="9394000" />
       <workItem from="1765901784239" duration="304000" />
       <workItem from="1765961054367" duration="5645000" />
-      <workItem from="1765990971367" duration="1417000" />
+      <workItem from="1765990971367" duration="1495000" />
+      <workItem from="1766172366204" duration="4683000" />
+      <workItem from="1766208589095" duration="2395000" />
+      <workItem from="1766220945572" duration="1425000" />
+      <workItem from="1766260443060" duration="315000" />
     </task>
     <servers />
   </component>
