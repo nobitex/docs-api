@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/download.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/download.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/address_book.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/address_book.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/auth.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/auth.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/margin_trade.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/margin_trade.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/market_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/market_data.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/options.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/portfolio.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/portfolio.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/referral.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/referral.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/spot_trade.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/spot_trade.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/user_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/user_data.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaml/withdraw.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/withdraw.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
