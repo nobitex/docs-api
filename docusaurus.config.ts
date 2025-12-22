@@ -87,7 +87,7 @@ const config: Config = {
         docsPluginId: "classic",
         config: {
           market_data: {
-            specPath: "yaml/market_data.yaml",
+            specPath: "openapi/market_data.openapi",
             outputDir: "docs/market_data",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -95,7 +95,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           user_data: {
-            specPath: "yaml/user_data.yaml",
+            specPath: "openapi/user_data.openapi",
             outputDir: "docs/user_data",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -103,7 +103,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           spot_trade: {
-            specPath: "yaml/spot_trade.yaml",
+            specPath: "openapi/spot_trade.openapi",
             outputDir: "docs/spot_trade",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -111,7 +111,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           margin_trade: {
-            specPath: "yaml/margin_trade.yaml",
+            specPath: "openapi/margin_trade.openapi",
             outputDir: "docs/margin_trade",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -119,7 +119,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           withdraw: {
-            specPath: "yaml/withdraw.yaml",
+            specPath: "openapi/withdraw.openapi",
             outputDir: "docs/withdraw",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -127,7 +127,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           address_book: {
-            specPath: "yaml/address_book.yaml",
+            specPath: "openapi/address_book.openapi",
             outputDir: "docs/address_book",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -135,7 +135,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           security: {
-            specPath: "yaml/security.yaml",
+            specPath: "openapi/security.openapi",
             outputDir: "docs/security",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -143,7 +143,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           referral: {
-            specPath: "yaml/referral.yaml",
+            specPath: "openapi/referral.openapi",
             outputDir: "docs/referral",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -151,7 +151,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           auth: {
-            specPath: "yaml/auth.yaml",
+            specPath: "openapi/auth.openapi",
             outputDir: "docs/auth",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -159,7 +159,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           portfolio: {
-            specPath: "yaml/portfolio.yaml",
+            specPath: "openapi/portfolio.openapi",
             outputDir: "docs/portfolio",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -167,7 +167,7 @@ const config: Config = {
             },
           } satisfies OpenApiPlugin.Options,
           options: {
-            specPath: "yaml/options.yaml",
+            specPath: "openapi/options.openapi",
             outputDir: "docs/options",
             sidebarOptions: {
               groupPathsBy: "tag",
