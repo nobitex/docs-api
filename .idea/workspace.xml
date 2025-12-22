@@ -5,11 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docusaurus/src/pages/download.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/docusaurus.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/src/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/market_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus/yaml/market_data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/docs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/plugins/docusaurus-plugin-custom-search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/docusaurus-plugin-custom-search/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/plugins/docusaurus-plugin-custom-search/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/docusaurus-plugin-custom-search/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidebars.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/components/CustomSearch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSearch/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/components/CustomSearch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSearch/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/css/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/changelog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/download.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/download.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/faq.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/faq.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/general_notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/general_notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/index.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/pages/websocket.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/websocket.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/theme/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/theme/NavbarItem/ComponentTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/NavbarItem/ComponentTypes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/theme/NavbarItem/SearchNavbarItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/NavbarItem/SearchNavbarItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/src/theme/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/Root.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-100.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-100.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-200.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-200.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-300.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-300.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-400.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-500.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-500.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-600.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-600.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-700.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-700.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-800.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-800.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/fonts/vazirmatn-fd-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/vazirmatn-fd-900.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/logo-dark.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo-dark.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/logo-light.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo-light.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/nobitex-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/nobitex-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/static/img/search-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/search-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/address_book.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/address_book.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/auth.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/auth.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/margin_trade.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/margin_trade.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/market_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/market_data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/portfolio.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/portfolio.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/referral.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/referral.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/spot_trade.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/spot_trade.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/user_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/user_data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yaml/withdraw.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yaml/withdraw.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +68,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/docusaurus/package.json" />
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -61,11 +109,11 @@
       <recent name="$PROJECT_DIR$/docusaurus/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/docusaurus/src/pages" />
       <recent name="$PROJECT_DIR$/docusaurus/scripts" />
       <recent name="$PROJECT_DIR$/docusaurus/static/img" />
       <recent name="$PROJECT_DIR$/docusaurus/src/css" />
-      <recent name="$PROJECT_DIR$/docusaurus" />
     </key>
   </component>
   <component name="SharedIndexes">

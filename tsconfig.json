@@ -1,0 +1,8 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./docusaurus"
+  },
+  "exclude": [
+    "docusaurus/.docusaurus", "build"]
+}

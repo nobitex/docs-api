@@ -12,7 +12,10 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "genapi": "docusaurus gen-api-docs all",
+    "clean:docs": "find docs -mindepth 1 ! -name '.gitignore' -exec rm -rf {} +",
+    "dev": "yarn install && yarn clean:docs && yarn genapi && yarn start"
   },
   "dependencies": {
     "@docusaurus/core": "3.8.1",

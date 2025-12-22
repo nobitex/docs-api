@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useHistory } from '@docusaurus/router'
 import { usePluginData } from '@docusaurus/useGlobalData'
-import './styles.css'
 
 interface SearchEntry {
     pageTitle: string
