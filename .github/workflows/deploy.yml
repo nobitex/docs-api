@@ -1,42 +1,33 @@
-name: Deploy
+name: Deploy Docusaurus
 
 on:
   push:
-    branches: [ 'master' ]
+    branches: [ 'main/open-api' ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      ruby-version: 3.3.8
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        ruby-version: ${{ env.ruby-version }}
+        node-version: 18
+        cache: yarn
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
 
+    - name: Clean old docs
+      run: yarn clean:docs
 
-    - uses: actions/cache@v4
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ env.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          gems-${{ runner.os }}-${{ env.ruby-version }}-
-          gems-${{ runner.os }}-
+    - name: Generate API docs
+      run: yarn genapi
 
-    - run: bundle config set deployment 'true'
-    - name: bundle install
-      run: |
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
+    - name: Build site
+      run: yarn build
 
-    - run: bundle exec middleman build
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        keep_files: true
+    - name: Deploy to GitHub Pages
+      run: yarn deploy
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
