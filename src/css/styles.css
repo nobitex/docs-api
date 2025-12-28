@@ -85,6 +85,8 @@
   --bg-neutral-default-rest: rgba(111, 129, 148, 0.08);
   --theme-bg: #F7FAFC;
   --theme-bg-reverse: #000000;
+  --bg-surface-2: #F0F3F7;
+    --br-primary-default-rest: #8F6ED4;
 }
 
 [data-theme='dark'] {
@@ -105,7 +107,10 @@
   --text-primary: #FFFFFF;
   --bg-neutral-default-rest: rgba(97, 117, 138, 0.24);
   --theme-bg: #000000;
-    --theme-bg-reverse: #F7FAFC;
+  --theme-bg-reverse: #F7FAFC;
+  --bg-surface-2: #15191C;
+  --br-primary-default-rest: #825BD3;
+
 }
 
 [class^="docRoot_"],
@@ -581,4 +586,87 @@
     }
 }
 
+.openapi-explorer__code-block-btn-group {
+    position-area: y-start;
+    margin-left: -350px;
+}
 
+.tabs__item {
+    .openapi-tabs__code-item {
+        [class^="openapi-tabs__code-item"],
+        [class*="openapi-tabs__code-item"] {
+            &:active {
+                background: red;
+            }
+        }
+    }
+}
+
+.openapi__heading {
+    margin: 24px 0 40px 0 !important;
+}
+
+.openapi__method-endpoint {
+    display: flex;
+    align-items: center;
+    /* max-width: 100%; */
+    width: 100%;
+    direction: rtl;
+    padding: 0.65rem;
+    border: 1px solid var(--ifm-toc-border-color);
+    gap: 16px;
+}
+
+.openapi-schema__type {
+    padding-right: 12px;
+    padding-left: 0;
+}
+
+.openapi-schema__required {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--openapi-required);
+    margin-right: 1%;
+    background-color: transparent;
+}
+
+.tabs.openapi-tabs__code-list-container.openapi-tabs__code-container-inner {
+    padding-right: 0;
+    padding-left: 0;
+    gap: 12px;
+
+    li {
+        margin: 0;
+    }
+}
+
+.openapi-tabs__schema-list-container.openapi-tabs__schema {
+    padding-right: 0;
+    padding-left: 0;
+    gap: 12px;
+
+    li {
+        margin: 0;
+    }
+}
+
+.openapi-tabs__mime-container {
+    ul {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.openapi-tabs__code-item.active {
+    border-radius: 3px;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--br-primary-default-rest);
+    box-shadow: none;
+
+    &:hover {
+        border: 1px solid var(--bg-surface-2);
+    }
+}
