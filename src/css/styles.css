@@ -86,7 +86,8 @@
   --theme-bg: #F7FAFC;
   --theme-bg-reverse: #000000;
   --bg-surface-2: #F0F3F7;
-    --br-primary-default-rest: #8F6ED4;
+  --bg-surface-2-reversed: #15191C;
+  --br-primary-default-rest: #8F6ED4;
 }
 
 [data-theme='dark'] {
@@ -109,6 +110,7 @@
   --theme-bg: #000000;
   --theme-bg-reverse: #F7FAFC;
   --bg-surface-2: #15191C;
+  --bg-surface-2-reversed: #F0F3F7;
   --br-primary-default-rest: #825BD3;
 
 }
@@ -662,7 +664,7 @@
 
 .openapi-tabs__code-item {
     &:hover {
-        border: 1px solid var(--bg-surface-2);
+        border: 1px solid var(--bg-surface-2-reversed);
     }
 }
 
