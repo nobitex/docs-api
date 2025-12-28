@@ -660,6 +660,12 @@
     }
 }
 
+.openapi-tabs__code-item {
+    &:hover {
+        border: 1px solid var(--bg-surface-2);
+    }
+}
+
 .openapi-tabs__code-item.active {
     border-radius: 3px;
     background: var(--bg-surface-2);
@@ -667,6 +673,6 @@
     box-shadow: none;
 
     &:hover {
-        border: 1px solid var(--bg-surface-2);
+        border: 1px solid var(--br-primary-default-rest);
     }
 }
