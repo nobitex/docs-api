@@ -9,7 +9,8 @@ build
 .cache-loader
 
 # Misc
-#.DS_Store
+*.DS_STORE
+*.DS_Store
 .env.local
 .env.development.local
 .env.test.local
