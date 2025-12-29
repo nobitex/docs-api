@@ -1,0 +1,642 @@
+openapi: 3.0.3
+info:
+  title: Nobitex WebSocket & HTTP Auth API
+  version: 1.0.0
+  description: |
+    WebSocket and related HTTP APIs for Nobitex, based on Centrifugo.
+
+    - WebSocket endpoint: wss://ws.nobitex.ir/websocket
+    - Max concurrent WebSocket connections per IP: 100
+    - Max channel subscriptions per connection: 300
+    - No token required for public channels
+    - Token required for private channels (prefix `private:`)
+
+servers:
+  - url: wss://ws.nobitex.ir
+    description: Nobitex WebSocket server (Centrifugo)
+
+paths:
+  /auth/ws/token/:
+    get:
+      summary: Get WebSocket authentication token
+      description: |
+        Returns a connection token used to authenticate WebSocket connections
+        to private channels (those starting with `private:`).
+
+        - HTTP method: **GET**
+        - Endpoint: **/auth/ws/token/**
+        - Requires header: `Authorization: Token <your API token>`
+
+        Use the returned `token` when:
+        - Creating a Centrifuge client (`new Centrifuge(..., { token })`), or
+        - Sending a raw connect message: `{"connect": {"token": "<CONNECTION_TOKEN>"}, "id": 1}`.
+      operationId: getWebsocketToken
+      security:
+        - ApiTokenAuth: [ ]
+      responses:
+        '200':
+          description: WebSocket token successfully generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebsocketTokenResponse'
+              example:
+                token: "yJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjMiLCJleHAiOjE3MzE5Mzk0NDIsImlhdCI6MTczMTkzODI0MiwibWV0YSI6e319.AFZjNC0ugUcfchUKjjunNDl1kfemJkA0Y5IYRi1c0mSvIa_XxzQIeVeqg6qnTBzE-HG6zEqXXyCENJtAz7xc7wqcABWbpcHdH0fPtjG4pwDZco9O065RcXacXo7qpCN-IuC0te0qG2_2bAhc-aR7vWgHsTm6GXfrQQh_6uwVHShSarU7"
+                status: "ok"
+        '401':
+          description: Unauthorized – missing or invalid API token
+        '403':
+          description: Forbidden – token not allowed to get WS auth token
+        '429':
+          description: Too Many Requests – rate limit exceeded
+      tags:
+        - وبسوکت
+
+  /websocket:
+    get:
+      summary: WebSocket connection endpoint
+      description: |
+        WebSocket endpoint for real-time data streaming using Centrifugo protocol.
+        
+        **Connection URL:** `wss://ws.nobitex.ir/websocket`
+        
+        **Rate Limits:**
+        - Max 100 concurrent connections per IP
+        - Max 300 channel subscriptions per connection
+        
+        **Authentication:**
+        - Public channels (prefix `public:`) do not require authentication
+        - Private channels (prefix `private:`) require a connection token from `/auth/ws/token/`
+        
+        **Ping/Pong:**
+        - Server sends periodic ping messages `{}`
+        - Client must respond with pong `{}` within 25 seconds
+        - Official SDKs handle this automatically
+        
+        **Channel Patterns:**
+        - Orderbook: `public:orderbook-{MARKET_SYMBOL}` (e.g., `public:orderbook-BTCIRT`)
+        - Candles: `public:candle-{MARKET_SYMBOL}-{RESOLUTION}` (e.g., `public:candle-BTCIRT-15`)
+        - Public trades: `public:trades-{MARKET_SYMBOL}` (e.g., `public:trades-BTCIRT`)
+        - Market stats (single): `public:market-stats-{MARKET_SYMBOL}`
+        - Market stats (all): `public:market-stats-all`
+        - Private orders: `private:orders#{websocketAuthParam}`
+        - Private trades: `private:trades#{websocketAuthParam}`
+        
+        **Resolutions for candles:**
+        - Minutes: 1, 5, 15, 30
+        - Hours: 60, 180, 240, 360, 720
+        - Days: D, 2D, 3D
+      operationId: websocketConnection
+      tags:
+        - وبسوکت
+      x-websocket: true
+      responses:
+        '101':
+          description: Switching Protocols - WebSocket connection established
+        '400':
+          description: Bad Request - Invalid WebSocket upgrade request
+        '429':
+          description: Too Many Requests - Connection limit exceeded
+
+components:
+  securitySchemes:
+    ApiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: |
+        API token in the form: `Authorization: Token <yourTOKENhereHEX0000000000>`
+
+  schemas:
+
+    # ---------- Core WebSocket control messages ----------
+
+    WebsocketConnectRequest:
+      type: object
+      description: |
+        Raw Centrifugo connect message sent by client when not using an SDK.
+      properties:
+        connect:
+          type: object
+          description: Connection options (may be empty or contain `token`).
+          properties:
+            token:
+              type: string
+              description: WebSocket connection token obtained from `/auth/ws/token/`.
+          additionalProperties: true
+        id:
+          type: integer
+          format: int64
+          description: Client-side identifier of the message.
+      required:
+        - connect
+        - id
+      example:
+        connect: {}
+        id: 1
+
+    WebsocketConnectRequestWithToken:
+      allOf:
+        - $ref: '#/components/schemas/WebsocketConnectRequest'
+        - type: object
+          description: Connect message including a connection token.
+          example:
+            connect:
+              token: "<CONNECTION_TOKEN>"
+            id: 1
+
+    WebsocketSubscribeRequest:
+      type: object
+      description: Subscription request for a single channel.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Client-side identifier of the message.
+        subscribe:
+          type: object
+          properties:
+            channel:
+              type: string
+              description: Target channel name.
+          required:
+            - channel
+      required:
+        - id
+        - subscribe
+      example:
+        id: 2
+        subscribe:
+          channel: "public:orderbook-BTCIRT"
+
+    WebsocketPing:
+      type: object
+      description: |
+        Ping frame payload. Centrifugo sends `{}` and expects `{}` as pong.
+      additionalProperties: false
+      example: {}
+
+    WebsocketPushEnvelope:
+      type: object
+      description: |
+        Raw push envelope when not using an official Centrifugo client.
+
+        `pub.data` is a JSON-encoded string that should be parsed to the
+        corresponding payload type (e.g. OrderbookUpdate, CandleOhlc, etc.).
+      properties:
+        push:
+          type: object
+          properties:
+            channel:
+              type: string
+              description: Channel name that the message was published to.
+            pub:
+              type: object
+              properties:
+                data:
+                  type: string
+                  description: JSON-encoded data payload.
+                offset:
+                  type: integer
+                  format: int64
+                  description: Stream offset.
+              required:
+                - data
+                - offset
+          required:
+            - channel
+            - pub
+      required:
+        - push
+
+    # ---------- HTTP auth ----------
+
+    WebsocketTokenResponse:
+      type: object
+      description: Response returned by GET /auth/ws/token/
+      properties:
+        token:
+          type: string
+          description: JWT token used as WebSocket connection token.
+        status:
+          type: string
+          description: Status of the operation.
+          example: ok
+      required:
+        - token
+        - status
+
+    # ---------- Common monetary & timestamp helpers ----------
+
+    Monetary:
+      type: string
+      description: |
+        Monetary amount represented as a decimal string.
+      example: "47150.7989334"
+
+    UnixMillis:
+      type: integer
+      format: int64
+      description: Unix timestamp in milliseconds.
+
+    UnixSeconds:
+      type: integer
+      format: int64
+      description: Unix timestamp in seconds.
+
+    # ---------- Channel naming patterns ----------
+
+    ChannelPatterns:
+      type: object
+      description: |
+        Informational schemas describing channel naming patterns.
+
+        - Public orderbook channel:           `public:orderbook-{MARKET_SYMBOL}`
+          Example: `public:orderbook-BTCIRT`, `public:orderbook-ETHUSDT`
+        - Public candle channel:              `public:candle-{MARKET_SYMBOL}-{RESOLUTION}`
+          Example: `public:candle-BTCIRT-15`
+        - Public trades channel:              `public:trades-{MARKET_SYMBOL}`
+          Example: `public:trades-BTCIRT`
+        - Public market stats (single):       `public:market-stats-{MARKET_SYMBOL}`
+        - Public market stats (all markets):  `public:market-stats-all`
+        - Private orders:                     `private:orders#{websocketAuthParam}`
+        - Private trades:                     `private:trades#{websocketAuthParam}`
+
+        `MARKET_SYMBOL` must be uppercase, e.g. BTCIRT, ETHUSDT.
+
+        `RESOLUTION` is one of:
+        - Minutes: 1, 5, 15, 30
+        - Hours:   60, 180, 240, 360, 720
+        - Days:    D, 2D, 3D
+      properties: {}
+
+    # ---------- Orderbook ----------
+
+    OrderbookLevel:
+      type: array
+      description: Price level `[price, amount]`.
+      minItems: 2
+      maxItems: 2
+      items:
+        type: string
+      example:
+        - "35077909990"
+        - "0.009433"
+
+    OrderbookUpdate:
+      type: object
+      description: Orderbook snapshot or delta for a given market.
+      x-channel: "public:orderbook-{MARKET_SYMBOL}"
+      properties:
+        asks:
+          type: array
+          description: Sell-side orderbook levels `[price, amount]`.
+          items:
+            $ref: '#/components/schemas/OrderbookLevel'
+        bids:
+          type: array
+          description: Buy-side orderbook levels `[price, amount]`.
+          items:
+            $ref: '#/components/schemas/OrderbookLevel'
+        lastTradePrice:
+          type: string
+          description: Price of the last trade.
+          example: "35077909990"
+        lastUpdate:
+          $ref: '#/components/schemas/UnixMillis'
+      required:
+        - asks
+        - bids
+        - lastTradePrice
+        - lastUpdate
+      example:
+        asks:
+          - ["35077909990", "0.009433"]
+          - ["35078000000", "0.000274"]
+          - ["35078009660", "0.00057"]
+        bids:
+          - ["35020080080", "0.185784"]
+          - ["35020070060", "0.086916"]
+          - ["35020030010", "0.000071"]
+        lastTradePrice: "35077909990"
+        lastUpdate: 1726581829816
+
+    # ---------- Candle / OHLC ----------
+
+    CandleOhlc:
+      type: object
+      description: OHLCV candle data.
+      x-channel: "public:candle-{MARKET_SYMBOL}-{RESOLUTION}"
+      properties:
+        t:
+          $ref: '#/components/schemas/UnixSeconds'
+        o:
+          type: number
+          format: double
+          description: Open price.
+        h:
+          type: number
+          format: double
+          description: High price.
+        l:
+          type: number
+          format: double
+          description: Low price.
+        c:
+          type: number
+          format: double
+          description: Close price.
+        v:
+          type: number
+          format: double
+          description: Volume.
+      required:
+        - t
+        - o
+        - h
+        - l
+        - c
+        - v
+      example:
+        t: 1731852900
+        o: 6240000001.0
+        h: 6250000000.0
+        l: 6238000000.0
+        c: 6238031033.0
+        v: 1.26
+
+    # ---------- Public trades ----------
+
+    PublicTrade:
+      type: object
+      description: Trade message in a public trades channel.
+      x-channel: "public:trades-{MARKET_SYMBOL}"
+      properties:
+        price:
+          $ref: '#/components/schemas/Monetary'
+        time:
+          $ref: '#/components/schemas/UnixMillis'
+        type:
+          type: string
+          description: Trade side.
+          enum: [buy, sell]
+        volume:
+          $ref: '#/components/schemas/Monetary'
+      required:
+        - price
+        - time
+        - type
+        - volume
+      example:
+        price: "120000000000"
+        time: 1762781164192
+        type: "sell"
+        volume: "0.000003"
+
+    # ---------- Market stats ----------
+
+    MarketStats:
+      type: object
+      description: 24h statistics for a single market.
+      x-channel: "public:market-stats-{MARKET_SYMBOL}"
+      properties:
+        isClosed:
+          type: boolean
+          description: Whether the market is currently closed.
+        bestSell:
+          $ref: '#/components/schemas/Monetary'
+        bestBuy:
+          $ref: '#/components/schemas/Monetary'
+        volumeSrc:
+          $ref: '#/components/schemas/Monetary'
+        volumeDst:
+          $ref: '#/components/schemas/Monetary'
+        latest:
+          $ref: '#/components/schemas/Monetary'
+        mark:
+          $ref: '#/components/schemas/Monetary'
+        dayLow:
+          $ref: '#/components/schemas/Monetary'
+        dayHigh:
+          $ref: '#/components/schemas/Monetary'
+        dayOpen:
+          $ref: '#/components/schemas/Monetary'
+        dayClose:
+          $ref: '#/components/schemas/Monetary'
+        dayChange:
+          type: number
+          format: float
+          description: Percentage price change over the last 24h.
+      required:
+        - isClosed
+        - bestSell
+        - bestBuy
+        - volumeSrc
+        - volumeDst
+        - latest
+        - mark
+        - dayLow
+        - dayHigh
+        - dayOpen
+        - dayClose
+        - dayChange
+      example:
+        isClosed: false
+        bestSell: "121073861950"
+        bestBuy: "120000000000"
+        volumeSrc: "0.000185131782"
+        volumeDst: "21590044.0170869949"
+        latest: "114879999920"
+        mark: "123288285750"
+        dayLow: "110850000360"
+        dayHigh: "121073861950"
+        dayOpen: "121073861910"
+        dayClose: "114879999920"
+        dayChange: -5.12
+
+    MarketStatsAll:
+      type: object
+      description: |
+        Map of market symbol (e.g. `btc-irt`, `usdt-irt`) to MarketStats.
+      x-channel: "public:market-stats-all"
+      additionalProperties:
+        $ref: '#/components/schemas/MarketStats'
+      example:
+        btc-irt:
+          isClosed: false
+          bestSell: "121073861950"
+          bestBuy: "120000000000"
+          volumeSrc: "0.000185131782"
+          volumeDst: "21590044.0170869949"
+          latest: "114879999920"
+          mark: "123288285750"
+          dayLow: "110850000360"
+          dayHigh: "121073861950"
+          dayOpen: "121073861910"
+          dayClose: "114879999920"
+          dayChange: -5.12
+        usdt-irt:
+          isClosed: false
+          bestSell: "121073861950"
+          bestBuy: "120000000000"
+          volumeSrc: "0.000185131782"
+          volumeDst: "21590044.0170869949"
+          latest: "114879999920"
+          mark: "123288285750"
+          dayLow: "110850000360"
+          dayHigh: "121073861950"
+          dayOpen: "121073861910"
+          dayClose: "114879999920"
+          dayChange: -5.12
+
+    # ---------- Private orders (user orders channel) ----------
+
+    PrivateOrderEvent:
+      type: object
+      description: Event published in `private:orders#{websocketAuthParam}`.
+      x-channel: "private:orders#{websocketAuthParam}"
+      properties:
+        amount:
+          $ref: '#/components/schemas/Monetary'
+        avgFilledPrice:
+          $ref: '#/components/schemas/Monetary'
+        clientOrderId:
+          type: string
+          nullable: true
+        dstCurrency:
+          type: string
+          description: Destination currency (e.g. `rls`, `usdt`).
+        eventTime:
+          $ref: '#/components/schemas/UnixMillis'
+        fee:
+          $ref: '#/components/schemas/Monetary'
+        filledAmount:
+          $ref: '#/components/schemas/Monetary'
+        lastFillTime:
+          $ref: '#/components/schemas/UnixMillis'
+          nullable: true
+        marketType:
+          type: string
+          description: Market type of the order.
+          enum: [Spot, Margin]
+        orderId:
+          type: integer
+        orderType:
+          type: string
+          enum: [Market, Limit]
+        param1:
+          $ref: '#/components/schemas/Monetary'
+          nullable: true
+        price:
+          $ref: '#/components/schemas/Monetary'
+          nullable: true
+        side:
+          type: string
+          description: Order side.
+          enum: [Buy, Sell]
+        srcCurrency:
+          type: string
+          description: Source currency (e.g. `btc`).
+        status:
+          type: string
+          description: Order status (e.g. Done).
+        tradeAmount:
+          $ref: '#/components/schemas/Monetary'
+          nullable: true
+        tradeId:
+          type: integer
+          nullable: true
+        tradePrice:
+          $ref: '#/components/schemas/Monetary'
+          nullable: true
+      required:
+        - amount
+        - avgFilledPrice
+        - dstCurrency
+        - eventTime
+        - fee
+        - filledAmount
+        - marketType
+        - orderId
+        - orderType
+        - side
+        - srcCurrency
+        - status
+      example:
+        amount: "0.0002"
+        avgFilledPrice: "114879999920"
+        clientOrderId: null
+        dstCurrency: "rls"
+        eventTime: 1762779011366
+        fee: "0.00000031"
+        filledAmount: "0.0002"
+        lastFillTime: 1762779011258
+        marketType: "Spot"
+        orderId: 278339
+        orderType: "Market"
+        param1: null
+        price: null
+        side: "Buy"
+        srcCurrency: "btc"
+        status: "Done"
+        tradeAmount: "0.0002"
+        tradeId: 92547
+        tradePrice: "114879999920"
+
+    # ---------- Private trades (user trades channel) ----------
+
+    PrivateTradeEvent:
+      type: object
+      description: Event published in `private:trades#{websocketAuthParam}`.
+      x-channel: "private:trades#{websocketAuthParam}"
+      properties:
+        id:
+          type: integer
+          description: Trade identifier.
+        orderId:
+          type: integer
+          description: Related order identifier.
+        srcCurrency:
+          type: string
+          description: Source currency (e.g. `btc`, `eth`).
+        dstCurrency:
+          type: string
+          description: Destination currency (e.g. `rls`, `usdt`).
+        timestamp:
+          type: string
+          format: date-time
+          description: Time of the trade (ISO-8601).
+        type:
+          type: string
+          description: Trade side.
+          enum: [buy, sell]
+        price:
+          $ref: '#/components/schemas/Monetary'
+        amount:
+          $ref: '#/components/schemas/Monetary'
+        total:
+          $ref: '#/components/schemas/Monetary'
+        fee:
+          $ref: '#/components/schemas/Monetary'
+      required:
+        - id
+        - orderId
+        - srcCurrency
+        - dstCurrency
+        - timestamp
+        - type
+        - price
+        - amount
+        - total
+        - fee
+      example:
+        srcCurrency: "btc"
+        dstCurrency: "rls"
+        timestamp: "2024-11-23T11:31:27.833332+00:00"
+        price: "66683959340"
+        amount: "0.000404"
+        total: "26940319.57336"
+        type: "sell"
+        fee: "47150.7989334"
+        id: 12942226
+        orderId: 520305923

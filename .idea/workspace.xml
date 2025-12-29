@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="" />
+    <list default="true" id="1c31817c-a899-4200-835a-795d1e0cc73a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/openapi/websocket.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useAutoFocusOnOpen.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useEscapeKey.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useOverlayClick.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useSearchIndex.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useSearchNavigation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSearch/hooks/useSearchResults.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidebars.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSearch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSearch/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/websocket.md" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +117,8 @@
       <workItem from="1766393948051" duration="1270000" />
       <workItem from="1766432277475" duration="2237000" />
       <workItem from="1766909785251" duration="3202000" />
+      <workItem from="1766913022793" duration="173000" />
+      <workItem from="1766996660288" duration="5364000" />
     </task>
     <servers />
   </component>

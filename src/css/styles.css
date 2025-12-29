@@ -593,17 +593,12 @@
     margin-left: -350px;
 }
 
-.tabs__item {
-    .openapi-tabs__code-item {
-        [class^="openapi-tabs__code-item"],
-        [class*="openapi-tabs__code-item"] {
-            &:active {
-                background: red;
-            }
-        }
+[class^="collapsibleContent_"],
+[class*="collapsibleContent_"] {
+    ul {
+        padding: 0;
     }
 }
-
 .openapi__heading {
     margin: 24px 0 40px 0 !important;
 }

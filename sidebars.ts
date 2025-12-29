@@ -21,6 +21,29 @@ import auth from './docs/auth/sidebar.ts';
 import portfolio from './docs/portfolio/sidebar.ts';
 // @ts-ignore
 import options from './docs/options/sidebar.ts';
+// @ts-ignore
+import ws from './docs/websocket/sidebar';
+
+const sortedItems = () => {
+    const apiSidebars = [
+        market_data,
+        user_data,
+        spot_trade,
+        margin_trade,
+        withdraw,
+        address_book,
+        security,
+        referral,
+        auth,
+        portfolio,
+        options,
+        ws
+    ];
+
+    return apiSidebars.flatMap(
+        (sidebar) => sidebar.slice(1)
+    ) as SidebarsConfig['mainSidebar'];
+}
 
 const sidebars: SidebarsConfig = {
   mainSidebar: [
@@ -33,7 +56,7 @@ const sidebars: SidebarsConfig = {
         description: 'مستندات API نوبیتکس',
         slug: '/',
       },
-      items: [...market_data.slice(1), ...user_data.slice(1), ...spot_trade.slice(1), ...margin_trade.slice(1), ...withdraw.slice(1), ...address_book.slice(1), ...security.slice(1), ...referral.slice(1), ...auth.slice(1), ...portfolio.slice(1), ...options.slice(1)],
+      items: sortedItems(),
     },
   ],
 };

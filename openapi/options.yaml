@@ -5,21 +5,33 @@ info:
   description: |
     API تنظیمات عمومی سیستم نوبیتکس شامل رمزارزها، شبکه‌ها، حداقل سفارش‌ها،
     دقت قیمت و مقدار، سقف برداشت و سایر گزینه‌ها.
+  x-logo:
+    url: 'https://nobitex.ir/logo.png'
+    altText: Nobitex
 
 servers:
   - url: https://apiv2.nobitex.ir
+    description: Production Server
   - url: https://testnetapiv2.nobitex.ir
+    description: Testnet Server
 
 tags:
-  - name: تنظیمات سیستم
+  - name: system-options
+    x-displayName: تنظیمات سیستم
     description: مشاهده تنظیمات عمومی بازار و رمزارزها
+
+x-tagGroups:
+  - name: تنظیمات
+    tags:
+      - system-options
 
 paths:
   /v2/options:
     get:
       tags:
-        - تنظیمات سیستم
+        - system-options
       summary: تنظیمات سیستم
+      operationId: getSystemOptions
       description: |
         تنظیمات کلی سیستم نوبیتکس را برمی‌گرداند.
 
@@ -50,131 +62,238 @@ paths:
                       $ref: "#/components/schemas/CoinOptions"
                   nobitex:
                     $ref: "#/components/schemas/NobitexOptions"
+              example:
+                status: ok
+                features:
+                  fcmEnabled: true
+                  chat: "enabled"
+                  walletsToNet: true
+                  autoKYC: true
+                  enabledFeatures: ["feature1", "feature2"]
+                  betaFeatures: ["beta1"]
+                coins:
+                  - coin: rls
+                    name: Rial
+                    defaultNetwork: FIAT_MONEY
+                    displayPrecision: "10"
+                    stdName: "﷼"
+                    networkList:
+                      FIAT_MONEY:
+                        network: FIAT_MONEY
+                        name: FIAT
+                        isDefault: true
+                        beta: false
+                        depositEnable: true
+                        minConfirm: 0
+                        withdrawEnable: true
+                nobitex:
+                  allCurrencies: ["btc", "eth", "usdt"]
+                  activeCurrencies: ["btc", "eth"]
+                  topCurrencies: ["btc"]
 
 components:
   schemas:
     Features:
       type: object
+      description: ویژگی‌های فعال سیستم
       properties:
         fcmEnabled:
           type: boolean
+          description: فعال بودن Firebase Cloud Messaging
+          example: true
         chat:
           type: string
+          description: وضعیت چت
+          example: "enabled"
         walletsToNet:
           type: boolean
+          description: امکان انتقال از کیف پول به شبکه
+          example: true
         autoKYC:
           type: boolean
+          description: احراز هویت خودکار
+          example: true
         enabledFeatures:
           type: array
+          description: لیست ویژگی‌های فعال
           items:
             type: string
+          example: ["feature1", "feature2"]
         betaFeatures:
           type: array
+          description: لیست ویژگی‌های بتا
           items:
             type: string
+          example: ["beta1", "beta2"]
 
     CoinOptions:
       type: object
+      description: تنظیمات یک رمزارز
       properties:
         coin:
           type: string
+          description: نماد رمزارز
           example: rls
         name:
           type: string
+          description: نام رمزارز
           example: Rial
         defaultNetwork:
           type: string
+          description: شبکه پیش‌فرض
           example: FIAT_MONEY
         displayPrecision:
           type: string
+          description: دقت نمایش
           example: "10"
         stdName:
           type: string
+          description: نماد استاندارد
           example: "﷼"
         networkList:
           type: object
+          description: لیست شبکه‌های پشتیبانی شده
           additionalProperties:
             $ref: "#/components/schemas/NetworkOptions"
 
     NetworkOptions:
       type: object
+      description: تنظیمات یک شبکه
       properties:
         network:
           type: string
+          description: نام شبکه
           example: FIAT_MONEY
         name:
           type: string
+          description: نام نمایشی شبکه
           example: FIAT
         isDefault:
           type: boolean
+          description: آیا شبکه پیش‌فرض است
+          example: true
         beta:
           type: boolean
+          description: آیا در حالت بتا است
+          example: false
         addressRegex:
           type: string
+          description: الگوی regex برای آدرس
+          example: "^[a-zA-Z0-9]+$"
         memoRequired:
           type: boolean
+          description: آیا memo الزامی است
+          example: false
         memoRegex:
           type: string
+          description: الگوی regex برای memo
+          example: "^[0-9]+$"
         depositEnable:
           type: boolean
+          description: امکان واریز
+          example: true
         minConfirm:
           type: integer
+          description: حداقل تأییدیه برای واریز
+          example: 6
         depositInfo:
           type: object
+          description: اطلاعات اضافی واریز
           additionalProperties:
             type: object
         withdrawEnable:
           type: boolean
+          description: امکان برداشت
+          example: true
         withdrawIntegerMultiple:
           type: string
+          description: مضرب صحیح برداشت
+          example: "1"
         withdrawFee:
           type: string
+          description: کارمزد برداشت
+          example: "0.0005"
         withdrawMin:
           type: string
+          description: حداقل برداشت
+          example: "0.001"
         withdrawMax:
           type: string
+          description: حداکثر برداشت
+          example: "100"
 
     NobitexOptions:
       type: object
+      description: تنظیمات عمومی نوبیتکس
       properties:
         allCurrencies:
           type: array
+          description: تمام رمزارزها
           items:
             type: string
+          example: ["btc", "eth", "usdt", "xrp"]
         activeCurrencies:
           type: array
+          description: رمزارزهای فعال
           items:
             type: string
+          example: ["btc", "eth", "usdt"]
         xchangeCurrencies:
           type: array
+          description: رمزارزهای قابل تبادل
           items:
             type: string
+          example: ["btc", "eth"]
         topCurrencies:
           type: array
+          description: رمزارزهای برتر
           items:
             type: string
+          example: ["btc", "eth"]
         testingCurrencies:
           type: array
+          description: رمزارزهای در حال تست
           items:
             type: string
+          example: ["newcoin"]
         withdrawLimits:
           type: object
+          description: محدودیت‌های برداشت بر اساس سطح کاربری
           additionalProperties:
             type: object
+          example:
+            level1:
+              daily: "10000000"
+              monthly: "100000000"
         minOrders:
           type: object
+          description: حداقل مقدار سفارش برای هر بازار
           additionalProperties:
             type: string
+          example:
+            btc-irt: "50000"
+            eth-irt: "50000"
         amountPrecisions:
           type: object
+          description: دقت مقدار برای هر بازار
           additionalProperties:
             type: string
+          example:
+            btc-irt: "8"
+            eth-irt: "8"
         pricePrecisions:
           type: object
+          description: دقت قیمت برای هر بازار
           additionalProperties:
             type: string
+          example:
+            btc-irt: "0"
+            eth-irt: "0"
         giftCard:
           type: object
+          description: تنظیمات کارت هدیه
           properties:
             physicalFee:
               type: string
+              description: کارمزد کارت فیزیکی
+              example: "50000"

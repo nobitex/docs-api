@@ -21,3 +21,5 @@ yarn-error.log*
 
 docs/*
 yarn.lock
+
+.idea
