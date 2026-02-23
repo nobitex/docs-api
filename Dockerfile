@@ -1,29 +1,22 @@
-FROM ruby:2.6-slim
+FROM ruby:3.3.8-slim
 
-WORKDIR /srv/slate
+ENV BUNDLE_DEPLOYMENT=true \
+    BUNDLE_PATH=vendor/bundle \
+    BUNDLE_JOBS=4 \
+    BUNDLE_RETRY=3
 
-VOLUME /srv/slate/build
-VOLUME /srv/slate/source
-
-EXPOSE 4567
-
-COPY Gemfile .
-COPY Gemfile.lock .
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        build-essential \
-        git \
-        nodejs \
-    && gem install bundler \
-    && bundle install \
-    && apt-get remove -y build-essential git \
-    && apt-get autoremove -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    nodejs \
+    awscli \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /srv/slate
+WORKDIR /app
 
-RUN chmod +x /srv/slate/slate.sh
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler && bundle install
 
-ENTRYPOINT ["/srv/slate/slate.sh"]
-CMD ["build"]
+COPY . .
+
+RUN bundle exec middleman build
