@@ -427,7 +427,7 @@
                     <a href="#ff12aded16" class="toc-h2 toc-link" data-title="انتقال پول به کیف‌پول تعهدی">انتقال پول به کیف‌پول تعهدی</a>
                   </li>
                   <li>
-                    <a href="#3f24676a34" class="toc-h2 toc-link" data-title="دریافت محدودیت کاربری در مقدار وکالت">دریافت محدودیت کاربری در مقدار وکالت</a>
+                    <a href="#f2860325ec" class="toc-h2 toc-link" data-title="دریافت محدودیت‌های وکالت کاربر در بازار تعهدی">دریافت محدودیت‌های وکالت کاربر در بازار تعهدی</a>
                   </li>
                   <li>
                     <a href="#01bc967ada" class="toc-h2 toc-link" data-title="درج سفارش تعهدی">درج سفارش تعهدی</a>
@@ -3832,25 +3832,55 @@
 <td>مقدار انتقال از موجودی آزاد کیف‌پول مبدا بیشتر است.</td>
 </tr>
 </tbody></table>
-<h2 id='3f24676a34'>دریافت محدودیت کاربری در مقدار وکالت</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/margin/delegation-limit?currency=btc'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> 
-
-</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/margin/delegation-limit \
-  currency=btc
+<h2 id='f2860325ec'>دریافت محدودیت‌های وکالت کاربر در بازار تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://apiv2.nobitex.ir/margin/v2/delegation-limit?market=BTCUSDT'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext tab-plaintext"><code>http GET https://apiv2.nobitex.ir/margin/v2/delegation-limit \
+  market=BTCUSDT
 </code></pre></div>
 <blockquote>
 <p>در صورت فراخوانی درست، پاسخ به این صورت خواهد بود:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.039062"</span><span class="w">
+  </span><span class="nl">"limits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1250"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1875"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2500"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.021"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0315"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.042"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>برای دریافت سقف مقدار قابل استفاده در موقعیت‌های خرید و فروش که متناسب با سطح کاربری است، از این درخواست استفاده کنید.
-در موقعیت فروش از موجودی رمزارز مبدا بازار و در موقعیت خرید از موجودی رمزارز مقصد بازار استعلام بگیرید.</p>
+<p>برای دریافت سقف باقی‌مانده وکالت کاربر در یک بازار تعهدی از این درخواست استفاده کنید.
+این نسخه جایگزین endpoint قدیمی <code>GET /margin/delegation-limit</code> شده است و به جای <code>currency</code> باید <code>market</code> ارسال شود.
+در پاسخ، محدودیت‌های باقی‌مانده به تفکیک سمت <code>buy</code> و <code>sell</code> و برای هر اهرم مجاز بازار بازگردانده می‌شود.
+در سمت <code>sell</code> واحد <code>limit</code> برابر رمزارز مبدا بازار و در سمت <code>buy</code> واحد <code>limit</code> برابر رمزارز مقصد بازار است.</p>
 
 <ul>
-<li><strong>درخواست:</strong>: <code>GET /margin/delegation-limit</code></li>
+<li><strong>درخواست:</strong>: <code>GET /margin/v2/delegation-limit</code></li>
 <li><strong><a href="/#ratelimit">محدودیت فراخوانی:</a></strong> ۱۲ درخواست در هر دقیقه</li>
 </ul>
 <h3 id='f9f1b685f9-2'>پارامترهای ورودی</h3>
@@ -3864,11 +3894,67 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>currency</td>
+<td>market</td>
 <td>string</td>
 <td>الزامی</td>
-<td>رمزارز درخواستی برای اخذ وکالت (رمزارز مبدا بازار)</td>
-<td><code>btc</code> یا ...</td>
+<td>نماد بازار تعهدی نوبیتکس</td>
+<td><code>BTCUSDT</code> یا <code>BTCIRT</code></td>
+</tr>
+</tbody></table>
+<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>وضعیت پاسخ</td>
+<td><code>ok</code></td>
+</tr>
+<tr>
+<td>limits</td>
+<td>object</td>
+<td>محدودیت‌های باقی‌مانده وکالت به تفکیک سمت معامله</td>
+<td><code>{&quot;buy&quot;: [...], &quot;sell&quot;: [...]}</code></td>
+</tr>
+<tr>
+<td>limits.buy</td>
+<td>array</td>
+<td>محدودیت‌های خرید تعهدی در بازار؛ واحد <code>limit</code> در این بخش برابر رمزارز مقصد بازار است</td>
+<td><code>[{&quot;leverage&quot;: &quot;1&quot;, &quot;limit&quot;: &quot;1250&quot;}]</code></td>
+</tr>
+<tr>
+<td>limits.sell</td>
+<td>array</td>
+<td>محدودیت‌های فروش تعهدی در بازار؛ واحد <code>limit</code> در این بخش برابر رمزارز مبدا بازار است</td>
+<td><code>[{&quot;leverage&quot;: &quot;1&quot;, &quot;limit&quot;: &quot;0.021&quot;}]</code></td>
+</tr>
+</tbody></table>
+<h3 id='delegationlimititem'>شی DelegationLimitItem</h3>
+<table><thead>
+<tr>
+<th>پارامتر</th>
+<th>نوع</th>
+<th>توضیحات</th>
+<th>نمونه</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>leverage</td>
+<td>decimal</td>
+<td>اهرم مربوط به محدودیت باقی‌مانده</td>
+<td><code>1.5</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>decimal</td>
+<td>سقف باقی‌مانده قابل استفاده در همان سمت و همان اهرم</td>
+<td><code>1875</code></td>
 </tr>
 </tbody></table>
 <h3 id='eec2b3e8e4-2'>حالت‌های خطا</h3>
@@ -3888,28 +3974,29 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>ParseError</td>
-<td>فرمت ورودی‌ها مطابق فرمت خواسته شده نیست.</td>
-</tr>
-<tr>
 <td>TradeLimitation</td>
 <td>کاربر سطح احراز کافی ندارد.</td>
 </tr>
 <tr>
-<td>UnsupportedMarginSrc</td>
-<td>رمزارز درخواستی برای معاملات خرید/فروش تعهدی پشتیبانی نمی‌شود.</td>
+<td>InvalidSymbol</td>
+<td>نماد بازار (<code>market</code>) نامعتبر است.</td>
 </tr>
 <tr>
-<td>MarginClosed</td>
-<td>معاملات خرید/فروش تعهدی بسته شده یا باز نشده است.</td>
+<td>InvalidMarket</td>
+<td>بازار درخواستی در نوبیتکس یافت نشد.</td>
+</tr>
+<tr>
+<td>UnsupportedMarginSymbol</td>
+<td>بازار درخواستی از معاملات تعهدی پشتیبانی نمی‌کند.</td>
 </tr>
 </tbody></table>
 <h3 id='2f74b9d52e-3'>نکات و ملاحظات</h3>
 <ol>
-<li>با هر بار باز کردن سفارش جدید، این سقف کاهش یافته و با بستن موقعیت و تسویه این سقف افزایش می‌یابد.
-به نوعی این مقدار برابر میزان باقیمانده از مقدار مجاز کاربری شما بری وکالت گیری می‌باشد.</li>
-<li>مقدار هر سفارش فروش تعهدی باید همواره از سقف وکالت باقیمانده رمزارز مبدا کمتر باشد.</li>
-<li>ارزش کل هر سفارش خرید تعهدی (قیمت × مقدار) باید همواره از سقف وکالت باقیمانده ارز مقصد کمتر باشد.</li>
+<li>نمونه پاسخ بالا کوتاه‌شده است و آرایه هر سمت از اهرم <code>1</code> تا حداکثر اهرم مجاز آن بازار، با گام <code>0.5</code> ادامه پیدا می‌کند.</li>
+<li>مقدار <code>limit</code> در هر ورودی، سقف باقی‌مانده قابل استفاده برای همان سمت و همان اهرم است.</li>
+<li>با باز بودن موقعیت‌ها و سفارش‌های تعهدی، این مقادیر کاهش می‌یابند و با بستن یا تسویه آن‌ها دوباره افزایش پیدا می‌کنند.</li>
+<li>در سفارش فروش تعهدی، مقدار سفارش باید از <code>sell.limit</code> اهرم انتخابی کمتر یا مساوی باشد.</li>
+<li>در سفارش خرید تعهدی، ارزش کل سفارش (<code>price × amount</code>) باید از <code>buy.limit</code> اهرم انتخابی کمتر یا مساوی باشد.</li>
 </ol>
 <h2 id='01bc967ada'>درج سفارش تعهدی</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://apiv2.nobitex.ir/margin/orders/add'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token yourTOKENhereHEX0000000000"</span> <span class="se">\</span>
@@ -4019,7 +4106,7 @@
 <td><code>12600000000</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af-2'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-3'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -4330,7 +4417,7 @@
 <td><code>active</code> یا <code>past</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af-3'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-4'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -4645,7 +4732,7 @@
 <td><code>128</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af-4'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-5'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -4749,7 +4836,7 @@
 <td><code>12600000000</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af-5'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-6'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
@@ -4999,7 +5086,7 @@
 <td><code>230000000</code></td>
 </tr>
 </tbody></table>
-<h3 id='b5a1caf9af-6'>پارامترهای پاسخ</h3>
+<h3 id='b5a1caf9af-7'>پارامترهای پاسخ</h3>
 <table><thead>
 <tr>
 <th>پارامتر</th>
