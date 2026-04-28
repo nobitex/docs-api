@@ -278,6 +278,10 @@ http GET https://apiv2.nobitex.ir/margin/v2/delegation-limit \
 - **درخواست:**: `GET /margin/v2/delegation-limit`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۱۲ درخواست در هر دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 
 ### پارامترهای ورودی
 
@@ -375,6 +379,10 @@ http POST https://apiv2.nobitex.ir/margin/orders/add \
 
 - **درخواست:**: `POST /margin/orders/add`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۳۰۰ درخواست در هر ۱۰ دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
 
 
 ### پارامترهای ورودی
@@ -536,6 +544,10 @@ http GET https://apiv2.nobitex.ir/positions/list \
 
 - **<a href="/#pagination">صفحه‌بندی:</a>** دارد (پیش فرض ۵۰)
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر     | نوع      | پیش‌فرض  | توضیحات           | نمونه              |
@@ -670,6 +682,10 @@ http GET https://apiv2.nobitex.ir/positions/128/status
 - **درخواست:**: `GET /positions/:positionId:/status`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۱۰۰ درخواست در هر ۱۰ دقیقه (<a href="#order_ratelimit">محدودیت مشترک</a>)
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر      | نوع       | پیش‌فرض | توضیحات        | نمونه |
@@ -730,6 +746,10 @@ http POST https://apiv2.nobitex.ir/positions/128/close \
 
 - **درخواست:**: `POST /positions/:positionId:/close`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۳۰۰ درخواست در هر ۱۰ دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 
@@ -864,6 +884,10 @@ http POST https://apiv2.nobitex.ir/positions/128/edit-collateral \
 
 - **درخواست:**: `POST /positions/:positionId:/edit-collateral`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در هر دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 

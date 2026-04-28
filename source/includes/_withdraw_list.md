@@ -89,6 +89,10 @@ http GET https://apiv2.nobitex.ir/users/wallets/withdraws/list
 * **<a href="#pagination">صفحه بندی:</a>** دارد (پیش فرض 20)
 * **<a href="#date-filter">فیلترزمانی:</a>** دارد
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر | نوع    | پیش‌فرض | توضیحات             | نمونه |

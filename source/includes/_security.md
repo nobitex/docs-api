@@ -98,6 +98,10 @@ curl --location --request POST 'https://apiv2.nobitex.ir/security/anti-phishing'
 
 > برای دریافت رمزیکبارمصرف otpCode باید از API زیر با پارامترهای مشخص شده استفاده نمایید:
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `OTP` روی کلید الزامی است.
+</aside>
+
 ```shell
 curl -X POST 'https://apiv2.nobitex.ir/v2/otp/request' \
   -H 'Authorization: Token yourTOKENhereHEX0000000000' \

@@ -44,6 +44,10 @@ http POST https://apiv2.nobitex.ir/market/orders/add \
 - **درخواست:**: `POST /market/orders/add`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 300 درخواست در هر ۱۰ دقیقه (<a href="#order_ratelimit">محدودیت مشترک</a>)
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
+
 ثبت سفارش الزاماً به معنی انجام معامله نیست و بسته به نوع و قیمت سفارش و وضعیت لحظه‌ای بازار ممکن است معامله انجام شود یا نشود. با درخواست «مشاهده وضعیت سفارش» می‌توانید از وضعیت سفارش خود مطلع شوید.
 
 سفارش‌ها پس از ثبت، پیش از ورود به دفتر معاملاتی و انجام معامله، مجدداً از نظر اعتبار مورد بررسی قرار گرفته و در صورت نامعتبر بودن، به وضعیت «رد شده» برده خواهند شد. به همین علت در صورتی که سفارش‌های شما ثبت می‌شود ولی بلافاصله به وضعیت «رد شده» تغییر حالت پیدا می‌کنند، پارامترهای ارسالی خود به ویژه مقدار و قیمت سفارش و موجودی حساب خود را دقیق‌تر بررسی نمایید.
@@ -284,6 +288,10 @@ http POST https://apiv2.nobitex.ir/market/orders/status \
 - **درخواست:** `POST /market/orders/status`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 300 درخواست در هر دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ###پارامترهای ورودی:
 
 پارامتر     | نوع    | پیش‌فرض   |   توضیحات     |  نمونه
@@ -368,6 +376,10 @@ http GET https://apiv2.nobitex.ir/market/orders/list \
 - **درخواست:** `GET /market/orders/list`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در دقیقه
 - **<a href="/#pagination">صفحه بندی:</a>** دارد (پیش فرض ۱۰۰)
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 پارامتر     | نوع    | پیش‌فرض                                | توضیحات                                                                                 | نمونه
@@ -485,6 +497,10 @@ http POST https://apiv2.nobitex.ir/market/orders/update-status \
 - **درخواست:** `POST /market/orders/update-status`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 90 درخواست در دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
+
 ###پارامترهای ورودی
 
 پارامتر     | نوع    | پیش‌فرض   |   توضیحات     |         نمونه
@@ -549,6 +565,10 @@ http POST https://apiv2.nobitex.ir/market/orders/cancel-old \
 
 - **درخواست:** `POST /market/orders/cancel-old`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
 
 ###پارامترهای ورودی
 
@@ -620,6 +640,10 @@ http GET https://apiv2.nobitex.ir/market/trades/list?srcCurrency=usdt&dstCurrenc
 - **درخواست:** `GET /market/trades/list`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در دقیقه
 - **<a href="/#pagination">صفحه بندی:</a>** دارد (پیش فرض ۳۰)
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 
 

@@ -88,6 +88,10 @@ http POST https://apiv2.nobitex.ir/users/profile \
 
 - **درخواست:** `GET /users/profile`
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 برای دریافت پاسخ، کافیست توکن احراز هویت را ارسال نمایید
 
@@ -119,6 +123,10 @@ http POST https://apiv2.nobitex.ir/users/wallets/generate-address \
 
 - **درخواست:** `POST /users/wallets/generate-address`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۳۰ درخواست در ساعت
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `DEPOSIT` روی کلید الزامی است.
+</aside>
 
 
 ### پارامترهای ورودی
@@ -265,6 +273,10 @@ http GET https://apiv2.nobitex.ir/users/limitations
 
 - **درخواست:** `POST /users/limitations`
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 - در این بخش به ورودی نیاز نیست.
 - توکن دریافتی از بخش لاگین باید در هدر ارسال شود.
@@ -363,6 +375,10 @@ http GET https://apiv2.nobitex.ir/users/wallets/list \
 - **درخواست:** `GET /users/wallets/list`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 20 درخواست در 2 دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 
 ### نکات و ملاحظات
 1. کیف پول یک رمزارز در صورتی برای کاربر ایجاد می‌شود که کاربر سفارشی در بازار آن رمزارز ثبت کرده و یا آدرس واریز برای آن ایجاد کرده باشد.
@@ -408,6 +424,10 @@ http GET https://apiv2.nobitex.ir/v2/wallets \
 - **درخواست:** `GET /v2/wallets`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 15 درخواست در دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 پارامتر     | نوع    | پیش‌فرض   |      توضیحات     | نمونه
@@ -448,6 +468,10 @@ http POST https://apiv2.nobitex.ir/users/wallets/balance \
 
 - **درخواست:** `POST /users/wallets/balance`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 
@@ -505,6 +529,10 @@ http GET https://apiv2.nobitex.ir/users/wallets/transactions/list \
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
 - **<a href="#pagination">صفحه بندی:</a>** دارد (پیشفرض ۵۰)
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 پارامتر     | نوع    | پیش‌فرض   |       توضیحات     | نمونه
@@ -561,6 +589,10 @@ http GET https://apiv2.nobitex.ir/users/transactions-history \
 - **درخواست:** `GET /users/transactions-history`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ساعت
 - **<a href="#pagination">صفحه بندی:</a>** دارد (پیشفرض ۵۰)
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 
@@ -637,6 +669,10 @@ http GET https://apiv2.nobitex.ir/users/wallets/deposits/list \
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
 - **<a href="#pagination">صفحه بندی:</a>** دارد (پیشفرض ۱۰برای ریال و ۲۰برای سایر)
 - **<a href="#date-filter">فیلترزمانی:</a>** دارد
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 
@@ -762,4 +798,3 @@ http DELETE https://apiv2.nobitex.ir/users/markets/favorite
 پارامتر     | نوع    | پیش‌فرض   | توضیحات                           | نمونه
 ----------- | ----   | ------   |-----------------------------------| -----
 market | string |   الزامی | نماد بازار  و یا All برای حذف همه | `All` or `BTCIRT`
-

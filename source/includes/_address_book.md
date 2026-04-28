@@ -46,6 +46,10 @@ https GET https://apiv2.nobitex.ir/address_book
 - **درخواست:**: `GET /address_book`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 20 درخواست در هر دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر | نوع    | پیش‌فرض     | توضیحات    | نمونه |
@@ -94,6 +98,10 @@ curl -X POST 'https://apiv2.nobitex.ir/v2/otp/request' \
 
 - **درخواست:**: `POST /address_book`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `ADDRESS_BOOK` روی کلید الزامی است. همچنین برای دریافت `otpCode` از `v2/otp/request`، دسترسی `OTP` نیز لازم است.
+</aside>
 
 ### پارامترهای ورودی
 
@@ -159,6 +167,10 @@ https DELETE /address_book/<address_id>/delete
 - **درخواست:**: `DELETE /address_book/<address_id>/delete`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `ADDRESS_BOOK` روی کلید الزامی است.
+</aside>
+
 ### حالت‌های خطا
 
 > در صورت عدم پذیرش درخواست، پاسخ به این صورت خواهد بود:
@@ -199,6 +211,10 @@ https POST https://apiv2.nobitex.ir/address_book/whitelist/activate
 - **درخواست:**: `POST /address_book/whitelist/activate`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `ADDRESS_BOOK` روی کلید الزامی است.
+</aside>
+
 ## غیرفعال کردن برداشت امن
 با غیر فعال کردن برداشت امن، به جهت حفظ امنیت حساب امکان برداشت به مدت ۲۴ ساعت روی حساب کاربر محدود خواهد شد.
 
@@ -223,6 +239,10 @@ https POST https://apiv2.nobitex.ir/address_book/whitelist/deactivate
 
 - **درخواست:**: `POST /address_book/whitelist/deactivate`
 - **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 6 درخواست در هر دقیقه
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `ADDRESS_BOOK` روی کلید الزامی است. همچنین برای دریافت `otpCode` از `v2/otp/request`، دسترسی `OTP` نیز لازم است.
+</aside>
 
 ### پارامترهای ورودی
 
