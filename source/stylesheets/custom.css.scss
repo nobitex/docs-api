@@ -13,3 +13,11 @@ table td .long {
   max-width: calc(25vw - 115px);
   word-wrap: break-word;
 }
+
+// Fix horizontal scroll on mobile - code blocks
+pre, code {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+  word-wrap: normal;
+}
