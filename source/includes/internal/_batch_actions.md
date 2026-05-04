@@ -158,6 +158,10 @@ Content-Type: application/json
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 300 درخواست در 10 دقیقه
   <br/>300 سفارش در 10 دقیقه ([مشترک با ثبت سفارش تکی](/#order_ratelimit))
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر | نوع  | پیش‌فرض | توضیحات                      | نمونه                  |
@@ -260,6 +264,10 @@ Content-Type: application/json
 * **درخواست:** `POST /market/orders/cancel-batch`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در هر دقیقه
 * حداکثر 20 سفارش در هر درخواست
+
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `TRADE` روی کلید الزامی است.
+</aside>
 
 ### پارامترهای ورودی
 

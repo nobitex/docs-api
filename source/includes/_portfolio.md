@@ -100,6 +100,10 @@ Authorization: Token yourTOKENhereHEX0000000000
 * **درخواست:** `POST users/portfolio/last-week-daily-profit`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 ### نکات و ملاحظات: 
 این API به صورت پیش فرض اطلاعات 7 روز گذشته را ارائه می دهد. برای دریافت اطلاعات ماهانه یا ۳۰ روز گذشته کافیست پارامتر monthly با مقدار true را به همراه این درخواست ارسال نمایید.
 
@@ -185,6 +189,10 @@ Authorization: Token yourTOKENhereHEX0000000000
 * **درخواست:** `POST users/portfolio/last-week-daily-total-profit`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 
 
 <h2 id="last-month-total-profit">سود و زیان کل ماه گذشته</h2>
@@ -236,5 +244,8 @@ Authorization: Token yourTOKENhereHEX0000000000
 * **درخواست:** `POST users/portfolio/last-month-total-profit`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
 
 

@@ -47,6 +47,10 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw \
 * **درخواست:** `POST /users/wallets/withdraw`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 10 درخواست در 3 دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `WITHDRAW` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر      | نوع      | پیش‌فرض | توضیحات                 | نمونه                                |
@@ -142,6 +146,10 @@ http POST https://apiv2.nobitex.ir/users/wallets/withdraw-confirm \
 * **درخواست:** `POST /users/wallets/withdraw-confirm`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** 30 درخواست در ساعت
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `WITHDRAW` روی کلید الزامی است.
+</aside>
+
 ### پارامترهای ورودی
 
 | پارامتر  | نوع | پیش‌فرض                  | توضیحات                 | نمونه  |
@@ -195,10 +203,13 @@ http GET https://apiv2.nobitex.ir/withdraws/433
 * **درخواست:** `GET /withdraws/WITHDRAW`
 * **<a href="/#ratelimit">محدودیت فراخوانی:</a>** ۶۰ درخواست در ۲ دقیقه
 
+<aside class="notice">
+در صورت استفاده از API Key برای این درخواست، دسترسی `READ` روی کلید الزامی است.
+</aside>
+
 
 ### پارامترهای ورودی
 
 | پارامتر     | نوع | پیش‌فرض | توضیحات              | نمونه |
 |-------------|-----|---------|----------------------|-------|
 | WITHDRAW | int | الزامی  | شناسه درخواست برداشت | 433   |
-
