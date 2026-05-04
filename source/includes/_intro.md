@@ -68,7 +68,7 @@ Authorization: Token yourTOKENhereHEX0000000000
 - **READ** →دریافت اطلاعات بدون تغییر در دیتابیس
 - **TRADE** → عملیات‌های مربوط به معامله و ترید، که منجر به تغییری در دیتابیس می‌شوند.
 - **WITHDRAW** → دسترسی عملیات برداشت
-- **DEPOSIT** → دسترسی عملیات واریز
+- **DEPOSIT** → دسترسی ساخت آدرس واریز رمزارزی
 - **ADDRESS_BOOK** → دسترسی عملیات دفتر آدرس‌ها
 - **OTP** → دسترسی دریافت کدهای یکبارمصرف از APIهای مرتبط
 
@@ -287,6 +287,8 @@ POST /apikeys/update/<public_key>
 * `users/wallets/withdraw`
 * `users/wallets/withdraw-confirm`
 * `users/wallets/withdraw-cancel`
+* `security/emergency-cancel/get-code`
+* `security/emergency-cancel/activate`
 
 <h3>Deposit</h3>
 
@@ -348,13 +350,20 @@ POST /apikeys/update/<public_key>
 
 - **timestamp**: `1714387200`
 - **method**: `POST`
-- **full_path**: `/market/orders/add`
-- **body**: `{"test": "test"}`
+- **full_path**: `/market/orders/cancel-old`
+- **body**:
+
+```json
+{
+  "order": 27032,
+  "status": "canceled"
+}
+```
 
 در این حالت، رشته‌ای که باید با کلید خصوصی `Ed25519` امضا شود برابر است با:
 
 ```text
-1714387200POST/market/orders/add{"test": "test"}
+1714387200POST/market/orders/cancel-old{"order": 27032, "status": "canceled"}
 ```
 
 پس از امضای این رشته و تبدیل خروجی به `urlsafe base64`، مقدار حاصل را باید در هدر `Nobitex-Signature` قرار دهید.
@@ -366,8 +375,11 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 timestamp = "1714387200"
 method = "POST"
-full_path = "/market/orders/add"
-body_dict = {"test": "test"}
+full_path = "/market/orders/cancel-old"
+body_dict = {
+    "order": 27032,
+    "status": "canceled",
+}
 body = json.dumps(body_dict)
 payload = f"{timestamp}{method}{full_path}{body}".encode()
 
@@ -384,7 +396,7 @@ print("Nobitex-Signature:", signature_b64)
 ```
 
 ```bash
-curl -X POST "https://apiv2.nobitex.ir/orders/cancel-old" \
+curl -X POST "https://apiv2.nobitex.ir/market/orders/cancel-old" \
   -H "Content-Type: application/json" \
   -H "Nobitex-Key: <Your-Public-Key>" \
   -H "Nobitex-Signature: <Generated-Signature>" \

@@ -37,12 +37,12 @@ http POST https://apiv2.nobitex.ir/users/login-attempts \
 
 ```shell
 curl 'https://apiv2.nobitex.ir/security/emergency-cancel/activate' \
-  -X GET \
+  -X POST \
   -H "Authorization: Token yourTOKENhereHEX0000000000"
 ```
 
 ```plaintext
-http GET https://apiv2.nobitex.ir/security/emergency-cancel/activate \
+http POST https://apiv2.nobitex.ir/security/emergency-cancel/activate \
   Authorization: Token yourTOKENhereHEX0000000000
 ```
 
@@ -58,11 +58,14 @@ http GET https://apiv2.nobitex.ir/security/emergency-cancel/activate \
 ```
 
 
-جهت فعالسازی امکان لغو اضطراریِ درخواست های برداشت از این درخواست استفاده نمائید.
+جهت دریافت کد فعالسازی و فعالسازی امکان لغو اضطراریِ درخواست های برداشت از درخواست‌های زیر استفاده نمائید.
 پس از فعالسازی این امکان، پیامک و ایمیل ارسالی پس از ثبت درخواست برداشت،
 حاوی لینکی خواهد بود که شما میتوانید با استفاده از آن در صورتی که درخواست برداشت توسط شما ثبت نشده است، در کمترین زمان ممکن و بدون نیاز به لاگین، درخواست های برداشت خود را لغو نمایید.
 
-- **درخواست:** `GET /security/emergency-cancel/activate`
+- **درخواست دریافت کد:** `POST /security/emergency-cancel/get-code`
+- **درخواست فعالسازی:** `POST /security/emergency-cancel/activate`
+
+در صورت استفاده از API Key برای این درخواست‌ها، دسترسی `WITHDRAW` روی کلید الزامی است.
 
 
 ### نکات و ملاحظات
@@ -166,7 +169,7 @@ otpCode | number | الزامی  | کد یکبار مصرف ارسال شده ب
 
 ```shell
 curl --location --request GET 'https://apiv2.nobitex.ir/security/anti-phishing' \
---header 'Authorization: Token yourTOKENhereHEX0000000000' 
+--header 'Authorization: Token yourTOKENhereHEX0000000000'
 ```
 
 
