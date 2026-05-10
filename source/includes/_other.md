@@ -123,7 +123,13 @@ http GET https://apiv2.nobitex.ir/v2/options
         },
         "giftCard": {
             "physicalFee": "360000"
-        }
+        },
+        "directDebitFee": {
+            "rate": "0.002",
+            "min": 10000,
+            "max": 50000
+          },
+        "directDebitMinDeposit": "20000"
     }
 }
 ```
@@ -163,6 +169,8 @@ minOrders | dict        | حداقل مبلغ سفارش ریالی و تتری
 amountPrecisions | dict        | دقت اعشار مقدار در بازارهای مختلف 
 pricePrecisions | dict        | دقت اعشار قیمت در بازارهای مختلف 
 giftCard | dict        | هزینه چاپ گیفت کارتهای فیزیکی
+directDebitFee | dict        |نرخ کارمزد واریز مستقیم
+directDebitMinDeposit | str         |حداقل میزان مبلغ واریز مستقیم
 
 
 ### پارامترهای پاسخ - Coins
